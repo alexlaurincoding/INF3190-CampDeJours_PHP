@@ -33,3 +33,44 @@ La structure du projet est à déterminer.
     └── main.css
 ```
 
+## STRUCTURE
+### Structure
+- 3 programmes / semaine
+- 1 programme = 1 semaine / 15 semaines
+- 1 semaine = 5 jours d'activités
+- 1 jour = 1+ bloc d'activité **ou** 1+ activité 
+- 1 jour = 1 à 6 activités
+- 1 bloc = 1+ activités
+- Enfant inscrit à 1+ semaines différentes (1 par semaine)
+
+### Composition
+
+**Programme**  
+```
+├── Description  
+├── Animateurs  
+├── Horaire  
+├── Liste d'enfants  
+└── Liste d'activités &/ blocs d'activités  
+```
+
+**Bloc -> Type Activité**  
+```
+├── Sportif    
+│   ├── Course    
+│   ├── Yoga    
+│   └── Autre    
+├── Art    
+│   ├── Culinaire    
+│   ├── Visuel    
+│   └── Plastique    
+├── Science   
+│   ├── Chimie    
+│   ├── Biologie    
+│   └── Physique   
+└── Mixte  
+```
+
+
+
+
