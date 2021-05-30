@@ -6,7 +6,7 @@
 **Etienne Comtois** : COME17029800  
 **Louis Roy Therrien** :  
 **Alexandre Laurin** :  
-**Mathieu QQCHOSE** :  
+**Mathieu Charbonneau** : CHAM25029407
 
 ### Partage de Connaissance
 Le `GitHub` suivant sera utilisé afin de centraliser le travail : [GitHub INF3190 TS](https://github.com/alexlaurincoding/INF3190_Travail_de_session.git)  
