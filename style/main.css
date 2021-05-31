@@ -1,3 +1,44 @@
-#nav-item {
-  align-text: center;
+.navbar-brand {
+  margin-right: 0%;
+  font-weight: bolder;
+}
+
+#nav-title {
+  color: green;
+}
+
+#nav-title:hover {
+  color: grey;
+}
+
+.nav {
+  padding: 0%;
+}
+
+.navbar {
+  margin: 0%;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: grey;
+  font-weight: 400;
+}
+
+.nav-item a:hover {
+  text-decoration: none;
+  color: green;
+  font-weight: 400;
+}
+
+.login {
+  text-align: right;
+}
+
+.login > a {
+  color: green;
+}
+
+.login > a:hover {
+  color: grey;
 }
