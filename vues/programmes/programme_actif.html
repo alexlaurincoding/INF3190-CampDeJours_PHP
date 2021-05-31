@@ -10,23 +10,20 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../style/main.css" />
-    <link rel="import" href="titlebar.html" />
+    <link rel="stylesheet" href="../../style/main.css" />
+    <link rel="import" href="../titlebar.html" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-    <title>Camp de jour</title>
+    <title>Document</title>
   </head>
-
   <body>
     <div id="nav-placeholder"></div>
 
     <script>
-      $.get("titlebar.html", function (data) {
+      $.get("../titlebar.html", function (data) {
         $("#nav-placeholder").replaceWith(data);
       });
     </script>
-
-    <h1>SALUT LES NERDS!!!</h1>
+    <h1>Enfant actif</h1>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -42,6 +39,9 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="../javascript/javaScript.js"></script>
+    <script
+      type="text/javascript"
+      src="../../javascript/javaScript.js"
+    ></script>
   </body>
 </html>
