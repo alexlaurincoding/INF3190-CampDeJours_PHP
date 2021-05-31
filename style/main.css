@@ -25,6 +25,12 @@
   font-weight: 400;
 }
 
+.nav-link:hover {
+  text-decoration: none;
+  color: green;
+  font-weight: 400;
+}
+
 .nav-item a:hover {
   text-decoration: none;
   color: green;
