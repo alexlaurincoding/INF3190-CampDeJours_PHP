@@ -51,9 +51,7 @@
 
 /*FOOTER CSS BEGIN*/
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
-
-/* latin */
+/* font */
 @font-face {
   font-family: "Roboto";
   font-style: normal;
