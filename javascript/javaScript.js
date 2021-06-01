@@ -41,18 +41,22 @@ function createTableFromJSON() {
   //Creation du tableau
   var tableauInscription = document.createElement("table");
   $(tableauInscription).addClass("table");
-  tableauInscription.appendChild(document.createElement("thead"));
-  var tr = tableauInscription.insertRow(-1); // colonnes
+  $(tableauInscription).addClass("table-hover");
+  $(tableauInscription).addClass("table-sm");
+  var thead = document.createElement("thead");
+  $(thead).addClass("thead-dark");
+  tableauInscription.appendChild(thead);
+  var tr = thead.insertRow(-1); // colonnes
 
   for (var i = 0; i < colonnes.length; i++) {
     var th = document.createElement("th"); // Header
     th.innerHTML = colonnes[i];
     tr.appendChild(th);
   }
-
-  // ADD JSON DATA TO THE TABLE AS ROWS.
+  var tbody = tableauInscription.appendChild(document.createElement("tbody"));
+  // ajout des rangee a partir du fichier json
   for (var i = 0; i < inscriptionJSON.length; i++) {
-    tr = tableauInscription.insertRow(-1);
+    tr = tbody.insertRow(-1);
 
     for (var j = 0; j < colonnes.length; j++) {
       var tabCell = tr.insertCell(-1);
@@ -60,7 +64,7 @@ function createTableFromJSON() {
     }
   }
 
-  // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+  // Ajout du tableau dans un container
   var divContainer = document.getElementById("showData");
   divContainer.innerHTML = "";
   divContainer.appendChild(tableauInscription);
