@@ -49,6 +49,14 @@
   color: grey;
 }
 
+.login-logo {
+  color: #292c2f;
+}
+
+.login-logo:hover {
+  color: green;
+}
+
 /*FOOTER CSS BEGIN*/
 
 /* font */
