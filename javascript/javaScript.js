@@ -27,7 +27,7 @@ window.onload = function () {
         lengthMenu: "Montrer _MENU_ Resultats",
         info: "Page _PAGE_ de _PAGES_",
         search: "Rechercher ",
-        oPaginate: { sNext: "Suivant", sPrevious: "Precedant" },
+        oPaginate: { sNext: "Suivant", sPrevious: "Précédant" },
       },
 
       lengthMenu: [
@@ -89,11 +89,10 @@ function createTableFromJSON() {
     for (var j = 0; j < colonnes.length; j++) {
       var tabCell = tr.insertCell(-1);
       //creation d'un lien cliquable
-      var valeur = inscriptionJSON[i][colonnes[j]];
       tabCell.innerHTML =
-        '<a href="#" onClick="alert(\'' +
-        valeur +
-        "')\">" +
+        '<a href="#" onClick="onClickTableauAdmin(' +
+        i +
+        ')">' +
         inscriptionJSON[i][colonnes[j]] +
         "</a>";
     }
@@ -108,3 +107,16 @@ function createTableFromJSON() {
   }
   return false;
 }
+
+function onClickTableauAdmin(index) {
+  alert(JSON.stringify(inscriptionJSON[index]));
+}
+/*var valeur = inscriptionJSON[i][colonnes[j]];
+tabCell.innerHTML =
+  '<a href="#" onClick="onClickTableauAdmin(\'' +
+  valeur +
+  "','" +
+  colonnes[j] +
+  "')\">" +
+  inscriptionJSON[i][colonnes[j]] +
+  "</a>";*/
