@@ -57,6 +57,11 @@
   color: green;
 }
 
+.container {
+  position: relative;
+  min-height: 80vh;
+}
+
 /*tableau admin*/
 
 /*FOOTER CSS BEGIN*/
@@ -74,6 +79,8 @@
 }
 
 section {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   display: inline-block;
   background: #ccc;
@@ -85,9 +92,6 @@ section {
 }
 
 .footer-distributed {
-  position: fixed;
-  left: 0;
-  bottom: 0;
   background-color: #292c2f;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;

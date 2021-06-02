@@ -12,6 +12,25 @@ $("#footer-placeholder").load("footer.html");
  * Generation du tableau Inscription Admin
  */
 
+window.onload = function () {
+  if (createTableFromJSON()) {
+    $("#table_admin").DataTable({
+      order: [
+        [2, "des"],
+        [4, "asc"],
+      ],
+      rowGroup: {
+        dataSrc: 2,
+      },
+      pageLength: 15,
+      lengthMenu: [
+        [15, 50, -1],
+        [15, 50, "Tous"],
+      ],
+    });
+  }
+};
+
 //extraction du fichier JSON
 var inscriptionJSON = (function () {
   var json = null;
@@ -43,6 +62,7 @@ function createTableFromJSON() {
   $(tableauInscription).addClass("table");
   $(tableauInscription).addClass("table-hover");
   $(tableauInscription).addClass("table-sm");
+  $(tableauInscription).attr("id", "table_admin");
   var thead = document.createElement("thead");
   $(thead).addClass("thead-dark");
   tableauInscription.appendChild(thead);
@@ -53,6 +73,7 @@ function createTableFromJSON() {
     th.innerHTML = colonnes[i];
     tr.appendChild(th);
   }
+  //ajout du tag <tbody> pour les fonctionnalite bootstrap
   var tbody = tableauInscription.appendChild(document.createElement("tbody"));
   // ajout des rangee a partir du fichier json
   for (var i = 0; i < inscriptionJSON.length; i++) {
@@ -60,7 +81,7 @@ function createTableFromJSON() {
 
     for (var j = 0; j < colonnes.length; j++) {
       var tabCell = tr.insertCell(-1);
-
+      //creation d'un lien cliquable
       var valeur = inscriptionJSON[i][colonnes[j]];
       tabCell.innerHTML =
         '<a href="#" onClick="alert(\'' +
@@ -72,7 +93,11 @@ function createTableFromJSON() {
   }
 
   // Ajout du tableau dans un container
-  var divContainer = document.getElementById("showData");
-  divContainer.innerHTML = "";
-  divContainer.appendChild(tableauInscription);
+  var divContainer = document.getElementById("showTableauAdmin");
+  if (divContainer != null) {
+    divContainer.innerHTML = "";
+    divContainer.appendChild(tableauInscription);
+    return true;
+  }
+  return false;
 }
