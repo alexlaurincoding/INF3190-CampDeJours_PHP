@@ -23,6 +23,13 @@ window.onload = function () {
         dataSrc: 2,
       },
       pageLength: 15,
+      language: {
+        lengthMenu: "Montrer _MENU_ Resultats",
+        info: "Page _PAGE_ de _PAGES_",
+        search: "Rechercher ",
+        oPaginate: { sNext: "Suivant", sPrevious: "Precedant" },
+      },
+
       lengthMenu: [
         [15, 50, -1],
         [15, 50, "Tous"],
