@@ -1,0 +1,34 @@
+[
+  {
+    "id": "Marsh, Stanley",
+    "nom": "Marsh",
+    "prenom": "Stanley",
+    "age": "8",
+    "photo": "../img/stan_mini.jpg",
+    "parent": "Marsh, Randy"
+  },
+  {
+    "id": "Cartman, Eric",
+    "nom": "Cartman",
+    "prenom": "Eric",
+    "age": "8",
+    "photo": "../img/cartman_mini.jpg",
+    "parent": "Cartman, Liane"
+  },
+  {
+    "id": "Simpson, Bart",
+    "nom": "Simpson",
+    "prenom": "Bart",
+    "age": "10",
+    "photo": "../img/bart_mini.jpg",
+    "parent": "Simpson, Homer"
+  },
+  {
+    "id": "Simpson, Lisa",
+    "nom": "Simpson",
+    "prenom": "Lisa",
+    "age": "8",
+    "photo": "../img/lisa_mini.jpg",
+    "parent": "Simpson, Homer"
+  }
+]

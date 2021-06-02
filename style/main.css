@@ -62,6 +62,13 @@
   min-height: 80vh;
 }
 
+#icone_paye {
+  color: green;
+}
+
+#icone_impaye {
+  color: red;
+}
 /*tableau admin*/
 
 /*FOOTER CSS BEGIN*/

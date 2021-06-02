@@ -38,13 +38,43 @@ window.onload = function () {
   }
 };
 
-//extraction du fichier JSON
+//extraction du fichier JSON inscription
 var inscriptionJSON = (function () {
   var json = null;
   $.ajax({
     async: false,
     global: false,
     url: "/javascript/inscriptions.json",
+    dataType: "json",
+    success: function (data) {
+      json = data;
+    },
+  });
+  return json;
+})();
+
+//extraction du fichier JSON parents
+var parents = (function () {
+  var json = null;
+  $.ajax({
+    async: false,
+    global: false,
+    url: "/javascript/dossier_parent.json",
+    dataType: "json",
+    success: function (data) {
+      json = data;
+    },
+  });
+  return json;
+})();
+
+//extraction du fichier JSON parents
+var enfants = (function () {
+  var json = null;
+  $.ajax({
+    async: false,
+    global: false,
+    url: "/javascript/dossier_enfant.json",
     dataType: "json",
     success: function (data) {
       json = data;
@@ -89,12 +119,20 @@ function createTableFromJSON() {
     for (var j = 0; j < colonnes.length; j++) {
       var tabCell = tr.insertCell(-1);
       //creation d'un lien cliquable
-      tabCell.innerHTML =
-        '<a href="#" onClick="onClickTableauAdmin(' +
-        i +
-        ')">' +
-        inscriptionJSON[i][colonnes[j]] +
-        "</a>";
+      if (j < colonnes.length - 1) {
+        tabCell.innerHTML =
+          '<a href="#" onClick="onClickTableauAdmin(' +
+          i +
+          ')">' +
+          inscriptionJSON[i][colonnes[j]] +
+          "</a>";
+      } else if (inscriptionJSON[i][colonnes[j]] === true) {
+        tabCell.innerHTML =
+          '<i id="icone_paye" class="fas fa-check-circle"></i>';
+      } else {
+        tabCell.innerHTML =
+          '<i id="icone_impaye" class="fas fa-times-circle"></i>';
+      }
     }
   }
 
@@ -109,14 +147,21 @@ function createTableFromJSON() {
 }
 
 function onClickTableauAdmin(index) {
-  alert(JSON.stringify(inscriptionJSON[index]));
+  var parent = (function () {
+    for (var i = 0; i < parents.length; i++) {
+      if (parents[i].id === inscriptionJSON[index].Parent) {
+        return parents[i];
+      }
+    }
+  })();
+  var enfant = (function () {
+    for (var i = 0; i < enfants.length; i++) {
+      if (enfants[i].id === inscriptionJSON[index].Enfant) {
+        return enfants[i];
+      }
+    }
+  })();
+  $("#modal_inscription_image_enfant").attr("src", enfant.photo);
+  $("#modal_inscription_image_parent").attr("src", parent.photo);
+  $("#detail_inscription_modal").modal("show");
 }
-/*var valeur = inscriptionJSON[i][colonnes[j]];
-tabCell.innerHTML =
-  '<a href="#" onClick="onClickTableauAdmin(\'' +
-  valeur +
-  "','" +
-  colonnes[j] +
-  "')\">" +
-  inscriptionJSON[i][colonnes[j]] +
-  "</a>";*/

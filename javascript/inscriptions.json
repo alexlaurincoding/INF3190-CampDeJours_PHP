@@ -4,153 +4,175 @@
     "Parent": "Simpson, Homer",
     "Session": "2021",
     "Programme": "L'enfant actif",
-    "Semaine": "Semaine 2"
+    "Semaine": "Semaine 2",
+    "Payé": true
   },
   {
     "Enfant": "Simpson, Lisa",
     "Parent": "Simpson, Homer",
     "Session": "2021",
     "Programme": "Les arts et la science",
-    "Semaine": "Semaine 2"
+    "Semaine": "Semaine 2",
+    "Payé": true
   },
   {
     "Enfant": "Simpson, Bart",
     "Parent": "Simpson, Homer",
     "Session": "2021",
     "Programme": "L'enfant actif",
-    "Semaine": "Semaine 3"
+    "Semaine": "Semaine 3",
+    "Payé": true
   },
   {
     "Enfant": "Simpson, Lisa",
     "Parent": "Simpson, Homer",
     "Session": "2021",
     "Programme": "Les arts et la science",
-    "Semaine": "Semaine 3"
+    "Semaine": "Semaine 3",
+    "Payé": true
   },
   {
     "Enfant": "Simpson, Lisa",
     "Parent": "Simpson, Homer",
     "Session": "2021",
     "Programme": "Les arts et la science",
-    "Semaine": "Semaine 4"
+    "Semaine": "Semaine 4",
+    "Payé": false
   },
   {
     "Enfant": "Simpson, Bart",
     "Parent": "Simpson, Homer",
     "Session": "2020",
     "Programme": "L'enfant actif",
-    "Semaine": "Semaine 1"
+    "Semaine": "Semaine 1",
+    "Payé": true
   },
   {
     "Enfant": "Simpson, Lisa",
     "Parent": "Simpson, Homer",
     "Session": "2020",
     "Programme": "Les arts et la science",
-    "Semaine": "Semaine 1"
+    "Semaine": "Semaine 1",
+    "Payé": true
   },
   {
     "Enfant": "Simpson, Bart",
     "Parent": "Simpson, Homer",
     "Session": "2020",
     "Programme": "L'enfant actif",
-    "Semaine": "Semaine 2"
+    "Semaine": "Semaine 2",
+    "Payé": true
   },
   {
     "Enfant": "Simpson, Lisa",
     "Parent": "Simpson, Homer",
     "Session": "2020",
     "Programme": "Les arts et la science",
-    "Semaine": "Semaine 2"
+    "Semaine": "Semaine 2",
+    "Payé": true
   },
   {
     "Enfant": "Marsh, Stanley",
     "Parent": "Marsh, Randy",
     "Session": "2021",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 1"
+    "Semaine": "Semaine 1",
+    "Payé": true
   },
   {
     "Enfant": "Marsh, Stanley",
     "Parent": "Marsh, Randy",
     "Session": "2021",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 5"
+    "Semaine": "Semaine 5",
+    "Payé": false
   },
   {
     "Enfant": "Marsh, Stanley",
     "Parent": "Marsh, Randy",
     "Session": "2020",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 1"
+    "Semaine": "Semaine 1",
+    "Payé": true
   },
   {
     "Enfant": "Marsh, Stanley",
     "Parent": "Marsh, Randy",
     "Session": "2020",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 2"
+    "Semaine": "Semaine 2",
+    "Payé": true
   },
   {
     "Enfant": "Marsh, Stanley",
     "Parent": "Marsh, Randy",
     "Session": "2020",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 8"
+    "Semaine": "Semaine 8",
+    "Payé": false
   },
   {
     "Enfant": "Marsh, Stanley",
     "Parent": "Marsh, Randy",
     "Session": "2020",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 9"
+    "Semaine": "Semaine 9",
+    "Payé": true
   },
   {
     "Enfant": "Marsh, Stanley",
     "Parent": "Marsh, Randy",
     "Session": "2019",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 10"
+    "Semaine": "Semaine 10",
+    "Payé": false
   },
   {
     "Enfant": "Cartman, Eric",
-    "Parent": "Liane, Cartman",
+    "Parent": "Cartman, Liane",
     "Session": "2021",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 1"
+    "Semaine": "Semaine 1",
+    "Payé": true
   },
   {
     "Enfant": "Cartman, Eric",
-    "Parent": "Liane, Cartman",
+    "Parent": "Cartman, Liane",
     "Session": "2021",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 3"
+    "Semaine": "Semaine 3",
+    "Payé": true
   },
   {
     "Enfant": "Cartman, Eric",
-    "Parent": "Liane, Cartman",
+    "Parent": "Cartman, Liane",
     "Session": "2021",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 5"
+    "Semaine": "Semaine 5",
+    "Payé": true
   },
   {
     "Enfant": "Cartman, Eric",
-    "Parent": "Liane, Cartman",
+    "Parent": "Cartman, Liane",
     "Session": "2020",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 1"
+    "Semaine": "Semaine 1",
+    "Payé": true
   },
   {
     "Enfant": "Cartman, Eric",
-    "Parent": "Liane, Cartman",
+    "Parent": "Cartman, Liane",
     "Session": "2019",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 1"
+    "Semaine": "Semaine 1",
+    "Payé": false
   },
   {
     "Enfant": "Cartman, Eric",
-    "Parent": "Liane, Cartman",
+    "Parent": "Cartman, Liane",
     "Session": "2018",
     "Programme": "Le Classique",
-    "Semaine": "Semaine 1"
+    "Semaine": "Semaine 1",
+    "Payé": false
   }
 ]

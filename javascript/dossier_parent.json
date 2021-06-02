@@ -1,0 +1,20 @@
+[
+  {
+    "id": "Marsh, Randy",
+    "nom": "Marsh",
+    "prenom": "Randy",
+    "photo": "../img/randy_mini.jpg"
+  },
+  {
+    "id": "Cartman, Liane",
+    "nom": "Cartman",
+    "prenom": "Liane",
+    "photo": "../img/liane_cartman_mini.jpg"
+  },
+  {
+    "id": "Simpson, Homer",
+    "nom": "Simpson",
+    "prenom": "Homer",
+    "photo": "../img/homer_mini.jpg"
+  }
+]
