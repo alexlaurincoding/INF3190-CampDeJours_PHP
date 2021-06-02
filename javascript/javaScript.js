@@ -60,7 +60,14 @@ function createTableFromJSON() {
 
     for (var j = 0; j < colonnes.length; j++) {
       var tabCell = tr.insertCell(-1);
-      tabCell.innerHTML = inscriptionJSON[i][colonnes[j]];
+
+      var valeur = inscriptionJSON[i][colonnes[j]];
+      tabCell.innerHTML =
+        '<a href="#" onClick="alert(\'' +
+        valeur +
+        "')\">" +
+        inscriptionJSON[i][colonnes[j]] +
+        "</a>";
     }
   }
 
