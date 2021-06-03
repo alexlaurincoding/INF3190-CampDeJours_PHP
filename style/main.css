@@ -69,6 +69,12 @@
 #icone_impaye {
   color: red;
 }
+
+/* gestion programmes */
+.btn-secondary {
+  background-color: grey;
+}
+
 /*tableau admin*/
 
 /*FOOTER CSS BEGIN*/
