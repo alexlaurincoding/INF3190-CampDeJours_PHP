@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/bootstrap.min.css" />
+    <link rel="stylesheet" href="../style/main.css" />
+    <title>Infos du Compte</title>
+  </head>
+
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                <div class="col-6"><h5>Details du compte</h5></div>
+                <div class="col-6"><a href="#"><i class="fa fa-pencil"></i></a></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h6 class="card-title">Nom </h6>
+                        <p class="card-text">Simpson</p>
+                        <h6 class="card-title">Prenom </h6>
+                        <p class="card-text">Homer</p>
+                        <h6 class="card-title">Courriel </h6>
+                        <p class="card-text">jaime@manger.ca</p>
+                    </div>
+                    <div class="col">
+                        <h6 class="card-title">Adresse </h6>
+                        <address class="card-text">2121 Chemin de Cailloux, Springfield</address>
+                        <h6 class="card-title">Date De Naissance </h6>
+                        <p class="card-text">4 Juillet 1968</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6"> <h5>Enfants a charge </h5></div>
+                    <div class="col-6"> Ajouter un enfant <a href="#"><i class="fa fa-plus"></i></a></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover table-sm" id="table_enfants_a_charge">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Semaine</th>
+                            <th>Enfant</th>
+                            <th>Programme</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan=2>Semaine 1</td>
+                            <td>Simpson, Bart</td>
+                            <td>L'enfant actif</td>
+                        </tr>
+                        <tr>
+                            <td>Simpson, Lisa</td>
+                            <td>L'enfant actif</td>
+                        </tr>
+                        <tr>
+                            <td rowspan=2>Semaine 2</td>
+                            <td>Simpson, Lisa</td>
+                            <td>Les arts et la science</td>
+                        </tr>
+                        <tr>
+                            <td>Simpson, Bart</td>
+                            <td>Le Classique</td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan=2>Semaine 3</td>
+                            <td>Simpson, Lisa</td>
+                            <td><button> s'inscrire!</button></td>
+                        </tr>
+                        <tr>
+                            <td>Simpson, Bart</td>
+                            <td><button> s'inscrire!</button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../javascript/javaScript.js"></script>
+  </body>
+</html>
