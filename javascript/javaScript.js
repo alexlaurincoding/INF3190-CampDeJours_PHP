@@ -68,7 +68,7 @@ var parents = (function () {
   return json;
 })();
 
-//extraction du fichier JSON parents
+//extraction du fichier JSON enfants
 var enfants = (function () {
   var json = null;
   $.ajax({
