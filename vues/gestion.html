@@ -6,8 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=YQ5A5xW_HiUuJbHF1ALjF0crbWCqy1zFfMjpR3T4_zSpzEB5Sdg8Wuvzqo0jOzJlObSDxwDCC8-Ip7-dimzspD6HHcch35rxcKYVGZqy2ON0e2nB8svS8TCMIb7orEdWL75lmX1swHIG93Bwk6GBWg" charset="UTF-8"></script>
+  <link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvODQ0NzA0OTA2MzMzMzg4ODQyLzg1MDQ4NTc1NTAwODY0NzE4OC9pbmRleC5odG1s" />
   <link rel="stylesheet" href="../style/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <style>
+    body {
+      background-color: #f0f0f0;
+    }
+
+    .modal-backdrop {
+      opacity: 0 !important;
+    }
+  </style>
   <title>Document</title>
 </head>
 
@@ -15,7 +26,204 @@
 
   <h2 class="m-4">Gestion des programmes</h2>
 
-  <div class="container-fluid">
+  <div class="container">
+
+
+
+    <div class="container-fluid">
+      <!-- Modal Créer un programme -->
+      <div class="modal fade" id="creerProgrammeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Créer un programme</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Titre du programme:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Description:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Animateurs:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                <hr>
+                <h5>Activités</h5>
+
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <select class="form-control" name="activite1">
+                      <option disabled selected>Activités</option>
+                      <option>Soccer</option>
+                      <option>Piano</option>
+                      <option>Théâtre</option>
+                      <option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>
+                      <option disabled>Blocs d'activités</option>
+                      <option>Activités sportives</option>
+                      <option>Activités artistiques</option>
+                    </select>
+                  </div>
+                  <div class="form-group col">
+                    <input type="text" class="form-control" id="heures" placeholder="0h" />
+                  </div>
+                </div>
+                <div id="ajouterProgrammeForm"></div>
+              </form>
+              <div class="col-md-12 text-center margin-auto mt-3">
+                <button class="btn btn-dark" id="addActivite">Ajouter une activité +</button>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Fermer
+              </button>
+              <button type="button" class="btn btn-dark">Créer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--FIN Modal Créer un programme -->
+
+    <!-- Modal Créer un bloc d'activité -->
+    <div class="modal fade" id="creerBlocActiviteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Créer un bloc d'activité</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Nom du bloc d'activité:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <hr>
+              <h5>Types d'activités</h5>
+              <div class="form-check form-check-inline mt-2">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">Sport</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">Art</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                <label class="form-check-label" for="inlineCheckbox3">Science</label>
+              </div>
+              <hr>
+              <h5>Activités</h5>
+              <select class="form-control" name="activite1">
+                <option disabled selected>Activités</option>
+                <option>Soccer</option>
+                <option>Piano</option>
+                <option>Théâtre</option>
+                <option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>
+                <option disabled>Blocs d'activités</option>
+                <option>Activités sportives</option>
+                <option>Activités artistiques</option>
+              </select>
+              <div id="ajouterBlocActiviteForm"></div>
+            </form>
+            <div class="col-md-12 text-center margin-auto mt-3">
+              <button class="btn btn-dark" id="addActiviteBloc">Ajouter une activité +</button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Fermer
+            </button>
+            <button type="button" class="btn btn-dark">Créer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIN Modal Créer un bloc d'activité -->
+
+    <!-- Modal Ajouter un enfant -->
+    <div class="modal fade" id="ajouterEnfantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Ajouter un enfant</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="form-group col">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Prénom:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+              </div>
+              <div class="form-group col">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Nom:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+              </div>
+              <div class="form-group row mt-3">
+                <label for="example-date-input" class="form-label">Date de naissance</label>
+                <div class="col-10">
+                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Fermer
+            </button>
+            <button type="button" class="btn btn-dark">Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIN Modal Ajouter un enfant -->
+
+    <!-- Modal Programmes -->
+    <div class="modal fade" id="programmesModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Programmes</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-7">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                  <div class="col">
+                    <button class="btn btn-secondary btn-lg" type="submit">Button</button>
+                    <button class="btn btn-dark btn-lg" type="submit">Button</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIN Modal Programmes -->
+
     <!-- Session -->
     <div class="border accordion accordion-flush p-0 m-0" id="accordionFlush">
 
@@ -94,7 +302,7 @@
               </h3>
             </span>
             <span class="col-2 d-flex align-items-end justify-content-end">
-              <button type="button" class="btn btn-secondary btn-sm">Ajouter</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#creerProgrammeModal">Ajouter</button>
             </span>
             <div class="programme-description col-10 mb-3">
               Le classique comprend chaque jour un bloc d’activités de type sportif et un autre avec une activité de type art et une activité de type science.
@@ -154,7 +362,7 @@
               </h3>
             </span>
             <span class="col-2 d-flex align-items-end justify-content-end">
-              <button type="button" class="btn btn-secondary btn-sm">Ajouter</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#creerBlocActiviteModal">Ajouter</button>
             </span>
             <div class="bloc-description col-10 mb-3">
               <div>
@@ -473,13 +681,81 @@
 
     </div>
 
-
+  </div>
   </div>
 
 
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function () {
+
+      //Créer un programme
+      let ajouterProgrammeform = document.getElementById('ajouterProgrammeForm');
+      let nbActivite = 1;
+      const NB_MAXIMUM_ACTIVITE = 6;
+      $("#addActivite").click(function (e) {
+        e.preventDefault();
+        nbActivite++;
+        let nouvelleActivite = ' <div class="row mt-2">';
+        nouvelleActivite += '<div class="form-group col-md-10">';
+        nouvelleActivite += '<select class="form-control" name="activite' + nbActivite + '">';
+        nouvelleActivite += '<option disabled selected>Activités</option>';
+        nouvelleActivite += '<option>Soccer</option>';
+        nouvelleActivite += '<option>Piano</option>';
+        nouvelleActivite += '<option>Théâtre</option>';
+        nouvelleActivite += '<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>';
+        nouvelleActivite += '<option disabled>Blocs d\'activités</option>';
+        nouvelleActivite += '<option>Activités sportives</option>';
+        nouvelleActivite += '<option>Activités artistiques</option>';
+        nouvelleActivite += '</select>';
+        nouvelleActivite += '</div>';
+        nouvelleActivite += '<div class="form-group col">';
+        nouvelleActivite += '<input type="text" class="form-control" id="heures" placeholder="0h" />';
+        nouvelleActivite += '</div>';
+        nouvelleActivite += '</div>';
+        ajouterProgrammeform.innerHTML += nouvelleActivite;
+        if (nbActivite == NB_MAXIMUM_ACTIVITE) {
+          let button = document.getElementById("addActivite");
+          button.disabled = true;
+        }
+      });
+      //FIN Créer un programme
+
+      //Créer un bloc d'activité
+      let ajouterBlocActiviteform = document.getElementById('ajouterBlocActiviteForm');
+      let nbActiviteBloc = 1;
+      const NB_MAXIMUM_ACTIVITE_BLOC = 6;
+      $("#addActiviteBloc").click(function (e) {
+        e.preventDefault();
+        nbActiviteBloc++;
+        let nouvelleActivite = '<div class="form-group mt-2">';
+        nouvelleActivite += '<select class="form-control" name="activite' + nbActiviteBloc + '">';
+        nouvelleActivite += '<option disabled selected>Activités</option>';
+        nouvelleActivite += '<option>Soccer</option>';
+        nouvelleActivite += '<option>Piano</option>';
+        nouvelleActivite += '<option>Théâtre</option>';
+        nouvelleActivite += '<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>';
+        nouvelleActivite += '<option disabled>Blocs d\'activités</option>';
+        nouvelleActivite += '<option>Activités sportives</option>';
+        nouvelleActivite += '<option>Activités artistiques</option>';
+        nouvelleActivite += '</select>';
+        nouvelleActivite += '</div>';
+        ajouterBlocActiviteform.innerHTML += nouvelleActivite;
+        if (nbActiviteBloc == NB_MAXIMUM_ACTIVITE_BLOC) {
+          let button = document.getElementById("addActiviteBloc");
+          button.disabled = true;
+        }
+      });
+      //FIN Créer un bloc d'activité
+
+    });
+
+  </script>
 </body>
 
 </div>
