@@ -3,18 +3,30 @@
     "id": "Marsh, Randy",
     "nom": "Marsh",
     "prenom": "Randy",
+    "courriel": "randymarsh@southpark.com",
+    "motDePasse": "randy",
+    "adresse": "260 Avenue de los Mexicanos, Southpark",
+    "dateNaissance": "08/04/1949",
     "photo": "../img/randy_mini.jpg"
   },
   {
     "id": "Cartman, Liane",
     "nom": "Cartman",
     "prenom": "Liane",
+    "courriel": "lianecartman@southpark.com",
+    "motDePasse": "liane",
+    "adresse": "28201 E. Bonanza St., Southpark",
+    "dateNaissance": "12/02/1974",
     "photo": "../img/liane_cartman_mini.jpg"
   },
   {
     "id": "Simpson, Homer",
     "nom": "Simpson",
     "prenom": "Homer",
+    "courriel": "chunkylover53@aol.com",
+    "motDePasse": "doh",
+    "adresse": "742 Evergreen Terrace, Springfield",
+    "dateNaissance": "12/05/1956",
     "photo": "../img/homer_mini.jpg"
   }
 ]
