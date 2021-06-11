@@ -1,3 +1,11 @@
+body {
+  background-color: #f0f0f0;
+}
+
+.modal-backdrop {
+  opacity: 0 !important;
+}
+
 .navbar-brand {
   margin-right: 0%;
   font-weight: bolder;
