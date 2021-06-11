@@ -16,6 +16,9 @@ window.onload = function () {
   var tableauCree = createTableFromJSON();
 
   if (tableauCree) {
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
     $("#table_admin").DataTable({
       order: [
         [2, "des"],
@@ -24,7 +27,7 @@ window.onload = function () {
       rowGroup: {
         dataSrc: 2,
       },
-      pageLength: 15,
+      pageLength: 50,
       language: {
         lengthMenu: "Montrer _MENU_ Resultats",
         info: "Page _PAGE_ de _PAGES_",
@@ -141,9 +144,6 @@ function createTableFromJSON() {
   if (divContainer != null) {
     divContainer.innerHTML = "";
     divContainer.appendChild(tableauInscription);
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
     return true;
   }
   return false;
