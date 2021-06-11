@@ -1,7 +1,7 @@
 /**
  * Load Header
  **/
-$("#nav-placeholder").load("titlebar.html");
+$("#nav-placeholder").load("navbar.html");
 
 /**
  * Load Footer

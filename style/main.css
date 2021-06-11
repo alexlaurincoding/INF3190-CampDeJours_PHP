@@ -6,11 +6,6 @@ body {
   opacity: 0 !important;
 }
 
-.navbar-brand {
-  margin-right: 0%;
-  font-weight: bolder;
-}
-
 #nav-title {
   color: green;
 }
