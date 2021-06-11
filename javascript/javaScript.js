@@ -13,7 +13,9 @@ $("#footer-placeholder").load("footer.html");
  */
 
 window.onload = function () {
-  if (createTableFromJSON()) {
+  var tableauCree = createTableFromJSON();
+
+  if (tableauCree) {
     $("#table_admin").DataTable({
       order: [
         [2, "des"],
@@ -68,7 +70,7 @@ var parents = (function () {
   return json;
 })();
 
-//extraction du fichier JSON parents
+//extraction du fichier JSON enfants
 var enfants = (function () {
   var json = null;
   $.ajax({
@@ -96,12 +98,10 @@ function createTableFromJSON() {
 
   //Creation du tableau
   var tableauInscription = document.createElement("table");
-  $(tableauInscription).addClass("table");
-  $(tableauInscription).addClass("table-hover");
-  $(tableauInscription).addClass("table-sm");
-  $(tableauInscription).attr("id", "table_admin");
+  tableauInscription.classList.add("table", "table-hover", "table-sm");
+  tableauInscription.id = "table_admin";
   var thead = document.createElement("thead");
-  $(thead).addClass("thead-dark");
+  thead.classList.add("thead-dark");
   tableauInscription.appendChild(thead);
   var tr = thead.insertRow(-1); // colonnes
 
@@ -114,19 +114,19 @@ function createTableFromJSON() {
   var tbody = tableauInscription.appendChild(document.createElement("tbody"));
   // ajout des rangee a partir du fichier json
   for (var i = 0; i < inscriptionJSON.length; i++) {
-    tr = tbody.insertRow(-1);
-
+    var tr = tbody.insertRow(-1);
+    tr.setAttribute("value", i);
+    tr.onclick = function () {
+      onClickTableauAdmin(this.getAttribute("value"));
+    };
+    tr.setAttribute("data-toggle", "tooltip");
+    tr.setAttribute("data-placement", "left");
+    tr.setAttribute("title", "clicker pour plus d'info");
     for (var j = 0; j < colonnes.length; j++) {
       var tabCell = tr.insertCell(-1);
-      //creation d'un lien cliquable
       if (j < colonnes.length - 1) {
-        tabCell.innerHTML =
-          '<a href="#" onClick="onClickTableauAdmin(' +
-          i +
-          ')">' +
-          inscriptionJSON[i][colonnes[j]] +
-          "</a>";
-      } else if (inscriptionJSON[i][colonnes[j]] === true) {
+        tabCell.innerHTML = inscriptionJSON[i][colonnes[j]];
+      } else if (inscriptionJSON[i][colonnes[j]]) {
         tabCell.innerHTML =
           '<i id="icone_paye" class="fas fa-check-circle"></i>';
       } else {
@@ -141,6 +141,9 @@ function createTableFromJSON() {
   if (divContainer != null) {
     divContainer.innerHTML = "";
     divContainer.appendChild(tableauInscription);
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
     return true;
   }
   return false;
@@ -161,7 +164,23 @@ function onClickTableauAdmin(index) {
       }
     }
   })();
-  $("#modal_inscription_image_enfant").attr("src", enfant.photo);
-  $("#modal_inscription_image_parent").attr("src", parent.photo);
+  var photoEnfant = document.getElementById("modal_inscription_image_enfant");
+  photoEnfant.setAttribute("src", enfant.photo);
+  document
+    .getElementById("modal_inscription_image_parent")
+    .setAttribute("src", parent.photo);
+  document.getElementById("modal_nom_parent").innerHTML = parent.nom;
+  document.getElementById("modal_prenom_parent").innerHTML = parent.prenom;
+  document.getElementById("modal_courriel_parent").innerHTML = parent.courriel;
+  document.getElementById("modal_adresse_parent").innerHTML = parent.adresse;
+  document.getElementById("modal_date_naiss_parent").innerHTML =
+    parent.dateNaissance;
+  parent.dateDeNaissance;
+  document.getElementById("modal_nom_enfant").innerHTML = enfant.nom;
+  document.getElementById("modal_prenom_enfant").innerHTML = enfant.prenom;
+  document.getElementById("modal_date_naiss_enfant").innerHTML =
+    enfant.dateNaissance;
+  document.getElementById("modal_programme_enfant").innerHTML =
+    inscriptionJSON[index].Programme;
   $("#detail_inscription_modal").modal("show");
 }

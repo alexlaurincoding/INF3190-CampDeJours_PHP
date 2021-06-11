@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=YQ5A5xW_HiUuJbHF1ALjF0crbWCqy1zFfMjpR3T4_zSpzEB5Sdg8Wuvzqo0jOzJlObSDxwDCC8-Ip7-dimzspD6HHcch35rxcKYVGZqy2ON0e2nB8svS8TCMIb7orEdWL75lmX1swHIG93Bwk6GBWg" charset="UTF-8"></script>
+  <link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvODQ0NzA0OTA2MzMzMzg4ODQyLzg1MDQ4NTc1NTAwODY0NzE4OC9pbmRleC5odG1s" />
+  <link rel="stylesheet" href="../style/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h2 class="m-4">Gestion des programmes</h2>
+
+  <div class="container">
+    <div class="container-fluid">
+
+      <div class="border accordion p-0 m-0" id="accordionFlush">
+
+        <!-- Session Debut -->
+        <div class="accordion-item" id="session">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+              Session
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
+            <div class="d-flex flex-row accordion-body mb-4 row">
+
+              <span class="flex-column col-10">
+                <h3 class="session-titre mb-0">
+                  Session 2021
+                </h3>
+              </span>
+              <span class="col-2 d-flex align-items-end justify-content-end">
+                <button type="button" class="btn btn-secondary btn-sm">Ajouter</button>
+              </span>
+              <div class="session-description col-10 mb-3">
+                Le Classique, les arts et la science, l'enfant actif.
+              </div>
+
+              <div class="accordion accordion-flush" id="session-sub">
+                <div class="accordion-item">
+                  <h2 class="accordion-header border-bottom" id="flush-headingOneSub">
+                    <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOneSub" aria-expanded="false" aria-controls="flush-collapseOneSub">
+                      Voir tous
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOneSub" class="accordion-collapse collapse" aria-labelledby="flush-headingOneSub" data-bs-parent="#session">
+                    <div class="accordion-body px-0">
+
+                      <span class="flex-column col-10">
+                        <h3 class="session-titre mb-0">
+                          Session 2020
+                        </h3>
+                      </span>
+                      <div class="session-description col-10 mb-3">
+                        Le Classique, les arts et la science, l'enfant actif.
+                      </div>
+
+                      <span class="flex-column col-10">
+                        <h3 class="session-titre mb-0">
+                          Session 2019
+                        </h3>
+                      </span>
+                      <div class="session-description col-10 mb-3">
+                        Le Classique, les arts et la science, l'enfant actif.
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- Session Fin -->
+
+
+        <!-- Programme Debut -->
+        <div class="accordion-item" id="programme">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Programme
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlush">
+            <div class="d-flex flex-row accordion-body mb-4 row">
+
+              <span class="flex-column col-10">
+                <h3 class="programme-titre mb-0">
+                  Le Classique
+                </h3>
+              </span>
+              <span class="col-2 d-flex align-items-end justify-content-end">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#creerProgrammeModal">Ajouter</button>
+              </span>
+              <div class="programme-description col-10 mb-3">
+                Le classique comprend chaque jour un bloc d’activités de type sportif et un autre avec une activité de type art et une activité de type science.
+              </div>
+
+              <div class="d-flex flex-row mx-0 p-0 mb-3 row">
+
+                <span class="col-3 d-flex">
+                  Consulter :
+                </span>
+
+                <span class="col-2 d-flex align-items-start justify-content-start">
+                  <button type="button" class="btn btn-light btn-sm border">Horraire</button>
+                </span>
+
+                <span class="col-2 d-flex align-items-center justify-content-center">
+                  <button type="button" class="btn btn-light btn-sm border">Enfants</button>
+                </span>
+
+                <span class="col-2 d-flex align-items-end justify-content-end">
+                  <button type="button" class="btn btn-light btn-sm border">Activités</button>
+                </span>
+
+              </div>
+
+              <div class="programme-description col-10 mb-4">
+                Animateurs : Paul, Louise, Roux.
+              </div>
+
+              <div class="accordion accordion-flush" id="programme-sub">
+                <div class="accordion-item">
+                  <h2 class="accordion-header border-bottom" id="flush-headingTwoSub">
+                    <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwoSub" aria-expanded="false" aria-controls="flush-collapseTwoSub">
+                      Voir tous
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwoSub" class="accordion-collapse collapse" aria-labelledby="flush-headingTwoSub" data-bs-parent="#programme">
+                    <div class="accordion-body px-0">
+
+                      <div class="mb-4">
+                        <span class="flex-column col-10">
+                          <h3 class="programme-titre mb-0">
+                            Les Arts et la Science
+                          </h3>
+                        </span>
+
+                        <div class="programme-description col-10 mb-3">
+                          Le programme arts et science comprend plusieurs activités d'arts culinaires, d'arts visuels, d'arts plastiques, de chimie, de biologie et de physique. Il ne possède pas d’activité physique, cependant une activité matinale est réservée pour pratiquer le yoga ou jouer à un jeu de course comme le ballon chasseur.
+                        </div>
+
+                        <div class="d-flex flex-row mx-0 p-0 mb-3 row">
+
+                          <span class="col-3 d-flex p-0">
+                            Consulter :
+                          </span>
+
+                          <span class="col-2 d-flex align-items-start justify-content-start">
+                            <button type="button" class="btn btn-light btn-sm border">Horraire</button>
+                          </span>
+
+                          <span class="col-2 d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-light btn-sm border">Enfants</button>
+                          </span>
+
+                          <span class="col-2 d-flex align-items-end justify-content-end">
+                            <button type="button" class="btn btn-light btn-sm border">Activités</button>
+                          </span>
+
+                        </div>
+
+                        <div class="programme-description col-10">
+                          Animateurs : Paul, Louise, Roux.
+                        </div>
+                      </div>
+
+                      <div class="mb-4">
+                        <span class="flex-column col-10">
+                          <h3 class="programme-titre mb-0">
+                            L'Enfant Actif
+                          </h3>
+                        </span>
+                        <div class="programme-description col-10 mb-3">
+                          Le programme athlétique est un camp de jour sportif intensif pour les enfants très actifs. Il comprend au moins quatre activités quotidiennes dont le basketball, le tennis, le soccer, le ballon chasseur, le baseball, etc.
+                        </div>
+
+                        <div class="d-flex flex-row mx-0 p-0 mb-3 row">
+
+                          <span class="col-3 d-flex p-0">
+                            Consulter :
+                          </span>
+
+                          <span class="col-2 d-flex align-items-start justify-content-start">
+                            <button type="button" class="btn btn-light btn-sm border">Horraire</button>
+                          </span>
+
+                          <span class="col-2 d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-light btn-sm border">Enfants</button>
+                          </span>
+
+                          <span class="col-2 d-flex align-items-end justify-content-end">
+                            <button type="button" class="btn btn-light btn-sm border">Activités</button>
+                          </span>
+
+                        </div>
+
+                        <div class="programme-description col-10">
+                          Animateurs : Paul, Louise, Roux.
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- Programme Fin -->
+
+
+        <!-- Bloc Activite Debut -->
+        <div class="accordion-item" id="bloc">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Bloc d'activité
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlush">
+            <div class="d-flex flex-row accordion-body mb-4 row">
+              <!-- mb-4 -->
+              <span class="flex-column col-10">
+                <h3 class="bloc-titre mb-0">
+                  Arts au choix
+                </h3>
+              </span>
+              <span class="col-2 d-flex align-items-end justify-content-end">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#creerBlocActiviteModal">Ajouter</button>
+              </span>
+
+              <div class="bloc-description col-10 mb-3">
+                <div>
+                  Bloc d'activitée(s) de type : Art
+                </div>
+                <div>
+                  art culinaire, art visuel, art plastique
+                </div>
+              </div>
+
+              <div class="accordion accordion-flush" id="bloc-sub">
+                <div class="accordion-item">
+                  <h2 class="accordion-header border-bottom" id="flush-headingThreeSub">
+                    <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThreeSub" aria-expanded="false" aria-controls="flush-collapseThreeSub">
+                      Voir tous
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThreeSub" class="accordion-collapse collapse" aria-labelledby="flush-headingThreeSub" data-bs-parent="#bloc">
+                    <div class="accordion-body px-0">
+
+                      <span class="flex-column col-10">
+                        <h3 class="bloc-titre mb-0">
+                          Art et Science
+                        </h3>
+                      </span>
+                      <div class="bloc-description col-10 mb-3">
+                        <div>
+                          Bloc d'activitée(s) de type : Art + Science
+                        </div>
+                        <div>
+                          Activitée(s) diverses
+                        </div>
+                      </div>
+
+                      <span class="flex-column col-10">
+                        <h3 class="bloc-titre mb-0">
+                          Sports d'equipe au choix
+                        </h3>
+                      </span>
+                      <div class="bloc-description col-10 mb-3">
+                        <div>
+                          Bloc d'activitée(s) de type : Sport
+                        </div>
+                        <div>
+                          basketball, le tennis, le soccer, le ballon chasseur, le baseball.
+                        </div>
+                      </div>
+
+                      <span class="flex-column col-10">
+                        <h3 class="bloc-titre mb-0">
+                          Matin actif leger
+                        </h3>
+                      </span>
+                      <div class="bloc-description col-10 mb-3">
+                        <div>
+                          Bloc d'activitée(s) de type : Sport
+                        </div>
+                        <div>
+                          yoga, jeux de course
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- Bloc Activite Fin -->
+
+
+        <!-- Type Activite Debut -->
+        <div class="accordion-item" id="type">
+          <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+              Type d'activité
+            </button>
+          </h2>
+          <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlush">
+            <div class="d-flex flex-row accordion-body mb-4 row">
+
+              <div class="flex-column col-10">
+                <h3 class="type-titre mb-0">
+                  Sport
+                </h3>
+              </div>
+              <span class="col-2 d-flex align-items-end justify-content-end ">
+                <button type="button" class="btn btn-secondary btn-sm">Ajouter</button>
+              </span>
+              <div class="mb-3">On bouge!</div>
+
+              <div class="accordion accordion-flush" id="activite-sub">
+                <div class="accordion-item">
+                  <h2 class="accordion-header border-bottom" id="flush-headingFourSub">
+                    <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFourSub" aria-expanded="false" aria-controls="flush-collapseFourSub">
+                      Voir tous
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFourSub" class="accordion-collapse collapse" aria-labelledby="flush-headingFourSub" data-bs-parent="#type">
+                    <div class="accordion-body px-0">
+
+                      <div class="flex-column col-10 mb-3">
+                        <h3 class="type-titre mb-0">
+                          Art
+                        </h3>
+                        <div>On crée!</div>
+                      </div>
+
+                      <div class="flex-column col-10 mb-3">
+                        <h3 class="type-titre mb-0">
+                          Science
+                        </h3>
+                        <div>On explose!</div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- Type Activite Fin -->
+
+
+        <!-- Activité Debut -->
+        <div class="accordion-item" id="activite">
+
+          <h2 class="accordion-header" id="flush-headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+              Activité
+            </button>
+          </h2>
+          <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlush">
+            <div class="d-flex flex-row accordion-body mb-4 row">
+
+
+              <!-- Activite Sport Debut -->
+              <span class="flex-column col-10">
+                <h3 class="activite-titre mb-0">
+                  Sport
+                </h3>
+              </span>
+              <span class="col-2 d-flex align-items-end justify-content-end">
+                <button type="button" class="btn btn-secondary btn-sm">Ajouter</button>
+              </span>
+
+              <div class="accordion accordion-flush mb-3" id="accordionFlush-sport">
+                <div class="accordion-item">
+                  <h2 class="accordion-header border-bottom" id="flush-headingFiveSport">
+                    <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive-Sport" aria-expanded="false" aria-controls="flush-collapseFive-Sport">
+                      Voir tous
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFive-Sport" class="accordion-collapse collapse mb-3" aria-labelledby="flush-headingFiveSport" data-bs-parent="#flush-headingFive">
+                    <div class="accordion-body px-0">
+
+                      <span class="flex-column col-10">
+                        <div class="activite-titre mb-2">
+                          basketball
+                        </div>
+                      </span>
+
+                      <span class="flex-column col-10">
+                        <div class="activite-titre mb-2">
+                          football
+                        </div>
+                      </span>
+
+                      <span class="flex-column col-10">
+                        <div class="activite-titre mb-2">
+                          tennis
+                        </div>
+                      </span>
+
+                      <span class="flex-column col-10">
+                        <div class="activite-titre mb-2">
+                          volleyball
+                        </div>
+                      </span>
+
+                      <span class="flex-column col-10">
+                        <div class="activite-titre mb-2">
+                          hockey
+                        </div>
+                      </span>
+
+                      <span class="flex-column col-10">
+                        <div class="activite-titre mb-2">
+                          baseball
+                        </div>
+                      </span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Activite Sport Fin -->
+
+
+              <!-- Activite Art Debut -->
+              <div id="activite-art">
+
+                <span class="flex-column col-10">
+                  <h3 class="activite-titre mb-0">
+                    Art
+                  </h3>
+                </span>
+
+                <div class="accordion accordion-flush mb-3" id="accordionFlush-art">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header border-bottom" id="flush-headingFive-Art">
+                      <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive-Art" aria-expanded="false" aria-controls="flush-collapseFive-Art">
+                        Voir tous
+                      </button>
+                    </h2>
+                    <div id="flush-collapseFive-Art" class="accordion-collapse collapse mb-3" aria-labelledby="flush-headingFive-Art" data-bs-parent="#flush-headingFive">
+                      <div class="accordion-body px-0">
+
+                        <span class="flex-column col-10">
+                          <div class="activite-titre mb-2">
+                            Art culinaire
+                          </div>
+                        </span>
+
+                        <span class="flex-column col-10">
+                          <div class="activite-titre mb-2">
+                            Art plastique
+                          </div>
+                        </span>
+
+                        <span class="flex-column col-10">
+                          <div class="activite-titre mb-2">
+                            Musique
+                          </div>
+                        </span>
+
+                        <span class="flex-column col-10">
+                          <div class="activite-titre mb-2">
+                            Art visuel
+                          </div>
+                        </span>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Activite Art Fin -->
+
+
+              <!-- Activite Science Debut -->
+              <div id="activite-science">
+
+                <span class="flex-column col-10">
+                  <h3 class="activite-titre mb-0">
+                    Science
+                  </h3>
+                </span>
+
+                <div class="accordion accordion-flush mb-3" id="accordionFlush-science">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header border-bottom" id="flush-headingFive-Science">
+                      <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive-Science" aria-expanded="false" aria-controls="flush-collapseFive-Science">
+                        Voir tous
+                      </button>
+                    </h2>
+                    <div id="flush-collapseFive-Science" class="accordion-collapse collapse mb-3" aria-labelledby="flush-headingFive-Science" data-bs-parent="#flush-headingFive">
+                      <div class="accordion-body px-0">
+
+                        <span class="flex-column col-10">
+                          <div class="activite-titre mb-2">
+                            Chimie
+                          </div>
+                        </span>
+
+                        <span class="flex-column col-10">
+                          <div class="activite-titre mb-2">
+                            Biologie
+                          </div>
+                        </span>
+
+                        <span class="flex-column col-10">
+                          <div class="activite-titre mb-2">
+                            Musique
+                          </div>
+                        </span>
+
+                        <span class="flex-column col-10">
+                          <div class="activite-titre mb-2">
+                            Physique
+                          </div>
+                        </span>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Activite Science Fin -->
+
+
+            </div>
+          </div>
+        </div>
+        <!-- Activite Fin -->
+
+
+      </div>
+    </div>
+
+    <!-- Modal Créer un programme -->
+    <div class="modal fade" id="creerProgrammeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Créer un programme</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Titre du programme:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Description:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Animateurs:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+              <hr>
+              <h5>Activités</h5>
+
+              <div class="row">
+                <div class="form-group col-md-10">
+                  <select class="form-control" name="activite1">
+                    <option disabled selected>Activités</option>
+                    <option>Soccer</option>
+                    <option>Piano</option>
+                    <option>Théâtre</option>
+                    <option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>
+                    <option disabled>Blocs d'activités</option>
+                    <option>Activités sportives</option>
+                    <option>Activités artistiques</option>
+                  </select>
+                </div>
+                <div class="form-group col">
+                  <input type="text" class="form-control" id="heures" placeholder="0h" />
+                </div>
+              </div>
+              <div id="ajouterProgrammeForm"></div>
+            </form>
+            <div class="col-md-12 text-center margin-auto mt-3">
+              <button class="btn btn-dark" id="addActivite">Ajouter une activité +</button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Fermer
+            </button>
+            <button type="button" class="btn btn-dark">Créer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--FIN Modal Créer un programme -->
+
+  <!-- Modal Créer un bloc d'activité -->
+  <div class="modal fade" id="creerBlocActiviteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Créer un bloc d'activité</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Nom du bloc d'activité:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <hr>
+            <h5>Types d'activités</h5>
+            <div class="form-check form-check-inline mt-2">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <label class="form-check-label" for="inlineCheckbox1">Sport</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">Art</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+              <label class="form-check-label" for="inlineCheckbox3">Science</label>
+            </div>
+            <hr>
+            <h5>Activités</h5>
+            <select class="form-control" name="activite1">
+              <option disabled selected>Activités</option>
+              <option>Soccer</option>
+              <option>Piano</option>
+              <option>Théâtre</option>
+              <option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>
+              <option disabled>Blocs d'activités</option>
+              <option>Activités sportives</option>
+              <option>Activités artistiques</option>
+            </select>
+            <div id="ajouterBlocActiviteForm"></div>
+          </form>
+          <div class="col-md-12 text-center margin-auto mt-3">
+            <button class="btn btn-dark" id="addActiviteBloc">Ajouter une activité +</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Fermer
+          </button>
+          <button type="button" class="btn btn-dark">Créer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN Modal Créer un bloc d'activité -->
+
+  <!-- Modal Ajouter un enfant -->
+  <div class="modal fade" id="ajouterEnfantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ajouter un enfant</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group col">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Prénom:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+            </div>
+            <div class="form-group col">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Nom:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+            </div>
+            <div class="form-group row mt-3">
+              <label for="example-date-input" class="form-label">Date de naissance</label>
+              <div class="col-10">
+                <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Fermer
+          </button>
+          <button type="button" class="btn btn-dark">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN Modal Ajouter un enfant -->
+
+  <!-- Modal Programmes -->
+  <div class="modal fade" id="programmesModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Programmes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-7">
+                  <h5 class="card-title">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <div class="col">
+                  <button class="btn btn-secondary btn-lg" type="submit">Button</button>
+                  <button class="btn btn-dark btn-lg" type="submit">Button</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN Modal Programmes -->
+
+
+  </div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function () {
+
+      //Créer un programme
+      let ajouterProgrammeform = document.getElementById('ajouterProgrammeForm');
+      let nbActivite = 1;
+      const NB_MAXIMUM_ACTIVITE = 6;
+      $("#addActivite").click(function (e) {
+        e.preventDefault();
+        nbActivite++;
+        let nouvelleActivite = ' <div class="row mt-2">';
+        nouvelleActivite += '<div class="form-group col-md-10">';
+        nouvelleActivite += '<select class="form-control" name="activite' + nbActivite + '">';
+        nouvelleActivite += '<option disabled selected>Activités</option>';
+        nouvelleActivite += '<option>Soccer</option>';
+        nouvelleActivite += '<option>Piano</option>';
+        nouvelleActivite += '<option>Théâtre</option>';
+        nouvelleActivite += '<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>';
+        nouvelleActivite += '<option disabled>Blocs d\'activités</option>';
+        nouvelleActivite += '<option>Activités sportives</option>';
+        nouvelleActivite += '<option>Activités artistiques</option>';
+        nouvelleActivite += '</select>';
+        nouvelleActivite += '</div>';
+        nouvelleActivite += '<div class="form-group col">';
+        nouvelleActivite += '<input type="text" class="form-control" id="heures" placeholder="0h" />';
+        nouvelleActivite += '</div>';
+        nouvelleActivite += '</div>';
+        ajouterProgrammeform.innerHTML += nouvelleActivite;
+        if (nbActivite == NB_MAXIMUM_ACTIVITE) {
+          let button = document.getElementById("addActivite");
+          button.disabled = true;
+        }
+      });
+      //FIN Créer un programme
+
+      //Créer un bloc d'activité
+      let ajouterBlocActiviteform = document.getElementById('ajouterBlocActiviteForm');
+      let nbActiviteBloc = 1;
+      const NB_MAXIMUM_ACTIVITE_BLOC = 6;
+      $("#addActiviteBloc").click(function (e) {
+        e.preventDefault();
+        nbActiviteBloc++;
+        let nouvelleActivite = '<div class="form-group mt-2">';
+        nouvelleActivite += '<select class="form-control" name="activite' + nbActiviteBloc + '">';
+        nouvelleActivite += '<option disabled selected>Activités</option>';
+        nouvelleActivite += '<option>Soccer</option>';
+        nouvelleActivite += '<option>Piano</option>';
+        nouvelleActivite += '<option>Théâtre</option>';
+        nouvelleActivite += '<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>';
+        nouvelleActivite += '<option disabled>Blocs d\'activités</option>';
+        nouvelleActivite += '<option>Activités sportives</option>';
+        nouvelleActivite += '<option>Activités artistiques</option>';
+        nouvelleActivite += '</select>';
+        nouvelleActivite += '</div>';
+        ajouterBlocActiviteform.innerHTML += nouvelleActivite;
+        if (nbActiviteBloc == NB_MAXIMUM_ACTIVITE_BLOC) {
+          let button = document.getElementById("addActiviteBloc");
+          button.disabled = true;
+        }
+      });
+      //FIN Créer un bloc d'activité
+
+    });
+
+  </script>
+</body>
+
+</div>
+
+
+</html>
