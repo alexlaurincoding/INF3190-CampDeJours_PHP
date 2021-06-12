@@ -101,7 +101,7 @@ function createTableFromJSON() {
 
   //Creation du tableau
   var tableauInscription = document.createElement("table");
-  tableauInscription.classList.add("table", "table-hover", "table-sm");
+  tableauInscription.classList.add("table", "table-hover", "table-sm", "pt-3");
   tableauInscription.id = "table_admin";
   var thead = document.createElement("thead");
   thead.classList.add("table-dark");
