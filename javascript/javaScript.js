@@ -135,7 +135,7 @@ function createTableFromJSON() {
         tabCell.innerHTML = inscriptionJSON[i][colonnes[j]];
       } else if (inscriptionJSON[i][colonnes[j]]) {
         tabCell.innerHTML =
-          '<i id="icone_paye" class="fas fa-check-circle"></i>';
+          '<i id="icone_paye" class="fas fa-check-circle" style="text-color:white"> </i>';
       } else {
         tabCell.innerHTML =
           '<i id="icone_impaye" class="fas fa-times-circle"></i>';
