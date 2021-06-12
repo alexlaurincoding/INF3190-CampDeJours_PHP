@@ -16,9 +16,13 @@ window.onload = function () {
   var tableauCree = createTableFromJSON();
 
   if (tableauCree) {
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
+    var tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+
     $("#table_admin").DataTable({
       order: [
         [2, "des"],
@@ -122,8 +126,8 @@ function createTableFromJSON() {
     tr.onclick = function () {
       onClickTableauAdmin(this.getAttribute("value"));
     };
-    tr.setAttribute("data-toggle", "tooltip");
-    tr.setAttribute("data-placement", "left");
+    tr.setAttribute("data-bs-toggle", "tooltip");
+    tr.setAttribute("data-bs-placement", "left");
     tr.setAttribute("title", "clicker pour plus d'info");
     for (var j = 0; j < colonnes.length; j++) {
       var tabCell = tr.insertCell(-1);
