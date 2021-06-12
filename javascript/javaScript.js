@@ -16,9 +16,13 @@ window.onload = function () {
   var tableauCree = createTableFromJSON();
 
   if (tableauCree) {
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
+    var tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+
     $("#table_admin").DataTable({
       order: [
         [2, "des"],
@@ -27,7 +31,7 @@ window.onload = function () {
       rowGroup: {
         dataSrc: 2,
       },
-      pageLength: 50,
+      pageLength: 15,
       language: {
         lengthMenu: "Montrer _MENU_ Resultats",
         info: "Page _PAGE_ de _PAGES_",
@@ -122,8 +126,9 @@ function createTableFromJSON() {
     tr.onclick = function () {
       onClickTableauAdmin(this.getAttribute("value"));
     };
-    tr.setAttribute("data-toggle", "tooltip");
-    tr.setAttribute("data-placement", "left");
+    tr.classList.add("clicable");
+    tr.setAttribute("data-bs-toggle", "tooltip");
+    tr.setAttribute("data-bs-placement", "left");
     tr.setAttribute("title", "clicker pour plus d'info");
     for (var j = 0; j < colonnes.length; j++) {
       var tabCell = tr.insertCell(-1);
@@ -131,7 +136,7 @@ function createTableFromJSON() {
         tabCell.innerHTML = inscriptionJSON[i][colonnes[j]];
       } else if (inscriptionJSON[i][colonnes[j]]) {
         tabCell.innerHTML =
-          '<i id="icone_paye" class="fas fa-check-circle"></i>';
+          '<i id="icone_paye" class="fas fa-check-circle" style="text-color:white"> </i>';
       } else {
         tabCell.innerHTML =
           '<i id="icone_impaye" class="fas fa-times-circle"></i>';

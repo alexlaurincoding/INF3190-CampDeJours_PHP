@@ -85,6 +85,10 @@ h2 {
 
 /*tableau admin*/
 
+.clicable {
+  cursor: pointer;
+}
+
 /*FOOTER CSS BEGIN*/
 
 /* font */
