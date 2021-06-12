@@ -126,6 +126,7 @@ function createTableFromJSON() {
     tr.onclick = function () {
       onClickTableauAdmin(this.getAttribute("value"));
     };
+    tr.classList.add("clicable");
     tr.setAttribute("data-bs-toggle", "tooltip");
     tr.setAttribute("data-bs-placement", "left");
     tr.setAttribute("title", "clicker pour plus d'info");

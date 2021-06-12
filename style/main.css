@@ -80,6 +80,10 @@ body {
 
 /*tableau admin*/
 
+.clicable {
+  cursor: pointer;
+}
+
 /*FOOTER CSS BEGIN*/
 
 /* font */
