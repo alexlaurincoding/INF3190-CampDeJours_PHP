@@ -101,10 +101,10 @@ function createTableFromJSON() {
 
   //Creation du tableau
   var tableauInscription = document.createElement("table");
-  tableauInscription.classList.add("table", "table-hover", "table-sm");
+  tableauInscription.classList.add("table", "table-hover", "table-sm", "py-3");
   tableauInscription.id = "table_admin";
   var thead = document.createElement("thead");
-  thead.classList.add("thead-dark");
+  thead.classList.add("table-dark");
   tableauInscription.appendChild(thead);
   var tr = thead.insertRow(-1); // colonnes
 
