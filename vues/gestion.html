@@ -23,7 +23,7 @@
     <h1 class="m-3">Gestion des programmes</h1>
 
 
-    <div class="border accordion p-0 m-0" id="accordionFlush">
+    <div class="accordion p-0 m-0" id="accordionFlush">
 
       <!-- Session Debut -->
       <div class="accordion-item" id="session">
@@ -374,7 +374,11 @@
               <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#creerBlocActiviteModal">Ajouter</button>
             </span>
 
-            <div class="bloc-description col-10 mb-3">
+            <div>
+              <hr class="mt-3">
+            </div>
+
+            <div class="bloc-description col-12 mb-4">
               <div>
                 Bloc d'activitée(s) de type : Art
               </div>
@@ -398,7 +402,10 @@
                         Art et Science
                       </h3>
                     </span>
-                    <div class="bloc-description col-10 mb-3">
+                    <div>
+                      <hr class="mt-3">
+                    </div>
+                    <div class="bloc-description col-12 mb-4">
                       <div>
                         Bloc d'activitée(s) de type : Art + Science
                       </div>
@@ -412,7 +419,10 @@
                         Sports d'equipe au choix
                       </h3>
                     </span>
-                    <div class="bloc-description col-10 mb-3">
+                    <div>
+                      <hr class="mt-3">
+                    </div>
+                    <div class="bloc-description col-12 mb-4">
                       <div>
                         Bloc d'activitée(s) de type : Sport
                       </div>
@@ -426,7 +436,10 @@
                         Matin actif leger
                       </h3>
                     </span>
-                    <div class="bloc-description col-10 mb-3">
+                    <div>
+                      <hr class="mt-3">
+                    </div>
+                    <div class="bloc-description col-12 mb-4">
                       <div>
                         Bloc d'activitée(s) de type : Sport
                       </div>
@@ -698,9 +711,10 @@
           <div class="modal-body">
 
             <form>
-              <h5>Gabarit de programme</h5>
 
-              <div>
+              <label for="message-text" class="col-form-label">Gabarit de programme :</label>
+
+              <div class="mb-2">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                   <label class="form-check-label" for="inlineRadio1">Le Classique</label>
@@ -715,42 +729,25 @@
                 </div>
               </div>
 
-              <label for="message-text" class="col-form-label">Numero de semaine :</label>
+              <div class="row">
+                <div class="col-6">
+                  <label for="message-text" class="col-form-label">Session :</label>
+                  <select class="form-control" name="activite1">
+                    <option disabled selected>Session</option>
+                    <option>Session 2021</option>
+                    <option>Session 2020</option>
+                    <option>Session 2019</option>
+                  </select>
+                </div>
 
-              <div>
-                <input class="form-control w-25" size="2" type="number" id="quantity" name="quantity" min="1" max="15">
+                <div class="col-6">
+                  <label for="message-text" class="col-form-label">Numéro de semaine :</label>
+                  <div>
+                    <input class="form-control" size="2" type="number" id="quantity" name="quantity" min="1" max="15">
+                  </div>
+                </div>
               </div>
-              <!-- <select class="form-control" name="activite1">
-                <option disabled selected>Semaine</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-              </select> -->
 
-              <label for="message-text" class="col-form-label">Session :</label>
-              <select class="form-control" name="activite1">
-                <option disabled selected>Session</option>
-                <option>Session 2021</option>
-                <option>Session 2020</option>
-                <option>Session 2019</option>
-              </select>
-
-              <!-- <div class="form-group">
-                <label for="message-text" class="col-form-label">Description :</label>
-                <textarea class="form-control" id="message-text"></textarea>
-              </div> -->
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Animateurs :</label>
                 <textarea class="form-control" id="message-text"></textarea>
@@ -850,42 +847,6 @@
     <!-- FIN Modal Créer un bloc d'activité -->
 
 
-    <!-- Modal Programmes -->
-    <!-- <div class="modal fade" id="programmesModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Programmes</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-7">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                  <div class="col">
-                    <button class="btn btn-secondary btn-lg" type="submit">Button</button>
-                    <button class="btn btn-dark btn-lg" type="submit">Button</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              Fermer
-            </button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- FIN Modal Programmes -->
-
-
     <!-- Modal Type Activite Debut -->
     <div class="modal fade" id="creerTypeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -898,7 +859,14 @@
 
             <div>
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Nom du type d'activité:</label>
+                <label for="recipient-name" class="col-form-label">Nom du type d'activité :</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+            </div>
+
+            <div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Description :</label>
                 <input type="text" class="form-control" id="recipient-name">
               </div>
             </div>
@@ -970,18 +938,29 @@
               </div>
             </div>
 
+            <div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Description :</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+            </div>
+
             <hr>
+
+            <div>
+              <h5>Dates</h5>
+            </div>
 
             <div class="form-group row mt-3">
               <label for="example-date-input" class="form-label">Premiere journée :</label>
-              <div class="col-10">
+              <div class="col-12">
                 <input class="form-control" type="date" value="2021-06-01" id="example-date-input">
               </div>
             </div>
 
             <div class="form-group row mt-3">
               <label for="example-date-input" class="form-label">Derniere journée :</label>
-              <div class="col-10">
+              <div class="col-12">
                 <input class="form-control" type="date" value="2021-09-01" id="example-date-input">
               </div>
             </div>
