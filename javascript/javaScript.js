@@ -31,7 +31,7 @@ window.onload = function () {
       rowGroup: {
         dataSrc: 2,
       },
-      pageLength: 50,
+      pageLength: 15,
       language: {
         lengthMenu: "Montrer _MENU_ Resultats",
         info: "Page _PAGE_ de _PAGES_",
