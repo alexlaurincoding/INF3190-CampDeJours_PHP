@@ -20,8 +20,7 @@
 
   <div class="container">
 
-    <h2 class="m-3">Gestion des programmes</h2>
-
+    <h1 class="m-3">Gestion des programmes</h1>
 
 
     <div class="border accordion p-0 m-0" id="accordionFlush">
@@ -30,7 +29,7 @@
       <div class="accordion-item" id="session">
         <h1 class="accordion-header" id="flush-headingOne">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
-            Session
+            <h2>Session</h2>
           </button>
         </h1>
         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
@@ -91,7 +90,8 @@
       <div class="accordion-item" id="programme">
         <h2 class="accordion-header" id="flush-headingTwo">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            Programme
+            <h2>Programme</h2>
+
           </button>
         </h2>
         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlush">
@@ -101,6 +101,7 @@
               <h3 class="programme-titre mb-0">
                 Le Classique
               </h3>
+
             </span>
             <span class="col-2 d-flex align-items-end justify-content-end">
               <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#creerProgrammeModal">Ajouter</button>
@@ -109,29 +110,54 @@
               Le classique comprend chaque jour un bloc d’activités de type sportif et un autre avec une activité de type art et une activité de type science.
             </div>
 
-            <div class="d-flex flex-row mx-0 p-0 mb-3 row">
+            <div class="programme-description col-10 mb-3">
+              <h5 class="mb-0">Animateurs :</h5>
+              Paul, Louise, Roux.
+            </div>
 
-              <span class="col-3 d-flex">
-                Consulter :
-              </span>
+            <div class="mb-4">
 
-              <span class="col-2 d-flex align-items-start justify-content-start">
-                <button type="button" class="btn btn-light btn-sm border">Horraire</button>
-              </span>
+              <h5 class="col-3 d-flex mb-0">
+                Horraire :
+              </h5>
 
-              <span class="col-2 d-flex align-items-center justify-content-center">
-                <button type="button" class="btn btn-light btn-sm border">Enfants</button>
-              </span>
+              <div>
 
-              <span class="col-2 d-flex align-items-end justify-content-end">
-                <button type="button" class="btn btn-light btn-sm border">Activités</button>
-              </span>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Activité</th>
+                      <th scope="col">Durée</th>
+                      <th scope="col">Heure</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Bloc : Sports d'equipe au choix</td>
+                      <td>4h</td>
+                      <td>8h à 12h</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>Diner</td>
+                      <td>1h</td>
+                      <td>12h à 13h</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Bloc : Art et Science</td>
+                      <td>4h</td>
+                      <td>13h à 17h</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
             </div>
 
-            <div class="programme-description col-10 mb-4">
-              Animateurs : Paul, Louise, Roux.
-            </div>
+
 
             <div class="accordion accordion-flush" id="programme-sub">
               <div class="accordion-item">
@@ -230,7 +256,7 @@
       <div class="accordion-item" id="bloc">
         <h2 class="accordion-header" id="flush-headingThree">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            Bloc d'activité
+            <h2>Bloc d'activité</h2>
           </button>
         </h2>
         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlush">
@@ -321,7 +347,7 @@
       <div class="accordion-item" id="type">
         <h2 class="accordion-header" id="flush-headingFour">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-            Type d'activité
+            <h2>Type d'activité</h2>
           </button>
         </h2>
         <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlush">
@@ -377,7 +403,7 @@
 
         <h2 class="accordion-header" id="flush-headingFive">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-            Activité
+            <h2>Activité</h2>
           </button>
         </h2>
         <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlush">
