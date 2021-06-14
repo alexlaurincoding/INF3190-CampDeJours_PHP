@@ -25,6 +25,11 @@ h4 {
   color: #5C636A;
 }
 
+.card-header {
+  background-color: #ffffff;
+  border-bottom: none;
+}
+
 .week-passed {
   color: #5C636A;
   background-color: #F0F0F0;

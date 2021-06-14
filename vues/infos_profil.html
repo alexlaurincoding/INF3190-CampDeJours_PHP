@@ -36,19 +36,26 @@
           </li>
         </ol>
       </nav>
-      <div class="card">
+
+      <div class="card mb-4">
         <div class="card-header">
           <div class="row mb-2 mt-2">
             <div class="col-6">
-              <h2 class="mb-0">Details du compte</h2>
+              <h2 class="mb-0">Simpson, Homer</h2>
             </div>
             <div class="col-6 d-flex align-items-end justify-content-end">
-              <a href="#"><i class="fa fa-pencil"></i></a>
+              <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">
+                <i class="fas fa-pen"></i>
+                Modifier
+              </button>
             </div>
           </div>
         </div>
         <div class="card-body">
           <div class="row">
+            <div class="col">
+              <img src="../img/homer_mini.jpg" height="160rem" alt="">
+            </div>
             <div class="col">
               <h6 class="mb-0 card-title">Nom</h6>
               <p class="card-text">Simpson</p>
@@ -69,14 +76,128 @@
         </div>
       </div>
 
-      <div class="mt-3 card">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="row mb-2 mt-2">
+            <div class="col-6">
+              <h2 class="mb-0">Enfants à charge</h2>
+            </div>
+            <div class="col-6 d-flex align-items-end justify-content-end">
+              <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">
+                <i class="fas fa-plus"></i>
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <div class="card mb-4">
+            <div class="card-header">
+              <div class="row mb-2 mt-2">
+                <div class="col-6">
+                  <h2 class="mb-0">Simpson, Bart</h2>
+                </div>
+                <div class="col-6 d-flex align-items-end justify-content-end">
+                  <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">
+                    <i class="fas fa-pen"></i>
+                    Modifier
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <img src="../img/bart_mini.jpg" height="160rem" alt="">
+                </div>
+                <div class="col">
+                  <h6 class="mb-0 card-title">Nom</h6>
+                  <p class="card-text">Simpson</p>
+                  <h6 class="mb-0 card-title">Prenom</h6>
+                  <p class="card-text">Bart</p>
+                  <h6 class="mb-0 card-title">Notes</h6>
+                  <p class="card-text">Alergie aux arachides. </p>
+                </div>
+                <div class="col">
+                  <h6 class="mb-0 card-title">Adresse</h6>
+                  <address class="card-text">
+                    2121 Chemin de Cailloux, Springfield
+                  </address>
+                  <h6 class="mb-0 card-title">Date De Naissance</h6>
+                  <p class="card-text">4 mai 2001</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header child">
+              <div class="row mb-2 mt-2">
+                <div class="col-6">
+                  <h2 class="mb-0">Simpson, Lisa</h2>
+                </div>
+                <div class="col-6 d-flex align-items-end justify-content-end">
+                  <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">
+                    <i class="fas fa-pen"></i>
+                    Modifier
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <img src="../img/lisa_mini.jpg" height="160rem" alt="">
+                </div>
+                <div class="col">
+                  <h6 class="mb-0 card-title">Nom</h6>
+                  <p class="card-text">Simpson</p>
+                  <h6 class="mb-0 card-title">Prenom</h6>
+                  <p class="card-text">Lisa</p>
+                  <h6 class="mb-0 card-title">Notes</h6>
+                  <p class="card-text">N/A</p>
+                </div>
+                <div class="col">
+                  <h6 class="mb-0 card-title">Adresse</h6>
+                  <address class="card-text">
+                    2121 Chemin de Cailloux, Springfield
+                  </address>
+                  <h6 class="mb-0 card-title">Date De Naissance</h6>
+                  <p class="card-text">1 Juillet 2000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+<!-- Usager(Parent)
+├── Nom
+├── Prenom
+├── Courriel
+├── Mot de passe
+├── Adresse
+├── Date Naissance
+└── Enfant(s)
+    ├── Nom
+    ├── Prenom
+    ├── Date Naissance
+    └── Programme (default = null) -->
+
+
+
+
+        </div>
+      </div>
+
+      <div class="card mb-4">
         <div class="card-header">
           <div class="row mb-2 mt-2">
             <div class="col-6">
               <h2 class="mb-0">Horaire des enfants à charge</h2>
             </div>
             <div class="col-6 d-flex align-items-end justify-content-end">
-              <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">Ajouter</button>
+              <!-- <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">Ajouter</button> -->
             </div>
           </div>
         </div>
@@ -88,6 +209,7 @@
                 <th>Semaine</th>
                 <th>Enfant</th>
                 <th>Programme</th>
+                <th>Status</th>
               </tr>
             </thead>
             
@@ -99,9 +221,11 @@
                   <td rowspan="2">Semaine 1</td>
                   <td>Simpson, Bart</td>
                   <td>L'enfant actif</td>
+                  <td>Payé</td>
                 </tr>
                 <tr class="week-passed">
                   <td>Simpson, Lisa</td>
+                  <td></td>
                   <td><button class="btn btn-secondary btn-sm disabled">Inscription échue</button></td>
                 </tr>
   
@@ -109,30 +233,36 @@
                   <td rowspan="2">Semaine 2</td>
                   <td>Simpson, Lisa</td>
                   <td>Les arts et la science</td>
+                  <td>Payé</td>
                 </tr>
                 <tr class="week-passed">
                   <td>Simpson, Bart</td>
                   <td>Le classique</td>
+                  <td>Payé</td>
                 </tr>
 
                 <tr class="week-passed">
                   <td rowspan="2">Semaine 3</td>
                   <td>Simpson, Bart</td>
                   <td>L'enfant actif</td>
+                  <td>Payé</td>
                 </tr>
                 <tr class="week-passed">
                   <td>Simpson, Lisa</td>
                   <td>L'enfant actif</td>
+                  <td>Payé</td>
                 </tr>
                 
                 <tr class="week-passed">
                   <td rowspan="2">Semaine 4</td>
                   <td>Simpson, Lisa</td>
                   <td>Les arts et la science</td>
+                  <td>Payé</td>
                 </tr>
                 <tr class="week-passed">
                   <td>Simpson, Bart</td>
                   <td>Le classique</td>
+                  <td>Payé</td>
                 </tr>
 
               </div>
@@ -143,125 +273,135 @@
                   <td rowspan="2">Semaine 5</td>
                   <td>Simpson, Bart</td>
                   <td>L'enfant actif</td>
+                  <td>Payé</td>
                 </tr>
                 <tr>
                   <td>Simpson, Lisa</td>
                   <td>L'enfant actif</td>
+                  <td>Payé</td>
                 </tr>
   
                 <tr>
                   <td rowspan="2">Semaine 6</td>
                   <td>Simpson, Lisa</td>
                   <td>Les arts et la science</td>
+                  <td>Payé</td>
                 </tr>
                 <tr>
                   <td>Simpson, Bart</td>
                   <td>Le classique</td>
+                  <td>Payé</td>
                 </tr>
   
                 <tr>
                   <td rowspan="2">Semaine 7</td>
                   <td>Simpson, Lisa</td>
+                  <td></td>
                   <td><button class="btn btn-secondary btn-sm">Ajouter au panier</button></td>
                 </tr>
                 <tr>
                   <td>Simpson, Bart</td>
+                  <td></td>
                   <td><button class="btn btn-secondary btn-sm">Ajouter au panier</button></td>
                 </tr>
 
                 <tr>
                   <td rowspan="2">Semaine 8</td>
                   <td>Simpson, Bart</td>
-                  <td>
-                    <button class="btn btn-danger btn-sm">Retirer du panier</button>
-                    L'enfant actif
-                  </td>
+                  <td class="cart-in">L'enfant actif</td>
+                  <td><button class="btn btn-danger btn-sm">Retirer du panier</button></td>
                 </tr>
                 <tr>
                   <td>Simpson, Lisa</td>
-                  <td>
-                    <button class="btn btn-danger btn-sm">Retirer du panier</button>
-                    L'enfant actif
-                  </td>
+                  <td class="cart-in">L'enfant actif</td>
+                  <td><button class="btn btn-danger btn-sm">Retirer du panier</button></td>
                 </tr>
   
                 <tr>
                   <td rowspan="2">Semaine 9</td>
                   <td>Simpson, Lisa</td>
                   <td>Les arts et la science</td>
+                  <td>Payé</td>
                 </tr>
                 <tr>
                   <td>Simpson, Bart</td>
                   <td>Le classique</td>
+                  <td>Payé</td>
                 </tr>
 
                 <tr>
                   <td rowspan="2">Semaine 10</td>
                   <td>Simpson, Bart</td>
+                  <td></td>
                   <td><button class="btn btn-secondary btn-sm">Ajouter au panier</button></td>
                 </tr>
                 <tr class="cart-in">
                   <td>Simpson, Lisa</td>
-                  <td>
-                    <button class="btn btn-danger btn-sm">Retirer du panier</button>
-                    Les arts et la science
-                  </td>
+                  <td class="cart-in">Les arts et la science</td>
+                  <td><button class="btn btn-danger btn-sm">Retirer du panier</button></td>
                 </tr>
   
                 <tr>
                   <td rowspan="2">Semaine 11</td>
                   <td>Simpson, Lisa</td>
                   <td>Les arts et la science</td>
+                  <td>Payé</td>
                 </tr>
                 <tr>
                   <td>Simpson, Bart</td>
                   <td>Le classique</td>
+                  <td>Payé</td>
                 </tr>
 
                 <tr>
                   <td rowspan="2">Semaine 12</td>
                   <td>Simpson, Bart</td>
                   <td>L'enfant actif</td>
+                  <td>Payé</td>
                 </tr>
                 <tr>
                   <td>Simpson, Lisa</td>
                   <td>L'enfant actif</td>
+                  <td>Payé</td>
                 </tr>
   
                 <tr>
                   <td rowspan="2">Semaine 13</td>
                   <td>Simpson, Lisa</td>
                   <td>Les arts et la science</td>
+                  <td>Payé</td>
                 </tr>
                 <tr>
                   <td>Simpson, Bart</td>
                   <td>Le classique</td>
+                  <td>Payé</td>
                 </tr>
 
                 <tr>
                   <td rowspan="2">Semaine 14</td>
                   <td>Simpson, Bart</td>
                   <td>L'enfant actif</td>
+                  <td>Payé</td>
                 </tr>
                 <tr>
                   <td>Simpson, Lisa</td>
                   <td>L'enfant actif</td>
+                  <td>Payé</td>
                 </tr>
   
                 <tr>
                   <td rowspan="2">Semaine 15</td>
                   <td>Simpson, Lisa</td>
                   <td>Les arts et la science</td>
+                  <td>Payé</td>
                 </tr>
                 <tr>
                   <td>Simpson, Bart</td>
                   <td>Le classique</td>
+                  <td>Payé</td>
                 </tr>
 
               </div>
-
-
-
 
             </tbody>
           </table>
@@ -269,14 +409,17 @@
       </div>
 
 
-      <div class="mt-3 mb-5 card">
+      <div class="mt-3 mb-4 card">
         <div class="card-header">
           <div class="row mb-2 mt-2">
             <div class="col-6">
               <h2 class="mb-0">Panier</h2>
             </div>
             <div class="col-6 d-flex align-items-end justify-content-end">
-              <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">Payer 450.00$</button>
+              <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">
+                <i class="fas fa-lock"></i>
+                Payer 450.00$
+              </button>
             </div>
           </div>
         </div>
