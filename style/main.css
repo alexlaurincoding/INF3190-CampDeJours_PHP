@@ -21,8 +21,18 @@ h4 {
   margin: 0;
 }
 
+.grey {
+  color: #5C636A;
+}
+
+.week-passed {
+  color: #5C636A;
+  background-color: #F0F0F0;
+}
+
 #nav-title {
   color: green;
+  font-weight: bolder;
 }
 
 #nav-title:hover {
