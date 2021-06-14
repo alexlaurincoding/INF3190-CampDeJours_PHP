@@ -42,10 +42,18 @@
       <p id="showTableauAdmin"></p>
       <div id="detail_inscription_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal_tableau_admin" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Fiche Parent/Enfant</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-content">            
+            <div class="card">
+              <div class="card-header">
+                <div class="row mb-2 mt-2">
+                  <div class="col-6">
+                    <h2 class="mb-0">Fiche Parent/Enfant</h2>
+                  </div>
+                  <div class="col-6 d-flex align-items-end justify-content-end">
+                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="modal-body">
               <p id="modal_inscription_info_enfant">
@@ -55,16 +63,18 @@
                         <img id="modal_inscription_image_enfant" />
                       </div>
                       <div class="col-sm">
-                        <label>Nom : </label> <br>
-                        <label>Prenom : </label><br>
-                        <label>Date de naissance : </label><br>
-                        <label>Programme : </label><br>
+                        <h6 class="fw-bold mb-0 card-title">Nom</h6>
+                        <p id="modal_nom_enfant" class="card-text"></p>
+                        <h6 class="fw-bold mb-0 card-title">Prenom</h6>
+                        <p id="modal_prenom_enfant" class="card-text"></p>
+                        <h6 class="fw-bold mb-0 card-title"></h6>
+                        <p class="card-text"></p>
                       </div>
                       <div class="col-sm">
-                        <label id="modal_nom_enfant">Simpson</label><br>
-                        <label id="modal_prenom_enfant">Simpson</label><br>
-                        <label id="modal_date_naiss_enfant">Simpson</label><br>
-                        <label id="modal_programme_enfant">Simpson</label><br>
+                        <h6 class="fw-bold mb-0 card-title">Date De Naissance</h6>
+                        <p id="modal_date_naiss_enfant" class="card-text"></p>
+                        <h6 class="fw-bold mb-0 card-title">Programme</h6>
+                        <p id="modal_programme_enfant" class="card-text"></p>
                       </div>
                     </div>
                 </p>
@@ -76,18 +86,21 @@
                       <img id="modal_inscription_image_parent" />
                     </div>
                     <div class="col-sm">
-                      <label>Nom : </label> <br>
-                      <label>Prenom : </label><br>
-                      <label>Courriel : </label><br>
-                      <label>Adresse : </label><br>
-                      <label>Date de naissance : </label><br>
+                      <h6 class="fw-bold mb-0 card-title">Nom</h6>
+                      <p id="modal_nom_parent" class="card-text"></p>
+                      <h6 class="fw-bold mb-0 card-title">Prenom</h6>
+                      <p id="modal_prenom_parent" class="card-text"></p>
+                      <h6 class="fw-bold mb-0 card-title"></h6>
+                      <p class="card-text"></p>
                     </div>
                     <div class="col-sm">
-                      <label id="modal_nom_parent"></label><br>
-                      <label id="modal_prenom_parent"></label><br>
-                      <label id="modal_courriel_parent"></label><br>
-                      <label id="modal_adresse_parent"></label><br>
-                      <label id="modal_date_naiss_parent"></label><br>
+                      <h6 class="fw-bold mb-0 card-title">Courriel</h6>
+                      <p id="modal_courriel_parent" class="card-text"></p>
+                      <h6 class="fw-bold mb-0 card-title">Adresse</h6>
+                      <p id="modal_adresse_parent" class="card-text"></p>
+                      <h6 class="fw-bold mb-0 card-title">Date De Naissance</h6>
+                      <p id="modal_date_naiss_parent" class="card-text"></p>
+                      
                     </div>
                   </div>
               </p>
