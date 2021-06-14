@@ -189,3 +189,9 @@ function onClickTableauAdmin(index) {
     inscriptionJSON[index].Programme;
   $("#detail_inscription_modal").modal("show");
 }
+
+//Charger la photo de profil
+var loadFile = function (event) {
+  var image = document.getElementById("output");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};

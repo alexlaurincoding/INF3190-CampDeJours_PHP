@@ -5,7 +5,9 @@
     "Session": "2021",
     "Programme": "L'enfant actif",
     "Semaine": "Semaine 2",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Simpson, Lisa",
@@ -13,7 +15,9 @@
     "Session": "2021",
     "Programme": "Les arts et la science",
     "Semaine": "Semaine 2",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Simpson, Bart",
@@ -21,7 +25,9 @@
     "Session": "2021",
     "Programme": "L'enfant actif",
     "Semaine": "Semaine 3",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Simpson, Lisa",
@@ -29,7 +35,9 @@
     "Session": "2021",
     "Programme": "Les arts et la science",
     "Semaine": "Semaine 3",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Simpson, Lisa",
@@ -37,7 +45,9 @@
     "Session": "2021",
     "Programme": "Les arts et la science",
     "Semaine": "Semaine 4",
-    "Payé": false
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": false
   },
   {
     "Enfant": "Simpson, Bart",
@@ -45,7 +55,9 @@
     "Session": "2020",
     "Programme": "L'enfant actif",
     "Semaine": "Semaine 1",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Simpson, Lisa",
@@ -53,7 +65,9 @@
     "Session": "2020",
     "Programme": "Les arts et la science",
     "Semaine": "Semaine 1",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Simpson, Bart",
@@ -61,7 +75,9 @@
     "Session": "2020",
     "Programme": "L'enfant actif",
     "Semaine": "Semaine 2",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Simpson, Lisa",
@@ -69,7 +85,9 @@
     "Session": "2020",
     "Programme": "Les arts et la science",
     "Semaine": "Semaine 2",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Marsh, Stanley",
@@ -77,7 +95,9 @@
     "Session": "2021",
     "Programme": "Le Classique",
     "Semaine": "Semaine 1",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Marsh, Stanley",
@@ -85,7 +105,9 @@
     "Session": "2021",
     "Programme": "Le Classique",
     "Semaine": "Semaine 5",
-    "Payé": false
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": false
   },
   {
     "Enfant": "Marsh, Stanley",
@@ -93,7 +115,9 @@
     "Session": "2020",
     "Programme": "Le Classique",
     "Semaine": "Semaine 1",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Marsh, Stanley",
@@ -101,7 +125,9 @@
     "Session": "2020",
     "Programme": "Le Classique",
     "Semaine": "Semaine 2",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Marsh, Stanley",
@@ -109,7 +135,9 @@
     "Session": "2020",
     "Programme": "Le Classique",
     "Semaine": "Semaine 8",
-    "Payé": false
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": false
   },
   {
     "Enfant": "Marsh, Stanley",
@@ -117,7 +145,9 @@
     "Session": "2020",
     "Programme": "Le Classique",
     "Semaine": "Semaine 9",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Marsh, Stanley",
@@ -125,7 +155,9 @@
     "Session": "2019",
     "Programme": "Le Classique",
     "Semaine": "Semaine 10",
-    "Payé": false
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": false
   },
   {
     "Enfant": "Cartman, Eric",
@@ -133,7 +165,9 @@
     "Session": "2021",
     "Programme": "Le Classique",
     "Semaine": "Semaine 1",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Cartman, Eric",
@@ -141,7 +175,9 @@
     "Session": "2021",
     "Programme": "Le Classique",
     "Semaine": "Semaine 3",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Cartman, Eric",
@@ -149,7 +185,9 @@
     "Session": "2021",
     "Programme": "Le Classique",
     "Semaine": "Semaine 5",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Cartman, Eric",
@@ -157,7 +195,9 @@
     "Session": "2020",
     "Programme": "Le Classique",
     "Semaine": "Semaine 1",
-    "Payé": true
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": true
   },
   {
     "Enfant": "Cartman, Eric",
@@ -165,7 +205,9 @@
     "Session": "2019",
     "Programme": "Le Classique",
     "Semaine": "Semaine 1",
-    "Payé": false
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": false
   },
   {
     "Enfant": "Cartman, Eric",
@@ -173,6 +215,8 @@
     "Session": "2018",
     "Programme": "Le Classique",
     "Semaine": "Semaine 1",
-    "Payé": false
+    "                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>": false
   }
 ]
