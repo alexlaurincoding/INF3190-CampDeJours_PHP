@@ -9,5 +9,9 @@ $("#nav-placeholder").load("navbar.html");
 $("#footer-placeholder").load("footer.html");
 
 /**
- * Generation du tableau Inscription Admin
- */
+ *Charger la photo de profil
+ **/
+var loadFile = function (event) {
+  var image = document.getElementById(event.target.id + "Img");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};

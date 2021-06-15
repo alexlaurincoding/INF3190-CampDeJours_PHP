@@ -4,12 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="../style/bootstrap.min.css" />
     <link rel="stylesheet" href="../style/main.css" />
     <title>Infos du Compte</title>
   </head>
@@ -190,19 +185,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Usager(Parent)
-├── Nom
-├── Prenom
-├── Courriel
-├── Mot de passe
-├── Adresse
-├── Date Naissance
-└── Enfant(s)
-    ├── Nom
-    ├── Prenom
-    ├── Date Naissance
-    └── Programme (default = null) -->
         </div>
       </div>
 
@@ -655,13 +637,13 @@
                     type="file"
                     accept="image/*"
                     name="image"
-                    id="file"
+                    id="uploadChild"
                     onchange="loadFile(event)"
                     style="display: none"
                   />
-                  <label for="file" style="cursor: pointer" class="form-label">
+                  <label for="uploadChild" style="cursor: pointer" class="form-label">
                     <img
-                      id="output"
+                      id="uploadChildImg"
                       width="150"
                       src="../img/profil.png"
                       class="rounded"
@@ -750,13 +732,13 @@
                     type="file"
                     accept="image/*"
                     name="image"
-                    id="file"
+                    id="uploadBart"
                     onchange="loadFile(event)"
                     style="display: none"
                   />
-                  <label for="file" style="cursor: pointer" class="form-label">
+                  <label for="uploadBart" style="cursor: pointer" class="form-label">
                     <img
-                      id="output"
+                      id="uploadBartImg"
                       width="150"
                       src="../img/bart_mini.jpg"
                       class="rounded"
@@ -855,13 +837,13 @@ Alergie aux arachides.
                     type="file"
                     accept="image/*"
                     name="image"
-                    id="file"
+                    id="uploadLisa"
                     onchange="loadFile(event)"
                     style="display: none"
                   />
-                  <label for="file" style="cursor: pointer" class="form-label">
+                  <label for="uploadLisa" style="cursor: pointer" class="form-label">
                     <img
-                      id="output"
+                      id="uploadLisaImg"
                       width="150"
                       src="../img/lisa_mini.jpg"
                       class="rounded"
@@ -958,17 +940,17 @@ Alergie aux arachides.
                       type="file"
                       accept="image/*"
                       name="image"
-                      id="file"
+                      id="uploadHomer"
                       onchange="loadFile(event)"
                       style="display: none"
                     />
                     <label
-                      for="file"
+                      for="uploadHomer"
                       style="cursor: pointer"
                       class="form-label"
                     >
                       <img
-                        id="output"
+                        id="uploadHomerImg"
                         width="150"
                         src="../img/homer_mini.jpg"
                         class="rounded"
@@ -1076,11 +1058,7 @@ Alergie aux arachides.
     <div id="footer-placeholder"></div>
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../javascript/bootstrap.bundle.min.js"></script>
     <script src="../javascript/javaScript.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
