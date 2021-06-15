@@ -58,7 +58,6 @@ Les communications s'effectuerons sur le serveur `Discord` commun.
     ├── horaire.html
     ├── index.html # Page d'accueil
     ├── infos_profil.html
-    ├── inscription.html
     ├── inscription_admin.html
     ├── inscription_parent.html # Page d'inscription
     ├── navbar.html # Barre de navigation inséré sur toutes les pages
