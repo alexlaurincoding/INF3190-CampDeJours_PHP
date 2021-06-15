@@ -22,7 +22,7 @@ h4 {
 }
 
 .grey {
-  color: #5C636A;
+  color: #5c636a;
 }
 
 .card-header {
@@ -31,8 +31,8 @@ h4 {
 }
 
 .week-passed {
-  color: #5C636A;
-  background-color: #F0F0F0;
+  color: #5c636a;
+  background-color: #f0f0f0;
 }
 
 #nav-title {
@@ -233,3 +233,18 @@ section {
   }
 }
 /*FOOTER CSS END*/
+
+/*Google Maps CSS*/
+.map-container {
+  overflow: hidden;
+  padding-bottom: 61.25%;
+  position: relative;
+  height: 0;
+}
+.map-container iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
