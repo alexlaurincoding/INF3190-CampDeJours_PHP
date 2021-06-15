@@ -65,13 +65,21 @@ Les communications s'effectuerons sur le serveur `Discord` commun.
     └── programmes.html # Présentation des programmes
 ```
 
-## CADRICIEL
+## STRATÉGIE 
 
-Afin de simplifier la maintenance et la cohérence du site, `Bootstrap 5` est utilisé par toutes les pages.
-Des ajustements aux classes Bootstrap sont appliqués afin d'unifier l'apparence du site. Ce modifications et des ajouts se font dans le fichier `/style/main.css`.
+### TECHNOLOGIES
 
-Notre début de base de donnée est enregistré dans des fichiers au format `json`.
+- Afin de simplifier la maintenance et la cohérence du site, [`Bootstrap 5`](https://getbootstrap.com/docs/5.0/getting-started/introduction/) est utilisé par toutes les pages.
+- Des style supplémentaires permettent d'unifier le style du site. 
+Voir fichier [`/style/main.css`](./style/main.css).
+- Les données sont stockées au format `.json`. Les méthodes de ce prototype permettent la lecture seulement.
+  - L'accès aux données se fait par appel [`AJAX`, en `jQuery`](https://api.jquery.com/jquery.ajax/).
+- La simulation de paiement se fait à l'aide de `PayPal Sandbox`.
+  -  courriel : `sb-ybcnk6512123@personal.example.com`
+  -  mot de passe : `lesnerds`
+- Le `javascript` est utilisé pour augmenter l'interactivité des éléments du site.
+  -  Le fichier [`/javascript/javaScript.js`](./javascript/javaScript.js)  réduit la répétition de code et augmente ainsi la maintenabilité.
+  - Le fichier [`/javascript/tableau_admin.js`](./javascript/tableau_admin.js) génère, à partir des données, un [tableau interactif `datatable`](https://datatables.net/) 
 
-`Javascript` est usilisé afin de rendre certains boutons interractifs et pour insérer les données des fichiers `json` dans les pages.
+### EXPÉRIENCE UTILISATEUR
 
-Le paiement se fait a l'aide d'un bouton paypal de type sandbox pour simuler le paiement. Pour effectuer un paiement, utiliser le courriel `sb-ybcnk6512123@personal.example.com` et le mot de passe `lesnerds`
