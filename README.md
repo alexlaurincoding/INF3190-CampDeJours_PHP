@@ -1,30 +1,32 @@
 # INF3190 TRAVAIL DE SESSION
 
 ## EQUIPE
+
 ### Membres
 
 **Etienne Comtois** : COME17029800  
 **Louis Roy Therrien** : ROYL20059103  
 **Alexandre Laurin** : LAUA23108205  
-**Mathieu Charbonneau** : CHAM25029407  
+**Mathieu Charbonneau** : CHAM25029407
 
 ### Partage de Connaissance
-Le `GitHub` suivant sera utilisé afin de centraliser le travail : [GitHub INF3190 TS](https://github.com/alexlaurincoding/INF3190_Travail_de_session.git)  
 
-Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de partages des documents de coordinations [OneNote INF3190 TS](https://uqam-my.sharepoint.com/:o:/g/personal/jb591912_ens_uqam_ca/Ei4SeovgjfJApBzsdJSmaCsBOT2XgswlFoS4ARMlf6SUSQ?e=PtQ1UL)  
+Le `GitHub` suivant sera utilisé afin de centraliser le travail : [GitHub INF3190 TS](https://github.com/alexlaurincoding/INF3190_Travail_de_session.git)
 
-Les communications s'effectuerons sur le serveur `Discord` commun.  
+Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de partages des documents de coordinations [OneNote INF3190 TS](https://uqam-my.sharepoint.com/:o:/g/personal/jb591912_ens_uqam_ca/Ei4SeovgjfJApBzsdJSmaCsBOT2XgswlFoS4ARMlf6SUSQ?e=PtQ1UL)
+
+Les communications s'effectuerons sur le serveur `Discord` commun.
 
 ### Rencontres
-- Une à deux rencontres de coordination par semaine (à déterminer combien et quand) seront de mise afin de diviser et de faire un suivi du travail.  
-    - Lundi 20h
-    - Vendredi 17h
-- Le travail se fera en sous équipes ou individuellement afin d'accélérer le travail. 
-- Les tâches atomiques seront attribués afin d'être réalisé avant la prochaine rencontre de coordination.  
 
-
+- Une à deux rencontres de coordination par semaine (à déterminer combien et quand) seront de mise afin de diviser et de faire un suivi du travail.
+  - Lundi 20h
+  - Vendredi 17h
+- Le travail se fera en sous équipes ou individuellement afin d'accélérer le travail.
+- Les tâches atomiques seront attribués afin d'être réalisé avant la prochaine rencontre de coordination.
 
 ## ARBORESCENCE
+
 ```bash
 .
 ├── README.md
@@ -53,9 +55,9 @@ Les communications s'effectuerons sur le serveur `Discord` commun.
     ├── contact.html # Page d'information sur le client
     ├── footer.html # Pied de page inséré sur toutes les pages
     ├── gestion.html # Page d'administration des programmes
-    ├── horaire.html 
+    ├── horaire.html
     ├── index.html # Page d'accueil
-    ├── infos_profil.html 
+    ├── infos_profil.html
     ├── inscription.html
     ├── inscription_admin.html
     ├── inscription_parent.html # Page d'inscription
@@ -64,9 +66,12 @@ Les communications s'effectuerons sur le serveur `Discord` commun.
 ```
 
 ## CADRICIEL
-Afin de simplifier la maintenance et la cohérence du site, `Bootstrap 5` est utilisé par toutes les pages. 
-Des ajustements aux classes Bootstrap sont appliqués afin d'unifier l'apparence du site. Ce modifications et des ajouts se font dans le fichier `/style/main.css`.  
 
-Notre début de base de donnée est enregistré dans des fichiers au format `json`.  
+Afin de simplifier la maintenance et la cohérence du site, `Bootstrap 5` est utilisé par toutes les pages.
+Des ajustements aux classes Bootstrap sont appliqués afin d'unifier l'apparence du site. Ce modifications et des ajouts se font dans le fichier `/style/main.css`.
 
-`Javascript` est usilisé afin de rendre certains boutons interractifs et pour insérer les données des fichiers `json` dans les pages.  
+Notre début de base de donnée est enregistré dans des fichiers au format `json`.
+
+`Javascript` est usilisé afin de rendre certains boutons interractifs et pour insérer les données des fichiers `json` dans les pages.
+
+Le paiement se fait a l'aide d'un bouton paypal de type sandbox pour simuler le paiement. Pour effectuer un paiement, utiliser le courriel `sb-ybcnk6512123@personal.example.com` et le mot de passe `lesnerds`
