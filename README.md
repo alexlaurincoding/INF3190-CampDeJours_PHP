@@ -36,7 +36,7 @@ Voir fichier [`/style/main.css`](./style/main.css).
   -  mot de passe : `lesnerds`
 - Le `javascript` est utilisé pour augmenter l'interactivité des éléments du site.
   -  Le fichier [`/javascript/javaScript.js`](./javascript/javaScript.js)  réduit la répétition de code et augmente ainsi la maintenabilité.
-  - Le fichier [`/javascript/tableau_admin.js`](./javascript/tableau_admin.js) génère, à partir des données, un [tableau interactif `datatable`](https://datatables.net/) 
+  - Le fichier [`/javascript/tableau_admin.js`](./javascript/tableau_admin.js) génère, à partir des données json, un [tableau interactif `datatable`](https://datatables.net/) 
 
 ### EXPÉRIENCE UTILISATEUR
 
