@@ -60,6 +60,8 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
     ├── programmes.html
     └── tableau_bord_parent.html
 
+=======
+
 ## STRATÉGIE 
 
 ### TECHNOLOGIES
