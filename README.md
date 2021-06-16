@@ -40,11 +40,11 @@ Voir fichier [`/style/main.css`](./style/main.css).
 
 ### EXPÉRIENCE UTILISATEUR
 
-Pour rendre plus agréable l'expérience de navigation, le nombre de pages est minimal. 
+Pour rendre plus agréable l'expérience de navigation, le nombre de pages est limité. 
 
-Afin de ne pas trop charger les pages, seuls les éléments-clés sont affichés par défaut. Il faut cliquer sur un élément pour que toutes les informations supplémentaires disponible s'affichent.
+Afin de ne pas trop charger les pages, seuls les éléments-clés sont affichés par défaut. Il faut cliquer sur un bouton pour que les informations supplémentaires disponible s'affichent.
 
-Les formulaires à remplir sont accessibles par l'entremise de boutons, comme `Ajouter` et `Modifier`.
+Les formulaires sont accessibles par l'entremise de boutons qui ouvrent des `modals Bootstrap`, comme `Ajouter` et `Modifier`.
 
 ##### Visiteur
 - Quelques pages de base sont accessibles sans authentification (`Accueil`, `Description des programmes`, `Inscription des parents`, `Contact`)
