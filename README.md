@@ -24,6 +24,7 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
 
 ### Arborescence
 
+```bash
 ├── data  
 │   ├── dossier_enfant.json   
 │   ├── dossier_parent.json  
@@ -59,8 +60,7 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
     ├── paiement_effectue.html  
     ├── programmes.html  
     └── tableau_bord_parent.html  
-
-=======
+```
 
 ## STRATÉGIE 
 
