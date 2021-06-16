@@ -16,7 +16,7 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
 
 ### Rencontres
 
-- Une à deux rencontres de coordination par semaine (à déterminer combien et quand) seront de mise afin de diviser et de faire un suivi du travail.
+- Une à deux rencontres de coordination par semaine seront de mise afin de diviser et de faire un suivi du travail:
   - Lundi 20h
   - Vendredi 17h
 - Le travail se fera en sous équipes ou individuellement afin d'accélérer le travail.
