@@ -26,7 +26,7 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
 
 ### TECHNOLOGIES
 
-- Afin de simplifier la maintenance et la cohérence du site, [`Bootstrap 5`](https://getbootstrap.com/docs/5.0/getting-started/introduction/) est utilisé par toutes les pages.
+- Afin de simplifier la maintenance et la cohérence du frontend, [`Bootstrap 5`](https://getbootstrap.com/docs/5.0/getting-started/introduction/) est utilisé par toutes les pages.
 - Des style supplémentaires permettent d'unifier le style du site. 
 Voir fichier [`/style/main.css`](./style/main.css).
 - Certaines données sont stockées au format `.json` pour la démonstration. Les méthodes de ce prototype permettent la lecture seulement.
