@@ -82,11 +82,13 @@
           <p class="text-center">
             <button
               class="btn btn-secondary mt-3"
+              id="sessionVoirPlus"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseSession"
               aria-expanded="false"
               aria-controls="collapseSession"
+              onclick="voirplus('sessionVoirPlus')"
             >
               Voir plus
             </button>
@@ -694,34 +696,160 @@
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-6">
-                  <label for="message-text" class="col-form-label"
-                    >Session :</label
-                  >
-                  <select class="form-control" name="activite1">
-                    <option disabled selected>Session</option>
-                    <option>Session 2021</option>
-                    <option>Session 2020</option>
-                    <option>Session 2019</option>
-                  </select>
-                </div>
+              <label for="message-text" class="col-form-label">Session :</label>
+              <select class="form-control" name="activite1">
+                <option disabled selected>Session</option>
+                <option>Session 2021</option>
+                <option>Session 2020</option>
+                <option>Session 2019</option>
+              </select>
 
-                <div class="col-6">
-                  <label for="message-text" class="col-form-label"
-                    >Numéro de semaine :</label
+              <label for="message-text" class="col-form-label"
+                >Numéros de semaine :</label
+              >
+              <div>
+                <div class="form-check form-check-inline px-0">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-1"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-1"
+                    >01</label
                   >
-                  <div>
-                    <input
-                      class="form-control"
-                      size="2"
-                      type="number"
-                      id="quantity"
-                      name="quantity"
-                      min="1"
-                      max="15"
-                    />
-                  </div>
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-2"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-2"
+                    >02</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-3"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-3"
+                    >03</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-4"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-4"
+                    >04</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-5"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-5"
+                    >05</label
+                  >
+                </div>
+                <br />
+                <div class="form-check form-check-inline px-0 mt-1">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-6"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-6"
+                    >06</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-7"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-7"
+                    >07</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-8"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-8"
+                    >08</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-9"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-9"
+                    >09</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-10"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-10"
+                    >10</label
+                  >
+                </div>
+                <br />
+                <div class="form-check form-check-inline px-0 mt-1">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-11"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-11"
+                    >11</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-12"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-12"
+                    >12</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-13"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-13"
+                    >13</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-14"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-14"
+                    >14</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-15"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-15"
+                    >15</label
+                  >
                 </div>
               </div>
 
