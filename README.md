@@ -25,6 +25,7 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
 ### Arborescence
 
 ```bash
+├── README.md  
 ├── data  
 │   ├── dossier_enfant.json   
 │   ├── dossier_parent.json  
@@ -44,8 +45,6 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
 │   ├── inscription_admin.js  
 │   ├── javaScript.js  
 │   └── jquery-3.6.0.min.js  
-├── notes.md  
-├── README.md  
 ├── style  
 │   ├── bootstrap.min.css  
 │   └── main.css  
