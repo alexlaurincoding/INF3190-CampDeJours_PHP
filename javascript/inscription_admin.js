@@ -39,7 +39,7 @@ var inscriptionJSON = (function () {
   $.ajax({
     async: false,
     global: false,
-    url: "/javascript/inscriptions.json",
+    url: "/data/inscriptions.json",
     dataType: "json",
     success: function (data) {
       json = data;
@@ -54,7 +54,7 @@ var parents = (function () {
   $.ajax({
     async: false,
     global: false,
-    url: "/javascript/dossier_parent.json",
+    url: "/data/dossier_parent.json",
     dataType: "json",
     success: function (data) {
       json = data;
@@ -69,7 +69,7 @@ var enfants = (function () {
   $.ajax({
     async: false,
     global: false,
-    url: "/javascript/dossier_enfant.json",
+    url: "/data/dossier_enfant.json",
     dataType: "json",
     success: function (data) {
       json = data;
