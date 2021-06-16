@@ -42,13 +42,17 @@
                   type="file"
                   accept="image/*"
                   name="image"
-                  id="file"
+                  id="uploadProfil"
                   onchange="loadFile(event)"
                   style="display: none"
                 />
-                <label for="file" style="cursor: pointer" class="form-label">
+                <label
+                  for="uploadProfil"
+                  style="cursor: pointer"
+                  class="form-label"
+                >
                   <img
-                    id="output"
+                    id="uploadProfilImg"
                     width="150"
                     src="../img/profil.png"
                     class="rounded"
@@ -111,6 +115,7 @@
     <div id="footer-placeholder"></div>
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../javascript/bootstrap.bundle.min.js"></script>
     <script src="../javascript/javaScript.js"></script>
   </body>
 </html>
