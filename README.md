@@ -83,3 +83,26 @@ Voir fichier [`/style/main.css`](./style/main.css).
 
 ### EXPÉRIENCE UTILISATEUR
 
+Pour rendre plus agréable l'expérience de navigation, le nombre de pages est minimal. 
+
+Afin de ne pas trop charger les pages, seuls les éléments-clés sont affichés par défaut. Il faut cliquer sur un élément pour que toutes les informations supplémentaires disponible s'affichent.
+
+Les formulaires à remplir sont accessibles par l'entremise de boutons, comme `Ajouter` et `Modifier`.
+
+##### Visiteur
+- Quelques pages de base sont accessibles sans authentification (`Accueil`, `Description des programmes`, `Inscription des parents`, `Contact`)
+
+##### Parents
+ _N.B. Pour simuler une connection en tant que parent, authentifiez-vous à l'aide d'un nom d'utilisateur différent de:_ `admin`
+
+Toute la gestion de compte des parents se fait à partir de leur tableau de bord, qui permet de :
+- Consulter ou modifier les informations d'un enfant ou ajouter un enfant à leur charge. 
+- Visualiser les programmes passés, futurs et en cours, ainsi que leur statut (payé, non-payé, non-inscrit).
+- Inscrire ses enfants à des programmes.
+- Visualiser et régler son panier d'achats.
+
+##### Administrateur 
+ _N.B. Pour simuler une connection en tant qu'administrateur, authentifiez-vous à l'aide du nom d'utilisateur :_ `admin`
+La gestion se divise en 2 sections.  
+L'une permet la gestion des sessions, programmes, activités et types et blocs d'activité.  
+L'autre section donne accès à toutes les inscriptions et les comptes d'utilisateurs.
