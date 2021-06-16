@@ -29,8 +29,8 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
 - Afin de simplifier la maintenance et la cohérence du site, [`Bootstrap 5`](https://getbootstrap.com/docs/5.0/getting-started/introduction/) est utilisé par toutes les pages.
 - Des style supplémentaires permettent d'unifier le style du site. 
 Voir fichier [`/style/main.css`](./style/main.css).
-- Les données sont stockées au format `.json`. Les méthodes de ce prototype permettent la lecture seulement.
-  - L'accès aux données se fait par appel [`AJAX`, en `jQuery`](https://api.jquery.com/jquery.ajax/).
+- Certaines données sont stockées au format `.json` pour la démonstration. Les méthodes de ce prototype permettent la lecture seulement.
+  - L'accès aux données se fait en partie avec [`jQuery`](https://api.jquery.com/).
 - La simulation de paiement se fait à l'aide de `PayPal Sandbox`.
   -  courriel : `sb-ybcnk6512123@personal.example.com`
   -  mot de passe : `lesnerds`
