@@ -560,7 +560,7 @@
             </div>
             <div class="col-6 d-flex align-items-end justify-content-end">
                 <p>
-                  <script> document.write(new Date().toString()); </script>
+                  <span id="dateFacture"></span>
                   <!-- <button type="button" class="btn btn-secondary btn-sm" onclick="
                   var prtContent = document.getElementById('cartboi');
                   var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
@@ -1072,5 +1072,12 @@ Alergie aux arachides.
     <script src="../javascript/jquery-3.6.0.min.js"></script>
     <script src="../javascript/bootstrap.bundle.min.js"></script>
     <script src="../javascript/javaScript.js"></script>
+    <script>
+      let dateFacture = document.getElementById("dateFacture");
+      var date = new Date();
+      var options = {weekday: "long", year: "numeric", month: "long", day: "2-digit"};
+      dateFacture.innerText = date.toLocaleDateString("fr-FR", options);
+
+    </script>
   </body>
 </html>
