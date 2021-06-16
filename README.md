@@ -24,41 +24,41 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
 
 ### Arborescence
 
-├── data
-│   ├── dossier_enfant.json
-│   ├── dossier_parent.json
-│   └── inscriptions.json
-├── img
-│   ├── bart_mini.jpg
-│   ├── cartman_mini.jpg
-│   ├── homer-excited.png
-│   ├── homer_mini.jpg
-│   ├── liane_cartman_mini.jpg
-│   ├── lisa_mini.jpg
-│   ├── profil.png
-│   ├── randy_mini.jpg
-│   └── stan_mini.jpg
-├── javascript
-│   ├── bootstrap.bundle.min.js
-│   ├── inscription_admin.js
-│   ├── javaScript.js
-│   └── jquery-3.6.0.min.js
-├── notes.md
-├── README.md
-├── style
-│   ├── bootstrap.min.css
-│   └── main.css
-└── vues
-    ├── contact.html
-    ├── footer.html
-    ├── gestion_programme.html
-    ├── index.html
-    ├── inscription_admin.html
-    ├── inscription_parent.html
-    ├── navbar.html
-    ├── paiement_effectue.html
-    ├── programmes.html
-    └── tableau_bord_parent.html
+├── data  
+│   ├── dossier_enfant.json   
+│   ├── dossier_parent.json  
+│   └── inscriptions.json  
+├── img  
+│   ├── bart_mini.jpg  
+│   ├── cartman_mini.jpg  
+│   ├── homer-excited.png  
+│   ├── homer_mini.jpg  
+│   ├── liane_cartman_mini.jpg  
+│   ├── lisa_mini.jpg  
+│   ├── profil.png  
+│   ├── randy_mini.jpg  
+│   └── stan_mini.jpg  
+├── javascript  
+│   ├── bootstrap.bundle.min.js  
+│   ├── inscription_admin.js  
+│   ├── javaScript.js  
+│   └── jquery-3.6.0.min.js  
+├── notes.md  
+├── README.md  
+├── style  
+│   ├── bootstrap.min.css  
+│   └── main.css  
+└── vues  
+    ├── contact.html  
+    ├── footer.html  
+    ├── gestion_programme.html  
+    ├── index.html  
+    ├── inscription_admin.html  
+    ├── inscription_parent.html  
+    ├── navbar.html  
+    ├── paiement_effectue.html  
+    ├── programmes.html  
+    └── tableau_bord_parent.html  
 
 =======
 
