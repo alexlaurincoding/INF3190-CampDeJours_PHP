@@ -32,7 +32,7 @@
         </ol>
       </nav>
 
-      <div class="card mb-4">
+      <div id="user" class="card mb-4">
         <div class="card-header">
           <div class="row mb-2 mt-2">
             <div class="col-6">
@@ -76,7 +76,7 @@
         </div>
       </div>
 
-      <div class="card mb-4">
+      <div id="children" class="card mb-4">
         <div class="card-header">
           <div class="row mb-2 mt-2">
             <div class="col-6">
@@ -552,11 +552,23 @@
         </div>
       </div>
 
-      <div class="mt-3 mb-4 card">
+      <div id="cartboi" class="mt-3 mb-4 card">
         <div class="card-header">
           <div class="row mb-2 mt-2">
             <div class="col-6">
               <h2 class="mb-0"><i class="fas fa-shopping-cart"></i> Panier</h2>
+            </div>
+            <div class="col-6 d-flex align-items-end justify-content-end">
+                <p>
+                  <script> document.write(new Date().toString()); </script>
+                  <!-- <button type="button" class="btn btn-secondary btn-sm" onclick="
+                  var prtContent = document.getElementById('cartboi');
+                  var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+                  WinPrint.document.write(prtContent.innerHTML);
+                  WinPrint.document.close();
+                  WinPrint.print();
+                  ">Ajouter</button> -->
+                </p>
             </div>
           </div>
         </div>
