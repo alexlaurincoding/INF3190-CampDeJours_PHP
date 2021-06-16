@@ -100,5 +100,6 @@ Toute la gestion de compte des parents se fait à partir de leur tableau de bord
 ##### Administrateur 
  _N.B. Pour simuler une connection en tant qu'administrateur, authentifiez-vous à l'aide du nom d'utilisateur :_ `admin`
 La gestion se divise en 2 sections.  
+
 - L'une permet la gestion des sessions, programmes, activités et types et blocs d'activité.  
 - L'autre section donne accès à toutes les inscriptions et les comptes d'utilisateurs.
