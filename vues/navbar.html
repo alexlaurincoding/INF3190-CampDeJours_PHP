@@ -28,7 +28,7 @@
         </li>
         </li>
       </ul>
-      <form class="d-flex">
+      <form onSubmit="return login()" class="d-flex">
         <input class="form-control me-2" type="text" placeholder="Nom d'utilisateur" />
         <input class="form-control me-2" type="password" placeholder="Mot de passe" />
         <button class="btn btn-dark" >Connexion</button>
@@ -37,3 +37,10 @@
     </div>
   </div>
 </nav>
+
+<script type="text/javascript">
+  function login() {
+    alert("login234()");
+  }
+
+</script>
