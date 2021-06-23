@@ -2,11 +2,9 @@
 
 ## EQUIPE
 
-test
-
 ### Membres
 
-**Etienne Comtois** : COME17029800  test  
+**Etienne Comtois** : COME17029800  
 **Louis Roy Therrien** : ROYL20059103  
 **Alexandre Laurin** : LAUA23108205  
 **Mathieu Charbonneau** : CHAM25029407
