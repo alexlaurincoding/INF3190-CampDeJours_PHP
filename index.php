@@ -1,5 +1,5 @@
 <?php
-
+//Chargement automatique des classes:
 spl_autoload_register(function($classeACharger) {
         //Liste des dossiers à explorer dans la recherche de la classe:
         $dossiers = array(
@@ -14,8 +14,9 @@ spl_autoload_register(function($classeACharger) {
                 return TRUE;
             }
         }
-		return FALSE;
-    });
+    }
+	return FALSE;
+});
 
 try {
     if (!ISSET($_SESSION)) session_start();
