@@ -1,11 +1,12 @@
 <?php 
 class Session {
     public static function isConnecte(){
-        return true;
-        // return ISSET($_SESSION) && ISSET($_SESSION['connecte']);
+        // return true;
+        return ISSET($_SESSION) && ISSET($_SESSION['connecte']);
     }
 
     public static function isAdmin(){
+        // return true;
         return ISSET($_SESSION) && ISSET($_SESSION['isAdmin']);
     }
 
