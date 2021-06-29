@@ -1,5 +1,5 @@
 <?php
-class Utilisateur extends Modele{
+class Utilisateur {
 
     public function connexion(){
         return "Utilisateur-> connexion() a fonctionne";
@@ -19,6 +19,18 @@ class Utilisateur extends Modele{
         */
     }
 
+    public static function isUtilisateurExistant($nomUtilisateur) {
+        return true;
+    }
+
+    public static function isBonMotDePasse($nomUtilisateur, $mdp) {
+        $isBonMotDePasse = false;
+        if (self::isUtilisateurExistant($nomUtilisateur)) {
+            $isBonMotDePasse = true;
+        } 
+        return $isBonMotDePasse;
+    }
+
     public function deconnexion(){
         return "Utilisateur-> deconnexion() a fonctionne";
         /*
@@ -34,12 +46,7 @@ class Utilisateur extends Modele{
         
     }
 
-    public static function isConnecte(){
-        return true;
-        // return ISSET($_SESSION) && ISSET($_SESSION['connecte']);
-    }
-
-    public static function isAdmin(){
-        return ISSET($_SESSION) && ISSET($_SESSION['isAdmin']);
+    public static function isAdmin($nomUtilisateur) {
+        
     }
 }

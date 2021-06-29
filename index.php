@@ -5,7 +5,8 @@ spl_autoload_register(function($classeACharger) {
         $dossiers = array(
             'controlleur/',
             'modele/',
-            'config/'
+            'config/',
+            'util/'
         );
         foreach( $dossiers as $dossier ) {
             if (file_exists($dossier . $classeACharger . '.php')) {
