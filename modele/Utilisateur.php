@@ -2,6 +2,7 @@
 class Utilisateur extends Modele{
 
     public function connexion(){
+        return "Utilisateur-> connexion() a fonctionne";
         /*
             Récupérer connexion à la base de données
             Vérifier si déjà connecté
@@ -19,6 +20,7 @@ class Utilisateur extends Modele{
     }
 
     public function deconnexion(){
+        return "Utilisateur-> deconnexion() a fonctionne";
         /*
             UNSET($_SESSION['connecte']);
             UNSET($_SESSION['username']);
@@ -33,7 +35,8 @@ class Utilisateur extends Modele{
     }
 
     public static function isConnecte(){
-        return ISSET($_SESSION) && ISSET($_SESSION['connecte']);
+        return true;
+        // return ISSET($_SESSION) && ISSET($_SESSION['connecte']);
     }
 
     public static function isAdmin(){

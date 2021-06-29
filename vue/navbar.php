@@ -28,12 +28,21 @@
         </li>
         </li>
       </ul>
-      <form class="d-flex" onsubmit="login(); return false;">
+      <?php 
+          if (Utilisateur::isConnecte()) {
+      ?>
+      <form class="d-flex" action="<?=getChemin()?>/utilisateur/connexion">
         <input required id="username" class="form-control me-2" type="text" placeholder="Nom d'utilisateur" />
         <input required id="password" class="form-control me-2" type="password" placeholder="Mot de passe" />
         <button class="btn btn-dark">Connexion</button>
         <a class="btn btn-secondary mx-2" href="<?=getChemin()?>/accueil/inscription">Inscription</a>
       </form>
+      <?php } else { ?>
+        <form class="d-flex" onsubmit="logout(); return false;">
+          <button class="btn btn-dark">Connexion</button>
+          <a class="btn btn-secondary mx-2" href="<?=getChemin()?>/utilisateur/deconnexion">Logout</a>
+        </form>
+      <?php } ?>
     </div>
   </div>
 </nav>
