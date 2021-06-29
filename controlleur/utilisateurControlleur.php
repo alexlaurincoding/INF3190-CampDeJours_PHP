@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Controlleur Utilisateur (par défaut)
+ * Controlleur Utilisateur
  */
 
 function index($param){
-    require('vue/inscription_parent.php');
+    require('vue/tableau_bord_parent.php');
 }
 
 function connexion($param){
@@ -13,8 +13,8 @@ function connexion($param){
         $nomUtilisateur = Util::sanitizeUserInput($_REQUEST["username"]);
         $motDePasse = Util::sanitizeUserInput($_REQUEST["password"]);
 
-        if (Utilisateur::isBonMotDePasse($utilisateur, $motDePasse)) {
-            $isAdmin = Utilisateur::isAdmin($utilisateur)
+        if (Utilisateur::isBonMotDePasse($nomUtilisateur, $motDePasse)) {
+            $isAdmin = Utilisateur::isAdmin($nomUtilisateur);
             Session::connexion($nomUtilisateur, $isAdmin);
         } else {
             throw new Exception ("Mauvais nom d'utilisateur ou mot de passe.");
@@ -23,14 +23,12 @@ function connexion($param){
        throw new Exception ("Nom d'utilisateur ou mot de passe manquant.");
     }
     if (Session::isAdmin()) {
-        Util::redirectControlleur("admin", "index")
+        Util::redirectControlleur("admin", "index");
     } else if (Session::isConnecte()) {
-        Util::redirectControlleur("utilisateur", "index")
+        Util::redirectControlleur("utilisateur", "index");
     }
 }
 
 function deconnexion($param){
-    $utilisateur = new Utilisateur();
-    $messageTest = $utilisateur->deconnexion();
-    throw new Exception ($messageTest);
+    Session::deconnexion();
 }
