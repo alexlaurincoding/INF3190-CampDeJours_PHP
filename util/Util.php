@@ -13,4 +13,18 @@ class Util {
         header('Location: '.$url);
         die();
     }
+
+    public static function message($parametre) {
+        if (ISSET($_REQUEST['messages'][$parametre])) {
+            return $_REQUEST['messages'][$parametre];
+        }
+        return '';
+    }
+    
+    public static function setMessage($parametre,$valeur) {
+        if (!ISSET($_REQUEST['messages'])) {
+            $_REQUEST['messages'] = array();
+        }
+        $_REQUEST['messages'][$parametre] = $valeur;
+    }
 }
