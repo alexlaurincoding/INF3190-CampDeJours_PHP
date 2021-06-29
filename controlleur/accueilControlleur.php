@@ -4,18 +4,18 @@
  * Controlleur Accueil (par défaut)
  */
 
-function pageIndex(){
+function index($param){
     require('vue/accueil.php');
 }
 
-function pageDescription(){
+function description($param){
     require('vue/description.php');
 }
 
-function pageContact(){
+function contact($param){
     require('vue/contact.php');
 }
 
-function pageInscription(){
+function inscription($param){
     require('vue/inscription.php');
 }

@@ -4,34 +4,11 @@ try {
     if (!ISSET($_SESSION)) session_start();
 
     $controlleur = getControlleur();
-    $action = getAction();
+    $actionControlleur = getAction();
     $param = getParam();
 
-    //Controlleur accueil
-    if($controlleur == "accueil"){
-        require('controlleur/accueilControlleur.php');
-     
-        //Action afficher Page d'accueil
-        if($action == "index"){
-            pageIndex();
-        }
-
-        //Action afficher Page Description des programmes
-        if($action == "description"){
-            pageDescription();
-        }
-
-        //Action afficher Page Contact
-        if($action == "contact"){
-            pageContact();
-        }
-
-        //Action afficher Page Inscription des parents
-        if($action == "inscription"){
-            pageInscription();
-        }
-    }
-
+    require('controlleur/'.$controlleur.'Controlleur.php');
+    $actionControlleur($param);
 }
 catch(Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
