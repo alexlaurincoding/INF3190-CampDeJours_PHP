@@ -4,9 +4,9 @@
  * Controlleur Utilisateur (par défaut)
  */
 
-// function index($param){
-//     require('vue/accueil.php');
-// }
+function index($param){
+    require('vue/inscription_parent.php');
+}
 
 function connexion($param){
     if (!empty($_REQUEST["username"]) && !empty($_REQUEST["password"])) {
@@ -23,8 +23,9 @@ function connexion($param){
        throw new Exception ("Nom d'utilisateur ou mot de passe manquant.");
     }
     if (Session::isAdmin()) {
-        //redirige vers controleur 
-        
+        Util::redirectControlleur("admin", "index")
+    } else if (Session::isConnecte()) {
+        Util::redirectControlleur("utilisateur", "index")
     }
 }
 
