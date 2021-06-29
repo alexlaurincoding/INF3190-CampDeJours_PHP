@@ -1,5 +1,21 @@
 <?php
 
+spl_autoload_register(function($classeACharger) {
+        //Liste des dossiers à explorer dans la recherche de la classe:
+        $dossiers = array(
+            'controlleur/',
+            'modele/',
+            'config/'
+        );
+        foreach( $dossiers as $dossier ) {
+            if (file_exists($dossier . $classeACharger . '.php')) {
+                require_once($dossier . $classeACharger . '.php');
+                return TRUE;
+            }
+        }
+		return FALSE;
+    });
+
 try {
     if (!ISSET($_SESSION)) session_start();
 
