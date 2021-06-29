@@ -4,14 +4,15 @@ try {
     if (!ISSET($_SESSION)) session_start();
 
     $controlleur = getControlleur();
-    $actionControlleur = getAction();
+    $actionControlleur = getActionControlleur();
     $param = getParam();
 
     require('controlleur/'.$controlleur.'Controlleur.php');
     $actionControlleur($param);
 }
 catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
+    $msgErreur = $e->getMessage();
+    require('vue/erreur.php');
 }
 
 function getControlleur(){
@@ -22,7 +23,7 @@ function getControlleur(){
     return $controlleur;
 }
 
-function getAction(){
+function getActionControlleur(){
     $action_defaut = "index";
     $params = getUrlParams();
     $action = (ISSET($params[2]))?$params[2]:$action_defaut;
