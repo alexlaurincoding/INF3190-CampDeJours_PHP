@@ -7,7 +7,10 @@ try {
     $actionControlleur = getActionControlleur();
     $param = getParam();
 
-    require('controlleur/'.$controlleur.'Controlleur.php');
+    if (file_exists('controlleur/'.$controlleur.'Controlleur.php'))
+        require('controlleur/'.$controlleur.'Controlleur.php');
+    else throw new Exception ("Erreur 404 page ".$controlleur." introuvable");
+
     $actionControlleur($param);
 }
 catch(Exception $e) {
@@ -19,8 +22,8 @@ function getControlleur(){
     $controlleur_defaut = "accueil";
     $params = getUrlParams();
     $controlleur = (ISSET($params[1]))?$params[1]:$controlleur_defaut;
-
-    return $controlleur;
+    
+    return htmlspecialchars($controlleur);
 }
 
 function getActionControlleur(){
@@ -28,14 +31,14 @@ function getActionControlleur(){
     $params = getUrlParams();
     $action = (ISSET($params[2]))?$params[2]:$action_defaut;
 
-    return $action;
+    return htmlspecialchars($action);
 }
 
 function getParam(){
     $params = getUrlParams();
     $param = $param = (ISSET($params[3])&&$params[3]!='')?$params[3]:'';
 
-    return $param;
+    return htmlspecialchars($param);
 }
 
 function getUrlParams(){

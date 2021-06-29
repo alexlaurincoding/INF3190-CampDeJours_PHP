@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<h1>Camp de jour des nerds</h1>
+<h1>Camp de jour des nerds <?=$param?></h1>
       <nav
         style="
           --bs-breadcrumb-divider: url(
