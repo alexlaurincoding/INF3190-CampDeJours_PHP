@@ -15,16 +15,18 @@ class Util {
     }
 
     public static function message($parametre) {
-        if (ISSET($_REQUEST['messages'][$parametre])) {
-            return $_REQUEST['messages'][$parametre];
+        if (ISSET($_SESSION['messages'][$parametre])) {
+            $msg = $_SESSION['messages'][$parametre];
+            unset($_SESSION['messages']);
+            return $msg;
         }
         return '';
     }
     
     public static function setMessage($parametre,$valeur) {
-        if (!ISSET($_REQUEST['messages'])) {
-            $_REQUEST['messages'] = array();
+        if (!ISSET($_SESSION['messages'])) {
+            $_SESSION['messages'] = array();
         }
-        $_REQUEST['messages'][$parametre] = $valeur;
+        $_SESSION['messages'][$parametre] = $valeur;
     }
 }

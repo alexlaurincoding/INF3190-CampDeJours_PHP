@@ -22,6 +22,7 @@ function connexion($param){
     } else {
        throw new Exception ("Nom d'utilisateur ou mot de passe manquant.");
     }
+    Util::setMessage("global", "Vous êtes maintenant connecté(e).");
     if (Session::isAdmin()) {
         Util::redirectControlleur("admin", "index");
     } else if (Session::isConnecte()) {

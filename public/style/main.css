@@ -248,3 +248,9 @@ section {
   width: 100%;
   position: absolute;
 }
+
+.messageAlert {
+  margin:3px;
+  padding:3px;
+  background-color: aqua;
+}

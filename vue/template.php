@@ -13,6 +13,7 @@
     <?php require('vue/navbar.php') ?>
 
     <div class="container">
+      <h3 class="messageAlert"><?=Util::message("global")?></h3>
       <?= $contenu ?>
     </div>
 
