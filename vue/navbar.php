@@ -29,7 +29,7 @@
         </li>
       </ul>
       <?php 
-          if (Utilisateur::isConnecte()) {
+          if (Session::isConnecte()) {
       ?>
       <form class="d-flex" method="post" action="<?=getChemin()?>/utilisateur/connexion">
         <input required id="username" class="form-control me-2" type="text" placeholder="Nom d'utilisateur" name="username"/>

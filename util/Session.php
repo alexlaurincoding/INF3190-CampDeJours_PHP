@@ -9,7 +9,7 @@ class Session {
         return ISSET($_SESSION) && ISSET($_SESSION['isAdmin']);
     }
 
-    public function deconnexion(){
+    public static function deconnexion(){
         return "Utilisateur-> deconnexion() a fonctionne";
         /*
             UNSET($_SESSION['connecte']);
@@ -20,7 +20,7 @@ class Session {
         */
     }
 
-    public function connexion($nomUtilisateur, $isAdmin = false){
+    public static function connexion($nomUtilisateur, $isAdmin = false){
         $_SESSION["connecte"] = true;
         $_SESSION["username"] = $nomUtilisateur; // username ==> utilisateur  (francais esti!)
         if ($isAdmin) {
