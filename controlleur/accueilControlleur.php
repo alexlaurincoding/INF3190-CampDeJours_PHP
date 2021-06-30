@@ -5,17 +5,17 @@
  */
 
 function index($param){
-    require('vue/accueil.php');
+    Vue::render('accueil');
 }
 
 function description($param){
-    require('vue/description.php');
+    Vue::render('description');
 }
 
 function contact($param){
-    require('vue/contact.php');
+    Vue::render('contact');
 }
 
 function inscription($param){
-    require('vue/inscription.php');
+    Vue::render('inscription');
 }

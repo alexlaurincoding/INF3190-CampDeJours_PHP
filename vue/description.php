@@ -1,5 +1,3 @@
-<?php ob_start(); ?>
-
 <h1>Nos programmes</h1>
       <nav
         style="
@@ -12,7 +10,7 @@
         class="mb-4"
       >
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?=getChemin()?>">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="<?=Util::getChemin()?>">Accueil</a></li>
           <li class="breadcrumb-item active" aria-current="page">
             Nos Programmes
           </li>
@@ -193,6 +191,3 @@
           <p>150$ par semaine.</p>
         </div>
       </div>
-      
-<?php $contenu = ob_get_clean(); ?>
-<?php require('template.php'); ?>

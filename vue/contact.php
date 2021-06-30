@@ -1,6 +1,4 @@
-<?php ob_start(); ?>
-
-<h1>Camp de jour des nerds <?=$param?></h1>
+<h1>Camp de jour des nerds</h1>
       <nav
         style="
           --bs-breadcrumb-divider: url(
@@ -12,7 +10,7 @@
         class="mb-4"
       >
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?=getChemin()?>">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="<?=Util::getChemin()?>">Accueil</a></li>
           <li class="breadcrumb-item active" aria-current="page">Contact</li>
         </ol>
       </nav>
@@ -61,6 +59,3 @@
           </div>
         </div>
       </div>
-
-<?php $contenu = ob_get_clean(); ?>
-<?php require('template.php'); ?>

@@ -9,7 +9,7 @@ class Util {
     }
 
     public static function redirectControlleur($controlleur,$action){
-        $url = getChemin()."/$controlleur/$action";
+        $url = Util::getChemin()."/$controlleur/$action";
         header('Location: '.$url);
         die();
     }
