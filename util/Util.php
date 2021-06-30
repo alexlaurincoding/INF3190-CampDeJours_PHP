@@ -53,7 +53,7 @@ class Util {
 
     public static function enregistrerImage($photo) {
         $temp = explode(".", $_FILES[$photo]["name"]);
-        $destination = 'public/img/';
+        $destination = 'public/img/photosProfil/';
         $fichierDestination = $destination . self::guidv4(). '.' . end($temp);
         move_uploaded_file($_FILES[$photo]["tmp_name"], $fichierDestination);
 

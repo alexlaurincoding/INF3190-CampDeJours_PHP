@@ -36,7 +36,7 @@ class Utilisateur {
             'id'=> $idUtilisateur,
             'nom_utilisateur'=> $username,
             'mot_de_passe'=> password_hash($password,  PASSWORD_DEFAULT),
-            'est_admin' => false
+            'est_admin' => 0 
         ));
         //sauvegarde parent dans la BD            
         $req = $bdd->prepare('INSERT INTO parent(id, nom, prenom, courriel, adresse, date_de_naissance, url_photo)
@@ -47,7 +47,7 @@ class Utilisateur {
             'prenom'=> $prenom,
             'courriel'=> $email,
             'adresse'=> $adresse,
-            'date_de_naissance'=>$dateNaissance,
+            'date_de_naissance'=>date('Y-m-d', strtotime($dateNaissance)),
             'url_photo'=> $photoProfil
         )); 
         BaseDonnee::close();
