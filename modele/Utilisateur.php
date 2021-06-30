@@ -35,7 +35,7 @@ class Utilisateur {
         $req->execute(array(
             'id'=> $idUtilisateur,
             'nom_utilisateur'=> $username,
-            'mot_de_passe'=> $password,
+            'mot_de_passe'=> password_hash($password,  PASSWORD_DEFAULT),
             'est_admin' => false
         ));
         //sauvegarde parent dans la BD            
