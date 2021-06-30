@@ -41,7 +41,7 @@
         <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/admin/gestionProgramme">Gérer les programmes</a>
         <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/admin/index">Voir les inscriptions</a>
       <?php }else{ ?>
-        <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/utilisateur/index">Tableau de bord</a>
+        <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/parent/index">Tableau de bord</a>
       <?php } ?>
         <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/utilisateur/deconnexion"><strong>Déconnexion</strong></a>
       <?php } ?>

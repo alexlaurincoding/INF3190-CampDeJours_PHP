@@ -1,5 +1,7 @@
 body {
   background-color: #f0f0f0;
+  height: 100%;
+  position: relative;
 }
 
 .modal-backdrop {
@@ -153,7 +155,7 @@ section {
   width: 100%;
   text-align: left;
   font: normal 16px sans-serif;
-  padding: 35px 50px;
+  padding: 50px;
 }
 
 .footer-distributed .footer-left p {
