@@ -5,7 +5,8 @@ class Utilisateur {
         $bdd = BaseDonnee::getConnexion();
         $req = $bdd->prepare('SELECT nom_utilisateur FROM utilisateur WHERE nom_utilisateur = :nomUtilisateur');
         $req->execute(array('nomUtilisateur'=> $nomUtilisateur));
-        $donnee = $req->fetch();       
+        $donnee = $req->fetch();
+        BaseDonnee::close();   
         if($donnee){
             return true;
         }
@@ -16,11 +17,9 @@ class Utilisateur {
         $bdd = BaseDonnee::getConnexion();
         $req = $bdd->prepare('SELECT nom_utilisateur, mot_de_passe FROM utilisateur WHERE nom_utilisateur = :nomUtilisateur');
         $req->execute(array('nomUtilisateur'=> $nomUtilisateur));
-        $donnee = $req->fetch(); 
-        if ($donnee['nom_utilisateur'] == $nomUtilisateur && $donnee['mot_de_passe'] == $motDePasse) {
-            return true;
-        } 
-        return false;
+        $donnee = $req->fetch();
+        BaseDonnee::close();
+        return password_verify($motDePasse, $donnee['mot_de_passe']);
     }
 
     public static function getUtilisateur($id){
