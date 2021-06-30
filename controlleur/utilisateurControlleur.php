@@ -38,7 +38,7 @@ function connexion($param){
 
 function deconnexion($param){
     if(Session::isConnecte()) Session::deconnexion();
-    Util::setMessage('global', 'Vous avez été doconnecté avec succès!');
+    Util::setMessage('global', 'Vous avez été déconnecté avec succès!');
     Util::redirectControlleur("accueil", "index");
 }
 
@@ -52,9 +52,7 @@ function inscription($param){
     $username = Util::param("username");
     $password = Util::param("password");
     
-    if(isset($_FILES['photoProfil']) && !empty($_FILES['photoProfil']['name'])){
-        $photoProfil = Util::enregistrerImage("photoProfil");
-    }else{
+    if(!isset($_FILES['photoProfil']) || empty($_FILES['photoProfil']['name'])){
         Util::setMessage("photoProfil", "Veuillez selectionner une photo.");
         $erreur = true;
     }
@@ -84,6 +82,9 @@ function inscription($param){
     if(empty($username)){
         Util::setMessage("username", "Veuillez entrer votre nom d'utilisateur.");
         $erreur = true;
+    }else if (Utilisateur::isUtilisateurExistant($username)){
+        Util::setMessage("username", "Ce nom d'utilisateur n'est pas disponible.");
+        $erreur = true;
     }
     if(empty($password)){
         Util::setMessage("password", "Veuillez entrer votre mot de passe.");
@@ -92,29 +93,8 @@ function inscription($param){
     if($erreur){
         require('vue/inscription.php');
     }else{
-        //sauvegarde utilisateur dans la BD
-        $bdd = BaseDonnee::getConnexion();
-        $idUtilisateur = Util::guidv4();
-        $req = $bdd->prepare('INSERT INTO utilisateur(id, nom_utilisateur, mot_de_passe, est_admin)
-                        VALUES (:id, :nom_utilisateur, :mot_de_passe, :est_admin)');
-        $req->execute(array(
-            'id'=> $idUtilisateur,
-            'nom_utilisateur'=> $username,
-            'mot_de_passe'=> $password,
-            'est_admin' => false
-        ));
-        //sauvegarde parent dans la BD            
-        $req = $bdd->prepare('INSERT INTO parent(id, nom, prenom, courriel, adresse, date_de_naissance, url_photo)
-                                    VALUES (:id, :nom, :prenom, :courriel, :adresse, :date_de_naissance, :url_photo)');
-        $req->execute(array(
-            'id'=> $idUtilisateur,
-            'nom'=> $nom,
-            'prenom'=> $prenom,
-            'courriel'=> $email,
-            'adresse'=> $adresse,
-            'date_de_naissance'=>$dateNaissance,
-            'url_photo'=> $photoProfil
-        ));                    
+        $photoProfil = Util::enregistrerImage("photoProfil");
+        sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
         Session::connexion($prenom);
         Util::redirectControlleur("utilisateur","index");
       }     

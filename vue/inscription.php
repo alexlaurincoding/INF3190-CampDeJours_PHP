@@ -55,7 +55,7 @@
             <div class="row px-2">
               <div class="col">
                 <label for="prenom" class="form-label">Prénom</label>
-                <input type="text" id="prenom" name="prenom" class="form-control" />
+                <input type="text" id="prenom" name="prenom" class="form-control"/>
                 <span class="erreur">
                     <?= Util::message("prenom"); ?>
                 </span>
