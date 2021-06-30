@@ -29,7 +29,7 @@
         </li>
       </ul>
       <?php 
-          if (Session::isConnecte()) {
+          if (!Session::isConnecte()) {
       ?>
       <form class="d-flex" method="post" action="<?=getChemin()?>/utilisateur/connexion">
         <input required id="username" class="form-control me-2" type="text" placeholder="Nom d'utilisateur" name="username"/>
@@ -38,7 +38,7 @@
         <a class="btn btn-secondary mx-2" href="<?=getChemin()?>/accueil/inscription">Inscription</a>
       </form>
       <?php } else { ?>
-        <a class="btn btn-secondary mx-2" href="<?=getChemin()?>/utilisateur/deconnexion">Logout</a>
+        <a class="btn btn-secondary mx-2" href="<?=getChemin()?>/utilisateur/deconnexion">Déconnexion</a>
       <?php } ?>
     </div>
   </div>

@@ -17,7 +17,7 @@ class Util {
     public static function message($parametre) {
         if (ISSET($_SESSION['messages'][$parametre])) {
             $msg = $_SESSION['messages'][$parametre];
-            unset($_SESSION['messages']);
+            unset($_SESSION['messages'][$parametre]);
             return $msg;
         }
         return '';

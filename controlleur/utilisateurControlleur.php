@@ -9,6 +9,7 @@ function index($param){
 }
 
 function connexion($param){
+    
     if (!empty($_REQUEST["username"]) && !empty($_REQUEST["password"])) {
         $nomUtilisateur = Util::sanitizeUserInput($_REQUEST["username"]);
         $motDePasse = Util::sanitizeUserInput($_REQUEST["password"]);
@@ -32,4 +33,10 @@ function connexion($param){
 
 function deconnexion($param){
     Session::deconnexion();
+    Util::setMessage('global', 'Vous avez été doconnecté avec succès!');
+    Util::redirectControlleur("accueil", "index");
+}
+
+function inscription(){
+        
 }

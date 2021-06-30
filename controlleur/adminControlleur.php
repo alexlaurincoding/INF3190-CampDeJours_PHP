@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Controlleur Admin
+ */
+
 function index($params) {
     require("vue/inscription_admin.php");
 }
