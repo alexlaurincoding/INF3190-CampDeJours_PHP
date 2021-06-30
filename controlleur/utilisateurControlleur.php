@@ -53,9 +53,7 @@ function inscription($param){
     $password = Util::param("password");
     
     if(isset($_FILES['photoProfil']) && !empty($_FILES['photoProfil']['name'])){
-
         $photoProfil = Util::enregistrerImage("photoProfil");
-        throw new Exception($photoProfil);
     }else{
         Util::setMessage("photoProfil", "Veuillez selectionner une photo.");
         $erreur = true;
@@ -104,9 +102,32 @@ function inscription($param){
       if($erreur){
         require('vue/inscription.php');
       }else{
+            $bdd = BaseDonnee::getConnexion();
+            $idUtilisateur = Util::guidv4();
+            $req = $bdd->prepare('INSERT INTO utilisateur(id, nom_utilisateur, mot_de_passe, est_admin)
+                        VALUES (:id, :nom_utilisateur, :mot_de_passe, :est_admin)');
+            $req->execute(array(
+                'id'=> $idUtilisateur,
+                'nom_utilisateur'=> $username,
+                'mot_de_passe'=> $password,
+                'est_admin' => false
+            ));            
+            $req = $bdd->prepare('INSERT INTO parent(id, nom, prenom, courriel, adresse, date_de_naissance, url_photo)
+                                    VALUES (:id, :nom, :prenom, :courriel, :adresse, :date_de_naissance, :url_photo)');
+            $req->execute(array(
+                'id'=> $idUtilisateur,
+                'nom'=> $nom,
+                'prenom'=> $prenom,
+                'courriel'=> $email,
+                'adresse'=> $adresse,
+                'date_de_naissance'=>$dateNaissance,
+                'url_photo'=> $photoProfil
+            ));                    
           Session::connexion($prenom);
           Util::redirectControlleur("utilisateur","index");
       }
+
+      
       
 }
 
