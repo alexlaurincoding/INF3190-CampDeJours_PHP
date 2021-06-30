@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `activite` (
-  `id_activite` varchar(30) NOT NULL,
+  `id_activite` varchar(40) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `type_activite` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -40,8 +40,8 @@ CREATE TABLE `activite` (
 --
 
 CREATE TABLE `activite_du_bloc` (
-  `id_activite` varchar(30) NOT NULL,
-  `id_bloc` varchar(30) NOT NULL
+  `id_activite` varchar(40) NOT NULL,
+  `id_bloc` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -51,7 +51,7 @@ CREATE TABLE `activite_du_bloc` (
 --
 
 CREATE TABLE `activite_programme` (
-  `id` varchar(30) NOT NULL
+  `id` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -61,7 +61,7 @@ CREATE TABLE `activite_programme` (
 --
 
 CREATE TABLE `bloc` (
-  `id_bloc` varchar(30) NOT NULL,
+  `id_bloc` varchar(40) NOT NULL,
   `nom` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -72,12 +72,12 @@ CREATE TABLE `bloc` (
 --
 
 CREATE TABLE `enfant` (
-  `id` varchar(30) NOT NULL,
+  `id` varchar(40) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
   `date_naissance` date NOT NULL,
   `url_photo` varchar(200) DEFAULT NULL,
-  `id_parent` varchar(30) NOT NULL
+  `id_parent` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -87,7 +87,7 @@ CREATE TABLE `enfant` (
 --
 
 CREATE TABLE `gabarit_programme` (
-  `id` varchar(30) NOT NULL,
+  `id` varchar(40) NOT NULL,
   `titre` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -99,8 +99,8 @@ CREATE TABLE `gabarit_programme` (
 --
 
 CREATE TABLE `horaire_programme` (
-  `id_programme` varchar(30) NOT NULL,
-  `id_activite_programme` varchar(30) NOT NULL,
+  `id_programme` varchar(40) NOT NULL,
+  `id_activite_programme` varchar(40) NOT NULL,
   `plage_horaire` int(11) NOT NULL,
   `duree` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -112,8 +112,8 @@ CREATE TABLE `horaire_programme` (
 --
 
 CREATE TABLE `inscription` (
-  `id_programme_semaine` varchar(30) NOT NULL,
-  `id_enfant` varchar(30) NOT NULL,
+  `id_programme_semaine` varchar(40) NOT NULL,
+  `id_enfant` varchar(40) NOT NULL,
   `paye` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -124,7 +124,7 @@ CREATE TABLE `inscription` (
 --
 
 CREATE TABLE `parent` (
-  `id` varchar(30) NOT NULL,
+  `id` varchar(40) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
   `courriel` varchar(200) NOT NULL,
@@ -140,9 +140,9 @@ CREATE TABLE `parent` (
 --
 
 CREATE TABLE `programme` (
-  `id` varchar(30) NOT NULL,
-  `id_gabarit_programme` varchar(30) NOT NULL,
-  `id_session` varchar(30) NOT NULL,
+  `id` varchar(40) NOT NULL,
+  `id_gabarit_programme` varchar(40) NOT NULL,
+  `id_session` varchar(40) NOT NULL,
   `animateur` varchar(300) DEFAULT NULL,
   `prix` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -154,9 +154,9 @@ CREATE TABLE `programme` (
 --
 
 CREATE TABLE `programme_semaine` (
-  `id` varchar(30) NOT NULL,
-  `id_programme` varchar(30) NOT NULL,
-  `id_semaine` varchar(30) NOT NULL
+  `id` varchar(40) NOT NULL,
+  `id_programme` varchar(40) NOT NULL,
+  `id_semaine` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -166,8 +166,8 @@ CREATE TABLE `programme_semaine` (
 --
 
 CREATE TABLE `semaine` (
-  `id` varchar(30) NOT NULL,
-  `id_session` varchar(30) NOT NULL,
+  `id` varchar(40) NOT NULL,
+  `id_session` varchar(40) NOT NULL,
   `no_semaine` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -178,7 +178,7 @@ CREATE TABLE `semaine` (
 --
 
 CREATE TABLE `session` (
-  `id` varchar(30) NOT NULL,
+  `id` varchar(40) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `date_debut` date NOT NULL,
@@ -192,7 +192,7 @@ CREATE TABLE `session` (
 --
 
 CREATE TABLE `type_activite` (
-  `id` varchar(30) NOT NULL,
+  `id` varchar(40) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -204,8 +204,8 @@ CREATE TABLE `type_activite` (
 --
 
 CREATE TABLE `type_activite_du_bloc` (
-  `id_bloc` varchar(30) NOT NULL,
-  `id_type_activite` varchar(30) NOT NULL
+  `id_bloc` varchar(40) NOT NULL,
+  `id_type_activite` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -215,7 +215,7 @@ CREATE TABLE `type_activite_du_bloc` (
 --
 
 CREATE TABLE `utilisateur` (
-  `id` varchar(30) NOT NULL,
+  `id` varchar(40) NOT NULL,
   `nom_utilisateur` varchar(100) NOT NULL,
   `mot_de_passe` varchar(100) NOT NULL,
   `est_admin` tinyint(1) NOT NULL
