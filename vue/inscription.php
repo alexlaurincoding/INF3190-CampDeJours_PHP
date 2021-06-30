@@ -55,14 +55,14 @@
             <div class="row px-2">
               <div class="col">
                 <label for="prenom" class="form-label">Prénom</label>
-                <input type="text" id="prenom" name="prenom" class="form-control"/>
+                <input type="text" id="prenom" name="prenom" class="form-control" value='<?= Util::message("inputPrenom");?>' />
                 <span class="erreur">
                     <?= Util::message("prenom"); ?>
                 </span>
               </div>
               <div class="col">
                 <label for="nom" class="form-label">Nom</label>
-                <input type="text" id="nom" name="nom" class="form-control" />
+                <input type="text" id="nom" name="nom" class="form-control" value='<?= Util::message("inputNom");?>'/>
                 <span class="erreur">
                     <?= Util::message("nom"); ?>
                 </span>
@@ -71,14 +71,14 @@
             <div class="row p-2">
               <div class="col">
                 <label for="emailemail" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" id="inputEmail3" />
+                <input type="email" class="form-control" name="email" id="inputEmail3" value='<?= Util::message("inputEmail");?>'/>
                 <span class="erreur">
                     <?= Util::message("email"); ?>
                 </span>
               </div>
               <div class="col">
                 <label for="ddn" class="form-label">Date de naissance</label>
-                <input type="date" id="ddn" name="dateNaissance" class="form-control" />
+                <input type="date" id="ddn" name="dateNaissance" class="form-control"value='<?= Util::message("inputDateNaissance");?>' />
                 <span class="erreur">
                     <?= Util::message("dateNaissance"); ?>
                 </span>
@@ -86,7 +86,7 @@
             </div>
             <div class="form-group p-2">
               <label for="adresse" class="form-label">Adresse complète</label>
-              <textarea class="form-control" name="adresse" id="adresse"></textarea>
+              <textarea class="form-control" name="adresse" id="adresse" ><?= Util::message("inputAdresse");?></textarea>
               <span class="erreur">
                     <?= Util::message("adresse"); ?>
                 </span>
@@ -98,14 +98,14 @@
                 <label for="username" class="form-label"
                   >Nom d'utilisateur</label
                 >
-                <input type="text" id="username" name="username" class="form-control" />
+                <input type="text" id="username" name="username" class="form-control" value='<?= Util::message("inputUsername");?>' />
                 <span class="erreur">
                     <?= Util::message("username"); ?>
                 </span>
               </div>
               <div class="col">
-                <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" id="password" name="password" class="form-control" />
+                <label for="password" class="form-label" >Mot de passe</label>
+                <input type="password" id="password" name="password" minlength="6" class="form-control" value='<?= Util::message("inputPassword");?>' />
                 <span class="erreur">
                     <?= Util::message("password"); ?>
                 </span>

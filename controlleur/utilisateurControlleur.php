@@ -89,11 +89,22 @@ function inscription($param){
     if(empty($password)){
         Util::setMessage("password", "Veuillez entrer votre mot de passe.");
         $erreur = true;
-     }       
+     }else if(strlen($password) < 6){
+        Util::setMessage("password", "Votre mot de passe doit contenir au moins 6 caracteres.");
+        $erreur = true;
+     }
+       
     if($erreur){
+        Util::setMessage("inputPrenom", $prenom);
+        Util::setMessage("inputNom", $nom);
+        Util::setMessage("inputEmail", $email);
+        Util::setMessage("inputDateNaissance", $dateNaissance);
+        Util::setMessage("inputAdresse", $adresse);
+        Util::setMessage("inputUsername", $username);
+        Util::setMessage("inputPassword", $password);
         require('vue/inscription.php');
     }else{
-        $photoProfil = Util::enregistrerImage("photoProfil");
+        $photoProfil = Util::enregistrerImage("photoProfil");  
         Utilisateur::sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
         Session::connexion($prenom);
         Util::redirectControlleur("utilisateur","index");
