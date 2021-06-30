@@ -52,4 +52,8 @@ class ParentModel {
     public function getEnfants(){
         return $this->enfants;
     }
+
+    public function sauvegarder(){
+        ParentDAO::sauvegarderParent($this);
+    }
 }

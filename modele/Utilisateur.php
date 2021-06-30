@@ -26,7 +26,7 @@ class Utilisateur {
 
     }
 
-    public static function sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil){
+    public static function sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil){   
         //sauvegarde utilisateur dans la BD
         $bdd = BaseDonnee::getConnexion();
         $idUtilisateur = Util::guidv4();
@@ -37,20 +37,12 @@ class Utilisateur {
             'nom_utilisateur'=> $username,
             'mot_de_passe'=> password_hash($password,  PASSWORD_DEFAULT),
             'est_admin' => 0 
-        ));
-        //sauvegarde parent dans la BD            
-        $req = $bdd->prepare('INSERT INTO parent(id, nom, prenom, courriel, adresse, date_de_naissance, url_photo)
-                                    VALUES (:id, :nom, :prenom, :courriel, :adresse, :date_de_naissance, :url_photo)');
-        $req->execute(array(
-            'id'=> $idUtilisateur,
-            'nom'=> $nom,
-            'prenom'=> $prenom,
-            'courriel'=> $email,
-            'adresse'=> $adresse,
-            'date_de_naissance'=>date('Y-m-d', strtotime($dateNaissance)),
-            'url_photo'=> $photoProfil
-        )); 
+        ));        
         BaseDonnee::close();
+
+        //Sauvegarder un nouveau parent dans la base de données
+        $parent = new ParentModel($idUtilisateur, $nom, $prenom, $email, $adresse, $dateNaissance, $photoProfil);
+        $parent-> sauvegarder();
     }
 
     public static function isAdmin($nomUtilisateur) {

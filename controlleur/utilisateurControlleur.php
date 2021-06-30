@@ -98,7 +98,7 @@ function inscription($param){
     }else{
         $photoProfil = Util::enregistrerImage("photoProfil");  
         Utilisateur::sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
-        Session::connexion($prenom);
+        Session::connexion($username);
         Util::redirectControlleur("parent","index");
       }     
 }
