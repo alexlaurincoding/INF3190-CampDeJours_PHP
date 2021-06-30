@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2021 at 09:49 PM
+-- Generation Time: Jun 30, 2021 at 06:56 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -133,6 +133,13 @@ CREATE TABLE `parent` (
   `url_photo` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `parent`
+--
+
+INSERT INTO `parent` (`id`, `nom`, `prenom`, `courriel`, `adresse`, `date_de_naissance`, `url_photo`) VALUES
+('1a21811b-f4cc-48bb-b960-fd5dcab879b2', 'Simpson', 'Homer', 'chunkylover53@aol.com', '742 Evergreen Terrace, Springfield', '1956-05-12', 'public/img/4cb2f0af-006f-4f6e-8e2a-4ebd65807100.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -220,6 +227,13 @@ CREATE TABLE `utilisateur` (
   `mot_de_passe` varchar(100) NOT NULL,
   `est_admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom_utilisateur`, `mot_de_passe`, `est_admin`) VALUES
+('1a21811b-f4cc-48bb-b960-fd5dcab879b2', 'beignes', 'doh', 0);
 
 --
 -- Indexes for dumped tables
