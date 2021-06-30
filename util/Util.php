@@ -44,4 +44,10 @@ class Util {
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
     
+    public static function param($parametre) {
+        if (ISSET($_REQUEST[$parametre])) {
+            return $_REQUEST[$parametre];
+        }
+        return '';
+    }    
 }
