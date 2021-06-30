@@ -29,4 +29,11 @@ class Util {
         }
         $_SESSION['messages'][$parametre] = $valeur;
     }
+
+    public static function param($parametre) {
+        if (ISSET($_REQUEST[$parametre])) {
+            return $_REQUEST[$parametre];
+        }
+        return '';
+    }    
 }
