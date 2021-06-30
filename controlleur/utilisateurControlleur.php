@@ -57,77 +57,66 @@ function inscription($param){
     }else{
         Util::setMessage("photoProfil", "Veuillez selectionner une photo.");
         $erreur = true;
-     }
-    
-   
-
-      if(empty($prenom)){
-         Util::setMessage("prenom", "Veuillez entrer votre prénom.");
-         $erreur = true;
-      }
-      if(empty($nom)){
+    }
+    if(empty($prenom)){
+        Util::setMessage("prenom", "Veuillez entrer votre prénom.");
+        $erreur = true;
+    }
+    if(empty($nom)){
         Util::setMessage("nom", "Veuillez entrer votre nom.");
         $erreur = true;
-     }
-
-
-     if(empty($email)){
+    }
+    if(empty($email)){
         Util::setMessage("email", "Veuillez entrer votre courriel.");
         $erreur = true;
-     }else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    }else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         Util::setMessage("email", "Format de courriel invalide.");
         $erreur = true;
-      }
-     if(empty($dateNaissance)){
+    }
+    if(empty($dateNaissance)){
         Util::setMessage("dateNaissance", "Veuillez entrer votre date de naissance.");
         $erreur = true;
-     }
-
-     if(empty($adresse)){
+    }
+    if(empty($adresse)){
         Util::setMessage("adresse", "Veuillez entrer votre adresse.");
         $erreur = true;
-     }
-     if(empty($username)){
+    }
+    if(empty($username)){
         Util::setMessage("username", "Veuillez entrer votre nom d'utilisateur.");
         $erreur = true;
-     }
-     if(empty($password)){
+    }
+    if(empty($password)){
         Util::setMessage("password", "Veuillez entrer votre mot de passe.");
         $erreur = true;
-     }
-        
-
-
-
-      if($erreur){
+     }       
+    if($erreur){
         require('vue/inscription.php');
-      }else{
-            $bdd = BaseDonnee::getConnexion();
-            $idUtilisateur = Util::guidv4();
-            $req = $bdd->prepare('INSERT INTO utilisateur(id, nom_utilisateur, mot_de_passe, est_admin)
+    }else{
+        //sauvegarde utilisateur dans la BD
+        $bdd = BaseDonnee::getConnexion();
+        $idUtilisateur = Util::guidv4();
+        $req = $bdd->prepare('INSERT INTO utilisateur(id, nom_utilisateur, mot_de_passe, est_admin)
                         VALUES (:id, :nom_utilisateur, :mot_de_passe, :est_admin)');
-            $req->execute(array(
-                'id'=> $idUtilisateur,
-                'nom_utilisateur'=> $username,
-                'mot_de_passe'=> $password,
-                'est_admin' => false
-            ));            
-            $req = $bdd->prepare('INSERT INTO parent(id, nom, prenom, courriel, adresse, date_de_naissance, url_photo)
+        $req->execute(array(
+            'id'=> $idUtilisateur,
+            'nom_utilisateur'=> $username,
+            'mot_de_passe'=> $password,
+            'est_admin' => false
+        ));
+        //sauvegarde parent dans la BD            
+        $req = $bdd->prepare('INSERT INTO parent(id, nom, prenom, courriel, adresse, date_de_naissance, url_photo)
                                     VALUES (:id, :nom, :prenom, :courriel, :adresse, :date_de_naissance, :url_photo)');
-            $req->execute(array(
-                'id'=> $idUtilisateur,
-                'nom'=> $nom,
-                'prenom'=> $prenom,
-                'courriel'=> $email,
-                'adresse'=> $adresse,
-                'date_de_naissance'=>$dateNaissance,
-                'url_photo'=> $photoProfil
-            ));                    
-          Session::connexion($prenom);
-          Util::redirectControlleur("utilisateur","index");
-      }
-
-      
-      
+        $req->execute(array(
+            'id'=> $idUtilisateur,
+            'nom'=> $nom,
+            'prenom'=> $prenom,
+            'courriel'=> $email,
+            'adresse'=> $adresse,
+            'date_de_naissance'=>$dateNaissance,
+            'url_photo'=> $photoProfil
+        ));                    
+        Session::connexion($prenom);
+        Util::redirectControlleur("utilisateur","index");
+      }     
 }
 
