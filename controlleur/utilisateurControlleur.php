@@ -5,6 +5,9 @@
  */
 
 function index($param){
+    if(!Session::isConnecte()){
+        throw new Exception("Accès interdit");
+    }
     require('vue/tableau_bord_parent.php');
 }
 
