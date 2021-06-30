@@ -42,6 +42,71 @@ function deconnexion($param){
     Util::redirectControlleur("accueil", "index");
 }
 
-function inscription(){
+function inscription($param){
+    $erreur = false;
+    $prenom = Util::param("prenom");
+    $nom = Util::param("nom");
+    $email = Util::param("email");
+    $dateNaissance = Util::param("dateNaissance");
+    $adresse = Util::param("adresse");
+    $username = Util::param("username");
+    $password = Util::param("password");
+    
+    if(isset($_FILES['photoProfil']) && !empty($_FILES['photoProfil']['name'])){
+
+        $photoProfil = Util::enregistrerImage("photoProfil");
+        throw new Exception($photoProfil);
+    }else{
+        Util::setMessage("photoProfil", "Veuillez selectionner une photo.");
+        $erreur = true;
+     }
+    
+   
+
+      if(empty($prenom)){
+         Util::setMessage("prenom", "Veuillez entrer votre prénom.");
+         $erreur = true;
+      }
+      if(empty($nom)){
+        Util::setMessage("nom", "Veuillez entrer votre nom.");
+        $erreur = true;
+     }
+
+
+     if(empty($email)){
+        Util::setMessage("email", "Veuillez entrer votre courriel.");
+        $erreur = true;
+     }else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        Util::setMessage("email", "Format de courriel invalide.");
+        $erreur = true;
+      }
+     if(empty($dateNaissance)){
+        Util::setMessage("dateNaissance", "Veuillez entrer votre date de naissance.");
+        $erreur = true;
+     }
+
+     if(empty($adresse)){
+        Util::setMessage("adresse", "Veuillez entrer votre adresse.");
+        $erreur = true;
+     }
+     if(empty($username)){
+        Util::setMessage("username", "Veuillez entrer votre nom d'utilisateur.");
+        $erreur = true;
+     }
+     if(empty($password)){
+        Util::setMessage("password", "Veuillez entrer votre mot de passe.");
+        $erreur = true;
+     }
         
+
+
+
+      if($erreur){
+        require('vue/inscription.php');
+      }else{
+          Session::connexion($prenom);
+          Util::redirectControlleur("utilisateur","index");
+      }
+      
 }
+

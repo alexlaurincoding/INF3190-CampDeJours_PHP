@@ -30,7 +30,7 @@ class Util {
         $_SESSION['messages'][$parametre] = $valeur;
     }
 
-    function guidv4($data = null) {
+    public static function guidv4($data = null) {
         // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
         $data = $data ?? random_bytes(16);
         assert(strlen($data) == 16);
@@ -46,8 +46,22 @@ class Util {
     
     public static function param($parametre) {
         if (ISSET($_REQUEST[$parametre])) {
-            return $_REQUEST[$parametre];
+            return self::sanitizeUserInput($_REQUEST[$parametre]);
         }
         return '';
-    }    
+    }
+
+    public static function enregistrerImage($photo) {
+        $temp = explode(".", $_FILES[$photo]["name"]);
+        $destination = 'public/img/';
+        $fichierDestination = $destination . self::guidv4(). '.' . end($temp);
+        move_uploaded_file($_FILES[$photo]["tmp_name"], $fichierDestination);
+
+        return $fichierDestination;
+    }
+
+
+    public static function verificationChamp($valeur){
+
+    }
 }

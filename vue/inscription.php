@@ -19,16 +19,17 @@
         </ol>
       </nav>
 
+      
       <div class="card w-50 mx-auto mb-5">
         <div class="card-body">
           <h5 class="card-title">Informations personnelles</h5>
-          <form>
+          <form method="post" action="<?=Util::getChemin();?>/utilisateur/inscription" enctype="multipart/form-data">
             <div class="row pt-2">
               <div class="col text-center">
                 <input
                   type="file"
                   accept="image/*"
-                  name="image"
+                  name="photoProfil"
                   id="uploadProfil"
                   onchange="loadFile(event)"
                   style="display: none"
@@ -44,33 +45,51 @@
                     src="../public/img/profil.png"
                     class="rounded"
                   />
-                  <p>Photo de profil</p>
+                  <p>Photo de profil<br>
+                  <span class="erreur">
+                    <?= Util::message("photoProfil"); ?>
+                </span></p>                  
                 </label>
               </div>
             </div>
             <div class="row px-2">
               <div class="col">
                 <label for="prenom" class="form-label">Prénom</label>
-                <input type="text" id="prenom" class="form-control" />
+                <input type="text" id="prenom" name="prenom" class="form-control" />
+                <span class="erreur">
+                    <?= Util::message("prenom"); ?>
+                </span>
               </div>
               <div class="col">
                 <label for="nom" class="form-label">Nom</label>
-                <input type="text" id="nom" class="form-control" />
+                <input type="text" id="nom" name="nom" class="form-control" />
+                <span class="erreur">
+                    <?= Util::message("nom"); ?>
+                </span>
               </div>
             </div>
             <div class="row p-2">
               <div class="col">
                 <label for="emailemail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail3" />
+                <input type="email" class="form-control" name="email" id="inputEmail3" />
+                <span class="erreur">
+                    <?= Util::message("email"); ?>
+                </span>
               </div>
               <div class="col">
                 <label for="ddn" class="form-label">Date de naissance</label>
-                <input type="date" id="ddn" class="form-control" />
+                <input type="date" id="ddn" name="dateNaissance" class="form-control" />
+                <span class="erreur">
+                    <?= Util::message("dateNaissance"); ?>
+                </span>
               </div>
             </div>
             <div class="form-group p-2">
               <label for="adresse" class="form-label">Adresse complète</label>
-              <textarea class="form-control" id="adresse"></textarea>
+              <textarea class="form-control" name="adresse" id="adresse"></textarea>
+              <span class="erreur">
+                    <?= Util::message("adresse"); ?>
+                </span>
             </div>
             <hr />
             <h5 class="card-title">Informations du compte</h5>
@@ -79,11 +98,17 @@
                 <label for="username" class="form-label"
                   >Nom d'utilisateur</label
                 >
-                <input type="text" id="username" class="form-control" />
+                <input type="text" id="username" name="username" class="form-control" />
+                <span class="erreur">
+                    <?= Util::message("username"); ?>
+                </span>
               </div>
               <div class="col">
                 <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" id="password" class="form-control" />
+                <input type="password" id="password" name="password" class="form-control" />
+                <span class="erreur">
+                    <?= Util::message("password"); ?>
+                </span>
               </div>
             </div>
             <div class="row m-3">
