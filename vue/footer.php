@@ -8,13 +8,13 @@
 
   <div class="footer-left">
     <p class="footer-links">
-      <a class="link-1" href="<?=getChemin()?>">Accueil</a>
+      <a class="link-1" href="<?=Util::getChemin()?>">Accueil</a>
 
-      <a href="<?=getChemin()?>/accueil/description">Description des programmes</a>
+      <a href="<?=Util::getChemin()?>/accueil/description">Description des programmes</a>
 
-      <a href="<?=getChemin()?>/accueil/inscription">Inscription des parents</a>
+      <a href="<?=Util::getChemin()?>/accueil/inscription">Inscription des parents</a>
 
-      <a href="<?=getChemin()?>/accueil/contact">Contact</a>
+      <a href="<?=Util::getChemin()?>/accueil/contact">Contact</a>
     </p>
 
     <p>Camp de jour des nerds &copy; 2021</p>

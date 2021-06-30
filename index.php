@@ -30,8 +30,8 @@ try {
     $actionControlleur($param);
 }
 catch(Exception $e) {
-    $msgErreur = $e->getMessage();
-    require('vue/erreur.php');
+    Util::setMessage('erreur', $e->getMessage());
+    Vue::render('erreur');
 }
 
 function getControlleur(){
@@ -58,7 +58,7 @@ function getParam(){
 }
 
 function getUrlParams(){
-    $chemin = getChemin();
+    $chemin = Util::getChemin();
     $url = (ISSET($_SERVER['REDIRECT_URL'])) ? $_SERVER['REDIRECT_URL'] : '.';
     $requete = str_replace($chemin, '', $url);
     $paramsTab = explode('/',$requete);
@@ -66,6 +66,3 @@ function getUrlParams(){
     return $paramsTab;
 }
 
-function getChemin() {
-    return (ISSET($_SERVER['REDIRECT_BASE'])) ? $_SERVER['REDIRECT_BASE'] : '.';
-}

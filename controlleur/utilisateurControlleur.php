@@ -8,7 +8,7 @@ function index($param){
     if(!Session::isConnecte()){
         throw new Exception("Accès interdit");
     }
-    require('vue/tableau_bord_parent.php');
+    Vue::render('tableau_bord_parent');
 }
 
 function connexion($param){
@@ -102,7 +102,7 @@ function inscription($param){
         Util::setMessage("inputAdresse", $adresse);
         Util::setMessage("inputUsername", $username);
         Util::setMessage("inputPassword", $password);
-        require('vue/inscription.php');
+        Vue::render('inscription');
     }else{
         $photoProfil = Util::enregistrerImage("photoProfil");  
         Utilisateur::sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  

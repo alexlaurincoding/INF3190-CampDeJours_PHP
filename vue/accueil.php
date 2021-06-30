@@ -1,5 +1,3 @@
-<?php ob_start(); ?>
-
 <h1>Camp de jour des nerds</h1>
       <h4>Parce que vous le codez bien</h4>
 
@@ -13,16 +11,16 @@
             simplement consulter des renseignements sur le camps et s'y
             inscrire.
           </p>
-          <button href="<?=getChemin()?>" class="btn btn-dark" disabled>
+          <button href="<?=Util::getChemin()?>" class="btn btn-dark" disabled>
             Accueil
           </button>
-          <a href="<?=getChemin()?>/accueil/description" class="btn btn-dark"
+          <a href="<?=Util::getChemin()?>/accueil/description" class="btn btn-dark"
             >Description des programmes</a
           >
-          <a href="<?=getChemin()?>/accueil/inscription" class="btn btn-dark"
+          <a href="<?=Util::getChemin()?>/accueil/inscription" class="btn btn-dark"
             >Inscription des parents</a
           >
-          <a href="<?=getChemin()?>/accueil/contact" class="btn btn-dark">Contact</a>
+          <a href="<?Util::getChemin()?>/accueil/contact" class="btn btn-dark">Contact</a>
         </div>
       </div>
 
@@ -34,7 +32,7 @@
             enfants inscrits au camp de jour. Ces pages comprennent un tableau
             de bord pour inscrire des enfants aux activités du camp.
           </p>
-          <a href="<?=getChemin()?>/utilisateur/index" class="btn btn-dark"
+          <a href="<?=Util::getChemin()?>/utilisateur/index" class="btn btn-dark"
             >Tableau de bord du parent</a
           >
         </div>
@@ -48,12 +46,9 @@
             administrateurs du camp de jour. Ces pages permettent de gérer les
             programmes et de voir les enfants qui y sont inscrits.
           </p>
-          <a href="<?=getChemin()?>/admin/gestionProgramme" class="btn btn-dark">Gérer les programmes</a>
-          <a href="<?=getChemin()?>/admin/index" class="btn btn-dark"
+          <a href="<?=Util::getChemin()?>/admin/gestionProgramme" class="btn btn-dark">Gérer les programmes</a>
+          <a href="<?=Util::getChemin()?>/admin/index" class="btn btn-dark"
             >Voir les inscriptions</a
           >
         </div>
       </div>
-
-<?php $contenu = ob_get_clean(); ?>
-<?php require('template.php'); ?>
