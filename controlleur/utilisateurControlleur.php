@@ -94,7 +94,7 @@ function inscription($param){
         require('vue/inscription.php');
     }else{
         $photoProfil = Util::enregistrerImage("photoProfil");
-        sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
+        Utilisateur::sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
         Session::connexion($prenom);
         Util::redirectControlleur("utilisateur","index");
       }     
