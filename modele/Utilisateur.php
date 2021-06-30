@@ -13,14 +13,8 @@ class Utilisateur {
         return $isBonMotDePasse;
     }
 
-    
-
-    public function inscription(){
-        
-    }
-
     public static function isAdmin($nomUtilisateur) {
-        // faire!
+        return false;
         
     }
 }

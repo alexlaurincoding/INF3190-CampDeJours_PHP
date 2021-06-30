@@ -37,8 +37,13 @@
         <button class="btn btn-dark">Connexion</button>
         <a class="btn btn-secondary mx-2" href="<?=getChemin()?>/accueil/inscription">Inscription</a>
       </form>
-      <?php } else { ?>
-        <a class="btn btn-secondary mx-2" href="<?=getChemin()?>/utilisateur/deconnexion">Déconnexion</a>
+      <?php } else { if(Session::isAdmin()){?>
+        <a class="nav-link active" aria-current="page" href="<?=getChemin()?>/admin/gestionProgramme">Gérer les programmes</a>
+        <a class="nav-link active" aria-current="page" href="<?=getChemin()?>/admin/index">Voir les inscriptions</a>
+      <?php }else{ ?>
+        <a class="nav-link active" aria-current="page" href="<?=getChemin()?>/utilisateur/index">Tableau de bord</a>
+      <?php } ?>
+        <a class="nav-link active" aria-current="page" href="<?=getChemin()?>/utilisateur/deconnexion"><strong>Déconnexion</strong></a>
       <?php } ?>
     </div>
   </div>

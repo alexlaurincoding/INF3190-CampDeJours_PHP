@@ -9,7 +9,7 @@ function index($param){
 }
 
 function connexion($param){
-    
+
     if (!empty($_REQUEST["username"]) && !empty($_REQUEST["password"])) {
         $nomUtilisateur = Util::sanitizeUserInput($_REQUEST["username"]);
         $motDePasse = Util::sanitizeUserInput($_REQUEST["password"]);
@@ -23,10 +23,12 @@ function connexion($param){
     } else {
        throw new Exception ("Nom d'utilisateur ou mot de passe manquant.");
     }
+
     Util::setMessage("global", "Vous êtes maintenant connecté(e).");
+    
     if (Session::isAdmin()) {
         Util::redirectControlleur("admin", "index");
-    } else if (Session::isConnecte()) {
+    } else {
         Util::redirectControlleur("utilisateur", "index");
     }
 }
