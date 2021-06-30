@@ -3,19 +3,11 @@
 /**
  * Controlleur Utilisateur
  */
-
-function index($param){
-    if(!Session::isConnecte()){
-        throw new Exception("Accès interdit");
-    }
-    Vue::render('tableau_bord_parent');
-}
-
 function connexion($param){
 
     if (!empty($_REQUEST["username"]) && !empty($_REQUEST["password"])) {
-        $nomUtilisateur = Util::sanitizeUserInput($_REQUEST["username"]);
-        $motDePasse = Util::sanitizeUserInput($_REQUEST["password"]);
+        $nomUtilisateur = Util::param('username');
+        $motDePasse = Util::param('password');
 
         if (Utilisateur::isBonMotDePasse($nomUtilisateur, $motDePasse)) {
             $isAdmin = Utilisateur::isAdmin($nomUtilisateur);
@@ -32,7 +24,7 @@ function connexion($param){
     if (Session::isAdmin()) {
         Util::redirectControlleur("admin", "index");
     } else {
-        Util::redirectControlleur("utilisateur", "index");
+        Util::redirectControlleur("parent", "index");
     }
 }
 
@@ -107,7 +99,7 @@ function inscription($param){
         $photoProfil = Util::enregistrerImage("photoProfil");  
         Utilisateur::sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
         Session::connexion($prenom);
-        Util::redirectControlleur("utilisateur","index");
+        Util::redirectControlleur("parent","index");
       }     
 }
 
