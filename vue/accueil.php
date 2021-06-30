@@ -34,7 +34,7 @@
             enfants inscrits au camp de jour. Ces pages comprennent un tableau
             de bord pour inscrire des enfants aux activités du camp.
           </p>
-          <a href="tableau_bord_parent.html" class="btn btn-dark"
+          <a href="<?=getChemin()?>/utilisateur/index" class="btn btn-dark"
             >Tableau de bord du parent</a
           >
         </div>
@@ -48,8 +48,8 @@
             administrateurs du camp de jour. Ces pages permettent de gérer les
             programmes et de voir les enfants qui y sont inscrits.
           </p>
-          <a href="gestion_programme.html" class="btn btn-dark">Gérer les programmes</a>
-          <a href="inscription_admin.html" class="btn btn-dark"
+          <a href="<?=getChemin()?>/admin/gestionProgramme" class="btn btn-dark">Gérer les programmes</a>
+          <a href="<?=getChemin()?>/admin/index" class="btn btn-dark"
             >Voir les inscriptions</a
           >
         </div>

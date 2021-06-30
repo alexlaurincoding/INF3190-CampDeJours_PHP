@@ -37,7 +37,7 @@ function connexion($param){
 }
 
 function deconnexion($param){
-    Session::deconnexion();
+    if(Session::isConnecte()) Session::deconnexion();
     Util::setMessage('global', 'Vous avez été doconnecté avec succès!');
     Util::redirectControlleur("accueil", "index");
 }
