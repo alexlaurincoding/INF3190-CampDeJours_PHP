@@ -22,7 +22,7 @@ class ParentDAO {
         $adresse = $donnee['adresse'];
         $dateDeNaissance = $donnee['date_de_naissance'];
         $photoProfil = $donnee['url_photo'];
-        
+
         $enfants = EnfantDAO::getEnfantsParNomUtilisateurParent($nomUtilisateur);
 
         $parent = new ParentModel($id, $nom, $prenom, $courriel, $adresse, $dateDeNaissance, $photoProfil, $enfants);
@@ -54,6 +54,11 @@ class ParentDAO {
             'url_photo'=> $parent->getPhotoProfil()
         )); 
         BaseDonnee::close();
+    }
+
+
+    public static function modifierParent($parent){
+
     }
 
 }

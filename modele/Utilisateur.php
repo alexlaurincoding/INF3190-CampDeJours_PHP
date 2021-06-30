@@ -13,6 +13,18 @@ class Utilisateur {
         return false;
     }
 
+        public static function isIdUtilisateurExistant($idUtilisateur) {
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('SELECT nom_utilisateur FROM utilisateur WHERE id = :id');
+        $req->execute(array('id'=> $idUtilisateur));
+        $donnee = $req->fetch();
+        BaseDonnee::close();   
+        if($donnee){
+            return true;
+        }
+        return false;
+    }
+
     public static function isBonMotDePasse($nomUtilisateur, $motDePasse) {
         $bdd = BaseDonnee::getConnexion();
         $req = $bdd->prepare('SELECT nom_utilisateur, mot_de_passe FROM utilisateur WHERE nom_utilisateur = :nomUtilisateur');
