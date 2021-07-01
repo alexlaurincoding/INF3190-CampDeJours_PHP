@@ -93,7 +93,7 @@ function inscription($param){
         Util::setMessage("inputDateNaissance", $dateNaissance);
         Util::setMessage("inputAdresse", $adresse);
         Util::setMessage("inputUsername", $username);
-        Util::setMessage("inputPassword", $password);
+
         Vue::render('inscription');
     }else{
         $photoProfil = Util::enregistrerImage("photoProfil");  
