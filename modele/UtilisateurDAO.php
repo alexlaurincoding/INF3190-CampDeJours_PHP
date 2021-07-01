@@ -1,5 +1,5 @@
 <?php
-class Utilisateur {
+class UtilisateurDAO {
 
     public static function isUtilisateurExistant($nomUtilisateur) {
         $bdd = BaseDonnee::getConnexion();
@@ -34,10 +34,6 @@ class Utilisateur {
         return password_verify($motDePasse, $donnee['mot_de_passe']);
     }
 
-    public static function getUtilisateur($id){
-
-    }
-
     public static function sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil){   
         //sauvegarde utilisateur dans la BD
         $bdd = BaseDonnee::getConnexion();
@@ -55,10 +51,5 @@ class Utilisateur {
         //Sauvegarder un nouveau parent dans la base de données
         $parent = new ParentModel($idUtilisateur, $nom, $prenom, $email, $adresse, $dateNaissance, $photoProfil);
         $parent-> sauvegarder();
-    }
-
-    public static function isAdmin($nomUtilisateur) {
-        return false;
-        
     }
 }

@@ -9,8 +9,8 @@ function connexion($param){
         $nomUtilisateur = Util::param('username');
         $motDePasse = Util::param('password');
 
-        if (Utilisateur::isBonMotDePasse($nomUtilisateur, $motDePasse)) {
-            $isAdmin = Utilisateur::isAdmin($nomUtilisateur);
+        if (UtilisateurDAO::isBonMotDePasse($nomUtilisateur, $motDePasse)) {
+            $isAdmin = Session::isAdmin($nomUtilisateur);
             Session::connexion($nomUtilisateur, $isAdmin);
         } else {
             throw new Exception ("Mauvais nom d'utilisateur ou mot de passe.");
@@ -74,7 +74,7 @@ function inscription($param){
     if(empty($username)){
         Util::setMessage("username", "Veuillez entrer votre nom d'utilisateur.");
         $erreur = true;
-    }else if (Utilisateur::isUtilisateurExistant($username)){
+    }else if (UtilisateurDAO::isUtilisateurExistant($username)){
         Util::setMessage("username", "Ce nom d'utilisateur n'est pas disponible.");
         $erreur = true;
     }
@@ -97,7 +97,7 @@ function inscription($param){
         Vue::render('inscription');
     }else{
         $photoProfil = Util::enregistrerImage("photoProfil");  
-        Utilisateur::sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
+        UtilisateurDAO::sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
         Session::connexion($username);
         Util::redirectControlleur("parent","index");
       }     
