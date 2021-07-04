@@ -54,7 +54,7 @@ class ParentModel {
     }
 
     public function sauvegarder(){
-        if(Utilisateur::isUtilisateurExistant($this->id)){
+        if(UtilisateurDAO::isUtilisateurExistant($this->id)){
             //Modifier un parent existant
             ParentDAO::modifierParent($this);
         }else{
