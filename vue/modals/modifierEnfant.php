@@ -1,7 +1,7 @@
-      <!-- Modal Ajouter un enfant -->
+<!-- Modal Modifier Bart -->
       <div
         class="modal fade"
-        id="ajouterEnfant"
+        id="modifierEnfant<?=$enfantModif->getId()?>"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
@@ -9,7 +9,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Ajouter un enfant</h5>
+              <h5 class="modal-title">Modifier un enfant</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -18,26 +18,28 @@
               ></button>
             </div>
             <div class="modal-body">
-            <form method="post" action="<?=Util::getChemin()?>/parent/ajouterEnfant" enctype="multipart/form-data">
+            <form method="post" action="<?=Util::getChemin()?>/parent/modifierEnfant/<?=$enfantModif->getId()?>" enctype="multipart/form-data">
               <div class="row pt-2">
                 <div class="col text-center">
                   <input
                     type="file"
                     accept="image/*"
                     name="photoEnfant"
-                    id="uploadChild"
+                    id="uploadBart"
                     onchange="loadFile(event)"
                     style="display: none"
                   />
-                  <label for="uploadChild" style="cursor: pointer" class="form-label">
+                  <label for="uploadBart" style="cursor: pointer" class="form-label">
                     <img
-                      id="uploadChildImg"
+                      id="uploadBartImg"
                       width="150"
-                      src="<?=Util::getChemin()?>/public/img/profil.png"
+                      src="<?=Util::getChemin()?>/<?=$enfantModif->getPhotoProfil()?>"
                       class="rounded"
                     />
-                    <p>Photo de l'enfant</p>
-                    <span class="erreur"><?= Util::message("photoEnfant"); ?></span>
+                    <p>
+                        Photo de <?=$enfantModif->getPrenom()?><br>
+                        <span class="erreur"><?= Util::message("photoEnfantModif" . $enfantModif->getId()); ?></span>
+                    </p>
                   </label>
                 </div>
               </div>
@@ -50,11 +52,12 @@
                     <input
                       type="text"
                       class="form-control"
-                      id="prenomEnfant"
+                      id="recipient-name"
                       name="prenomEnfant"
+                      value="<?=$enfantModif->getPrenom()?>"
                     />
+                    <span class="erreur"><?= Util::message("prenomEnfantModif" . $enfantModif->getId()); ?></span>
                   </div>
-                  <span class="erreur"><?= Util::message("prenomEnfant"); ?></span>
                 </div>
                 <div class="form-group col">
                   <div class="form-group">
@@ -64,25 +67,31 @@
                     <input
                       type="text"
                       class="form-control"
-                      id="nomEnfant"
+                      id="recipient-name"
                       name="nomEnfant"
+                      value="<?=$enfantModif->getNom()?>"
                     />
-                    <span class="erreur"><?= Util::message("nomEnfant"); ?></span>
+                    <span class="erreur"><?= Util::message("nomEnfantModif" . $enfantModif->getId()); ?></span>
                   </div>
                 </div>
                 <div class="form-group row mt-3">
                   <label for="example-date-input" class="form-label"
                     >Date de naissance</label
                   >
-                  <div class="col-10">
+                  <div class="col-6">
                     <input
                       class="form-control"
                       type="date"
-                      id="dateNaissanceEnfant"
+                      value="<?=$enfantModif->getDateDeNaissance()?>"
+                      id="example-date-input"
                       name="dateNaissanceEnfant"
                     />
-                    <span class="erreur"><?= Util::message("dateNaissanceEnfant"); ?></span>
+                    <span class="erreur"><?= Util::message("dateNaissanceEnfantModif" . $enfantModif->getId()); ?></span>
                   </div>
+                </div>
+                <div class="form-group mt-3">
+                  <label class="form-label">Notes</label>
+                  <textarea class="form-control" name="notesEnfant"><?=$enfantModif->getNotes()?></textarea>
                 </div>
               </div>
             </div>
@@ -94,10 +103,10 @@
               >
                 Fermer
               </button>
-              <button type="submit" class="btn btn-dark">Ajouter</button>
+              <button type="submit" class="btn btn-dark">Modifier</button>
               </form>
             </div>
           </div>
         </div>
       </div>
-      <!-- FIN Modal Ajouter un enfant -->
+      <!-- FIN Modal Modifier Bart -->

@@ -19,7 +19,25 @@ class EnfantDAO {
      * 
      */
     public static function getEnfantParId($id){
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('SELECT * FROM enfant WHERE id = :id');
 
+        $req->execute(array('id'=> $id));
+        $donnee = $req->fetch();
+
+        $id = $donnee['id'];
+        $nom = $donnee['nom'];
+        $prenom = $donnee['prenom'];
+        $dateDeNaissance = $donnee['date_de_naissance'];
+        $photoProfil = $donnee['url_photo'];
+        $notes = $donnee['notes'];
+        $parent = null;
+
+        $enfant = new EnfantModel($id, $nom, $prenom, $dateDeNaissance, $photoProfil, $notes, $parent);
+        
+        BaseDonnee::close();   
+
+        return $enfant;
     }
 
     /**
@@ -49,7 +67,20 @@ class EnfantDAO {
     }
 
     public static function modifierEnfant($enfant){
+        $bdd = BaseDonnee::getConnexion();
+        
+        $req = $bdd->prepare('UPDATE enfant 
+                              SET nom = :nom, prenom = :prenom, date_naissance = :date_naissance, notes = :notes
+                              WHERE id = :id');
+        $req->execute(array(
+            'nom' => $enfant->getNom(),
+            'prenom' => $enfant->getPrenom(),
+            'date_naissance' => $enfant->getDateDeNaissance(),
+            'notes' => $enfant->getNotes(),
+            'id' => $enfant->getId()
+            ));       
 
+        BaseDonnee::close();
     }
 
     /**
@@ -72,6 +103,18 @@ class EnfantDAO {
             'url_photo'=> $enfant->getPhotoProfil(),
             'id_parent'=> $enfant->getParent()->getId()
         )); 
+        BaseDonnee::close();
+    }
+
+    public static function changerPhotoProfil($id, $photoProfil){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('UPDATE enfant SET url_photo = :url_photo WHERE id = :id');
+        $req->execute(array(
+            'url_photo' => $photoProfil,
+            'id' => $id
+            ));
+
         BaseDonnee::close();
     }
 

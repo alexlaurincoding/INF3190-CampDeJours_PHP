@@ -17,5 +17,13 @@ function contact($param){
 }
 
 function inscription($param){
-    Vue::render('inscription');
+    if(Session::isConnecte()){
+        if(Session::isAdmin()){
+            Util::redirectControlleur("admin", "index");
+        }else{
+            Util::redirectControlleur("parent", "index");
+        }
+    }else{
+        Vue::render('inscription');
+    }
 }

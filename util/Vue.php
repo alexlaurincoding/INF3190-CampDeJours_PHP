@@ -6,4 +6,10 @@ class Vue {
         $contenu = ob_get_clean();
         require('vue/' . $template . '.php');
     }
+
+    public static function loadModals(...$modals){
+        foreach($modals as $modal){
+            require("vue/modals/" . $modal . ".php");
+        }
+    }
 }

@@ -1,4 +1,6 @@
-<?php $parent = Session::getParentUser();
+<?php 
+$parent = Session::getParentUser();
+//Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
 require('modals/ajouterEnfant.php');
 ?>
@@ -65,6 +67,8 @@ require('modals/ajouterEnfant.php');
           </div>
         </div>
       </div>
+
+
       <div id="children" class="card mb-4">
         <div class="card-header">
           <div class="row mb-2 mt-2">
@@ -88,7 +92,12 @@ require('modals/ajouterEnfant.php');
         </div>
         <div class="card-body">
 
-          <?php foreach ($parent->getEnfants() as $enfant) { ?>
+          <?php 
+          $enfantModif;
+          foreach ($parent->getEnfants() as $enfant) { 
+          $enfantModif = $enfant;
+          require('modals/modifierEnfant.php');
+          ?>
 
           <div class="card mb-4">
             <div class="card-header">
@@ -101,7 +110,7 @@ require('modals/ajouterEnfant.php');
                     type="button"
                     class="btn btn-secondary btn-sm"
                     data-bs-toggle="modal"
-                    data-bs-target="#modifierBart"
+                    data-bs-target="#modifierEnfant<?=$enfant->getId()?>"
                   >
                     <i class="fas fa-pen"></i>
                     Modifier <?=$enfant->getPrenom()?>

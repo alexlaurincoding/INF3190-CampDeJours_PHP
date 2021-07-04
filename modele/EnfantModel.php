@@ -1,5 +1,5 @@
 <?php 
-class EnfantModel {
+class EnfantModel implements JsonSerializable{
     
     private $id;
     private $nom;
@@ -19,6 +19,13 @@ class EnfantModel {
         $this->notes = $notes;
         $this->parent = $parent;
         $this->inscriptions = $inscriptions;
+    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
     }
 
     public static function creerEnfant(){
