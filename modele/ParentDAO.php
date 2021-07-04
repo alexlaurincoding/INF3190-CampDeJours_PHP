@@ -23,9 +23,9 @@ class ParentDAO {
         $dateDeNaissance = $donnee['date_de_naissance'];
         $photoProfil = $donnee['url_photo'];
 
-        $enfants = EnfantDAO::getEnfantsParNomUtilisateurParent($nomUtilisateur);
-
-        $parent = new ParentModel($id, $nom, $prenom, $courriel, $adresse, $dateDeNaissance, $photoProfil, $enfants);
+        $parent = new ParentModel($id, $nom, $prenom, $courriel, $adresse, $dateDeNaissance, $photoProfil);
+        $enfants = EnfantDAO::getEnfants($parent);
+        $parent->setEnfants($enfants);
         
         BaseDonnee::close();   
 

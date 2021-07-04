@@ -65,8 +65,7 @@ require('modals/ajouterEnfant.php');
           </div>
         </div>
       </div>
-
-            <div id="children" class="card mb-4">
+      <div id="children" class="card mb-4">
         <div class="card-header">
           <div class="row mb-2 mt-2">
             <div class="col-6">
@@ -88,11 +87,14 @@ require('modals/ajouterEnfant.php');
           </div>
         </div>
         <div class="card-body">
+
+          <?php foreach ($parent->getEnfants() as $enfant) { ?>
+
           <div class="card mb-4">
             <div class="card-header">
               <div class="row mb-2 mt-2">
                 <div class="col-6">
-                  <h2 class="mb-0">Simpson, Bart</h2>
+                  <h2 class="mb-0"><?=$enfant->getNom()?>, <?=$enfant->getPrenom()?></h2>
                 </div>
                 <div class="col-6 d-flex align-items-end justify-content-end">
                   <button
@@ -110,26 +112,29 @@ require('modals/ajouterEnfant.php');
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <img src="../img/bart_mini.jpg" height="160rem" alt="" />
+                  <img src="<?=Util::getChemin()?>/<?=$enfant->getPhotoProfil()?>" height="160rem" alt="" />
                 </div>
                 <div class="col">
                   <h6 class="mb-0 card-title">Nom</h6>
-                  <p class="card-text">Simpson</p>
+                  <p class="card-text"><?=$enfant->getNom()?></p>
                   <h6 class="mb-0 card-title">Prenom</h6>
-                  <p class="card-text">Bart</p>
+                  <p class="card-text"><?=$enfant->getPrenom()?></p>
                   <h6 class="mb-0 card-title">Notes</h6>
-                  <p class="card-text">Alergie aux arachides.</p>
+                  <p class="card-text"><?=$enfant->getNotes()?></p>
                 </div>
                 <div class="col">
                   <h6 class="mb-0 card-title">Adresse</h6>
                   <address class="card-text">
-                    2121 Chemin de Cailloux, Springfield
+                    <?=$parent->getAdresse()?>
                   </address>
                   <h6 class="mb-0 card-title">Date De Naissance</h6>
-                  <p class="card-text">4 mai 2001</p>
+                  <p class="card-text"><?=$enfant->getDateDeNaissance()?></p>
                 </div>
               </div>
             </div>
           </div>
+
+          <?php } ?>
+
         </div>
       </div>

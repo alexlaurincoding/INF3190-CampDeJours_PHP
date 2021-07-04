@@ -26,8 +26,26 @@ class EnfantDAO {
      * Retourne une collection d'Enfant pour un Parent
      * 
      */
-    public static function getEnfantsParNomUtilisateurParent($nomUtilisateurParent){
-        return null;
+    public static function getEnfants($parent){
+        $enfants = array();
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('SELECT * FROM enfant WHERE id_parent = :id_parent');
+
+        $req->execute(array('id_parent'=> $parent->getId()));
+        while($donnee = $req->fetch()){
+            $enfant = new EnfantModel($donnee['id'], 
+                                      $donnee['nom'], 
+                                      $donnee['prenom'], 
+                                      $donnee['date_naissance'], 
+                                      $donnee['url_photo'], 
+                                      $donnee['notes'], 
+                                      $parent);
+            array_push($enfants, $enfant);
+        }
+        
+        BaseDonnee::close();   
+
+        return $enfants;
     }
 
     public static function modifierEnfant($enfant){
