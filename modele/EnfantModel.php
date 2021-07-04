@@ -21,6 +21,10 @@ class EnfantModel {
         $this->inscriptions = $inscriptions;
     }
 
+    public static function creerEnfant(){
+        return new EnfantModel(Util::guidv4(), null, null, null, null, null, null);
+    }
+
     public function getId(){
         return $this->id;
     }
@@ -51,5 +55,43 @@ class EnfantModel {
 
     public function getInscriptions(){
         return $this->inscriptions;
+    }
+
+    public function setNom($nom){
+        $this->nom = $nom;
+    }
+
+    public function setPrenom($prenom){
+        $this->prenom = $prenom;
+    }
+
+    public function setDateDeNaissance($dateDeNaissance){
+        $this->dateDeNaissance = $dateDeNaissance;
+    }
+
+    public function setPhotoProfil($photoProfil){
+        $this->photoProfil = $photoProfil;
+    }
+
+    public function setNotes($note){
+        $this->notes = $note;
+    }
+
+    public function setParent($parent){
+        $this->parent = $parent;
+    }
+
+    public function setInscriptions($inscriptions){
+        $this->inscriptions = $inscriptions;
+    }
+
+    public function sauvegarder(){
+        if(EnfantDAO::isIdEnfantExistant($this->id)){
+            //Modifier un enfant existant
+            EnfantDAO::modifierEnfant($this);
+        }else{
+            //Créer un nouveau enfant
+            EnfantDAO::sauvegarderEnfant($this);
+        }
     }
 }

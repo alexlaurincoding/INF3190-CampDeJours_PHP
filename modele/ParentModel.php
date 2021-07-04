@@ -18,7 +18,11 @@ class ParentModel {
         $this->adresse = $adresse;
         $this->dateDeNaissance = $dateDeNaissance;
         $this->photoProfil = $photoProfil;
-        $this->enfants = $enfants;
+        if(is_null($enfants)){
+            $this->enfants = array();
+        }else{
+            $this->enfants = $enfants;
+        }
     }
 
     public function getId(){
@@ -80,6 +84,10 @@ class ParentModel {
 
     public function setEnfants($enfants){
         $this->enfants = $enfants;
+    }
+
+    public function ajouterEnfant($enfant){
+        array_push($this->enfants, $enfant);
     }
 
     public function sauvegarder(){

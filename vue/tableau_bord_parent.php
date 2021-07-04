@@ -1,5 +1,6 @@
 <?php $parent = Session::getParentUser();
 require('modals/modifierParent.php');
+require('modals/ajouterEnfant.php');
 ?>
 
 <h1>Tableau de bord des parents</h1>
@@ -60,6 +61,74 @@ require('modals/modifierParent.php');
               </address>
               <h6 class="mb-0 card-title">Date De Naissance</h6>
               <p class="card-text"><?=$parent->getDateDeNaissance()?></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <div id="children" class="card mb-4">
+        <div class="card-header">
+          <div class="row mb-2 mt-2">
+            <div class="col-6">
+              <h2 class="mb-0">
+                </i> Enfants à charge
+              </h2>
+            </div>
+            <div class="col-6 d-flex align-items-end justify-content-end">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#ajouterEnfant"
+              >
+                <i class="fas fa-plus"></i>
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card mb-4">
+            <div class="card-header">
+              <div class="row mb-2 mt-2">
+                <div class="col-6">
+                  <h2 class="mb-0">Simpson, Bart</h2>
+                </div>
+                <div class="col-6 d-flex align-items-end justify-content-end">
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modifierBart"
+                  >
+                    <i class="fas fa-pen"></i>
+                    Modifier
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <img src="../img/bart_mini.jpg" height="160rem" alt="" />
+                </div>
+                <div class="col">
+                  <h6 class="mb-0 card-title">Nom</h6>
+                  <p class="card-text">Simpson</p>
+                  <h6 class="mb-0 card-title">Prenom</h6>
+                  <p class="card-text">Bart</p>
+                  <h6 class="mb-0 card-title">Notes</h6>
+                  <p class="card-text">Alergie aux arachides.</p>
+                </div>
+                <div class="col">
+                  <h6 class="mb-0 card-title">Adresse</h6>
+                  <address class="card-text">
+                    2121 Chemin de Cailloux, Springfield
+                  </address>
+                  <h6 class="mb-0 card-title">Date De Naissance</h6>
+                  <p class="card-text">4 mai 2001</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
