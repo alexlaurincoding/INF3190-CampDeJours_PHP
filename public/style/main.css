@@ -1,0 +1,263 @@
+body {
+  background-color: #f0f0f0;
+  height: 100%;
+  position: relative;
+}
+
+.modal-backdrop {
+  opacity: 0 !important;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.grey {
+  color: #5c636a;
+}
+
+.card-header {
+  background-color: #ffffff;
+  border-bottom: none;
+}
+
+.week-passed {
+  color: #5c636a;
+  background-color: #f0f0f0;
+}
+
+#nav-title {
+  color: green;
+  font-weight: bolder;
+}
+
+.erreur {
+  color: red;
+  font-size: small;
+}
+
+#nav-title:hover {
+  color: grey;
+}
+
+.nav {
+  padding: 0%;
+}
+
+.navbar {
+  margin: 0%;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: grey;
+  font-weight: 400;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  color: green;
+  font-weight: 400;
+}
+
+.nav-item a:hover {
+  text-decoration: none;
+  color: green;
+  font-weight: 400;
+}
+
+.login {
+  text-align: right;
+}
+
+.login > a {
+  color: green;
+}
+
+.login > a:hover {
+  color: grey;
+}
+
+.login-logo {
+  color: #292c2f;
+}
+
+.login-logo:hover {
+  color: green;
+}
+
+.container {
+  position: relative;
+  min-height: 72vh;
+}
+
+#icone_paye {
+  color: green;
+}
+
+#icone_impaye {
+  color: red;
+}
+
+/* gestion programmes */
+.btn-secondary {
+  background-color: grey;
+}
+
+/*tableau admin*/
+
+.clicable {
+  cursor: pointer;
+}
+
+/*FOOTER CSS BEGIN*/
+
+/* font */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxK.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+section {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: inline-block;
+  background: #ccc;
+  height: 60vh;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.footer-distributed {
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: normal 16px sans-serif;
+  padding: 50px;
+}
+
+.footer-distributed .footer-left p {
+  color: #8f9296;
+  font-size: 14px;
+  margin: 0;
+}
+/* Footer links */
+
+.footer-distributed p.footer-links {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 10px;
+  padding: 0;
+  transition: ease 0.25s;
+}
+
+.footer-distributed p.footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+  transition: ease 0.25s;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "·";
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+.footer-distributed .footer-right {
+  float: right;
+  margin-top: 6px;
+  max-width: 180px;
+}
+
+.footer-distributed .footer-right a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-left: 3px;
+  transition: all 0.25s;
+}
+
+.footer-distributed .footer-right a:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+}
+
+.footer-distributed p.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries */
+
+@media (max-width: 600px) {
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-right {
+    text-align: center;
+  }
+  .footer-distributed .footer-right {
+    float: none;
+    margin: 0 auto 20px;
+  }
+  .footer-distributed .footer-left p.footer-links {
+    line-height: 1.8;
+  }
+}
+/*FOOTER CSS END*/
+
+/*Google Maps CSS*/
+.map-container {
+  overflow: hidden;
+  padding-bottom: 61.25%;
+  position: relative;
+  height: 0;
+}
+.map-container iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.messageAlert {
+  margin: 3px;
+  padding: 3px;
+  background-color: aqua;
+}

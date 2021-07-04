@@ -1,0 +1,1 @@
+<h1>Voir inscriptions</h1>
