@@ -29,22 +29,29 @@
         </li>
       </ul>
       <?php 
-          if (!Session::isConnecte()) {
-      ?>
+      
+      if (!Session::isConnecte()) { ?>
       <form class="d-flex" method="post" action="<?=Util::getChemin()?>/utilisateur/connexion">
         <input required id="username" class="form-control me-2" type="text" placeholder="Nom d'utilisateur" name="username"/>
         <input required id="password" class="form-control me-2" type="password" placeholder="Mot de passe" name="password"/>
         <button class="btn btn-dark">Connexion</button>
         <a class="btn btn-secondary mx-2" href="<?=Util::getChemin()?>/accueil/inscription">Inscription</a>
       </form>
-      <?php } else { if(Session::isAdmin()){?>
+      <?php } 
+      
+      else { if(Session::isAdmin()){?>
         <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/admin/gestionProgramme">Gérer les programmes</a>
         <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/admin/index">Voir les inscriptions</a>
-      <?php }else{ ?>
+      <?php 
+    }
+    
+    else{ ?>
         <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/parent/index">Tableau de bord</a>
       <?php } ?>
         <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/utilisateur/deconnexion"><strong>Déconnexion</strong></a>
-      <?php } ?>
+      <?php 
+    } ?>
+    
     </div>
   </div>
 </nav>

@@ -26,12 +26,17 @@ class UtilisateurDAO {
     }
 
     public static function isBonMotDePasse($nomUtilisateur, $motDePasse) {
-        $bdd = BaseDonnee::getConnexion();
-        $req = $bdd->prepare('SELECT nom_utilisateur, mot_de_passe FROM utilisateur WHERE nom_utilisateur = :nomUtilisateur');
-        $req->execute(array('nomUtilisateur'=> $nomUtilisateur));
-        $donnee = $req->fetch();
-        BaseDonnee::close();
-        return password_verify($motDePasse, $donnee['mot_de_passe']);
+        $hashPass = null;     
+        if(self::isIdUtilisateurExistant($nomUtilisateur)){
+            $bdd = BaseDonnee::getConnexion();
+            $req = $bdd->prepare('SELECT nom_utilisateur, mot_de_passe FROM utilisateur WHERE nom_utilisateur = :nomUtilisateur');
+            $req->execute(array('nomUtilisateur'=> $nomUtilisateur));
+            $donnee = $req->fetch();
+            $hashPass = $donnee['mot_de_passe'];
+            BaseDonnee::close();
+        }
+
+        return password_verify($motDePasse, $hashPass);
     }
 
     public static function sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil){   
