@@ -77,7 +77,8 @@ CREATE TABLE `enfant` (
   `prenom` varchar(100) NOT NULL,
   `date_naissance` date NOT NULL,
   `url_photo` varchar(200) DEFAULT NULL,
-  `id_parent` varchar(40) NOT NULL
+  `id_parent` varchar(40) NOT NULL,
+  `notes` varchar(2000)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
