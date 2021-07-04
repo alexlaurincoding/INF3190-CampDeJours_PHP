@@ -34,7 +34,8 @@ function deconnexion($param){
     Util::redirectControlleur("accueil", "index");
 }
 
-function inscription($param){
+
+function validerChampsFormulaire(){
     $erreur = false;
     $prenom = Util::param("prenom");
     $nom = Util::param("nom");
@@ -85,8 +86,51 @@ function inscription($param){
         Util::setMessage("password", "Votre mot de passe doit contenir au moins 6 caracteres.");
         $erreur = true;
      }
+
+     return $erreur;
+}
+
+function modification($param){
+    $prenom = Util::param("prenom");
+    $nom = Util::param("nom");
+    $email = Util::param("email");
+    $dateNaissance = Util::param("dateNaissance");
+    $adresse = Util::param("adresse");
+    $username = Util::param("username");
+    $password = Util::param("password");
        
-    if($erreur){
+    if(validerChampsFormulaire()){
+
+        Util::setMessage("inputPrenom", $prenom);
+        Util::setMessage("inputNom", $nom);
+        Util::setMessage("inputEmail", $email);
+        Util::setMessage("inputDateNaissance", $dateNaissance);
+        Util::setMessage("inputAdresse", $adresse);
+        Util::setMessage("inputUsername", $username);
+
+        Util::redirectControlleur("parent","index", "modifierProfil");
+    }else{
+        //$photoProfil = Util::enregistrerImage("photoProfil");  
+        //UtilisateurDAO::sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
+        //Session::connexion($username);
+        Util::setMessage("global", "Vos modification ont été sauvegardées.");
+        Util::redirectControlleur("parent","index");
+      }
+    
+}
+
+
+function inscription($param){
+    $prenom = Util::param("prenom");
+    $nom = Util::param("nom");
+    $email = Util::param("email");
+    $dateNaissance = Util::param("dateNaissance");
+    $adresse = Util::param("adresse");
+    $username = Util::param("username");
+    $password = Util::param("password");
+       
+    if(validerChampsFormulaire()){
+
         Util::setMessage("inputPrenom", $prenom);
         Util::setMessage("inputNom", $nom);
         Util::setMessage("inputEmail", $email);
@@ -99,7 +143,9 @@ function inscription($param){
         $photoProfil = Util::enregistrerImage("photoProfil");  
         UtilisateurDAO::sauvegarderUtilisateur($nom, $prenom, $email, $adresse, $dateNaissance, $username,  $password, $photoProfil);                  
         Session::connexion($username);
+        Util::setMessage("global", "Vous êtes maintenant inscrit.");
         Util::redirectControlleur("parent","index");
-      }     
+      }
+
 }
 
