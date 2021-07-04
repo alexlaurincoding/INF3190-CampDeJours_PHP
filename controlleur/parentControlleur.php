@@ -110,8 +110,8 @@ function index($param){
             $enfant->sauvegarder();
             
             if(isset($_FILES['photoEnfant']) && !empty($_FILES['photoEnfant']['name'])){
-                Util::supprimerImage($enfant->getId()->getPhotoProfil());
-                $photoProfil = Util::enregistrerImage("photoProfil");
+                Util::supprimerImage($enfant->getPhotoProfil());
+                $photoProfil = Util::enregistrerImage("photoEnfant");
                 $enfant->setPhotoProfil($photoProfil);
                 EnfantDAO::changerPhotoProfil($enfant->getId(), $photoProfil);
             }

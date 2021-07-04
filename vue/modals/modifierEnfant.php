@@ -25,13 +25,13 @@
                     type="file"
                     accept="image/*"
                     name="photoEnfant"
-                    id="uploadBart"
+                    id="uploadEnfant<?=$enfantModif->getId()?>"
                     onchange="loadFile(event)"
                     style="display: none"
                   />
-                  <label for="uploadBart" style="cursor: pointer" class="form-label">
+                  <label for="uploadEnfant<?=$enfantModif->getId()?>" style="cursor: pointer" class="form-label">
                     <img
-                      id="uploadBartImg"
+                      id="uploadEnfant<?=$enfantModif->getId()?>Img"
                       width="150"
                       src="<?=Util::getChemin()?>/<?=$enfantModif->getPhotoProfil()?>"
                       class="rounded"
@@ -52,7 +52,6 @@
                     <input
                       type="text"
                       class="form-control"
-                      id="recipient-name"
                       name="prenomEnfant"
                       value="<?=$enfantModif->getPrenom()?>"
                     />
@@ -67,7 +66,6 @@
                     <input
                       type="text"
                       class="form-control"
-                      id="recipient-name"
                       name="nomEnfant"
                       value="<?=$enfantModif->getNom()?>"
                     />
@@ -83,7 +81,6 @@
                       class="form-control"
                       type="date"
                       value="<?=$enfantModif->getDateDeNaissance()?>"
-                      id="example-date-input"
                       name="dateNaissanceEnfant"
                     />
                     <span class="erreur"><?= Util::message("dateNaissanceEnfantModif" . $enfantModif->getId()); ?></span>
