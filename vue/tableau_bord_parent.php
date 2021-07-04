@@ -36,7 +36,7 @@ require('modals/ajouterEnfant.php');
                 data-bs-target="#modifierProfil"
               >
                 <i class="fas fa-pen"></i>
-                Modifier
+                Modifier le profil
               </button>
             </div>
           </div>
@@ -81,7 +81,7 @@ require('modals/ajouterEnfant.php');
                 data-bs-target="#ajouterEnfant"
               >
                 <i class="fas fa-plus"></i>
-                Ajouter
+                Ajouter un enfant
               </button>
             </div>
           </div>
@@ -104,7 +104,7 @@ require('modals/ajouterEnfant.php');
                     data-bs-target="#modifierBart"
                   >
                     <i class="fas fa-pen"></i>
-                    Modifier
+                    Modifier <?=$enfant->getPrenom()?>
                   </button>
                 </div>
               </div>
