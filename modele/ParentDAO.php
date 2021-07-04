@@ -58,7 +58,21 @@ class ParentDAO {
 
 
     public static function modifierParent($parent){
+        $bdd = BaseDonnee::getConnexion();
+        
+        $req = $bdd->prepare('UPDATE parent 
+                              SET nom = :nom, prenom = :prenom, courriel = :courriel, adresse = :adresse, date_de_naissance = :date_de_naissance
+                              WHERE id = :id');
+        $req->execute(array(
+            'nom' => $parent->getNom(),
+            'prenom' => $parent->getPrenom(),
+            'courriel' => $parent->getCourriel(),
+            'adresse' => $parent->getAdresse(),
+            'date_de_naissance' => $parent->getDateDeNaissance(),
+            'id' => $parent->getId(),
+            ));       
 
+        BaseDonnee::close();
     }
 
 }

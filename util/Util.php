@@ -60,8 +60,7 @@ class Util {
         return $fichierDestination;
     }
 
-
-    public static function verificationChamp($valeur){
-
+    public static function supprimerImage($photo){
+        unlink($photo);
     }
 }

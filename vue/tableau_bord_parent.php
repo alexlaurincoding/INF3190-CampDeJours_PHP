@@ -1,4 +1,4 @@
-<?php $parent = $_SESSION['parent']; 
+<?php $parent = Session::getParentUser();
 require('modals/modifierParent.php');
 ?>
 

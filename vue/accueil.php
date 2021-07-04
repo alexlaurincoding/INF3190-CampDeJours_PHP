@@ -2,7 +2,6 @@
       <h4>Parce que vous le codez bien</h4>
 
       <h3 class="mt-5">Présentation des pages du projet</h3>
-
       <div class="card mt-3">
         <div class="card-body">
           <h5 class="card-title">Pages Publique</h5>

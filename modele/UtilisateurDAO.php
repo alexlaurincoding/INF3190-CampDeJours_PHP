@@ -26,8 +26,8 @@ class UtilisateurDAO {
     }
 
     public static function isBonMotDePasse($nomUtilisateur, $motDePasse) {
-        $hashPass = null;     
-        if(self::isIdUtilisateurExistant($nomUtilisateur)){
+        $hashPass = '';     
+        if(self::isUtilisateurExistant($nomUtilisateur)){
             $bdd = BaseDonnee::getConnexion();
             $req = $bdd->prepare('SELECT nom_utilisateur, mot_de_passe FROM utilisateur WHERE nom_utilisateur = :nomUtilisateur');
             $req->execute(array('nomUtilisateur'=> $nomUtilisateur));
@@ -56,5 +56,33 @@ class UtilisateurDAO {
         //Sauvegarder un nouveau parent dans la base de données
         $parent = new ParentModel($idUtilisateur, $nom, $prenom, $email, $adresse, $dateNaissance, $photoProfil);
         $parent-> sauvegarder();
+    }
+
+    public static function changerPhotoProfil($username, $photoProfil){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('UPDATE parent INNER JOIN utilisateur ON parent.id = utilisateur.id
+                              SET parent.url_photo = :url_photo 
+                              WHERE nom_utilisateur = :nom_utilisateur');
+        $req->execute(array(
+            'url_photo' => $photoProfil,
+            'nom_utilisateur' => $username
+            ));
+
+        BaseDonnee::close();
+    }
+
+
+    public static function changerMotPasse($username, $password){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('UPDATE utilisateur SET mot_de_passe = :mot_de_passe 
+                              WHERE nom_utilisateur = :nom_utilisateur');
+        $req->execute(array(
+            'mot_de_passe' => password_hash($password,  PASSWORD_DEFAULT),
+            'nom_utilisateur' => $username
+            ));
+
+        BaseDonnee::close();
     }
 }

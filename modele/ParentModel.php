@@ -53,8 +53,37 @@ class ParentModel {
         return $this->enfants;
     }
 
+
+    public function setNom($nom){
+        $this->nom = $nom;
+    }
+
+    public function setPrenom($prenom){
+        $this->prenom = $prenom;
+    }
+
+    public function setCourriel($courriel){
+        $this->courriel = $courriel;
+    }
+
+    public function setAdresse($adresse){
+        $this->adresse = $adresse;
+    }
+
+    public function setDateDeNaissance($dateNaissance){
+        $this->dateDeNaissance = $dateNaissance;
+    }
+
+    public function setPhotoProfil($photoProfil){
+        $this->photoProfil = $photoProfil;
+    }
+
+    public function setEnfants($enfants){
+        $this->enfants = $enfants;
+    }
+
     public function sauvegarder(){
-        if(UtilisateurDAO::isUtilisateurExistant($this->id)){
+        if(UtilisateurDAO::isIdUtilisateurExistant($this->id)){
             //Modifier un parent existant
             ParentDAO::modifierParent($this);
         }else{

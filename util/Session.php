@@ -30,5 +30,17 @@ class Session {
         }
     }
 
+    public static function getUsername(){
+        if(isset($_SESSION["username"])){
+            return $_SESSION["username"];
+        }
+    }
+
+    public static function getParentUser(){
+         if(isset($_SESSION["parent"])){
+            return $_SESSION["parent"];
+        }       
+    }
+
 
 }
