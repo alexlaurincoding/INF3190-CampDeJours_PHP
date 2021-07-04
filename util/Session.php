@@ -21,7 +21,7 @@ class Session {
 
     public static function connexion($nomUtilisateur, $isAdmin = false){
         $_SESSION["connecte"] = true;
-        
+        $_SESSION["username"] = $nomUtilisateur;
         if ($isAdmin) {
             $_SESSION["isAdmin"] = true;
         }else{

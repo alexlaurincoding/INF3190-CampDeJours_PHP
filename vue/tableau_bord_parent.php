@@ -1,4 +1,6 @@
-<?php $parent = $_SESSION['parent']; ?>
+<?php $parent = $_SESSION['parent']; 
+require('modals/modifierParent.php');
+?>
 
 <h1>Tableau de bord des parents</h1>
       <nav

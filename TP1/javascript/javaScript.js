@@ -2,7 +2,6 @@
  * Load Header
  **/
 $("#nav-placeholder").load("navbar.html");
-
 /**
  * Load Footer
  **/
@@ -26,4 +25,10 @@ function login() {
   } else {
     window.location.replace("tableau_bord_parent.html");
   }
+}
+
+function loadModal() {
+  var modalModifParent = document.getElementById("modifierProfil");
+  console.log("yoooooooooooooooooooo");
+  modalModifParent.show();
 }

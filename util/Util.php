@@ -8,8 +8,8 @@ class Util {
     return (ISSET($_SERVER['REDIRECT_BASE'])) ? $_SERVER['REDIRECT_BASE'] : '.';
     }
 
-    public static function redirectControlleur($controlleur,$action){
-        $url = Util::getChemin()."/$controlleur/$action";
+    public static function redirectControlleur($controlleur,$action, $param=null){
+        $url = Util::getChemin()."/$controlleur/$action/$param";
         header('Location: '.$url);
         die();
     }
