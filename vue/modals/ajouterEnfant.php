@@ -36,8 +36,10 @@
                       src="<?=Util::getChemin()?>/public/img/profil.png"
                       class="rounded"
                     />
-                    <p>Photo de l'enfant</p>
-                    <span class="erreur"><?= Util::message("photoEnfant"); ?></span>
+                    <p>
+                      Photo de l'enfant<br>
+                      <span class="erreur"><?= Util::message("photoEnfant"); ?></span>
+                    </p>
                   </label>
                 </div>
               </div>
@@ -52,6 +54,7 @@
                       class="form-control"
                       id="prenomEnfant"
                       name="prenomEnfant"
+                      value="<?= Util::message("inputPrenom"); ?>"
                     />
                   </div>
                   <span class="erreur"><?= Util::message("prenomEnfant"); ?></span>
@@ -66,6 +69,7 @@
                       class="form-control"
                       id="nomEnfant"
                       name="nomEnfant"
+                      value="<?= Util::message("inputNom"); ?>"
                     />
                     <span class="erreur"><?= Util::message("nomEnfant"); ?></span>
                   </div>
@@ -80,6 +84,7 @@
                       type="date"
                       id="dateNaissanceEnfant"
                       name="dateNaissanceEnfant"
+                      value="value="<?= Util::message("inputDateNaissance"); ?>""
                     />
                     <span class="erreur"><?= Util::message("dateNaissanceEnfant"); ?></span>
                   </div>

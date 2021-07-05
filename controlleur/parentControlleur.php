@@ -61,7 +61,8 @@ function index($param){
             $enfant->setParent($parent);
             $enfant->sauvegarder();
             
-            $parent->ajouterEnfant($enfant);
+            //Mettre à jour la liste des enfants du parent dans la session
+            Session::reload();
 
             Util::setMessage("global", "Enfant ajouté avec succès!");
             Util::redirectControlleur("parent","index");
@@ -117,7 +118,7 @@ function index($param){
             }
 
             //Mettre à jour la liste des enfants du parent dans la session
-            Session::getParentUser()->setEnfants(EnfantDAO::getEnfants(Session::getParentUser()));
+            Session::reload();
 
             Util::setMessage("global", "Vos modification ont été sauvegardées.");
             Util::redirectControlleur("parent","index");

@@ -30,6 +30,10 @@ class Session {
         }
     }
 
+    public static function reload(){
+        self::connexion(self::getUsername());
+    }
+
     public static function getUsername(){
         if(isset($_SESSION["username"])){
             return $_SESSION["username"];
