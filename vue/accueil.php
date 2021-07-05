@@ -19,7 +19,7 @@
           <a href="<?=Util::getChemin()?>/accueil/inscription" class="btn btn-dark"
             >Inscription des parents</a
           >
-          <a href="<?Util::getChemin()?>/accueil/contact" class="btn btn-dark">Contact</a>
+          <a href="<?=Util::getChemin()?>/accueil/contact" class="btn btn-dark">Contact</a>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
             enfants inscrits au camp de jour. Ces pages comprennent un tableau
             de bord pour inscrire des enfants aux activités du camp.
           </p>
-          <a href="<?=Util::getChemin()?>/utilisateur/index" class="btn btn-dark"
+          <a href="<?=Util::getChemin()?>/parent/index" class="btn btn-dark"
             >Tableau de bord du parent</a
           >
         </div>
