@@ -32,6 +32,18 @@ class ParentDAO {
         return $parent;
     }
 
+        public static function isIdParentExistant($id) {
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('SELECT id FROM parent WHERE id = :id');
+        $req->execute(array('id'=> $id));
+        $donnee = $req->fetch();
+        BaseDonnee::close();   
+        if($donnee){
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Enregistrer un parent dans la base de données
      * 
