@@ -7,18 +7,6 @@ var loadFile = function (event) {
 };
 
 /**
- * Login
- */
-function login() {
-  let username = document.getElementById("username");
-  if (username.value == "admin") {
-    window.location.replace("inscription_admin.html");
-  } else {
-    window.location.replace("tableau_bord_parent.html");
-  }
-}
-
-/**
  * Ouvrir une modale si son nom est mentionné dans l'url après le controlleur et l'action "/controlleur/action/modal"
  */
 window.onload = function () {
@@ -28,3 +16,15 @@ window.onload = function () {
   var modal = new bootstrap.Modal(document.getElementById(modalName));
   modal.show();
 };
+
+/**
+ * Changer le texte du bouton voir plus voir moins
+ */
+function voirplus(btn) {
+  let monBouton = btn;
+  if (monBouton.innerText != "Réduire") {
+    monBouton.innerText = "Réduire";
+  } else {
+    monBouton.innerText = btn.dataset.text;
+  }
+}

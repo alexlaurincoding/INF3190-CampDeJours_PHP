@@ -6,8 +6,8 @@ class SessionModel{
     private $dateDebut;
     private $dateFin;
 
-        function __construct($nom, $description, $dateDebut, $dateFin) {
-        $this->id = Util::guidv4();
+        function __construct($id, $nom, $description, $dateDebut, $dateFin) {
+        $this->id = $id;
         $this->nom = $nom;
         $this->description = $description;
         $this->dateDebut = $dateDebut;

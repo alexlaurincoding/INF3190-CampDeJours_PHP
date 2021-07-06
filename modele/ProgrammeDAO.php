@@ -18,4 +18,22 @@ class ProgrammeDAO {
         BaseDonnee::close();
     }
 
+    public static function getSessions(){
+         $bdd = BaseDonnee::getConnexion();
+        $sessions = array();
+        //sauvegarde parent dans la BD            
+        $res = $bdd->query('SELECT * FROM session');
+        while($donnee = $res->fetch()){
+            $session = new SessionModel($donnee['id'], 
+                                      $donnee['nom'], 
+                                      $donnee['description'], 
+                                      $donnee['date_debut'], 
+                                      $donnee['date_fin']);
+            array_push($sessions, $session);
+        }
+        BaseDonnee::close();       
+
+        return $sessions;
+    }
+
 }

@@ -1,4 +1,5 @@
 <?php
+$viewmodel = util::message('viewmodel');
 require('vue/modals/ajouterSession.php');
 ?>
 <h1 class="">Gestion des programmes</h1>
@@ -41,31 +42,22 @@ require('vue/modals/ajouterSession.php');
           </div>
         </div>
         <div class="card-body">
-          <div class="card my-2">
-            <div class="card-body">
-              <h3 class="session-titre mb-0">Session 2021</h3>
-              <div class="session-description col-10 mb-3">
-                Le Classique, les arts et la science, l'enfant actif.
-              </div>
-            </div>
-          </div>
+
           <div class="collapse" id="collapseSession">
+<?php
+foreach($viewmodel as $session){
+?>
             <div class="card my-2">
               <div class="card-body">
-                <h3 class="session-titre mb-0">Session 2020</h3>
+                <h3 class="session-titre mb-0"><?=$session->getNom()?></h3>
                 <div class="session-description col-10 mb-3">
-                  Le Classique, les arts et la science, l'enfant actif.
+                  <?=$session->getDescription()?>
                 </div>
               </div>
             </div>
-            <div class="card my-2">
-              <div class="card-body">
-                <h3 class="session-titre mb-0">Session 2019</h3>
-                <div class="session-description col-10 mb-3">
-                  Le Classique, les arts et la science, l'enfant actif.
-                </div>
-              </div>
-            </div>
+<?php
+}
+?>
           </div>
           <p class="text-center">
             <button
@@ -76,9 +68,10 @@ require('vue/modals/ajouterSession.php');
               data-bs-target="#collapseSession"
               aria-expanded="false"
               aria-controls="collapseSession"
-              onclick="voirplus('sessionVoirPlus')"
+              onclick="voirplus(this)"
+              data-text = "Voir les sessions"
             >
-              Voir plus
+              Voir les sessions
             </button>
           </p>
         </div>

@@ -1,5 +1,5 @@
 <?php 
-$parent = Session::getParentUser();
+$parent = Util::message('viewmodel');
 //Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
 require('modals/ajouterEnfant.php');
@@ -98,7 +98,7 @@ require('modals/ajouterEnfant.php');
           $enfantModif = $enfant;
           require('modals/modifierEnfant.php');
           ?>
-
+          
           <div class="card mb-4">
             <div class="card-header">
               <div class="row mb-2 mt-2">

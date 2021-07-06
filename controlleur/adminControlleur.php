@@ -46,7 +46,7 @@ function creerSession($param){
     if(!validFormCreerSession()){
         Util::redirectControlleur('admin', 'gestionProgramme', 'creerSessionModal');
     }else{    
-        $session = new SessionModel($nomSession, $description, $premiereJournee, $derniereJournee);
+        $session = new SessionModel(Util::guidv4(), $nomSession, $description, $premiereJournee, $derniereJournee);
         $session->sauvegarder();
         Util::setMessage('global', "Session créée avec succès");
         Util::redirectControlleur('admin', 'gestionProgramme');
@@ -59,5 +59,6 @@ function gestionProgramme($params) {
         throw new Exception("Accès interdit");
     }
     */
+    Util::setMessage('viewmodel', ProgrammeDAO::getSessions());
     Vue::render('gestion_programme');
 }

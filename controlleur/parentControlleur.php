@@ -7,6 +7,7 @@ function index($param){
     if(!Session::isConnecte() || Session::isAdmin()){
         throw new Exception("Accès interdit");
     }
+    Util::setMessage('viewmodel', Session::getParentUser());
     Vue::render('tableau_bord_parent');
 }
 
