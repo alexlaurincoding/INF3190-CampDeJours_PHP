@@ -1,5 +1,6 @@
 <?php
 $viewmodel = util::message('viewmodel');
+// print_r($viewmodel);
 require('vue/modals/ajouterSession.php');
 require('vue/modals/ajouterTypeDActivite.php');
 ?>
@@ -46,7 +47,8 @@ require('vue/modals/ajouterTypeDActivite.php');
 
           <div class="collapse" id="collapseSession">
 <?php
-foreach($viewmodel as $session){
+$sessions = $viewmodel->getSessions();
+foreach($sessions as $session){
 ?>
             <div class="card my-2">
               <div class="card-body">
@@ -101,7 +103,8 @@ foreach($viewmodel as $session){
 
         <div class="collapse" id="collapseTypeActivite">
 <?php
-foreach($viewmodel as $typeDActivite){
+$typesActivite = $viewmodel->getTypesActivite();
+foreach($typesActivite as $typeActivite){
 ?>
           <div class="card my-2">
             <div class="card-body">

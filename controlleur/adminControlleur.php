@@ -59,7 +59,9 @@ function gestionProgramme($params) {
         throw new Exception("Accès interdit");
     }
     */
-    Util::setMessage('viewmodel', ProgrammeDAO::getSessions());
+    $infosProgramme = new ProgrammeModel(ProgrammeDAO::getSessions(), ProgrammeDAO::getTypesActivite());
+    Util::setMessage('viewmodel', $infosProgramme);
+    // Util::setMessage('viewmodel', ProgrammeDAO::getSessions());
     Vue::render('gestion_programme');
 }
 
