@@ -108,10 +108,10 @@ foreach($typesActivite as $typeActivite){
 ?>
           <div class="card my-2">
             <div class="card-body">
-              <h2><?=$typeDActivite->getNom()?></h2>
+              <h2><?=$typeActivite->getNom()?></h2>
               <hr />
               <h4>Description:</h4>
-              <p class="mt-3"><?=$typeDActivite->getDescription()?></p>
+              <p class="mt-3"><?=$typeActivite->getDescription()?></p>
             </div>
           </div>
 <?php
