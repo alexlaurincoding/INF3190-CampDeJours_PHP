@@ -63,7 +63,7 @@ function gestionProgramme($params) {
     Vue::render('gestion_programme');
 }
 
-function validFormCreerTypeActivite() {
+function valideFormCreerTypeActivite() {
     $valide = true;
     $nomTypeActivite = Util::param($param["nomTypeActivite"]);
     $description = Util::param($param["descriptionTypeActivite"]);
@@ -79,10 +79,10 @@ function validFormCreerTypeActivite() {
 }
 
 function creerTypeActivite($param) {
-    $nomTypeActivite = Util::param($param["nomTypeActivite"]);
-    $description = Util::param($param["descriptionTypeActivite"]);
+    $nomTypeActivite = Util::param("nomTypeActivite");
+    $description = Util::param("descriptionTypeActivite");
 
-    if (!valideFormAjoutTypeDActivite()) {
+    if (!valideFormCreerTypeActivite()) {
         Util::redirectControlleur('admin', 'gestionProgramme', 'creerTypeModal');
     } else {
         $typeActivite = new TypeActiviteModele(Util::guidv4(), $nomTypeActivite, $description);
