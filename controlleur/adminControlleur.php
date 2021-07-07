@@ -62,3 +62,32 @@ function gestionProgramme($params) {
     Util::setMessage('viewmodel', ProgrammeDAO::getSessions());
     Vue::render('gestion_programme');
 }
+
+function validFormCreerTypeActivite() {
+    $valide = true;
+    $nomTypeActivite = Util::param("nomTypeActivite");
+    $description = Util::param("descriptionTypeActivite");
+    if (empty($nomTypeActivite)) {
+        Util::setMessage("nomTypeActivite", "Veuillez entrer le type d'activité");
+        $valide = false;
+    }
+    if (empty($description)) {
+        Util::setMessage("nomTypeActivite", "Veuillez entrer la description de ce type d'activité");
+        $valide = false;
+    }
+    return $valide;
+}
+
+function creerTypeActivite($param) {
+    $nomTypeActivite = Util::param("nomTypeActivite");
+    $description = Util::param("descriptionTypeActivite");
+
+    if (!validFormCreerTypeActivite()) {
+        Util::redirectControlleur('admin', 'gestionProgramme', 'creerTypeModal');
+    } else {
+        $typeActivite = new TypeActiviteModel(Util::guidv4(), $nomTypeActivite, $description);
+        $typeActivite->sauvegarder();
+        Util::setMessage('global', "Type d'activité créé avec succès!");
+        Util::redirectControlleur('admin', 'gestionProgramme');
+    }
+}
