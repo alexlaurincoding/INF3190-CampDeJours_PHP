@@ -21,20 +21,20 @@
           <form method="post" action="<?=Util::getChemin()?>/admin/creerSession">
             <div>
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label"
+                <label for="nom-session" class="col-form-label"
                   >Nom de la session :</label
                 >
-                <input type="text" class="form-control" id="recipient-name" name="nomSession" />
+                <input type="text" class="form-control" id="nom-session" name="nomSession" />
                 <span class="erreur"><?= Util::message("nomSession"); ?></span>
               </div>
             </div>
 
             <div>
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label"
+                <label for="description-session" class="col-form-label"
                   >Description :</label
                 >
-                <input type="text" class="form-control" id="recipient-name" name="descriptionSession"/>
+                <input type="text" class="form-control" id="description-session" name="descriptionSession"/>
                 <span class="erreur"><?= Util::message("descriptionSession"); ?></span>
               </div>
             </div>
