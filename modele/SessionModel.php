@@ -1,18 +1,18 @@
 <?php
-class SessionModel{
+class SessionModel {
     private $id;
     private $nom;
     private $description;
     private $dateDebut;
     private $dateFin;
 
-        function __construct($id, $nom, $description, $dateDebut, $dateFin) {
+    function __construct($id, $nom, $description, $dateDebut, $dateFin) {
         $this->id = $id;
         $this->nom = $nom;
         $this->description = $description;
         $this->dateDebut = $dateDebut;
         $this->dateFin = $dateFin;
-        }
+    }
 
     public function sauvegarder(){
         ProgrammeDAO::creerSession($this);
@@ -21,8 +21,7 @@ class SessionModel{
     /**
      * Get the value of id
      */ 
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -31,18 +30,15 @@ class SessionModel{
      *
      * @return  self
      */ 
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
-
         return $this;
     }
 
     /**
      * Get the value of nom
      */ 
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -51,18 +47,15 @@ class SessionModel{
      *
      * @return  self
      */ 
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
-
         return $this;
     }
 
     /**
      * Get the value of description
      */ 
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -71,18 +64,15 @@ class SessionModel{
      *
      * @return  self
      */ 
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
-
         return $this;
     }
 
     /**
      * Get the value of dateDebut
      */ 
-    public function getDateDebut()
-    {
+    public function getDateDebut() {
         return $this->dateDebut;
     }
 
@@ -91,18 +81,15 @@ class SessionModel{
      *
      * @return  self
      */ 
-    public function setDateDebut($dateDebut)
-    {
+    public function setDateDebut($dateDebut) {
         $this->dateDebut = $dateDebut;
-
         return $this;
     }
 
     /**
      * Get the value of dateFin
      */ 
-    public function getDateFin()
-    {
+    public function getDateFin() {
         return $this->dateFin;
     }
 
@@ -111,10 +98,8 @@ class SessionModel{
      *
      * @return  self
      */ 
-    public function setDateFin($dateFin)
-    {
+    public function setDateFin($dateFin) {
         $this->dateFin = $dateFin;
-
         return $this;
     }
 }
