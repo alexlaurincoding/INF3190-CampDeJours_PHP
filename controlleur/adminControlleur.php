@@ -63,10 +63,10 @@ function gestionProgramme($params) {
     Vue::render('gestion_programme');
 }
 
-function valideFormCreerTypeActivite() {
+function validFormCreerTypeActivite() {
     $valide = true;
-    $nomTypeActivite = Util::param($param["nomTypeActivite"]);
-    $description = Util::param($param["descriptionTypeActivite"]);
+    $nomTypeActivite = Util::param("nomTypeActivite");
+    $description = Util::param("descriptionTypeActivite");
     if (empty($nomTypeActivite)) {
         Util::setMessage("nomTypeActivite", "Veuillez entrer le type d'activité");
         $valide = false;
@@ -82,10 +82,10 @@ function creerTypeActivite($param) {
     $nomTypeActivite = Util::param("nomTypeActivite");
     $description = Util::param("descriptionTypeActivite");
 
-    if (!valideFormCreerTypeActivite()) {
+    if (!validFormCreerTypeActivite()) {
         Util::redirectControlleur('admin', 'gestionProgramme', 'creerTypeModal');
     } else {
-        $typeActivite = new TypeActiviteModele(Util::guidv4(), $nomTypeActivite, $description);
+        $typeActivite = new TypeActiviteModel(Util::guidv4(), $nomTypeActivite, $description);
         $typeActivite->sauvegarder();
         Util::setMessage('global', "Type d'activité créé avec succès!");
         Util::redirectControlleur('admin', 'gestionProgramme');
