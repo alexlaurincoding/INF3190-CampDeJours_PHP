@@ -1,6 +1,8 @@
 <?php
 $viewmodel = util::message('viewmodel');
+// print_r($viewmodel);
 require('vue/modals/ajouterSession.php');
+require('vue/modals/ajouterTypeDActivite.php');
 ?>
 <h1 class="">Gestion des programmes</h1>
 
@@ -45,7 +47,8 @@ require('vue/modals/ajouterSession.php');
 
           <div class="collapse" id="collapseSession">
 <?php
-foreach($viewmodel as $session){
+$sessions = $viewmodel->getSessions();
+foreach($sessions as $session){
 ?>
             <div class="card my-2">
               <div class="card-body">
@@ -77,3 +80,59 @@ foreach($viewmodel as $session){
         </div>
       </div>
       <!--Fin Sessions-->
+
+      <!--Type d'activité-->
+      <div class="card my-3">
+        <div class="card-header">
+          <div class="row mb-2 mt-2">
+            <div class="col-6">
+              <h2 class="mb-0">Types d'activité</h2>
+            </div>
+            <div class="col-6 d-flex align-items-end justify-content-end">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#creerTypeModal"
+              >
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapse" id="collapseTypeActivite">
+<?php
+$typesActivite = $viewmodel->getTypesActivite();
+foreach($typesActivite as $typeActivite){
+?>
+          <div class="card my-2">
+            <div class="card-body">
+              <h2><?=$typeActivite->getNom()?></h2>
+              <hr />
+              <h4>Description:</h4>
+              <p class="mt-3"><?=$typeActivite->getDescription()?></p>
+            </div>
+          </div>
+<?php
+}
+?>
+        </div>
+          <p class="text-center">
+            <button
+              class="btn btn-secondary mt-3"
+              id="typeActiviteVoirPlus"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTypeActivite"
+              aria-expanded="false"
+              aria-controls="collapseTypeActivite"
+              onclick="voirplus(this)"
+              data-text = "Voir les types d'activité"
+            >
+              Voir les types d'activité 
+            </button>
+          </p>
+        </div>
+      </div>
+      <!--Fin Type d'activité-->

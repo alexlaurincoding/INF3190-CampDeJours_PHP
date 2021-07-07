@@ -84,41 +84,75 @@ class ProgrammeDAO {
 
     // BLOC
 
-    public static function creerBloc(BlocModel $bloc){
+    // public static function creerBloc(BlocModel $bloc){
+    //     $bdd = BaseDonnee::getConnexion();
+
+    //     //sauvegarde parent dans la BD            
+    //     $req = $bdd->prepare('INSERT INTO bloc(id, nom, description, date_debut, date_fin) 
+    //                             VALUES (:id, :nom, :description, :date_debut, :date_fin)');
+    //     $req->execute(array(
+    //         'id'=> $session->getId(),
+    //         'nom'=> $session->getNom(),
+    //         'description'=> $session->getDescription(),
+    //         'date_debut'=> $session->getDateDebut(),
+    //         'date_fin'=> $session->getDateFin(),
+    //     )); 
+
+    //     BaseDonnee::close();
+    // }
+
+    // public static function getBlocs(){
+    //     $bdd = BaseDonnee::getConnexion();
+    //     $blocs = array();
+    //     //sauvegarde parent dans la BD            
+    //     $res = $bdd->query('SELECT * FROM bloc');
+    //     while($donnee = $res->fetch()){
+    //         $session = new SessionModel($donnee['id'], 
+    //                                     $donnee['nom'], 
+    //                                     $donnee['description'], 
+    //                                     $donnee['date_debut'], 
+    //                                     $donnee['date_fin']);
+    //         array_push($sessions, $session);
+    //     }
+    //     BaseDonnee::close();       
+
+    //     return $blocs;
+    // }
+
+
+    // TYPE ACTIVITE
+
+    public static function creerTypeActivite(TypeActiviteModel $type) {
         $bdd = BaseDonnee::getConnexion();
 
-        //sauvegarde parent dans la BD            
-        $req = $bdd->prepare('INSERT INTO session(id, nom, description, date_debut, date_fin) 
-                                VALUES (:id, :nom, :description, :date_debut, :date_fin)');
+        $req = $bdd->prepare('INSERT INTO 
+                        TYPE_ACTIVITE (id, nom, description)
+                            VALUES (:id, :nom, :description)');
         $req->execute(array(
-            'id'=> $session->getId(),
-            'nom'=> $session->getNom(),
-            'description'=> $session->getDescription(),
-            'date_debut'=> $session->getDateDebut(),
-            'date_fin'=> $session->getDateFin(),
-        )); 
+            'id' => $type->getId(),
+            'nom' => $type->getNom(),
+            'description' => $type->getDescription(),
+        ));
 
-        BaseDonnee::close();
+        $bdd = BaseDonnee::close();
     }
 
-    public static function getBlocs(){
+    public static function getTypesActivite(){
         $bdd = BaseDonnee::getConnexion();
-        $blocs = array();
-        //sauvegarde parent dans la BD            
-        $res = $bdd->query('SELECT * FROM bloc');
+
+        $typesActivite = array();
+        $res = $bdd->query('SELECT * FROM type_activite');
         while($donnee = $res->fetch()){
-            $session = new SessionModel($donnee['id'], 
-                                        $donnee['nom'], 
-                                        $donnee['description'], 
-                                        $donnee['date_debut'], 
-                                        $donnee['date_fin']);
-            array_push($sessions, $session);
+            $type = new TypeActiviteModel($donnee['id'], 
+                                    $donnee['nom'], 
+                                    $donnee['description'] 
+                                );
+            array_push($typesActivite, $type);
         }
+
         BaseDonnee::close();       
 
-        return $blocs;
+        return $typesActivite;
     }
-
-
 
 }
