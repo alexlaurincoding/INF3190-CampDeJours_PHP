@@ -18,34 +18,37 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label"
-                  >Nom du type d'activité :</label
-                >
-                <input type="text" class="form-control" id="recipient-name" />
+            <form action="<?=Util::GetChemin()?>/admin/creerTypeDActivite">
+              <div>
+                <div class="form-group">
+                  <label for="nom-type-activite" class="col-form-label"
+                    >Nom du type d'activité :</label
+                  >
+                  <input type="text" class="form-control" id="nom-type-activite" name="nomTypeActivite" />
+                  <span class="erreur"><?=Util::message("nomTypeActivite")?></span>
+                </div>
               </div>
-            </div>
 
-            <div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label"
-                  >Description :</label
-                >
-                <input type="text" class="form-control" id="recipient-name" />
+              <div>
+                <div class="form-group">
+                  <label for="description-type-activite" class="col-form-label"
+                    >Description :</label
+                  >
+                  <input type="text" class="form-control" id="description-type-activite" name="descriptionTypeActivite" />
+                </div>
               </div>
-            </div>
 
-            <div class="modal-footer mt-4">
-              <button
-                type="button"
-                class="btn btn-light border"
-                data-bs-dismiss="modal"
-              >
-                Fermer
-              </button>
-              <button type="button" class="btn btn-secondary">Créer</button>
-            </div>
+              <div class="modal-footer mt-4">
+                <button
+                  type="button"
+                  class="btn btn-light border"
+                  data-bs-dismiss="modal"
+                >
+                  Fermer
+                </button>
+                <button type="submit" class="btn btn-secondary">Créer</button>
+              </div>
+            </form>          
           </div>
         </div>
       </div>

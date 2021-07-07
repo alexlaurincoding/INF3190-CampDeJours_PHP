@@ -62,3 +62,18 @@ function gestionProgramme($params) {
     Util::setMessage('viewmodel', ProgrammeDAO::getSessions());
     Vue::render('gestion_programme');
 }
+
+function creerTypeDActivite($param) {
+    // $nom = Util::param($param[""]);
+    // $description = Util::param($param[""]);
+
+    Util::setMessage("nomTypeActivite", "vous faites erreur");
+    Util::redirectControlleur('admin', 'gestionProgramme', 'creerTypeModal');
+    // if (!valideFormAjoutTypeDActivite()) {
+    //     //redirect to modal "ajoutTypeDActivites"
+    // } else {
+    //     //cree typeDActivite dans BD
+    //     //redirige vers page "GestionDesProgrammes"
+    // }
+
+}
