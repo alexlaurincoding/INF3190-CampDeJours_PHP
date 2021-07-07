@@ -3,19 +3,15 @@ class TypeActiviteModel{
     private $id;
     private $nom;
     private $description;
-    private $dateDebut;
-    private $dateFin;
 
-        function __construct($id, $nom, $description, $dateDebut, $dateFin) {
+        function __construct($id, $nom, $description) {
         $this->id = $id;
         $this->nom = $nom;
         $this->description = $description;
-        $this->dateDebut = $dateDebut;
-        $this->dateFin = $dateFin;
         }
 
     public function sauvegarder(){
-        ProgrammeDAO::creerSession($this);
+        ProgrammeDAO::creerTypeActivite($this);
     }
 
     /**
@@ -74,46 +70,6 @@ class TypeActiviteModel{
     public function setDescription($description)
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of dateDebut
-     */ 
-    public function getDateDebut()
-    {
-        return $this->dateDebut;
-    }
-
-    /**
-     * Set the value of dateDebut
-     *
-     * @return  self
-     */ 
-    public function setDateDebut($dateDebut)
-    {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of dateFin
-     */ 
-    public function getDateFin()
-    {
-        return $this->dateFin;
-    }
-
-    /**
-     * Set the value of dateFin
-     *
-     * @return  self
-     */ 
-    public function setDateFin($dateFin)
-    {
-        $this->dateFin = $dateFin;
 
         return $this;
     }

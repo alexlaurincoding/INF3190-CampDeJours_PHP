@@ -19,7 +19,7 @@ class ProgrammeDAO {
     }
 
     public static function getSessions(){
-         $bdd = BaseDonnee::getConnexion();
+        $bdd = BaseDonnee::getConnexion();
         $sessions = array();
         //sauvegarde parent dans la BD            
         $res = $bdd->query('SELECT * FROM session');
@@ -34,6 +34,39 @@ class ProgrammeDAO {
         BaseDonnee::close();       
 
         return $sessions;
+    }
+
+    public static function creerTypeActivite(TypeActiviteModel $type) {
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('INSERT INTO 
+                            TYPE_ACTIVITE (id, nom, description)
+                                   VALUES (:id, :nom, :description)');
+        $req->execute(array(
+            'id' => $type->getId(),
+            'nom' => $type->getNom(),
+            'description' => $type->getDescription(),
+        ));
+
+        $bdd = BaseDonnee::close();
+    }
+
+    public static function getTypesActivite(){
+        $bdd = BaseDonnee::getConnexion();
+
+        $typesActivite = array();
+        $res = $bdd->query('SELECT * FROM type_activite');
+        while($donnee = $res->fetch()){
+            $type = new TypeActiviteModel($donnee['id'], 
+                                      $donnee['nom'], 
+                                      $donnee['description'] 
+                                    );
+            array_push($typesActivite, $type);
+        }
+
+        BaseDonnee::close();       
+
+        return $typesActivite;
     }
 
 }
