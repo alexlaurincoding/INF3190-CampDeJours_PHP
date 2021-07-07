@@ -1,6 +1,7 @@
 <?php
 $viewmodel = util::message('viewmodel');
 require('vue/modals/ajouterSession.php');
+require('vue/modals/ajouterTypeDActivite.php');
 ?>
 <h1 class="">Gestion des programmes</h1>
 
@@ -77,3 +78,58 @@ foreach($viewmodel as $session){
         </div>
       </div>
       <!--Fin Sessions-->
+
+      <!--Type d'activité-->
+      <div class="card my-3">
+        <div class="card-header">
+          <div class="row mb-2 mt-2">
+            <div class="col-6">
+              <h2 class="mb-0">Types d'activité</h2>
+            </div>
+            <div class="col-6 d-flex align-items-end justify-content-end">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#creerTypeModal"
+              >
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapse" id="collapseTypeActivite">
+<?php
+foreach($viewmodel as $typeDActivite){
+?>
+          <div class="card my-2">
+            <div class="card-body">
+              <h2><?=$typeDActivite->getNom()?></h2>
+              <hr />
+              <h4>Description:</h4>
+              <p class="mt-3"><?=$typeDActivite->getDescription()?></p>
+            </div>
+          </div>
+<?php
+}
+?>
+        </div>
+          <p class="text-center">
+            <button
+              class="btn btn-secondary mt-3"
+              id="typeActiviteVoirPlus"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTypeActivite"
+              aria-expanded="false"
+              aria-controls="collapseTypeActivite"
+              onclick="voirplus(this)"
+              data-text = "Voir les types d'activité"
+            >
+              Voir les types d'activité 
+            </button>
+          </p>
+        </div>
+      </div>
+      <!--Fin Type d'activité-->
