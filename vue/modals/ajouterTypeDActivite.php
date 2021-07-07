@@ -18,7 +18,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form action="<?=Util::GetChemin()?>/admin/creerTypeDActivite">
+            <form action="<?=Util::GetChemin()?>/admin/creerTypeActivite">
               <div>
                 <div class="form-group">
                   <label for="nom-type-activite" class="col-form-label"
@@ -35,6 +35,7 @@
                     >Description :</label
                   >
                   <input type="text" class="form-control" id="description-type-activite" name="descriptionTypeActivite" />
+                  <span class="erreur"><?=Util::message("descriptionTypeActivite")?></span>
                 </div>
               </div>
 
