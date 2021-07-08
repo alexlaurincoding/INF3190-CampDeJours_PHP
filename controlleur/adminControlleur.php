@@ -10,6 +10,18 @@ function index($params) {
     Vue::render('inscription_admin');
 }
 
+function gestionProgramme($params) {
+    /*
+    if(!Session::isConnecte() || !Session::isAdmin()){
+        throw new Exception("Accès interdit");
+    }
+    */
+    $infosProgramme = new ProgrammeModel(ProgrammeDAO::getSessions(), ProgrammeDAO::getTypesActivite());
+    Util::setMessage('viewmodel', $infosProgramme);
+    // Util::setMessage('viewmodel', ProgrammeDAO::getSessions());
+    Vue::render('gestion_programme');
+}
+
 function validFormCreerSession(){
         $valide = true;
         $nomSession = Util::param("nomSession");
@@ -51,18 +63,6 @@ function creerSession($param){
         Util::setMessage('global', "Session créée avec succès");
         Util::redirectControlleur('admin', 'gestionProgramme');
     }
-}
-
-function gestionProgramme($params) {
-    /*
-    if(!Session::isConnecte() || !Session::isAdmin()){
-        throw new Exception("Accès interdit");
-    }
-    */
-    $infosProgramme = new ProgrammeModel(ProgrammeDAO::getSessions(), ProgrammeDAO::getTypesActivite());
-    Util::setMessage('viewmodel', $infosProgramme);
-    // Util::setMessage('viewmodel', ProgrammeDAO::getSessions());
-    Vue::render('gestion_programme');
 }
 
 function validFormCreerTypeActivite() {

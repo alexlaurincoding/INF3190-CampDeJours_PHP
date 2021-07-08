@@ -1,6 +1,5 @@
 <?php
 $viewmodel = util::message('viewmodel');
-// print_r($viewmodel);
 require('vue/modals/ajouterSession.php');
 require('vue/modals/ajouterTypeDActivite.php');
 ?>
@@ -100,12 +99,12 @@ foreach($sessions as $session){
             </div>
           </div>
         </div>
-
+        <div class="card-body">
         <div class="collapse" id="collapseTypeActivite">
-<?php
-$typesActivite = $viewmodel->getTypesActivite();
-foreach($typesActivite as $typeActivite){
-?>
+          <?php
+          $typesActivite = $viewmodel->getTypesActivite();
+          foreach($typesActivite as $typeActivite){
+          ?>
           <div class="card my-2">
             <div class="card-body">
               <h2><?=$typeActivite->getNom()?></h2>
@@ -114,9 +113,10 @@ foreach($typesActivite as $typeActivite){
               <p class="mt-3"><?=$typeActivite->getDescription()?></p>
             </div>
           </div>
-<?php
-}
-?>
+          <?php
+          }
+          ?>
+        </div>
         </div>
           <p class="text-center">
             <button
@@ -134,5 +134,4 @@ foreach($typesActivite as $typeActivite){
             </button>
           </p>
         </div>
-      </div>
       <!--Fin Type d'activité-->
