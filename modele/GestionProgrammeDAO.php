@@ -17,6 +17,17 @@ class GestionProgrammeDAO {
             'date_fin'=> $session->getDateFin(),
         )); 
 
+        // SEMAINES
+        for($i = 1; $i <= 15; $i++) {
+            $reqsem = $bdd->prepare('INSERT INTO semaine(id, id_session, no_semaine) 
+                                    VALUES (:id, :id_session, :no_semaine)');
+            $reqsem->execute(array(
+                'id'=> Util::guidv4(),
+                'id_session'=> $session->getId(),
+                'no_semaine'=> $i
+            )); 
+        }
+
         BaseDonnee::close();
     }
 
