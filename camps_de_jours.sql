@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2021 at 06:56 PM
+-- Generation Time: Jul 11, 2021 at 04:31 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -78,8 +78,15 @@ CREATE TABLE `enfant` (
   `date_naissance` date NOT NULL,
   `url_photo` varchar(200) DEFAULT NULL,
   `id_parent` varchar(40) NOT NULL,
-  `notes` varchar(2000)
+  `note` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `enfant`
+--
+
+INSERT INTO `enfant` (`id`, `nom`, `prenom`, `date_naissance`, `url_photo`, `id_parent`, `note`) VALUES
+('38e91455-9674-4080-8da4-d9cec41a82ee', 'Simpson', 'Bart', '2021-07-05', 'public/img/photosProfil/b2b0e8a5-b458-4d6f-97ec-650ecbac83b8.jpg', '1be9edcd-aaae-4494-aa68-90406d7461b5', NULL);
 
 -- --------------------------------------------------------
 
@@ -139,7 +146,8 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`id`, `nom`, `prenom`, `courriel`, `adresse`, `date_de_naissance`, `url_photo`) VALUES
-('1a21811b-f4cc-48bb-b960-fd5dcab879b2', 'Simpson', 'Homer', 'chunkylover53@aol.com', '742 Evergreen Terrace, Springfield', '1956-05-12', 'public/img/4cb2f0af-006f-4f6e-8e2a-4ebd65807100.jpg');
+('1be9edcd-aaae-4494-aa68-90406d7461b5', 'Simpson', 'Homer', 'chunkylover53@aol.com', '742 Evergreen Terrace, Springfield', '1953-05-12', 'public/img/photosProfil/1a7d4a92-def9-415f-90c0-187f3398e1c8.jpg'),
+('cb2a28ae-98a8-4638-95f3-0a989eb2a864', 'Marsh', 'Randy', 'randymarsh@southpark.com', '260 Avenue de los Mexicanos, Southpark', '1949-04-08', 'public/img/photosProfil/bcefec85-c3e9-4807-8adc-102e0e86d0ff.jpg');
 
 -- --------------------------------------------------------
 
@@ -234,7 +242,8 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom_utilisateur`, `mot_de_passe`, `est_admin`) VALUES
-('1a21811b-f4cc-48bb-b960-fd5dcab879b2', 'beignes', 'doh', 0);
+('1be9edcd-aaae-4494-aa68-90406d7461b5', 'homer', '$2y$10$dU8tO7hCXsY7gwvZp6Zn1e89Os67i79XzngLxdblmkFKcR7RinUlS', 0),
+('cb2a28ae-98a8-4638-95f3-0a989eb2a864', 'Tegridy', '$2y$10$n3oq9nbXJ6rLad.9nTHylu8QGNWQHw9Kbhut.r7x2qWesEaXHi1/a', 0);
 
 --
 -- Indexes for dumped tables
