@@ -26,7 +26,6 @@
                   <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?=Util::getChemin()?>/accueil/contact">Contact</a>
         </li>
-        </li>
       </ul>
       <?php 
       

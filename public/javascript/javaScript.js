@@ -29,6 +29,15 @@ function voirplus(btn) {
   }
 }
 
+  //generer l'id des radio buttons du modal ajouterProgramme
+  function genererIdRbGabaritProgramme(){
+    static var i = 1;
+    var id = "inlineRadio" + i;
+    i++;
+    return id;
+  }
+ 
+
 /**
  * Créer un bloc d'activité
  */

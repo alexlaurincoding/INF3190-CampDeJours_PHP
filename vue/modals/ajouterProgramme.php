@@ -22,28 +22,26 @@
               <label for="message-text" class="col-form-label"
                 >Gabarit de programme :</label
               >
+              <div class="mb-2">
 <?php
  $gabaritsProgramme = ProgrammeDAO::getGabaritsProgramme();
 foreach($gabaritsProgramme as $gabaritProgramme){
-?>
-            <div class="mb-2">
+?>            
                 <div class="form-check form-check-inline">
                   <input
                     class="form-check-input"
                     type="radio"
                     name="inlineRadioOptions"
-                    id="inlineRadio1"
+                    id="<?=$gabaritProgramme->getId() ?>"
                     value="<?=$gabaritProgramme->getId() ?>"
                   />
-                  <label class="form-check-label" for="inlineRadio1"
+                  <label class="form-check-label" for="<?=$gabaritProgramme->getId() ?>"
                     ><?=$gabaritProgramme->getTitre() ?></label
                   >
                 </div>
 <?php
 } 
 ?>
-              
-
               <label for="message-text" class="col-form-label">Session :</label>
               <select class="form-control" name="activite1">
                 <option disabled selected>Session</option>
@@ -242,6 +240,9 @@ foreach($gabaritsProgramme as $gabaritProgramme){
               </button>
             </div>
           </div>
+        </div>
+      
+
           <div class="modal-footer">
             <button
               type="button"
