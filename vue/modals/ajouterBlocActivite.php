@@ -33,7 +33,7 @@
 ?>
               <div class="form-check form-check-inline mt-2">
                 <input
-                  class="form-check-input"
+                  class="form-check-input type-activite"
                   type="checkbox"
                   id="<?=$typeActivite->getId()?>"
                   name="typeActivite<?= ++$i ?>"
