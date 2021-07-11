@@ -287,7 +287,7 @@ foreach($typesActivite as $typeActivite){
         <div class="collapse" id="collapseActivite">
 
 <?php 
-$typesActivite = ProgrammeDAO::getTypesActivite();
+$typesActivite = $viewmodel->getTypesActivite(); 
 foreach ($typesActivite as $type) {
 ?>
         <!-- Regroupement des activités par type -->

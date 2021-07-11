@@ -60,3 +60,16 @@ $("#addActiviteBloc").click(function (e) {
     button.disabled = true;
   }
 });
+
+
+function creerSelectActivite(noActivite) {
+  let selectActivite = '<div class="form-group mt-2">';
+  selectActivite +=
+    '<select class="form-control" name="activite' + noActivite + '">';
+  window.viewmodel.activites.forEach((activite) => {
+    activites +=
+      "<option value='" + activite.id + "'>" + activite.nom + "</option>";
+  });
+  selectActivite += activites;
+  return selectActivite;
+}
