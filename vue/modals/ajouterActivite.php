@@ -22,7 +22,7 @@
               <div class="form-group">
                 <label for="nomActivite" class="col-form-label">Nom de l'activité:</label>
                 <input type="text" class="form-control" id="nomActivite" name="nomActivite"/>
-                <span class="erreur"> err <?=Util::message("nomActivite")?></span>
+                <span class="erreur"><?=Util::message("nomActivite")?></span>
               </div>
               <hr />
 
@@ -44,7 +44,7 @@ foreach ($typesActivite as $type) {
 }
 ?>
               </select>
-              <span class="erreur"> err <?=Util::message("idTypeActivite")?></span>
+              <span class="erreur"><?=Util::message("idTypeActivite")?></span>
 
               <div class="modal-footer mt-4">
                 <button
