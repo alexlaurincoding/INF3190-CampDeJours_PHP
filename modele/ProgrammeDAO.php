@@ -23,9 +23,8 @@ class ProgrammeDAO {
     public static function getSessions() {
         $bdd = BaseDonnee::getConnexion();
         $sessions = array();
-        //sauvegarde parent dans la BD            
-        $res = $bdd->query('SELECT * FROM session');
-        while($donnee = $res->fetch()){
+        $req = $bdd->query('SELECT * FROM session');
+        while($donnee = $req->fetch()){
             $session = new SessionModel($donnee['id'], 
                                         $donnee['nom'], 
                                         $donnee['description'], 
@@ -42,28 +41,50 @@ class ProgrammeDAO {
 
     public static function creerActivite(ActiviteModel $activite) {
         $bdd = BaseDonnee::getConnexion();
-
-        //sauvegarde parent dans la BD            
-        $req = $bdd->prepare('INSERT INTO activite(id_activite, nom, type_activite) 
-                                VALUES (:id, :nom, :type_activite)');
+        
+        $req = $bdd->prepare('INSERT INTO activite_programme(id) 
+                                   VALUES (:id);
+                              INSERT INTO activite(id_activite, nom, type_activite) 
+                                   VALUES (:id, :nom, :id_type_activite)');
         $req->execute(array(
             'id'=> $activite->getId(),
             'nom'=> $activite->getNom(),
-            // 'idTypeActivite'=> $activite->getidTypeActivite(),
+            'id_type_activite'=> $activite->getIdType(),
         )); 
 
         BaseDonnee::close();
     }
 
+    public static function getActivitesParType($idType) {
+        $bdd = BaseDonnee::getConnexion();
+        $activites = array();
+        $req = $bdd->prepare('SELECT * 
+                                FROM activite
+                               WHERE type_activite = :id_type_activite');
+
+        $req->execute(array(
+            'id_type_activite' => $idType
+        ));
+
+        while($donnee = $req->fetch()){
+            $activite = new ActiviteModel($donnee['id_activite'], 
+                                          $donnee['nom'], 
+                                          $donnee['type_activite']);
+            array_push($activites, $activite);
+        }
+        BaseDonnee::close();
+
+        return $activites;
+    }
+
     public static function getActivites() {
         $bdd = BaseDonnee::getConnexion();
         $activites = array();
-        //sauvegarde parent dans la BD            
-        $res = $bdd->query('SELECT * FROM activite');
-        while($donnee = $res->fetch()){
+        $req = $bdd->query('SELECT * FROM activite');
+        while($donnee = $req->fetch()){
             $activite = new ActiviteModel($donnee['id_activite'], 
-                                        $donnee['nom'], 
-                                        $donnee['type_activite']);
+                                          $donnee['nom'], 
+                                          $donnee['type_activite']);
             array_push($activites, $activite);
         }
         BaseDonnee::close();
@@ -74,8 +95,8 @@ class ProgrammeDAO {
     public static function getActivite($id) {
         $bdd = BaseDonnee::getConnexion();
 
-        $res = $bdd->query('SELECT * FROM activite WHERE id_activite = :id');
-        $donnee = $res->fetch();
+        $req = $bdd->query('SELECT * FROM activite WHERE id_activite = :id');
+        $donnee = $req->fetch();
         $activite = new ActiviteModel( $donnee['id_activite'], $donnee['nom'], $donnee['type_activite'] );
 
         BaseDonnee::close();

@@ -2,12 +2,12 @@
 class ActiviteModel {
    private $id;
    private $nom;
-   private $typeActivite;
+   private $idTypeActivite;
 
-   function __construct($id, $nom, $typeActivite) {
+   function __construct($id, $nom, $idTypeActivite) {
       $this->id = $id;
       $this->nom = $nom;
-      $this->typeActivite = $typeActivite;
+      $this->idTypeActivite = $idTypeActivite;
    }
 
    public function sauvegarder() {
@@ -52,8 +52,8 @@ class ActiviteModel {
    /**
     * Get the value of typeActivite
     */ 
-   public function getTypeActivite() {
-      return $this->typeActivite;
+   public function getIdType() {
+      return $this->idTypeActivite;
    }
 
    /**
@@ -61,8 +61,8 @@ class ActiviteModel {
     *
     * @return  self
     */ 
-   public function setTypeActivite($typeActivite) {
-      $this->typeActivite = $typeActivite;
+   public function setIdType($idTypeActivite) {
+      $this->idTypeActivite = $idTypeActivite;
       return $this;
    }
 
