@@ -1,5 +1,5 @@
 <?php
-class ProgrammeModel implements JsonSerializable{
+class GestionProgrammeModel implements JsonSerializable{
     public $sessions;
     public $typesActivite;
     public $activites;
@@ -8,11 +8,11 @@ class ProgrammeModel implements JsonSerializable{
     public $blocsActivite;
 
     function __construct() {
-        $this->sessions = ProgrammeDAO::getSessions();
-        $this->typesActivite = ProgrammeDAO::getTypesActivite();
-        $this->activites = ProgrammeDAO::getActivites();
-        $this->gabaritsProgramme = ProgrammeDAO::getGabaritsProgramme();
-        $this->blocsActivite = ProgrammeDAO::getBlocsActivite();
+        $this->sessions = GestionProgrammeDAO::getSessions();
+        $this->typesActivite = GestionProgrammeDAO::getTypesActivite();
+        $this->activites = GestionProgrammeDAO::getActivites();
+        $this->gabaritsProgramme = GestionProgrammeDAO::getGabaritsProgramme();
+        $this->blocsActivite = GestionProgrammeDAO::getBlocsActivite();
     }
 
     public function jsonSerialize()

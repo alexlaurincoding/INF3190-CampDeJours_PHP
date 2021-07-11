@@ -18,7 +18,7 @@ class BlocModel implements JsonSerializable{
     }
 
    public function sauvegarder() {
-      ProgrammeDAO::creerBlocActivite($this);
+      GestionProgrammeDAO::creerBlocActivite($this);
    }
 
    

@@ -34,7 +34,7 @@
                 <option disabled selected>Choisir</option>
 <?php 
 //on fait cette meme operation getTypesActivite() dans la page gestion_programme. Il y a surement moyen de ne pas dupliquer l'appel a la BD
-$typesActivite = ProgrammeDAO::getTypesActivite();
+$typesActivite = GestionProgrammeDAO::getTypesActivite();
 foreach ($typesActivite as $type) {
 ?>
                 <option value=<?=$type->getId()?>> 

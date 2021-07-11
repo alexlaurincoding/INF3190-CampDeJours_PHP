@@ -22,7 +22,7 @@ class SessionModel implements JsonSerializable{
     }
 
     public function sauvegarder(){
-        ProgrammeDAO::creerSession($this);
+        GestionProgrammeDAO::creerSession($this);
     }
 
     /**

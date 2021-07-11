@@ -24,7 +24,7 @@
               >
               <div class="mb-2">
 <?php
- $gabaritsProgramme = ProgrammeDAO::getGabaritsProgramme();
+ $gabaritsProgramme = GestionProgrammeDAO::getGabaritsProgramme();
 foreach($gabaritsProgramme as $gabaritProgramme){
 ?>            
                 <div class="form-check form-check-inline">

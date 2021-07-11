@@ -18,7 +18,7 @@ class TypeActiviteModel implements JsonSerializable{
     }
 
     public function sauvegarder(){
-        ProgrammeDAO::creerTypeActivite($this);
+        GestionProgrammeDAO::creerTypeActivite($this);
     }
 
     /**

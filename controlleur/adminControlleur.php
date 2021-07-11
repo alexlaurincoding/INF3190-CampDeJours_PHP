@@ -11,7 +11,7 @@ function index($params) {
 }
 
 function gestionProgramme($params) {
-    $infosProgramme = new ProgrammeModel();
+    $infosProgramme = new GestionProgrammeModel();
     Util::setMessage('viewmodel', $infosProgramme);
     Vue::render('gestion_programme');
 }
@@ -150,7 +150,7 @@ function creerBlocActivite($param){
 
         for($i = 1; $i <= $nbActivites+1; $i++){
             if(!empty(Util::param("activite" . $i))){
-                array_push($activitesChoisi, ProgrammeDAO::getActivite(Util::param("activite" . $i)));
+                array_push($activitesChoisi, GestionProgrammeDAO::getActivite(Util::param("activite" . $i)));
             }           
         }
         $blocActivite = new BlocModel(Util::guidv4(), $nomBlocActivite, $activitesChoisi);

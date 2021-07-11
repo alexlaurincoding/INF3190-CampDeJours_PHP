@@ -296,7 +296,7 @@ foreach ($typesActivite as $type) {
               <h2><?=$type->getNom()?></h2>
               <hr />
   <?php 
-  $activitesParType = ProgrammeDAO::getActivitesParType($type->getId());
+  $activitesParType = GestionProgrammeDAO::getActivitesParType($type->getId());
   foreach($activitesParType as $activite) {
   ?>
               <!-- Pastilles activites -->
