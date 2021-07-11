@@ -75,7 +75,6 @@
                 <option>Activités artistiques</option>
               </select>
               <div id="ajouterBlocActiviteForm"></div>
-            </form>
             <div class="col-md-12 text-center margin-auto mt-3">
               <button class="btn btn-secondary" id="addActiviteBloc">
                 Ajouter une activité +
@@ -90,7 +89,9 @@
             >
               Fermer
             </button>
-            <button type="button" class="btn btn-secondary">Créer</button>
+            <input type="hidden" id="nbActivites" name="nbActivites" value="1">
+            <button type="submit" class="btn btn-secondary">Créer</button>
+          </form>
           </div>
         </div>
       </div>
