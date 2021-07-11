@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2021 at 04:31 AM
+-- Generation Time: Jul 11, 2021 at 05:38 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -216,17 +216,6 @@ CREATE TABLE `type_activite` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type_activite_du_bloc`
---
-
-CREATE TABLE `type_activite_du_bloc` (
-  `id_bloc` varchar(40) NOT NULL,
-  `id_type_activite` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `utilisateur`
 --
 
@@ -344,13 +333,6 @@ ALTER TABLE `type_activite`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `type_activite_du_bloc`
---
-ALTER TABLE `type_activite_du_bloc`
-  ADD PRIMARY KEY (`id_bloc`,`id_type_activite`),
-  ADD KEY `type_activite_du_bloc_fk1` (`id_type_activite`);
-
---
 -- Indexes for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
@@ -426,13 +408,6 @@ ALTER TABLE `programme_semaine`
 --
 ALTER TABLE `semaine`
   ADD CONSTRAINT `semaine_fk0` FOREIGN KEY (`id_session`) REFERENCES `session` (`id`);
-
---
--- Constraints for table `type_activite_du_bloc`
---
-ALTER TABLE `type_activite_du_bloc`
-  ADD CONSTRAINT `type_activite_du_bloc_fk0` FOREIGN KEY (`id_bloc`) REFERENCES `bloc` (`id_bloc`),
-  ADD CONSTRAINT `type_activite_du_bloc_fk1` FOREIGN KEY (`id_type_activite`) REFERENCES `type_activite` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
