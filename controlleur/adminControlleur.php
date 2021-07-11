@@ -11,14 +11,8 @@ function index($params) {
 }
 
 function gestionProgramme($params) {
-    /*
-    if(!Session::isConnecte() || !Session::isAdmin()){
-        throw new Exception("Accès interdit");
-    }
-    */
-    $infosProgramme = new ProgrammeModel(ProgrammeDAO::getSessions(), ProgrammeDAO::getTypesActivite());
+    $infosProgramme = new ProgrammeModel();
     Util::setMessage('viewmodel', $infosProgramme);
-    // Util::setMessage('viewmodel', ProgrammeDAO::getSessions());
     Vue::render('gestion_programme');
 }
 
@@ -121,4 +115,13 @@ function creerActivite($param) {
         Util::setMessage('global', "Activité créée avec succès!");
         Util::redirectControlleur('admin', 'gestionProgramme');
     }
+}
+
+function validFormCreerBlocActivite(){
+    $nomBlocActivite = Util::param("nomBlocActivite");
+    
+}
+
+function creerBlocActivite(){
+
 }

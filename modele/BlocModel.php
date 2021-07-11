@@ -1,5 +1,5 @@
 <?php
-class BlocModel{
+class BlocModel implements JsonSerializable{
    private $id;
    private $nom;
    private $activites = array();
@@ -9,6 +9,13 @@ class BlocModel{
       $this->nom = $nom;
       $this->activites = $activites;
    }
+   
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
+    }
 
    public function sauvegarder() {
       ProgrammeDAO::creerBloc($this);

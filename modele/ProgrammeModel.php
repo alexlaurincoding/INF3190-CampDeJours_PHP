@@ -1,39 +1,29 @@
 <?php
-class ProgrammeModel{
+class ProgrammeModel implements JsonSerializable{
     public $sessions;
     public $typesActivite;
+    public $activites;
+    public $programmes;
 
-        function __construct($sessions, $typesActivite) {
-        $this->sessions = $sessions;
-        $this->typesActivite = $typesActivite;
-        }
-    
-           /**
-     * Get the value of sessions 
-     */ 
-    public function getProgrammes()
-    {
-        echo "Tous les programmes";
+    function __construct() {
+        $this->sessions = ProgrammeDAO::getSessions();
+        $this->typesActivite = ProgrammeDAO::getTypesActivite();
+        $this->activites = ProgrammeDAO::getActivites();
     }
 
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
+    }
+    
     /**
      * Get the value of sessions 
      */ 
     public function getSessions()
     {
         return $this->sessions;
-    }
-
-    /**
-     * Set the value of sessions 
-     *
-     * @return  self
-     */ 
-    public function setSessions($sessions)
-    {
-        $this->sessions = $sessions;
-
-        return $this;
     }
 
     /**
@@ -45,14 +35,18 @@ class ProgrammeModel{
     }
 
     /**
-     * Set the value of typesActivite 
-     *
-     * @return  self
+     * Get the value of sessions 
      */ 
-    public function setTypesActivite($typesActivite)
+    public function getActivites()
     {
-        $this->typesActivite = $typesActivite;
+        return $this->activites;
+    }
 
-        return $this;
+    /**
+     * Get the value of sessions 
+     */ 
+    public function getProgrammes()
+    {
+        echo "Tous les programmes";
     }
 }

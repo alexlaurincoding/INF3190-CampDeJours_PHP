@@ -1,5 +1,5 @@
 <?php
-class SessionModel {
+class SessionModel implements JsonSerializable{
     private $id;
     private $nom;
     private $description;
@@ -12,6 +12,13 @@ class SessionModel {
         $this->description = $description;
         $this->dateDebut = $dateDebut;
         $this->dateFin = $dateFin;
+    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
     }
 
     public function sauvegarder(){

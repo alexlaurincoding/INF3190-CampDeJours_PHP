@@ -1,5 +1,6 @@
 <?php
 $viewmodel = util::message('viewmodel');
+echo "<script>window.viewmodel=" . json_encode($viewmodel) . "</script>";
 require('vue/modals/ajouterSession.php');
 require('vue/modals/ajouterTypeDActivite.php');
 require('vue/modals/ajouterBlocActivite.php');

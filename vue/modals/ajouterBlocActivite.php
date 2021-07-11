@@ -23,56 +23,36 @@
                 <label for="recipient-name" class="col-form-label"
                   >Nom du bloc d'activité:</label
                 >
-                <input type="text" class="form-control" id="recipient-name" />
+                <input type="text" class="form-control" id="nomBlocActivite" name="nomBlocActivite" />
               </div>
               <hr />
               <h5>Types d'activités</h5>
+<?php
+  $i= 0;
+  foreach ($viewmodel->getTypesActivite() as $typeActivite) {
+?>
               <div class="form-check form-check-inline mt-2">
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  id="inlineCheckbox1"
-                  value="option1"
+                  id="<?=$typeActivite->getId()?>"
+                  name="typeActivite<?= ++$i ?>"
+                  value="<?=$typeActivite->getId()?>"
                 />
-                <label class="form-check-label" for="inlineCheckbox1"
-                  >Sport</label
-                >
+                <label class="form-check-label" for="<?=$typeActivite->getId()?>"><?=$typeActivite->getNom()?></label>
               </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox2"
-                  value="option2"
-                />
-                <label class="form-check-label" for="inlineCheckbox2"
-                  >Art</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox3"
-                  value="option3"
-                />
-                <label class="form-check-label" for="inlineCheckbox3"
-                  >Science</label
-                >
-              </div>
+
+<?php } echo '<input type="hidden" name="nbTypesActivite" value="' . $i . '"' ?>
+
               <hr />
               <h5>Activités</h5>
               <select class="form-control" name="activite1">
-                <option disabled selected>Activités</option>
-                <option>Soccer</option>
-                <option>Piano</option>
-                <option>Théâtre</option>
-                <option disabled>
-                  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-                </option>
-                <option disabled>Blocs d'activités</option>
-                <option>Activités sportives</option>
-                <option>Activités artistiques</option>
+<?php 
+  $i = 0;
+  foreach ($viewmodel->getActivites() as $activite) {
+?>
+                <option value="<?=$activite->getId()?>"><?=$activite->getNom()?></option>
+<?php } ?>
               </select>
               <div id="ajouterBlocActiviteForm"></div>
             <div class="col-md-12 text-center margin-auto mt-3">

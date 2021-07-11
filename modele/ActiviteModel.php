@@ -1,5 +1,5 @@
 <?php
-class ActiviteModel {
+class ActiviteModel implements JsonSerializable{
    private $id;
    private $nom;
    private $idTypeActivite;
@@ -9,6 +9,13 @@ class ActiviteModel {
       $this->nom = $nom;
       $this->idTypeActivite = $idTypeActivite;
    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
+    }
 
    public function sauvegarder() {
       ProgrammeDAO::creerActivite($this);
