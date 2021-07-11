@@ -23,3 +23,9 @@ pourquoi on retourne "self"?
 Presentement, $viewModel est fournit à la page "gestion_programme.php". Cela veut dire qu'on va chercher dans la DB toute l'information dont l'utilisateur risque d'avoir besoin. Ça rend son accès aux données plus rapides par la suite, mais ça crée un load time plus grand. 
 
 L'autre vision, c'est de lui loader très peu au début (juste la vue, sans données), et de faire les calls à la BD une fois qu'il clique sur un bouton "voir plus" ("Voir les sessions", "Voir les types d'activité", etc.)
+
+# Boutons pour modifier/supprimer une session/activité/bloc" ?
+
+Est-ce qu'on devrait ajouter un bouton "supprimer" sur les items ?
+Même question pour un bouton "modifier".
+Présentement, si on veut retirer/modifier une valeur, on doit y accéder directement par la BD
