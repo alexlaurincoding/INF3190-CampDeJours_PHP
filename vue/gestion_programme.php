@@ -105,10 +105,10 @@ foreach($sessions as $session){
         <div class="card-body">
 
           <div class="collapse" id="collapseSession">
-<?php
-$programmes = $viewmodel->getProgrammes();
+ <?php
+/* $programmes = $viewmodel->getProgrammes();
 foreach($programmes as $programme){
-?>
+?> -->
             <div class="card my-2">
               <div class="card-body">
                 <h3 class="programme-titre mb-0"><?=$programme->getTitre()?></h3>
@@ -118,7 +118,7 @@ foreach($programmes as $programme){
               </div>
             </div>
 <?php
-}
+} */
 ?>
           </div>
           <p class="text-center">

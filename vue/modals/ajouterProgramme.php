@@ -22,45 +22,27 @@
               <label for="message-text" class="col-form-label"
                 >Gabarit de programme :</label
               >
-
-              <div class="mb-2">
+              <?php
+ $gabaritProgrammes = ProgrammeDAO::getGabaritProgrammes();
+foreach($gabaritProgrammes as $gabaritProgramme){
+?>
+            <div class="mb-2">
                 <div class="form-check form-check-inline">
                   <input
                     class="form-check-input"
                     type="radio"
                     name="inlineRadioOptions"
                     id="inlineRadio1"
-                    value="option1"
+                    value="<?=$gabaritProgramme->getId() ?>"
                   />
                   <label class="form-check-label" for="inlineRadio1"
-                    >Le Classique</label
+                    ><?=$gabaritProgramme->getTitre() ?></label
                   >
                 </div>
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio2"
-                    value="option2"
-                  />
-                  <label class="form-check-label" for="inlineRadio2"
-                    >Les Arts et la Science</label
-                  >
-                </div>
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio3"
-                    value="option3"
-                  />
-                  <label class="form-check-label" for="inlineRadio3"
-                    >L'Enfant Actif</label
-                  >
-                </div>
-              </div>
+<?php
+} 
+?>
+              
 
               <label for="message-text" class="col-form-label">Session :</label>
               <select class="form-control" name="activite1">
