@@ -110,12 +110,38 @@ class ProgrammeDAO {
     public static function getActivite($id) {
         $bdd = BaseDonnee::getConnexion();
 
-        $req = $bdd->query('SELECT * FROM activite WHERE id_activite = :id');
+        $req = $bdd->prepare('SELECT * FROM activite WHERE id_activite = :id');
+        $req->execute(array('id'=>$id));
         $donnee = $req->fetch();
         $activite = new ActiviteModel( $donnee['id_activite'], $donnee['nom'], $donnee['type_activite'] );
 
         BaseDonnee::close();
         return $activite;
+    }
+
+    public static function creerBlocActivite(BlocModel $blocActivite){
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('INSERT INTO activite_programme (id) VALUES (:id)');
+        $req->execute(array('id'=> $blocActivite->getId()));
+        
+        $req = $bdd->prepare('INSERT INTO bloc (id_bloc, nom) VALUES (:id_bloc, :nom)');
+        $req->execute(array(
+        'id_bloc' => $blocActivite->getId(),
+        'nom'=> $blocActivite->getNom()
+    )); 
+    $activites = $blocActivite->getActivites();
+    $ordre = 0;
+    foreach($activites as $activite){
+        $req = $bdd->prepare('INSERT INTO activite_du_bloc (id_activite, id_bloc, ordre) values (:id_activite, :id_bloc, :ordre)');
+        $req->execute(array(
+            'id_activite'=>$activite->getId(),
+            'id_bloc'=>$blocActivite->getId(),
+            'ordre'=>++$ordre
+        ));
+    }
+
+    BaseDonnee::close();
+
     }
 
     // BLOC

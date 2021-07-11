@@ -122,8 +122,8 @@ function validFormCreerBlocActivite(){
     $nomBlocActivite = Util::param("nomBlocActivite");
     $nbTypesActivite = Util::param("nbTypesActivite");
     $typeActivitesChoisi = array();
-    $activite = Util::param("activiteDubloc");
-    for($i = 1; $i < $nbTypesActivite; $i++){
+    //$activite = Util::param("activiteDubloc");
+    for($i = 1; $i <= $nbTypesActivite; $i++){      
         if(!empty(Util::param("typeActivite" . $i))){
             array_push($typeActivitesChoisi, Util::param("typeActivite" . $i));
         }
@@ -136,23 +136,27 @@ function validFormCreerBlocActivite(){
         Util::setMessage("nomBlocActivite", "Veuillez entrer le nom du bloc");
         $valide = false;
     }
-    /*if (empty($activite)) {
-        Util::setMessage("messErrActiviteBloc", "Veuillez choisir l'activité");
-        $valide = false;
-    }*/
     
     return $valide;
 }
 
 function creerBlocActivite($param){
     $nomBlocActivite = Util::param("nomBlocActivite");
-    $typeActivite = Util::param("idTypeActivite");
-    $nbTypesActivite = Util::param("nbTypesActivite");
-    $activite = Util::param("idActiviteDubloc");
+    $nbActivites = Util::param("nbActivites");
+    $activitesChoisi = array();
     if (!validFormCreerBlocActivite()) {
         Util::redirectControlleur('admin', 'gestionProgramme', 'creerBlocActiviteModal');
     }else{
-        throw new Exception("yooo");
+
+        for($i = 1; $i <= $nbActivites+1; $i++){
+            if(!empty(Util::param("activite" . $i))){
+                array_push($activitesChoisi, ProgrammeDAO::getActivite(Util::param("activite" . $i)));
+            }           
+        }
+        $blocActivite = new BlocModel(Util::guidv4(), $nomBlocActivite, $activitesChoisi);
+        $blocActivite->sauvegarder();
+        Util::setMessage('global', "Bloc d'activité créée avec succès!");
+        Util::redirectControlleur('admin', 'gestionProgramme');
     }
 
 }

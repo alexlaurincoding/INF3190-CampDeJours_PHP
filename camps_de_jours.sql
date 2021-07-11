@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2021 at 05:38 AM
+-- Generation Time: Jul 11, 2021 at 10:34 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -33,6 +33,14 @@ CREATE TABLE `activite` (
   `type_activite` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `activite`
+--
+
+INSERT INTO `activite` (`id_activite`, `nom`, `type_activite`) VALUES
+('721df03d-1823-4da1-8002-fd3b2c56b16f', 'Hockey', '260cffb8-909f-4d4c-858f-166fa6ec35e4'),
+('7ea82ea6-21cc-4270-9a4c-9175b4e8e864', 'soccer', '260cffb8-909f-4d4c-858f-166fa6ec35e4');
+
 -- --------------------------------------------------------
 
 --
@@ -41,7 +49,8 @@ CREATE TABLE `activite` (
 
 CREATE TABLE `activite_du_bloc` (
   `id_activite` varchar(40) NOT NULL,
-  `id_bloc` varchar(40) NOT NULL
+  `id_bloc` varchar(40) NOT NULL,
+  `ordre` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -53,6 +62,14 @@ CREATE TABLE `activite_du_bloc` (
 CREATE TABLE `activite_programme` (
   `id` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `activite_programme`
+--
+
+INSERT INTO `activite_programme` (`id`) VALUES
+('721df03d-1823-4da1-8002-fd3b2c56b16f'),
+('7ea82ea6-21cc-4270-9a4c-9175b4e8e864');
 
 -- --------------------------------------------------------
 
@@ -99,6 +116,15 @@ CREATE TABLE `gabarit_programme` (
   `titre` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gabarit_programme`
+--
+
+INSERT INTO `gabarit_programme` (`id`, `titre`, `description`) VALUES
+('111', 'Le Classique', 'Le classique comprend chaque jour un bloc d’activités de type sportif et un autre avec une activité de type art et une activité de type science.'),
+('222', 'Les Arts et la Science', '\r\nLe programme arts et science comprend plusieurs activités d\'arts culinaires, d\'arts visuels, d\'arts plastiques, de chimie, de biologie et de physique. Il ne possède pas d’activité physique, cependant une activité matinale est réservée pour pratiquer le yoga ou jouer à un jeu de course comme le ballon chasseur. '),
+('333', 'L\'Enfant Actif', '\r\nLe programme athlétique est un camp de jour sportif intensif pour les enfants très actifs. Il comprend au moins quatre activités quotidiennes dont le basketball, le tennis, le soccer, le ballon chasseur, le baseball, etc. ');
 
 -- --------------------------------------------------------
 
@@ -201,6 +227,15 @@ CREATE TABLE `session` (
   `date_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `session`
+--
+
+INSERT INTO `session` (`id`, `nom`, `description`, `date_debut`, `date_fin`) VALUES
+('2b166bb1-e430-4274-9bd9-d82f0511f451', 'Session 2021', 'Le Classique, les arts et la science, l\'enfant actif.', '2021-06-01', '2021-09-01'),
+('b80bffc5-5a53-4436-bcdf-3d2d978074a8', 'Session 2020', 'Le Classique, les arts et la science, l\'enfant actif.', '2020-07-01', '2020-09-01'),
+('dac7e02e-bd0a-46fa-8723-17bff6ce019f', 'Session 2019', 'Le Classique, les arts et la science, l\'enfant actif.', '2019-06-01', '2019-09-01');
+
 -- --------------------------------------------------------
 
 --
@@ -212,6 +247,15 @@ CREATE TABLE `type_activite` (
   `nom` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `type_activite`
+--
+
+INSERT INTO `type_activite` (`id`, `nom`, `description`) VALUES
+('260cffb8-909f-4d4c-858f-166fa6ec35e4', 'Sport', 'On bouge!'),
+('5c8fbe7b-944a-4f98-b4dc-abcd2d3a82db', 'Art', 'On cree!'),
+('7d62ec3e-0044-46c4-b256-b94715145b2c', 'Science', 'On Explose');
 
 -- --------------------------------------------------------
 
