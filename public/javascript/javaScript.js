@@ -29,16 +29,6 @@ function voirplus(btn) {
   }
 }
 
-  //generer l'id des radio buttons du modal ajouterProgramme
-  function genererIdRbGabaritProgramme(){
-    // static var i = 1;
-    var i = 1;
-    var id = "inlineRadio" + i;
-    i++;
-    return id;
-  }
- 
-
 /**
  * Créer un bloc d'activité
  */
@@ -55,7 +45,7 @@ $("#addActiviteBloc").click(function (e) {
   nbActivitesInputHidden.value = nbActiviteBloc;
   let nouvelleActivite = '<div class="form-group mt-2">';
   nouvelleActivite +=
-    '<select class="form-control activite" name="activite' + nbActiviteBloc + '">';
+    '<select class="form-control" name="activite' + nbActiviteBloc + '">';
   window.viewmodel.activites.forEach((activite) => {
     activites +=
       "<option value='" + activite.id + "'>" + activite.nom + "</option>";
@@ -70,16 +60,3 @@ $("#addActiviteBloc").click(function (e) {
     button.disabled = true;
   }
 });
-
-function getTypesChoisis() {
-  let types = document.getElementsByClassName("type-activite");
-  let typesChoisis = Array.from(types).filter( type => type.checked );
-  return typesChoisis;
-}
-
-function filtrerActivitesSelonTypesChoisis() {
-  let idTypesChoisis = getTypesChoisis().map( typeChoisi => typeChoisi.value );
-  let activitesFiltrees = viewmodel.activites.filter(activite => idTypesChoisis.includes(activite.idTypeActivite)
-  );
-  return activitesFiltrees;
-}

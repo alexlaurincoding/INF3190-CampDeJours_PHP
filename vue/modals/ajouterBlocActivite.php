@@ -18,13 +18,14 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form method="post" action="<?=Util::getChemin()?>/admin/creerBlocActivite">
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label"
+                <label for="nomBlocActivite" class="col-form-label"
                   >Nom du bloc d'activité:</label
                 >
                 <input type="text" class="form-control" id="nomBlocActivite" name="nomBlocActivite" />
               </div>
+              <span class="erreur"><?=Util::message("nomBlocActivite")?></span>
               <hr />
               <h5>Types d'activités</h5>
 <?php
@@ -43,10 +44,11 @@
               </div>
 
 <?php } echo '<input type="hidden" name="nbTypesActivite" value="' . $i . '">' ?>
-
+              <br>
+              <span class="erreur"><?=Util::message("typeActiviteBloc")?></span>
               <hr />
               <h5>Activités</h5>
-              <select class="form-control" name="activite1">
+              <select class="form-control" id="idActiviteDuBloc" name="idActiviteDuBloc">
 <?php 
   $i = 0;
   foreach ($viewmodel->getActivites() as $activite) {

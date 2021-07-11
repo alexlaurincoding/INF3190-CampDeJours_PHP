@@ -118,10 +118,41 @@ function creerActivite($param) {
 }
 
 function validFormCreerBlocActivite(){
+    $valide = true;
     $nomBlocActivite = Util::param("nomBlocActivite");
+    $nbTypesActivite = Util::param("nbTypesActivite");
+    $typeActivitesChoisi = array();
+    $activite = Util::param("activiteDubloc");
+    for($i = 1; $i < $nbTypesActivite; $i++){
+        if(!empty(Util::param("typeActivite" . $i))){
+            array_push($typeActivitesChoisi, Util::param("typeActivite" . $i));
+        }
+    }
+    if(empty($typeActivitesChoisi)){
+        Util::setMessage("typeActiviteBloc", "Veuillez selectionner un type d'activite");
+        $valide = false;
+    }
+    if (empty($nomBlocActivite)) {
+        Util::setMessage("nomBlocActivite", "Veuillez entrer le nom du bloc");
+        $valide = false;
+    }
+    /*if (empty($activite)) {
+        Util::setMessage("messErrActiviteBloc", "Veuillez choisir l'activité");
+        $valide = false;
+    }*/
     
+    return $valide;
 }
 
-function creerBlocActivite(){
+function creerBlocActivite($param){
+    $nomBlocActivite = Util::param("nomBlocActivite");
+    $typeActivite = Util::param("idTypeActivite");
+    $nbTypesActivite = Util::param("nbTypesActivite");
+    $activite = Util::param("idActiviteDubloc");
+    if (!validFormCreerBlocActivite()) {
+        Util::redirectControlleur('admin', 'gestionProgramme', 'creerBlocActiviteModal');
+    }else{
+        throw new Exception("yooo");
+    }
 
 }
