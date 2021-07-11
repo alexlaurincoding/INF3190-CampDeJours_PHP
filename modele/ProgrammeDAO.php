@@ -20,18 +20,19 @@ class ProgrammeDAO {
         BaseDonnee::close();
     }
 
-    public static function getGabaritProgrammes(){
+    public static function getGabaritsProgramme(){
         $bdd = BaseDonnee::getConnexion();
+        $gabaritsProgramme = array();
         $reponse = $bdd->query('SELECT * FROM gabarit_programme');
         while($donnee = $reponse->fetch()){
-            $gabaritProgramme = new GabaritProgramme($donnee['id'], 
+            $gabaritProgramme = new GabaritProgrammeModel($donnee['id'], 
                                         $donnee['titre'], 
                                         $donnee['description']);
-            array_push($gabaritProgrammes, $gabaritProgramme);
+            array_push($gabaritsProgramme, $gabaritProgramme);
         }
         BaseDonnee::close();       
 
-        return $gabaritProgrammes;
+        return $gabaritsProgramme;
     }
 
     public static function getSessions() {

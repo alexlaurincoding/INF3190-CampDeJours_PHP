@@ -42,7 +42,7 @@
                 <label class="form-check-label" for="<?=$typeActivite->getId()?>"><?=$typeActivite->getNom()?></label>
               </div>
 
-<?php } echo '<input type="hidden" name="nbTypesActivite" value="' . $i . '"' ?>
+<?php } echo '<input type="hidden" name="nbTypesActivite" value="' . $i . '>' ?>
 
               <hr />
               <h5>Activités</h5>

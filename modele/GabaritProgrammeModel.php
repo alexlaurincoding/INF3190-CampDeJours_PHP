@@ -1,6 +1,6 @@
 <?php
 
-class GabaritProgramme{
+class GabaritProgrammeModel{
     private $id;
     private $titre;
     private $description;

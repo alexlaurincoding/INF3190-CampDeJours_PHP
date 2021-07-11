@@ -4,11 +4,13 @@ class ProgrammeModel implements JsonSerializable{
     public $typesActivite;
     public $activites;
     public $programmes;
+    public $gabaritsProgramme;
 
     function __construct() {
         $this->sessions = ProgrammeDAO::getSessions();
         $this->typesActivite = ProgrammeDAO::getTypesActivite();
         $this->activites = ProgrammeDAO::getActivites();
+        $this->gabaritsProgramme = ProgrammeDAO::getGabaritsProgramme();
     }
 
     public function jsonSerialize()
@@ -42,11 +44,4 @@ class ProgrammeModel implements JsonSerializable{
         return $this->activites;
     }
 
-    /**
-     * Get the value of sessions 
-     */ 
-    public function getProgrammes()
-    {
-        echo "Tous les programmes";
-    }
 }

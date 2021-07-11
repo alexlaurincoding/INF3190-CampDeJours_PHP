@@ -22,9 +22,9 @@
               <label for="message-text" class="col-form-label"
                 >Gabarit de programme :</label
               >
-              <?php
- $gabaritProgrammes = ProgrammeDAO::getGabaritProgrammes();
-foreach($gabaritProgrammes as $gabaritProgramme){
+<?php
+ $gabaritsProgramme = ProgrammeDAO::getGabaritsProgramme();
+foreach($gabaritsProgramme as $gabaritProgramme){
 ?>
             <div class="mb-2">
                 <div class="form-check form-check-inline">
