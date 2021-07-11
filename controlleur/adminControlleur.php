@@ -122,3 +122,12 @@ function creerActivite($param) {
         Util::redirectControlleur('admin', 'gestionProgramme');
     }
 }
+
+function validFormCreerBlocActivite(){
+    $nomBlocActivite = Util::param("nomBlocActivite");
+    
+}
+
+function creerBlocActivite(){
+
+}

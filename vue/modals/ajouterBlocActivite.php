@@ -23,7 +23,7 @@
                 <label for="recipient-name" class="col-form-label"
                   >Nom du bloc d'activité:</label
                 >
-                <input type="text" class="form-control" id="recipient-name" />
+                <input type="text" class="form-control" id="nomBlocActivite" name="nomBlocActivite" />
               </div>
               <hr />
               <h5>Types d'activités</h5>
