@@ -39,21 +39,19 @@ let nbActivitesInputHidden = document.getElementById("nbActivites");
 let nbActiviteBloc = 1;
 const NB_MAXIMUM_ACTIVITE_BLOC = 6;
 $("#addActiviteBloc").click(function (e) {
+  let activites = "";
   e.preventDefault();
   nbActiviteBloc++;
   nbActivitesInputHidden.value = nbActiviteBloc;
   let nouvelleActivite = '<div class="form-group mt-2">';
   nouvelleActivite +=
     '<select class="form-control" name="activite' + nbActiviteBloc + '">';
-  nouvelleActivite += "<option disabled selected>Activités</option>";
-  nouvelleActivite += "<option>Soccer</option>";
-  nouvelleActivite += "<option>Piano</option>";
-  nouvelleActivite += "<option>Théâtre</option>";
-  nouvelleActivite +=
-    "<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>";
-  nouvelleActivite += "<option disabled>Blocs d'activités</option>";
-  nouvelleActivite += "<option>Activités sportives</option>";
-  nouvelleActivite += "<option>Activités artistiques</option>";
+  window.viewmodel.activites.forEach((activite) => {
+    activites +=
+      "<option value='" + activite.id + "'>" + activite.nom + "</option>";
+  });
+  nouvelleActivite += activites;
+
   nouvelleActivite += "</select>";
   nouvelleActivite += "</div>";
   ajouterBlocActiviteform.innerHTML += nouvelleActivite;

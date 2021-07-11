@@ -1,15 +1,22 @@
 <?php
-class ProgrammeModel{
+class ProgrammeModel implements JsonSerializable{
     public $sessions;
     public $typesActivite;
     public $activites;
     public $programmes;
 
-        function __construct() {
-            $this->sessions = ProgrammeDAO::getSessions();
-            $this->typesActivite = ProgrammeDAO::getTypesActivite();
-            $this->activites = ProgrammeDAO::getActivites();
-        }
+    function __construct() {
+        $this->sessions = ProgrammeDAO::getSessions();
+        $this->typesActivite = ProgrammeDAO::getTypesActivite();
+        $this->activites = ProgrammeDAO::getActivites();
+    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
+    }
     
     /**
      * Get the value of sessions 
