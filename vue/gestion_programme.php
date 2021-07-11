@@ -164,10 +164,27 @@ foreach($programmes as $programme){
 
           <div class="collapse" id="collapseBlocActivite">
 <?php
-$sessions = $viewmodel->getSessions();
-foreach($sessions as $session){
+$blocsActivite = $viewmodel->getBlocsActivite();
+foreach($blocsActivite as $blocActivite){
 ?>
-
+            <div class="card my-2">
+              <div class="card-body">
+                <h2><?=$blocActivite->getNom()?></h2>
+                <hr />
+                <p>
+<?php
+$activites = $blocActivite->getActivites();
+foreach($activites as $activite){
+?>
+                <span class="badge rounded-pill bg-secondary"
+                    ><?=$activite->getNom()?></span
+                  >
+<?php
+}
+?>
+                </p>
+              </div>
+            </div>
 <?php
 }
 ?>
