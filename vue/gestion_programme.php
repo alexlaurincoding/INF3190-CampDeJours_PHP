@@ -2,6 +2,7 @@
 $viewmodel = util::message('viewmodel');
 require('vue/modals/ajouterSession.php');
 require('vue/modals/ajouterTypeDActivite.php');
+require('vue/modals/ajouterBlocActivite.php');
 require('vue/modals/ajouterActivite.php');
 ?>
 <h1 class="">Gestion des programmes</h1>
@@ -80,6 +81,56 @@ foreach($sessions as $session){
         </div>
       </div>
       <!--Fin Sessions-->
+
+      <!--Bloc Activités-->
+      <div class="card my-3">
+        <div class="card-header">
+          <div class="row mb-2 mt-2">
+            <div class="col-6">
+              <h2 class="mb-0">Blocs d'activité</h2>
+            </div>
+            <div class="col-6 d-flex align-items-end justify-content-end">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#creerBlocActiviteModal"
+              >
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <div class="collapse" id="collapseBlocActivite">
+<?php
+$sessions = $viewmodel->getSessions();
+foreach($sessions as $session){
+?>
+
+<?php
+}
+?>
+          </div>
+          <p class="text-center">
+            <button
+              class="btn btn-secondary mt-3"
+              id="blocActiviteVoirPlus"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseBlocActivite"
+              aria-expanded="false"
+              aria-controls="collapseBlocActivite"
+              onclick="voirplus(this)"
+              data-text = "Voir les blocs d'activités"
+            >
+              Voir les blocs d'activités
+            </button>
+          </p>
+        </div>
+      </div>
+      <!--Fin Bloc Activités-->
 
       <!--Type d'activité-->
       <div class="card my-3">
