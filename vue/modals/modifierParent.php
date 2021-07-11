@@ -18,13 +18,13 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form method="post" action="<?=Util::getChemin()?>/utilisateur/modification" enctype="multipart/form-data">
+              <form method="post" action="<?=Util::getChemin()?>/utilisateur/modification">
                 <div class="row pt-2">
                   <div class="col text-center">
                     <input
                       type="file"
                       accept="image/*"
-                      name="photoProfil"
+                      name="image"
                       id="uploadHomer"
                       onchange="loadFile(event)"
                       style="display: none"
@@ -40,9 +40,10 @@
                         src="<?=Util::getChemin() . '/'.  $parent->getPhotoProfil()?>"
                         class="rounded"
                       />
-                      <p>Photo de profil<br>
-                        <span class="erreur"><?= Util::message("photoProfil"); ?></span>
-                      </p>
+                      <p>Photo de profil</p>
+                      <span class="erreur">
+                    <?= Util::message("photoProfil"); ?>
+                </span></p> 
                     </label>
                   </div>
                 </div>
@@ -52,22 +53,18 @@
                     <input
                       type="text"
                       id="prenom"
-                      name="prenom"
                       class="form-control"
                       value="<?=$parent->getPrenom()?>"
                     />
-                    <span class="erreur"><?= Util::message("prenom"); ?></span>
                   </div>
                   <div class="col">
                     <label for="nom" class="form-label">Nom</label>
                     <input
                       type="text"
                       id="nom"
-                      name="nom"
                       class="form-control"
                       value="<?=$parent->getNom()?>"
                     />
-                    <span class="erreur"><?= Util::message("nom"); ?></span>
                   </div>
                 </div>
                 <div class="row p-2">
@@ -75,12 +72,10 @@
                     <label for="emailemail" class="form-label">Email</label>
                     <input
                       type="email"
-                      name="email"
                       class="form-control"
                       id="inputEmail3"
                       value="<?=$parent->getCourriel()?>"
                     />
-                    <span class="erreur"><?= Util::message("email"); ?></span>
                   </div>
                   <div class="col">
                     <label for="ddn" class="form-label"
@@ -89,17 +84,14 @@
                     <input
                       type="date"
                       id="ddn"
-                      name="dateNaissance"
                       class="form-control"
                       value="<?=$parent->getDateDeNaissance()?>"
                     />
-                    <span class="erreur"><?= Util::message("dateNaissance"); ?></span>
                   </div>
                 </div>
                 <div class="form-group p-2">
                   <label for="adresse" class="form-label">Adresse complète</label>
-                  <textarea class="form-control" id="adresse" name="adresse"><?=$parent->getAdresse()?></textarea>
-                  <span class="erreur"><?= Util::message("adresse"); ?></span>
+                  <textarea class="form-control" id="adresse"><?=$parent->getAdresse()?></textarea>
                 </div>
                 <hr />
                 <h5 class="card-title">Informations du compte</h5>
@@ -110,12 +102,10 @@
                     <input
                       type="text"
                       id="username"
-                      name="username"
                       class="form-control disabled"
                       disabled
                       value="<?=$_SESSION['username']?>"
                     />
-                    <span class="erreur"><?= Util::message("username"); ?></span>
                   </div>
                   <div class="col">
                     <label for="password" class="form-label"
@@ -123,11 +113,9 @@
                     <input
                       type="password"
                       id="password"
-                      name="password"
                       class="form-control"
                       placeholder=""
                     />
-                    <span class="erreur"><?= Util::message("password"); ?></span>
                   </div>
                 </div>
               

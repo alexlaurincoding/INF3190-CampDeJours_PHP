@@ -7,6 +7,14 @@ class ProgrammeModel{
         $this->sessions = $sessions;
         $this->typesActivite = $typesActivite;
         }
+    
+           /**
+     * Get the value of sessions 
+     */ 
+    public function getProgrammes()
+    {
+        echo "Tous les programmes";
+    }
 
     /**
      * Get the value of sessions 

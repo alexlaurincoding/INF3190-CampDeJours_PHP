@@ -4,6 +4,7 @@ require('vue/modals/ajouterSession.php');
 require('vue/modals/ajouterTypeDActivite.php');
 require('vue/modals/ajouterBlocActivite.php');
 require('vue/modals/ajouterActivite.php');
+require('vue/modals/ajouterProgramme.php');
 ?>
 <h1 class="">Gestion des programmes</h1>
 
@@ -81,6 +82,63 @@ foreach($sessions as $session){
         </div>
       </div>
       <!--Fin Sessions-->
+
+       <!--Programmes-->
+       <div class="card my-3">
+        <div class="card-header">
+          <div class="row mb-2 mt-2">
+            <div class="col-6">
+              <h2 class="mb-0">Programmes</h2>
+            </div>
+            <div class="col-6 d-flex align-items-end justify-content-end">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#creerProgrammeModal"
+              >
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <div class="collapse" id="collapseSession">
+<?php
+$programmes = $viewmodel->getProgrammes();
+foreach($programmes as $programme){
+?>
+            <div class="card my-2">
+              <div class="card-body">
+                <h3 class="programme-titre mb-0"><?=$programme->getTitre()?></h3>
+                <div class="programme-description col-10 mb-3">
+                  <?=$programme->getDescription()?>
+                </div>
+              </div>
+            </div>
+<?php
+}
+?>
+          </div>
+          <p class="text-center">
+            <button
+              class="btn btn-secondary mt-3"
+              id="sessionVoirPlus"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseProgramme"
+              aria-expanded="false"
+              aria-controls="collapseProgramme"
+              onclick="voirplus(this)"
+              data-text = "Voir les programmes"
+            >
+              Voir les programmes
+            </button>
+          </p>
+        </div>
+      </div>
+      <!--Fin Programmes-->
 
       <!--Bloc Activités-->
       <div class="card my-3">
