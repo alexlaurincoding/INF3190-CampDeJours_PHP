@@ -2,6 +2,7 @@
 $viewmodel = util::message('viewmodel');
 require('vue/modals/ajouterSession.php');
 require('vue/modals/ajouterTypeDActivite.php');
+require('vue/modals/ajouterActivite.php');
 ?>
 <h1 class="">Gestion des programmes</h1>
 
@@ -101,10 +102,10 @@ foreach($sessions as $session){
         </div>
         <div class="card-body">
         <div class="collapse" id="collapseTypeActivite">
-          <?php
-          $typesActivite = $viewmodel->getTypesActivite();
-          foreach($typesActivite as $typeActivite){
-          ?>
+<?php
+$typesActivite = $viewmodel->getTypesActivite();
+foreach($typesActivite as $typeActivite){
+?>
           <div class="card my-2">
             <div class="card-body">
               <h2><?=$typeActivite->getNom()?></h2>
@@ -113,9 +114,9 @@ foreach($sessions as $session){
               <p class="mt-3"><?=$typeActivite->getDescription()?></p>
             </div>
           </div>
-          <?php
-          }
-          ?>
+<?php
+}
+?>
         </div>
         </div>
           <p class="text-center">
@@ -135,3 +136,74 @@ foreach($sessions as $session){
           </p>
         </div>
       <!--Fin Type d'activité-->
+
+      <!--Activité-->
+      <div class="card my-3">
+        <div class="card-header">
+          <div class="row mb-2 mt-2">
+            <div class="col-6">
+              <h2 class="mb-0">Activités</h2>
+            </div>
+            <div class="col-6 d-flex align-items-end justify-content-end">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#creerActiviteModal"
+              >
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+        <div class="collapse" id="collapseActivite">
+
+<?php 
+$typesActivite = ProgrammeDAO::getTypesActivite();
+foreach ($typesActivite as $type) {
+?>
+        <!-- Regroupement des activités par type -->
+          <div class="card my-2">
+            <div class="card-body">
+              <h2><?=$type->getNom()?></h2>
+              <hr />
+  <?php 
+  $activitesParType = ProgrammeDAO::getActivitesParType($type->getId());
+  foreach($activitesParType as $activite) {
+  ?>
+              <!-- Pastilles activites -->
+                <p>
+                  <span class="badge rounded-pill bg-secondary"><?=$activite->getNom()?></span>
+                </p>
+              <!-- Fin pastilles activites -->
+  <?php
+  }
+  ?>
+            </div>
+          </div>
+        <!-- Fin regroupement des activités par type -->
+<?php 
+}
+?>
+        </div>
+
+        </div>
+          <p class="text-center">
+            <button
+              class="btn btn-secondary mt-3"
+              id="activiteVoirPlus"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseActivite"
+              aria-expanded="false"
+              aria-controls="collapseActivite"
+              onclick="voirplus(this)"
+              data-text = "Voir les activités"
+            >
+              Voir les activités 
+            </button>
+          </p>
+        </div>
+      </div>
+      <!--Fin Activité-->

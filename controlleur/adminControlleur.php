@@ -74,13 +74,13 @@ function validFormCreerTypeActivite() {
         $valide = false;
     }
     if (empty($description)) {
-        Util::setMessage("nomTypeActivite", "Veuillez entrer la description de ce type d'activité");
+        Util::setMessage("descriptionTypeActivite", "Veuillez entrer la description de ce type d'activité");
         $valide = false;
     }
     return $valide;
 }
 
-function creerTypeActivite($param) {
+function creerTypeActivite() {
     $nomTypeActivite = Util::param("nomTypeActivite");
     $description = Util::param("descriptionTypeActivite");
 
@@ -90,6 +90,35 @@ function creerTypeActivite($param) {
         $typeActivite = new TypeActiviteModel(Util::guidv4(), $nomTypeActivite, $description);
         $typeActivite->sauvegarder();
         Util::setMessage('global', "Type d'activité créé avec succès!");
+        Util::redirectControlleur('admin', 'gestionProgramme');
+    }
+}
+
+function validFormCreerActivite() {
+    $valide = true;
+    $nom = Util::param("nomActivite");
+    $type = Util::param('idTypeActivite');
+    if (empty($nom)) {
+        Util::setMessage("nomActivite", "Veuillez entrer le nom de l'activité");
+        $valide = false;
+    }
+    if (empty($type)) {
+        Util::setMessage("idTypeActivite", "Veuillez choisir le type de l'activité");
+        $valide = false;
+    }
+    return $valide;
+}
+
+function creerActivite($param) {
+    $nom = Util::param("nomActivite");
+    $type = Util::param('idTypeActivite');
+
+    if (!validFormCreerActivite()) {
+        Util::redirectControlleur('admin', 'gestionProgramme', 'creerActiviteModal');
+    } else {
+        $activite = new ActiviteModel(Util::guidv4(), $nom, $type);
+        $activite->sauvegarder();
+        Util::setMessage('global', "Activité créée avec succès!");
         Util::redirectControlleur('admin', 'gestionProgramme');
     }
 }
