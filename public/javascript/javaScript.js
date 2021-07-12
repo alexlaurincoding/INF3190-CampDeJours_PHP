@@ -13,8 +13,10 @@ window.onload = function () {
   var url = window.location.href;
   var urlPath = url.split("/");
   var modalName = urlPath[urlPath.length - 1];
-  var modal = new bootstrap.Modal(document.getElementById(modalName));
-  modal.show();
+  if (modalName.toLowerCase().includes("modal")) {
+    var modal = new bootstrap.Modal(document.getElementById(modalName));
+    modal.show();
+  }
 };
 
 /**
@@ -62,14 +64,46 @@ $("#addActiviteBloc").click(function (e) {
 });
 
 
-function creerSelectActivite(noActivite) {
-  let selectActivite = '<div class="form-group mt-2">';
-  selectActivite +=
-    '<select class="form-control" name="activite' + noActivite + '">';
+var sel = $("#select-activite-programme");
+var nbActivitesProgramme = 1;
+
+
+$("#addActiviteProgramme").click( (e) => {
+  e.preventDefault();
+  sel.append(creerSelectActiviteProgramme(nbActivitesProgramme));
+  nbActivitesProgramme++;
+});
+
+// window.onLoad
+
+function creerSelectActiviteProgramme(noActivite) {
+  let selectActivite = 
+  `<div class="row mt-2">
+    <div class="form-group col-md-10">
+      <select class="form-control" name="activite` + noActivite + `">
+        <option disabled selected>Activités</option>`;
   window.viewmodel.activites.forEach((activite) => {
-    activites +=
-      "<option value='" + activite.id + "'>" + activite.nom + "</option>";
+    selectActivite +=
+        `<option value="` + activite.id + `">` + activite.nom + `</option>`;
   });
-  selectActivite += activites;
+  selectActivite += 
+        `<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>
+        <option disabled>Blocs d'activités</option>`
+  window.viewmodel.blocsActivite.forEach((bloc) => {
+    selectActivite +=
+        `<option value="` + bloc.id + `">` + bloc.nom + `</option>`;
+  });
+  selectActivite += 
+      `</select>
+    </div> 
+    <div class="form-group col-md-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="0h"
+        name="heuresActivite` + noActivite + `"
+      />
+    </div>
+  </div>`;
   return selectActivite;
 }

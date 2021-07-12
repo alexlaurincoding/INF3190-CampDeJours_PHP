@@ -53,7 +53,7 @@
                 <input
                   class="form-control"
                   type="date"
-                  id="example-date-input"
+                  id="premiereJournee"
                   name="premiereJournee"
                 />
                 <span class="erreur"><?= Util::message("premiereJournee"); ?></span>
@@ -68,7 +68,7 @@
                 <input
                   class="form-control"
                   type="date"
-                  id="example-date-input"
+                  id="derniereJournee"
                   name="derniereJournee"
                 />
                 <span class="erreur"><?= Util::message("derniereJournee"); ?></span>
