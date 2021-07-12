@@ -60,7 +60,7 @@
               <div id="ajouterBlocActiviteForm"></div>
             <div id="btnAjouterRetirerAct" class="col-md-12 text-center margin-auto mt-3">
             <button class="btn btn-secondary" id="rmActiviteBloc" hidden="true">
-                retirer une activite -
+                Retirer une activite -
               </button>
               <button class="btn btn-secondary" id="addActiviteBloc">
                 Ajouter une activité +

@@ -216,6 +216,9 @@ foreach($gabaritsProgramme as $gabaritProgramme){
               <div id="ajouterProgrammeForm"></div>
             </form>
             <div class="col-md-12 text-center margin-auto mt-3">
+            <button class="btn btn-secondary" id="rmActiviteProg" hidden="true">
+                Retirer une activite -
+              </button>
               <button class="btn btn-secondary" id="addActiviteProgramme">
                 Ajouter une activité +
               </button>

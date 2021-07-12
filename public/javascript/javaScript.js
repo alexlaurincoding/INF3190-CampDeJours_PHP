@@ -43,10 +43,10 @@ $("#addActiviteBloc").click((e) => {
   nbActivitesBloc++;
   ajouterBlocActiviteform.append(ajouterActiviteBloc(nbActivitesBloc));
   console.log(nbActivitesBloc);
-  toggleBouttonRetirerActivite();
+  toggleBouttonRetirerActiviteBloc();
 });
 
-function toggleBouttonRetirerActivite() {
+function toggleBouttonRetirerActiviteBloc() {
   if (nbActivitesBloc > 1) {
     $("#rmActiviteBloc").attr("hidden", false);
   } else {
@@ -81,23 +81,27 @@ $("#rmActiviteBloc").click((e) => {
   var elem = document.getElementById("activite" + nbActivitesBloc);
   elem.parentNode.removeChild(elem);
   nbActivitesBloc--;
-  toggleBouttonRetirerActivite();
+  toggleBouttonRetirerActiviteBloc();
 });
 
 var sel = $("#select-activite-programme");
-var nbActivitesProgramme = 1;
+var nbActivitesProgramme = 0;
 
 $("#addActiviteProgramme").click((e) => {
   e.preventDefault();
-  sel.append(creerSelectActiviteProgramme(nbActivitesProgramme));
   nbActivitesProgramme++;
+  sel.append(creerSelectActiviteProgramme(nbActivitesProgramme));
+
+  toggleBouttonRetirerActiviteProg();
 });
 
 // window.onLoad
 
 function creerSelectActiviteProgramme(noActivite) {
   let selectActivite =
-    `<div class="row mt-2">
+    `<div id="activite` +
+    noActivite +
+    `" class="row mt-2">
     <div class="form-group col-md-10">
       <select class="form-control" name="activite` +
     noActivite +
@@ -118,6 +122,9 @@ function creerSelectActiviteProgramme(noActivite) {
     </div> 
     <div class="form-group col-md-2">
       <input
+        id="heuresActivite` +
+    noActivite +
+    `"
         type="text"
         class="form-control"
         placeholder="0h"
@@ -128,4 +135,22 @@ function creerSelectActiviteProgramme(noActivite) {
     </div>
   </div>`;
   return selectActivite;
+}
+
+$("#rmActiviteProg").click((e) => {
+  e.preventDefault();
+
+  var activite = document.getElementById("activite" + nbActivitesProgramme);
+  activite.parentNode.removeChild(activite);
+  nbActivitesProgramme--;
+  toggleBouttonRetirerActiviteProg();
+});
+
+function toggleBouttonRetirerActiviteProg() {
+  console.log("activite" + nbActivitesProgramme);
+  if (nbActivitesProgramme > 1) {
+    $("#rmActiviteProg").attr("hidden", false);
+  } else {
+    $("#rmActiviteProg").attr("hidden", true);
+  }
 }
