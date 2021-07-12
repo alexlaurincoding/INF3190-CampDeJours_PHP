@@ -209,30 +209,7 @@ foreach($gabaritsProgramme as $gabaritProgramme){
               <h5>Activités.......</h5>
 
               <div id="select-activite-programme">
-                <div class="row">
-                  <div class="form-group col-md-10">
-                    <select class="form-control" name="activite1">
-                      <option disabled selected>Activités</option>
-                      <option>Soccer</option>
-                      <option>Piano</option>
-                      <option>Théâtre</option>
-                      <option disabled>
-                        _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-                      </option>
-                      <option disabled>Blocs d'activités</option>
-                      <option>Activités sportives</option>
-                      <option>Activités artistiques</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-2">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="heures"
-                      placeholder="0h"
-                    />
-                  </div>
-                </div>
+
               </div>
               <div id="ajouterProgrammeForm"></div>
             </form>
