@@ -6,7 +6,7 @@ class ProgrammeModel {
    private $animateurs;
    private $prix;
    private $numeroSemaines = array();
-   // horraire?
+   private $horraireProgramme = array();
 
    function __construct($id, $idGabaritProgramme, $idSession) {
       $this->id = $id;
@@ -40,7 +40,6 @@ class ProgrammeModel {
 
    /**
     * Set the value of idGabaritProgramme
-    *
     * @return  self
     */ 
    public function setIdGabaritProgramme($idGabaritProgramme) {
@@ -99,6 +98,8 @@ class ProgrammeModel {
       return $this;
    }
 
+   // SEMAINE
+
    public function addSemaine($numeroSemaine) {
       array_push($this->numeroSemaines, $numeroSemaine);
    }
@@ -117,6 +118,28 @@ class ProgrammeModel {
     */ 
    public function setNumeroSemaines($numeroSemaines) {
       $this->numeroSemaines = $numeroSemaines;
+      return $this;
+   }
+
+   // HORAIRE
+
+   public function addActivite(HoraireProgrammeModel $horraireProg) {
+      array_push($this->horraireProgramme, $horraireProg);
+   }
+
+   /**
+    * Get the value of horraireProgramme
+    */ 
+   public function getHorraireProgramme() {
+      return $this->horraireProgramme;
+   }
+
+   /**
+    * Set the value of horraireProgramme
+    * @return  self
+    */ 
+   public function setHorraireProgramme($horraireProgramme) {
+      $this->horraireProgramme = $horraireProgramme;
       return $this;
    }
 }
