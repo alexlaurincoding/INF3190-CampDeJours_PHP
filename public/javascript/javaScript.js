@@ -34,41 +34,39 @@ function voirplus(btn) {
 /**
  * Créer un bloc d'activité
  */
-let ajouterBlocActiviteform = document.getElementById(
-  "ajouterBlocActiviteForm"
-);
+var ajouterBlocActiviteform = $("#ajouterBlocActiviteForm");
 let nbActivitesInputHidden = document.getElementById("nbActivites");
-let nbActiviteBloc = 1;
+var nbActivitesBloc = nbActivitesInputHidden.value;
 const NB_MAXIMUM_ACTIVITE_BLOC = 6;
-$("#addActiviteBloc").click(function (e) {
-  let activites = "";
+$("#addActiviteBloc").click((e) => {
   e.preventDefault();
-  nbActiviteBloc++;
-  nbActivitesInputHidden.value = nbActiviteBloc;
+  nbActivitesBloc++;
+  ajouterBlocActiviteform.append(ajouterActiviteBloc(nbActivitesBloc));
+  nbActivitesInputHidden.value = nbActivitesBloc;
+});
+
+function ajouterActiviteBloc(nbActivitesBloc) {
   let nouvelleActivite = '<div class="form-group mt-2">';
   nouvelleActivite +=
-    '<select class="form-control" name="activite' + nbActiviteBloc + '">';
+    '<select class="form-control" name="activite' + nbActivitesBloc + '">';
   window.viewmodel.activites.forEach((activite) => {
-    activites +=
+    nouvelleActivite +=
       "<option value='" + activite.id + "'>" + activite.nom + "</option>";
   });
-  nouvelleActivite += activites;
-
   nouvelleActivite += "</select>";
   nouvelleActivite += "</div>";
-  ajouterBlocActiviteform.innerHTML += nouvelleActivite;
-  if (nbActiviteBloc == NB_MAXIMUM_ACTIVITE_BLOC) {
+
+  if (nbActivitesBloc == NB_MAXIMUM_ACTIVITE_BLOC) {
     let button = document.getElementById("addActiviteBloc");
     button.disabled = true;
   }
-});
-
+  return nouvelleActivite;
+}
 
 var sel = $("#select-activite-programme");
 var nbActivitesProgramme = 1;
 
-
-$("#addActiviteProgramme").click( (e) => {
+$("#addActiviteProgramme").click((e) => {
   e.preventDefault();
   sel.append(creerSelectActiviteProgramme(nbActivitesProgramme));
   nbActivitesProgramme++;
@@ -77,31 +75,34 @@ $("#addActiviteProgramme").click( (e) => {
 // window.onLoad
 
 function creerSelectActiviteProgramme(noActivite) {
-  let selectActivite = 
-  `<div class="row mt-2">
+  let selectActivite =
+    `<div class="row mt-2">
     <div class="form-group col-md-10">
-      <select class="form-control" name="activite` + noActivite + `">
+      <select class="form-control" name="activite` +
+    noActivite +
+    `">
         <option disabled selected>Activités</option>`;
   window.viewmodel.activites.forEach((activite) => {
     selectActivite +=
-        `<option value="` + activite.id + `">` + activite.nom + `</option>`;
+      `<option value="` + activite.id + `">` + activite.nom + `</option>`;
   });
-  selectActivite += 
-        `<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>
-        <option disabled>Blocs d'activités</option>`
+  selectActivite += `<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>
+        <option disabled>Blocs d'activités</option>`;
   window.viewmodel.blocsActivite.forEach((bloc) => {
     selectActivite +=
-        `<option value="` + bloc.id + `">` + bloc.nom + `</option>`;
+      `<option value="` + bloc.id + `">` + bloc.nom + `</option>`;
   });
-  selectActivite += 
-      `</select>
+  selectActivite +=
+    `</select>
     </div> 
     <div class="form-group col-md-2">
       <input
         type="text"
         class="form-control"
         placeholder="0h"
-        name="heuresActivite` + noActivite + `"
+        name="heuresActivite` +
+    noActivite +
+    `"
       />
     </div>
   </div>`;
