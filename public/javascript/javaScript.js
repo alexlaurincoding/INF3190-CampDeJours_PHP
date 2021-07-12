@@ -17,7 +17,6 @@ window.onload = function () {
     var modal = new bootstrap.Modal(document.getElementById(modalName));
     modal.show();
   }
-  ajouterSelectActiviteProgramme();
 };
 
 /**
@@ -43,13 +42,26 @@ $("#addActiviteBloc").click((e) => {
   e.preventDefault();
   nbActivitesBloc++;
   ajouterBlocActiviteform.append(ajouterActiviteBloc(nbActivitesBloc));
-  nbActivitesInputHidden.value = nbActivitesBloc;
+  console.log(nbActivitesBloc);
+  toggleBouttonRetirerActivite();
 });
+
+function toggleBouttonRetirerActivite() {
+  if (nbActivitesBloc > 1) {
+    $("#rmActiviteBloc").attr("hidden", false);
+  } else {
+    $("#rmActiviteBloc").attr("hidden", true);
+  }
+}
 
 function ajouterActiviteBloc(nbActivitesBloc) {
   let nouvelleActivite = '<div class="form-group mt-2">';
   nouvelleActivite +=
-    '<select class="form-control" name="activite' + nbActivitesBloc + '">';
+    '<select class="form-control" id="activite' +
+    nbActivitesBloc +
+    '" name="activite' +
+    nbActivitesBloc +
+    '">';
   window.viewmodel.activites.forEach((activite) => {
     nouvelleActivite +=
       "<option value='" + activite.id + "'>" + activite.nom + "</option>";
@@ -64,23 +76,23 @@ function ajouterActiviteBloc(nbActivitesBloc) {
   return nouvelleActivite;
 }
 
-var selectsActiviteProgramme = $("#select-activite-programme");
-var nbActivitesProgramme = 0;
-const NB_MAXIMUM_ACTIVITE_PROGRAMME = 6;
+$("#rmActiviteBloc").click((e) => {
+  e.preventDefault();
+  var elem = document.getElementById("activite" + nbActivitesBloc);
+  elem.parentNode.removeChild(elem);
+  nbActivitesBloc--;
+  toggleBouttonRetirerActivite();
+});
+
+var sel = $("#select-activite-programme");
+var nbActivitesProgramme = 1;
 
 $("#addActiviteProgramme").click((e) => {
   e.preventDefault();
-  ajouterSelectActiviteProgramme();
+  sel.append(creerSelectActiviteProgramme(nbActivitesProgramme));
+  nbActivitesProgramme++;
 });
 
-function ajouterSelectActiviteProgramme() {
-  nbActivitesProgramme++;
-  selectsActiviteProgramme.append(creerSelectActiviteProgramme(nbActivitesProgramme));
-  document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
-  if (nbActivitesProgramme >= NB_MAXIMUM_ACTIVITE_PROGRAMME) {
-    document.getElementById("addActiviteProgramme").disabled = true;
-  }
-}
 // window.onLoad
 
 function creerSelectActiviteProgramme(noActivite) {

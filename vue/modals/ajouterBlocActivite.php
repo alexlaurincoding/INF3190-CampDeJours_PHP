@@ -48,7 +48,7 @@
               <span class="erreur"><?=Util::message("typeActiviteBloc")?></span>
               <hr />
               <h5>Activités</h5>
-              <select class="form-control" id="idActiviteDuBloc" name="activite1"> 
+              <select class="form-control" id="activite1" name="activite1"> 
 <?php 
   $i = 0;
   foreach ($viewmodel->getActivites() as $activite) {
@@ -58,7 +58,10 @@
               </select>
               <span class="erreur"><?=Util::message("messErrActiviteBloc")?></span>
               <div id="ajouterBlocActiviteForm"></div>
-            <div class="col-md-12 text-center margin-auto mt-3">
+            <div id="btnAjouterRetirerAct" class="col-md-12 text-center margin-auto mt-3">
+            <button class="btn btn-secondary" id="rmActiviteBloc" hidden="true">
+                retirer une activite -
+              </button>
               <button class="btn btn-secondary" id="addActiviteBloc">
                 Ajouter une activité +
               </button>
