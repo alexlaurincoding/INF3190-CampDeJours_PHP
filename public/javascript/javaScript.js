@@ -17,6 +17,7 @@ window.onload = function () {
     var modal = new bootstrap.Modal(document.getElementById(modalName));
     modal.show();
   }
+  ajouterSelectActiviteProgramme();
 };
 
 /**
@@ -63,15 +64,23 @@ function ajouterActiviteBloc(nbActivitesBloc) {
   return nouvelleActivite;
 }
 
-var sel = $("#select-activite-programme");
-var nbActivitesProgramme = 1;
+var selectsActiviteProgramme = $("#select-activite-programme");
+var nbActivitesProgramme = 0;
+const NB_MAXIMUM_ACTIVITE_PROGRAMME = 6;
 
 $("#addActiviteProgramme").click((e) => {
   e.preventDefault();
-  sel.append(creerSelectActiviteProgramme(nbActivitesProgramme));
-  nbActivitesProgramme++;
+  ajouterSelectActiviteProgramme();
 });
 
+function ajouterSelectActiviteProgramme() {
+  nbActivitesProgramme++;
+  selectsActiviteProgramme.append(creerSelectActiviteProgramme(nbActivitesProgramme));
+  document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
+  if (nbActivitesProgramme >= NB_MAXIMUM_ACTIVITE_PROGRAMME) {
+    document.getElementById("addActiviteProgramme").disabled = true;
+  }
+}
 // window.onLoad
 
 function creerSelectActiviteProgramme(noActivite) {

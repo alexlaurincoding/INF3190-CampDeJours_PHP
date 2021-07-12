@@ -209,8 +209,10 @@ foreach($gabaritsProgramme as $gabaritProgramme){
               <h5>Activités.......</h5>
 
               <div id="select-activite-programme">
+                <input type="hidden" name="nbActivitesProgramme" id="nbActivitesProgramme">
 
               </div>
+
               <div id="ajouterProgrammeForm"></div>
             </form>
             <div class="col-md-12 text-center margin-auto mt-3">
