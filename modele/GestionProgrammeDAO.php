@@ -67,9 +67,54 @@ class GestionProgrammeDAO {
         return $gabaritsProgramme;
     }
 
+    public static function getIdSemaine($idSession, $noSemaine) {
+        // TODO
+        return 123;
+    }
+
     #endregion Gabarit Programme
 
     #region Programme
+
+    public static function creerProgramme(ProgrammeModel $programme) {
+        $bdd = BaseDonnee::getConnexion();
+
+        //Programme
+        $req = $bdd->prepare('INSERT INTO programme(id, id_gabarit_programme, id_session, animateur, prix)
+                                VALUES (:id, :id_gabarit_programme, :id_session, :animateur, :prix)');
+        $req->execute(array(
+            'id'=> $programme->getId(),
+            'id_gabarit_programme'=> $programme->getIdGabaritProgramme(),
+            'id_session'=> $programme->getIdSession(),
+            'animateur'=> $programme->getAnimateurs(),
+            'prix'=> $programme->getPrix(),
+        ));
+
+        //ProgrammeSemaine
+        $req = $bdd->prepare('INSERT INTO programme_semaine(id, id_programme, id_semaine)
+        VALUES (:id, :id_programme, :id_semaine)');
+        foreach ($programme->getNumeroSemaines() as $numeroSemaine) { 
+            $req->execute(array(
+                'id'=> Util::guidv4(),
+                'id_programme'=> $programme->getId(),
+                'id_semaine'=> GestionProgrammeDAO::getIdSemaine($programme->getIdSession(), $numeroSemaine),
+            ));
+        }
+
+        //Horaire
+        $req = $bdd->prepare('INSERT INTO horaire_programme(id_programme, id_activite_programme, plage_horaire, duree)
+                                VALUES (:id_programme, :id_activite_programme, :plage_horaire, :duree)');
+        foreach ($programme->getHorraireProgramme() as $horraireProgramme) { 
+            $req->execute(array(
+                'id_programme'=> $programme->getId(),
+                'id_activite_programme'=> $horraireProgramme->getIdActiviteProg(),
+                'plage_horaire'=> $horraireProgramme->getPlageHoraire(),
+                'duree'=> $horraireProgramme->getDuree(),
+            ));
+        }
+
+        BaseDonnee::close();
+    }
 
 
 

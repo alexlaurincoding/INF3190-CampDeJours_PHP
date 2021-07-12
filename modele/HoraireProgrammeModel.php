@@ -1,5 +1,5 @@
 <?php
-class HoraireProgrammeModel {
+class HoraireProgrammeModel implements JsonSerializable {
    private $idProgramme;
    private $idActiviteProg;
    private $plageHoraire;
@@ -10,6 +10,11 @@ class HoraireProgrammeModel {
       $this->idActiviteProg = $idActiviteProg;
       $this->plageHoraire = $plageHoraire;
       $this->duree = $duree;
+   }
+
+   public function jsonSerialize() {
+      $vars = get_object_vars($this);
+      return $vars;
    }
 
    public function getIdProgramme() {
