@@ -206,36 +206,38 @@ foreach($gabaritsProgramme as $gabaritProgramme){
                 <textarea class="form-control" id="message-text"></textarea>
               </div>
               <hr />
-              <h5>Activités</h5>
+              <h5>Activités.......</h5>
 
-              <div class="row">
-                <div class="form-group col-md-10">
-                  <select class="form-control" name="activite1">
-                    <option disabled selected>Activités</option>
-                    <option>Soccer</option>
-                    <option>Piano</option>
-                    <option>Théâtre</option>
-                    <option disabled>
-                      _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-                    </option>
-                    <option disabled>Blocs d'activités</option>
-                    <option>Activités sportives</option>
-                    <option>Activités artistiques</option>
-                  </select>
-                </div>
-                <div class="form-group col">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="heures"
-                    placeholder="0h"
-                  />
+              <div id="select-activite-programme">
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <select class="form-control" name="activite1">
+                      <option disabled selected>Activités</option>
+                      <option>Soccer</option>
+                      <option>Piano</option>
+                      <option>Théâtre</option>
+                      <option disabled>
+                        _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                      </option>
+                      <option disabled>Blocs d'activités</option>
+                      <option>Activités sportives</option>
+                      <option>Activités artistiques</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="heures"
+                      placeholder="0h"
+                    />
+                  </div>
                 </div>
               </div>
               <div id="ajouterProgrammeForm"></div>
             </form>
             <div class="col-md-12 text-center margin-auto mt-3">
-              <button class="btn btn-secondary" id="addActivite">
+              <button class="btn btn-secondary" id="addActiviteProgramme">
                 Ajouter une activité +
               </button>
             </div>
