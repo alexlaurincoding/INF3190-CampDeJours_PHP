@@ -47,7 +47,7 @@ function creerSession($param){
     $nomSession = Util::param("nomSession");
     $description = Util::param("descriptionSession");
     $premiereJournee = Util::param("premiereJournee");
-    $derniereJournee = Util::param("derniereJournee");  
+    $derniereJournee = Util::param("derniereJournee");
 
     if(!validFormCreerSession()){
         Util::redirectControlleur('admin', 'gestionProgramme', 'creerSessionModal');
