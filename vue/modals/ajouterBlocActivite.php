@@ -53,6 +53,7 @@
                 <input type="hidden" id="nbActivitesBloc" name="nbActivitesBloc">
                 
               </div>
+              <span class="erreur"><?= Util::message("activite"); ?></span>
 
             <div id="btnAjouterRetirerAct" class="col-md-12 text-center margin-auto mt-3">
             <button class="btn btn-secondary" id="rmActiviteBloc" hidden="true">
