@@ -97,7 +97,9 @@ $("#addActiviteProgramme").click((e) => {
 
 function ajouterSelectActiviteProgramme() {
   nbActivitesProgramme++;
-  selectsActiviteProgramme.append(creerSelectActiviteProgramme(nbActivitesProgramme));
+  selectsActiviteProgramme.append(
+    creerSelectActiviteProgramme(nbActivitesProgramme)
+  );
   document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
   if (nbActivitesProgramme >= NB_MAXIMUM_ACTIVITE_PROGRAMME) {
     document.getElementById("addActiviteProgramme").disabled = true;
@@ -113,13 +115,13 @@ function creerSelectActiviteProgramme(noActivite) {
       <select class="form-control" name="activite` +
     noActivite +
     `">
-        <option disabled selected>Activités</option>`;
+        <option disabled value="aucuneValeur" selected>Activités</option>`;
   window.viewmodel.activites.forEach((activite) => {
     selectActivite +=
       `<option value="` + activite.id + `">` + activite.nom + `</option>`;
   });
   selectActivite += `<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>
-        <option disabled>Blocs d'activités</option>`;
+        <option disabled value="aucuneValeur" >Blocs d'activités</option>`;
   window.viewmodel.blocsActivite.forEach((bloc) => {
     selectActivite +=
       `<option value="` + bloc.id + `">` + bloc.nom + `</option>`;
