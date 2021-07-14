@@ -18,7 +18,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form method="post" action="<?=Util::getChemin()?>/admin/creeProgramme">
               <label for="message-text" class="col-form-label"
                 >Gabarit de programme :</label
               >
@@ -41,6 +41,7 @@ foreach($gabaritsProgramme as $gabaritProgramme){
 <?php
 } 
 ?>
+              <span class="erreur"><?= Util::message("gabaritProgramme"); ?></span>
               <label for="message-text" class="col-form-label">Session :</label>
               <select class="form-control" name="session">
               <option disabled selected>Session</option>
@@ -54,7 +55,7 @@ foreach($sessions as $session){
 } 
 ?>
               </select>
-
+              <span class="erreur"><?= Util::message("session"); ?></span>
               <label for="message-text" class="col-form-label"
                 >Numéros de semaine :</label
               >
@@ -233,21 +234,20 @@ foreach($sessions as $session){
                   >
                 </div>
               </div>
-
+              <span class="erreur"><?= Util::message("semaine"); ?></span>
               <div class="form-group">
                 <label for="message-text" class="col-form-label"
                   >Animateurs :</label
                 >
-                <textarea class="form-control" id="message-text"></textarea>
+                <textarea class="form-control" id="message-text" name="animateur"></textarea>
               </div>
               <hr />
-              <h5>Activités.......</h5>
+              <h5>Activités</h5>
 
               <div id="select-activite-programme">
                 <input type="hidden" name="nbActivitesProgramme" id="nbActivitesProgramme">
-
               </div>
-
+              <span class="erreur"><?= Util::message("activite"); ?></span>
               <div id="ajouterProgrammeForm"></div>
             </form>
             <div class="col-md-12 text-center margin-auto mt-3">
