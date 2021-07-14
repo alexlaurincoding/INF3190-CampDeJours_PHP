@@ -19,6 +19,7 @@ window.onload = function () {
   }
   ajouterSelectActiviteProgramme();
   ajouterSelectActiviteBloc();
+  ajouterListenersSurTypesCheckbox();
 };
 
 /**
@@ -56,13 +57,17 @@ function ajouterSelectActiviteBloc() {
 
 $("#rmActiviteBloc").click((e) => {
   e.preventDefault();
+  retirerActiviteBloc();
+});
+
+function retirerActiviteBloc() {
   var elem = document.getElementById("activite" + nbActivitesBloc);
   elem.parentNode.removeChild(elem);
   nbActivitesBloc--;
   document.getElementById("nbActivitesBloc").value = nbActivitesBloc;
   toggleBoutonRetirerActiviteBloc();
   toggleBoutonAjoutActiviteBloc();
-});
+}
 
 function toggleBoutonAjoutActiviteBloc() {
   let button = document.getElementById("addActiviteBloc");
@@ -81,19 +86,56 @@ function toggleBoutonRetirerActiviteBloc() {
   }
 }
 
+function remplacerActivitesBloc() {
+  let nbActivites = nbActivitesBloc;
+  for (i=0; i< nbActivites; i++) {
+    retirerActiviteBloc();
+  }
+  for (i=0; i< 1; i++) {
+    ajouterSelectActiviteBloc();
+  }
+}
+
+function ajouterListenersSurTypesCheckbox() {
+  let checkboxTypes = document.getElementsByClassName("type-activite");
+  Array.from(checkboxTypes).forEach(function(element) {
+      element.addEventListener('click', remplacerActivitesBloc);
+    });
+}
+
+// checkbox.listen(click, callback)
+
+// remplacerTousLesSelectParNouveauSelectRecompile()
+
 function creerSelectActiviteBloc(nbActivitesBloc) {
   let nouvelleActivite = '<div class="form-group mt-2" id="activite' + nbActivitesBloc +'">';
   nouvelleActivite +=
     '<select class="form-control" name="activite' + nbActivitesBloc + '">';
-  window.viewmodel.activites.forEach((activite) => {
-    nouvelleActivite +=
-      "<option value='" + activite.id + "'>" + activite.nom + "</option>";
-  });
-  nouvelleActivite += "</select>";
+  if (getIdTypesChoisis().length == 0) {
+    nouvelleActivite += "<option disabled selected> Veuillez choisir un type d'activité </option>";
+  } else {
+    filtrerActivitesSelonTypesChoisis().forEach((activite) => {
+      nouvelleActivite += "<option value='" + activite.id + "'>" + activite.nom + "</option>";
+    });
+  }
+ nouvelleActivite += "</select>";
   nouvelleActivite += "</div>";
   return nouvelleActivite;
 }
 
+function getIdTypesChoisis() {
+  let types = document.getElementsByClassName("type-activite");
+  let typesChoisis = Array.from(types)
+    .filter( type => type.checked)
+    .map(typeChoisi => typeChoisi.value);
+  return typesChoisis;
+}
+
+function filtrerActivitesSelonTypesChoisis() {
+  let idTypesChoisis = getIdTypesChoisis();
+  return viewmodel.activites
+    .filter(activite => idTypesChoisis.includes(activite.idTypeActivite));
+}
 
 /**
  * ajouter des activites de programme
