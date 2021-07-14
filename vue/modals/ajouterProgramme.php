@@ -259,6 +259,16 @@ foreach($sessions as $session){
                 Ajouter une activité +
               </button>
             </div>
+
+            <div class="col-5 mt-3">
+            <label for="prix" class="col-form-label">Prix :</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="text" class="form-control" aria-label="Prix" name="prix" id="prix">
+            <span class="input-group-text">.00</span>
+          </div>
+          <div class="erreur"><?= Util::message("animateurs"); ?></div>
+          </div>
           </div>
         </div>
       
