@@ -39,23 +39,15 @@ var ajouterBlocActiviteform = $("#ajouterBlocActiviteForm");
 let nbActivitesInputHidden = document.getElementById("nbActivites");
 var nbActivitesBloc = nbActivitesInputHidden.value;
 const NB_MAXIMUM_ACTIVITE_BLOC = 6;
+
 $("#addActiviteBloc").click((e) => {
   e.preventDefault();
   nbActivitesBloc++;
-  ajouterBlocActiviteform.append(ajouterActiviteBloc(nbActivitesBloc));
-  console.log(nbActivitesBloc);
+  ajouterBlocActiviteform.append(creerSelectActiviteBloc(nbActivitesBloc));
   toggleBouttonRetirerActiviteBloc();
 });
 
-function toggleBouttonRetirerActiviteBloc() {
-  if (nbActivitesBloc > 1) {
-    $("#rmActiviteBloc").attr("hidden", false);
-  } else {
-    $("#rmActiviteBloc").attr("hidden", true);
-  }
-}
-
-function ajouterActiviteBloc(nbActivitesBloc) {
+function creerSelectActiviteBloc(nbActivitesBloc) {
   let nouvelleActivite = '<div class="form-group mt-2">';
   nouvelleActivite +=
     '<select class="form-control" id="activite' +
@@ -69,12 +61,25 @@ function ajouterActiviteBloc(nbActivitesBloc) {
   });
   nouvelleActivite += "</select>";
   nouvelleActivite += "</div>";
-
-  if (nbActivitesBloc == NB_MAXIMUM_ACTIVITE_BLOC) {
-    let button = document.getElementById("addActiviteBloc");
-    button.disabled = true;
-  }
+  toggleBoutonAjoutActiviteBloc();
   return nouvelleActivite;
+}
+
+function toggleBoutonAjoutActiviteBloc() {
+  let button = document.getElementById("addActiviteBloc");
+  if (nbActivitesBloc >= NB_MAXIMUM_ACTIVITE_BLOC) {
+    button.disabled = true;
+  } else {
+    button.disabled = false;
+  }
+}
+
+function toggleBouttonRetirerActiviteBloc() {
+  if (nbActivitesBloc > 1) {
+    $("#rmActiviteBloc").attr("hidden", false);
+  } else {
+    $("#rmActiviteBloc").attr("hidden", true);
+  }
 }
 
 $("#rmActiviteBloc").click((e) => {
@@ -83,7 +88,10 @@ $("#rmActiviteBloc").click((e) => {
   elem.parentNode.removeChild(elem);
   nbActivitesBloc--;
   toggleBouttonRetirerActiviteBloc();
+  toggleBoutonAjoutActiviteBloc();
 });
+
+
 
 var selectsActiviteProgramme = $("#select-activite-programme");
 var nbActivitesProgramme = 0;
