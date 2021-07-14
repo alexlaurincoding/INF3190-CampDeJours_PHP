@@ -31,7 +31,7 @@ foreach($gabaritsProgramme as $gabaritProgramme){
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="gabarit_programme"
+                    name="gabaritProgramme"
                     value="<?=$gabaritProgramme->getId()?>"
                   />
                   <label class="form-check-label" for="<?=$gabaritProgramme->getId() ?>"
@@ -41,7 +41,7 @@ foreach($gabaritsProgramme as $gabaritProgramme){
 <?php
 } 
 ?>
-              <span class="erreur"><?= Util::message("gabaritProgramme"); ?></span>
+              <div class="erreur"><?= Util::message("gabaritProgramme"); ?></div>
               <label for="message-text" class="col-form-label">Session :</label>
               <select class="form-control" name="session">
               <option disabled selected>Session</option>
@@ -55,7 +55,7 @@ foreach($sessions as $session){
 } 
 ?>
               </select>
-              <span class="erreur"><?= Util::message("session"); ?></span>
+              <span class="erreur"><?= Util::message("session"); ?></span> <br>
               <label for="message-text" class="col-form-label"
                 >Numéros de semaine :</label
               >
@@ -239,7 +239,8 @@ foreach($sessions as $session){
                 <label for="message-text" class="col-form-label"
                   >Animateurs :</label
                 >
-                <textarea class="form-control" id="message-text" name="animateur"></textarea>
+                <textarea class="form-control" id="message-text" name="animateurs"></textarea>
+                <span class="erreur"><?= Util::message("animateurs"); ?></span>
               </div>
               <hr />
               <h5>Activités</h5>
@@ -249,7 +250,7 @@ foreach($sessions as $session){
               </div>
               <span class="erreur"><?= Util::message("activite"); ?></span>
               <div id="ajouterProgrammeForm"></div>
-            </form>
+            
             <div class="col-md-12 text-center margin-auto mt-3">
             <button class="btn btn-secondary" id="rmActiviteProg" hidden="true">
                 Retirer une activite -
@@ -258,6 +259,16 @@ foreach($sessions as $session){
                 Ajouter une activité +
               </button>
             </div>
+
+            <div class="col-5 mt-3">
+            <label for="prix" class="col-form-label">Prix :</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="text" class="form-control" aria-label="Prix" name="prix" id="prix">
+            <span class="input-group-text">.00</span>
+          </div>
+          <div class="erreur"><?= Util::message("animateurs"); ?></div>
+          </div>
           </div>
         </div>
       
@@ -270,7 +281,8 @@ foreach($sessions as $session){
             >
               Fermer
             </button>
-            <button type="button" class="btn btn-secondary">Créer</button>
+            <button type="submit" class="btn btn-secondary">Créer</button>
+            </form>
           </div>
         </div>
       </div>

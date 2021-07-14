@@ -108,7 +108,8 @@ function ajouterListenersSurTypesCheckbox() {
 // remplacerTousLesSelectParNouveauSelectRecompile()
 
 function creerSelectActiviteBloc(nbActivitesBloc) {
-  let nouvelleActivite = '<div class="form-group mt-2" id="activite' + nbActivitesBloc +'">';
+  let nouvelleActivite =
+    '<div class="form-group mt-2" id="activite' + nbActivitesBloc + '">';
   nouvelleActivite +=
     '<select class="form-control" name="activite' + nbActivitesBloc + '">';
   if (getIdTypesChoisis().length == 0) {
@@ -153,7 +154,9 @@ $("#addActiviteProgramme").click((e) => {
 function ajouterSelectActiviteProgramme() {
   nbActivitesProgramme++;
   document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
-  selectsActiviteProgramme.append(creerSelectActiviteProgramme(nbActivitesProgramme));
+  selectsActiviteProgramme.append(
+    creerSelectActiviteProgramme(nbActivitesProgramme)
+  );
   toggleBoutonAjoutActiviteProgramme();
   toggleBoutonRetirerActiviteProgramme();
 }
@@ -187,16 +190,20 @@ function toggleBoutonAjoutActiviteProgramme() {
 
 function creerSelectActiviteProgramme(noActivite) {
   let selectActivite =
-    `<div id="activite` + noActivite + `" class="row mt-2">
+    `<div id="activite` +
+    noActivite +
+    `" class="row mt-2">
     <div class="form-group col-md-10">
-      <select class="form-control" name="activite` + noActivite + `">
+      <select class="form-control" name="activite` +
+    noActivite +
+    `">
         <option disabled selected>Activités</option>`;
   window.viewmodel.activites.forEach((activite) => {
     selectActivite +=
       `<option value="` + activite.id + `">` + activite.nom + `</option>`;
   });
   selectActivite += `<option disabled>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</option>
-        <option disabled>Blocs d'activités</option>`;
+        <option disabled value="aucuneValeur" >Blocs d'activités</option>`;
   window.viewmodel.blocsActivite.forEach((bloc) => {
     selectActivite +=
       `<option value="` + bloc.id + `">` + bloc.nom + `</option>`;
@@ -206,14 +213,17 @@ function creerSelectActiviteProgramme(noActivite) {
     </div> 
     <div class="form-group col-md-2">
       <input
-        id="heuresActivite` + noActivite + `"
+        id="heuresActivite` +
+    noActivite +
+    `"
         type="text"
         class="form-control"
         placeholder="0h"
-        name="heuresActivite` + noActivite +`"
+        name="heuresActivite` +
+    noActivite +
+    `"
       />
     </div>
   </div>`;
   return selectActivite;
 }
-
