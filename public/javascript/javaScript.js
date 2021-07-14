@@ -17,6 +17,7 @@ window.onload = function () {
     var modal = new bootstrap.Modal(document.getElementById(modalName));
     modal.show();
   }
+  ajouterSelectActiviteProgramme();
 };
 
 /**
@@ -84,18 +85,24 @@ $("#rmActiviteBloc").click((e) => {
   toggleBouttonRetirerActiviteBloc();
 });
 
-var sel = $("#select-activite-programme");
+var selectsActiviteProgramme = $("#select-activite-programme");
 var nbActivitesProgramme = 0;
+const NB_MAXIMUM_ACTIVITE_PROGRAMME = 6;
 
 $("#addActiviteProgramme").click((e) => {
   e.preventDefault();
-  nbActivitesProgramme++;
-  sel.append(creerSelectActiviteProgramme(nbActivitesProgramme));
-
+  ajouterSelectActiviteProgramme();
   toggleBouttonRetirerActiviteProg();
 });
 
-// window.onLoad
+function ajouterSelectActiviteProgramme() {
+  nbActivitesProgramme++;
+  selectsActiviteProgramme.append(creerSelectActiviteProgramme(nbActivitesProgramme));
+  document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
+  if (nbActivitesProgramme >= NB_MAXIMUM_ACTIVITE_PROGRAMME) {
+    document.getElementById("addActiviteProgramme").disabled = true;
+  }
+}
 
 function creerSelectActiviteProgramme(noActivite) {
   let selectActivite =
