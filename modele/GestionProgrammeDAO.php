@@ -67,11 +67,6 @@ class GestionProgrammeDAO {
         return $gabaritsProgramme;
     }
 
-    public static function getIdSemaine($idSession, $noSemaine) {
-        // TODO
-        return 123;
-    }
-
     #endregion Gabarit Programme
 
     #region Programme
@@ -116,11 +111,12 @@ class GestionProgrammeDAO {
         BaseDonnee::close();
     }
 
-
-
-
     #endregion Programme
 
+    public static function getIdSemaine($idSession, $noSemaine) {
+        // TODO
+        return 123;
+    }
     #region Activite
 
     public static function creerActivite(ActiviteModel $activite) {

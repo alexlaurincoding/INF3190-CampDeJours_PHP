@@ -44,10 +44,16 @@ foreach($gabaritsProgramme as $gabaritProgramme){
 ?>
               <label for="message-text" class="col-form-label">Session :</label>
               <select class="form-control" name="activite1">
-                <option disabled selected>Session</option>
-                <option>Session 2021</option>
-                <option>Session 2020</option>
-                <option>Session 2019</option>
+              <option disabled selected>Session</option>
+<?php
+ $sessions = GestionProgrammeDAO::getSessions();
+foreach($sessions as $session){
+?> 
+                
+                <option id="<?=$session->getId()?>"><?=$session->getNom()?></option>
+<?php
+} 
+?>
               </select>
 
               <label for="message-text" class="col-form-label"
@@ -209,11 +215,16 @@ foreach($gabaritsProgramme as $gabaritProgramme){
               <h5>Activités.......</h5>
 
               <div id="select-activite-programme">
+                <input type="hidden" name="nbActivitesProgramme" id="nbActivitesProgramme">
 
               </div>
+
               <div id="ajouterProgrammeForm"></div>
             </form>
             <div class="col-md-12 text-center margin-auto mt-3">
+            <button class="btn btn-secondary" id="rmActiviteProg" hidden="true">
+                Retirer une activite -
+              </button>
               <button class="btn btn-secondary" id="addActiviteProgramme">
                 Ajouter une activité +
               </button>
