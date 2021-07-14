@@ -158,5 +158,68 @@ function creerBlocActivite($param){
         Util::setMessage('global', "Bloc d'activité créée avec succès!");
         Util::redirectControlleur('admin', 'gestionProgramme');
     }
-
 }
+
+    function extractSemaineDeForm(){
+        $semaines = array();
+        for($i = 1; $i <= 15; $i++){
+            if(Util::param("semaine" . $i) == $i){
+                array_push($semaines, Util::param("semaine" . $i));
+            }
+        }
+        return $semaines;
+    }
+
+    function validFormCreeProgramme(){
+        $valide = true;
+        $gabaritProgramme = Util::param("gabaritProgramme");
+        $session = Util::param("session");
+        $semaines = extractSemaineDeForm();
+        $animateurs = Util::param("animateurs");
+        $nbActivites = Util::param("nbActivitesProgramme");
+        
+        if(empty($gabaritProgramme)){
+            Util::setMessage("gabaritProgramme", "Veuillez selectionner un gabarit de programme.");
+            $valide = false;
+        }
+        if(empty($session)){
+            Util::setMessage("session", "Veuillez selectionner une session.");
+            $valide = false;
+        }
+        if(empty($semaines)){
+            Util::setMessage("semaine", "Veuillez selectionner une ou plusieurs semaines.");
+            $valide = false;
+        }
+        if(empty($animateurs)){
+            Util::setMessage("animateurs", "Veuillez entrer le ou les animateurs.");
+            $valide = false;
+        }
+
+        for($i = 1; $i <= $nbActivites; $i++){
+            $activite = Util::param("activite" . $i);
+            $nbHeures = Util::param("heuresActivite" . $i);
+            if(empty($activite)){
+                Util::setMessage("activite", "Veuillez selectionner une activite.");
+                $valide = false;
+                break;
+            }
+            if(empty($nbHeures) || !is_numeric($nbHeures)){
+                Util::setMessage("activite", "Veuillez selectionner une duree.");
+                $valide = false;
+                break;
+            }
+        }
+        return $valide;
+    }
+
+    function creeProgramme($param){
+        $gabaritProgramme = Util::param("gabaritProgramme");
+        $session = Util::param("session");
+        $semaines = extractSemaineDeForm();
+        $animateurs = Util::param("animateurs");
+
+        if (!validFormCreeProgramme()) {
+            Util::redirectControlleur('admin', 'gestionProgramme', 'creerProgrammeModal');
+        }else{
+        }
+    }

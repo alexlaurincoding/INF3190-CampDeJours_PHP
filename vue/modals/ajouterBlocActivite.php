@@ -48,16 +48,12 @@
               <span class="erreur"><?=Util::message("typeActiviteBloc")?></span>
               <hr />
               <h5>Activités</h5>
-              <select class="form-control" id="activite1" name="activite1"> 
-<?php 
-  $i = 0;
-  foreach ($viewmodel->getActivites() as $activite) {
-?>
-                <option value="<?=$activite->getId()?>"><?=$activite->getNom()?></option>
-<?php } ?>
-              </select>
-              <span class="erreur"><?=Util::message("messErrActiviteBloc")?></span>
-              <div id="ajouterBlocActiviteForm"></div>
+
+              <div id="ajouterBlocActiviteForm">
+                <input type="hidden" id="nbActivitesBloc" name="nbActivitesBloc">
+                
+              </div>
+
             <div id="btnAjouterRetirerAct" class="col-md-12 text-center margin-auto mt-3">
             <button class="btn btn-secondary" id="rmActiviteBloc" hidden="true">
                 Retirer une activite -
