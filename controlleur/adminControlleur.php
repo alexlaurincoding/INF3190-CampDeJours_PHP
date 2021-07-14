@@ -177,7 +177,7 @@ function creerBlocActivite($param){
         $semaines = extractSemaineDeForm();
         $animateurs = Util::param("animateurs");
         $nbActivites = Util::param("nbActivitesProgramme");
-        
+        $prix = Util::param("prix");
         if(empty($gabaritProgramme)){
             Util::setMessage("gabaritProgramme", "Veuillez selectionner un gabarit de programme.");
             $valide = false;
@@ -203,23 +203,46 @@ function creerBlocActivite($param){
                 $valide = false;
                 break;
             }
-            if(empty($nbHeures) || !is_numeric($nbHeures)){
-                Util::setMessage("activite", "Veuillez selectionner une duree.");
+            if(empty($nbHeures) || !is_numeric($nbHeures) || $nbHeures < 0){
+                Util::setMessage("activite", "Veuillez selectionner une duree valide.");
                 $valide = false;
                 break;
             }
+           
         }
+
+        if(empty($prix) || !is_numeric($prix) || $prix < 0 ){
+            Util::setMessage("prix", "Veuillez entrer un prix valide.");
+            $valide = false;
+        }
+
         return $valide;
     }
 
     function creeProgramme($param){
         $gabaritProgramme = Util::param("gabaritProgramme");
         $session = Util::param("session");
-        $semaines = extractSemaineDeForm();
+        $semaines = extractSemaineDeForm();       
         $animateurs = Util::param("animateurs");
-
+        $prix = Util::param("prix");
+        $nbActivite = Util::param("nbActivitesProgramme");
         if (!validFormCreeProgramme()) {
             Util::redirectControlleur('admin', 'gestionProgramme', 'creerProgrammeModal');
         }else{
+            $idProgramme = Util::guidv4();
+            GestionProgrammeDAO::creeProgramme($idProgramme, $gabaritProgramme, $session, $animateurs, $prix);
+            for($i = 0; $i < sizeof($semaines); $i++){
+                $idSemaine = GestionProgrammeDAO::getIdSemaine($session, $semaines[$i]);
+                GestionProgrammeDAO::creeProgrammeSemaine($idProgramme, $idSemaine);
+            }
+
+            for($i = 1; $i <= $nbActivite; $i++){
+                $activite = Util::param("activite" . $i);
+                $duree = Util::param("heuresActivite". $i);
+                GestionProgrammeDAO::creeHoraireProgramme($idProgramme, $activite, $i, $duree);
+            }
+            Util::setMessage('global', "Programme créée avec succès!");
+            Util::redirectControlleur('admin', 'gestionProgramme');
+
         }
     }

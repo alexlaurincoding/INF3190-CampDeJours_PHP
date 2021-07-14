@@ -267,7 +267,7 @@ foreach($sessions as $session){
             <input type="text" class="form-control" aria-label="Prix" name="prix" id="prix">
             <span class="input-group-text">.00</span>
           </div>
-          <div class="erreur"><?= Util::message("animateurs"); ?></div>
+          <div class="erreur"><?= Util::message("prix"); ?></div>
           </div>
           </div>
         </div>

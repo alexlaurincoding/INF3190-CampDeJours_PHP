@@ -8,10 +8,14 @@ class ProgrammeModel implements JsonSerializable {
    private $numeroSemaines = array();
    private $horraireProgramme = array();
 
-   function __construct($id, $idGabaritProgramme, $idSession) {
+   function __construct($id, $idGabaritProgramme, $idSession, $animateur, $numeroSemaines, $horraireProgramme, $prix) {
       $this->id = $id;
       $this->idGabaritProgramme = $idGabaritProgramme;
       $this->idSession = $idSession;
+      $this->animateur = $animateur;
+      $this->numeroSemaine = $numeroSemaines;
+      $this->horraireProgramme = $horraireProgramme;
+      $this->prix = $prix;
    }
 
    public function jsonSerialize() {

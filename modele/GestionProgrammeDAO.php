@@ -71,7 +71,7 @@ class GestionProgrammeDAO {
 
     #region Programme
 
-    public static function creerProgramme(ProgrammeModel $programme) {
+   /* public static function creerProgramme(ProgrammeModel $programme) {
         $bdd = BaseDonnee::getConnexion();
 
         //Programme
@@ -109,13 +109,67 @@ class GestionProgrammeDAO {
         }
 
         BaseDonnee::close();
-    }
+    }*/
 
     #endregion Programme
 
+    public static function creeProgramme($idProgramme, $idGabaritProgramme, $idSession, $animateurs, $prix){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('INSERT INTO programme(id, id_gabarit_programme, id_session, animateur, prix) 
+                            values(:idProgramme, :idGabaritProgramme, :idSession, :animateurs, :prix)');
+        $req->execute(array(
+            'idProgramme'=>$idProgramme,
+            'idGabaritProgramme'=>$idGabaritProgramme,
+            'idSession'=>$idSession,
+            'animateurs'=>$animateurs,
+            'prix'=>$prix));
+
+        BaseDonnee::close();
+    }
+
+    public static function creeProgrammeSemaine($idProgramme, $idSemaine){
+        $bdd = BaseDonnee::getConnexion();
+        $id = Util::guidv4();
+
+        $req = $bdd->prepare('INSERT INTO programme_semaine(id, id_programme, id_semaine) 
+                            values(:id, :idProgramme, :idSemaine)');
+        $req->execute(array(
+            'id'=>$id,
+            'idProgramme'=>$idProgramme,
+            'idSemaine'=>$idSemaine));
+
+        BaseDonnee::close();
+
+    }
+
+    public static function creeHoraireProgramme($idProgramme, $idActivite, $plageHoraire, $duree){
+        $bdd = BaseDonnee::getConnexion();
+        
+        $req = $bdd->prepare('INSERT INTO horaire_programme(id_programme, id_activite_programme, plage_horaire, duree) 
+                            values(:idProgramme, :idActivite, :plageHoraire, :duree)');
+        $req->execute(array(
+            'idProgramme'=>$idProgramme,
+            'idActivite'=>$idActivite,
+            'plageHoraire'=>$plageHoraire,
+            'duree'=>$duree));
+
+        BaseDonnee::close();
+    }
+
     public static function getIdSemaine($idSession, $noSemaine) {
-        // TODO
-        return 123;
+         $bdd = BaseDonnee::getConnexion();
+
+         $req = $bdd->prepare('SELECT id FROM semaine WHERE id_session = :idSession AND no_semaine = :noSemaine');
+
+         $req->execute(array(
+             'idSession'=>$idSession,
+             'noSemaine'=>$noSemaine
+         ));
+         $donnee = $req->fetch();
+         $idSemaine = $donnee['id'];
+         BaseDonnee::close();
+        return $idSemaine;
     }
     #region Activite
 
