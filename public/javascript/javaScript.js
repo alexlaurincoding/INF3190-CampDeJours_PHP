@@ -92,15 +92,38 @@ const NB_MAXIMUM_ACTIVITE_PROGRAMME = 6;
 $("#addActiviteProgramme").click((e) => {
   e.preventDefault();
   ajouterSelectActiviteProgramme();
-  toggleBouttonRetirerActiviteProg();
 });
 
 function ajouterSelectActiviteProgramme() {
   nbActivitesProgramme++;
   selectsActiviteProgramme.append(creerSelectActiviteProgramme(nbActivitesProgramme));
   document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
+  toggleBoutonAjoutActiviteProgramme();
+  toggleBoutonRetirerActiviteProgramme();
+}
+
+$("#rmActiviteProg").click((e) => {
+  e.preventDefault();
+  var activite = document.getElementById("activite" + nbActivitesProgramme);
+  activite.parentNode.removeChild(activite);
+  nbActivitesProgramme--;
+  toggleBoutonRetirerActiviteProgramme();
+  toggleBoutonAjoutActiviteProgramme();
+});
+
+function toggleBoutonRetirerActiviteProgramme() {
+  if (nbActivitesProgramme > 1) {
+    $("#rmActiviteProg").attr("hidden", false);
+  } else {
+    $("#rmActiviteProg").attr("hidden", true);
+  }
+}
+
+function toggleBoutonAjoutActiviteProgramme() {
   if (nbActivitesProgramme >= NB_MAXIMUM_ACTIVITE_PROGRAMME) {
     document.getElementById("addActiviteProgramme").disabled = true;
+  } else {
+    document.getElementById("addActiviteProgramme").disabled = false;
   }
 }
 
@@ -144,20 +167,3 @@ function creerSelectActiviteProgramme(noActivite) {
   return selectActivite;
 }
 
-$("#rmActiviteProg").click((e) => {
-  e.preventDefault();
-
-  var activite = document.getElementById("activite" + nbActivitesProgramme);
-  activite.parentNode.removeChild(activite);
-  nbActivitesProgramme--;
-  toggleBouttonRetirerActiviteProg();
-});
-
-function toggleBouttonRetirerActiviteProg() {
-  console.log("activite" + nbActivitesProgramme);
-  if (nbActivitesProgramme > 1) {
-    $("#rmActiviteProg").attr("hidden", false);
-  } else {
-    $("#rmActiviteProg").attr("hidden", true);
-  }
-}
