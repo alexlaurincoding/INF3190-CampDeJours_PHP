@@ -31,9 +31,8 @@ foreach($gabaritsProgramme as $gabaritProgramme){
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="inlineRadioOptions"
-                    id="<?=$gabaritProgramme->getId() ?>"
-                    value="<?=$gabaritProgramme->getId() ?>"
+                    name="gabarit_programme"
+                    value="<?=$gabaritProgramme->getId()?>"
                   />
                   <label class="form-check-label" for="<?=$gabaritProgramme->getId() ?>"
                     ><?=$gabaritProgramme->getTitre() ?></label
@@ -43,14 +42,14 @@ foreach($gabaritsProgramme as $gabaritProgramme){
 } 
 ?>
               <label for="message-text" class="col-form-label">Session :</label>
-              <select class="form-control" name="activite1">
+              <select class="form-control" name="session">
               <option disabled selected>Session</option>
 <?php
  $sessions = GestionProgrammeDAO::getSessions();
 foreach($sessions as $session){
 ?> 
                 
-                <option id="<?=$session->getId()?>"><?=$session->getNom()?></option>
+                <option value="<?=$session->getId()?>"><?=$session->getNom()?></option>
 <?php
 } 
 ?>
@@ -65,6 +64,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-1"
+                    name="semaine1"
+                    value="1"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-1"
@@ -74,6 +75,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-2"
+                    name="semaine2"
+                    value="2"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-2"
@@ -83,6 +86,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-3"
+                    name="semaine3"
+                    value="3"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-3"
@@ -92,6 +97,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-4"
+                    name="semaine4"
+                    value="4"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-4"
@@ -101,6 +108,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-5"
+                    name="semaine5"
+                    value="5"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-5"
@@ -113,6 +122,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-6"
+                    name="semaine6"
+                    value="6"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-6"
@@ -122,6 +133,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-7"
+                    name="semaine7"
+                    value="7"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-7"
@@ -131,6 +144,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-8"
+                    name="semaine8"
+                    value="8"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-8"
@@ -140,6 +155,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-9"
+                    name="semaine9"
+                    value="9"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-9"
@@ -149,6 +166,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-10"
+                    name="semaine10"
+                    value="10"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-10"
@@ -161,6 +180,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-11"
+                    name="semaine11"
+                    value="11"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-11"
@@ -170,6 +191,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-12"
+                    name="semaine12"
+                    value="12"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-12"
@@ -179,6 +202,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-13"
+                    name="semaine13"
+                    value="13"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-13"
@@ -188,6 +213,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-14"
+                    name="semaine14"
+                    value="14"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-14"
@@ -197,6 +224,8 @@ foreach($sessions as $session){
                     type="checkbox"
                     class="btn-check"
                     id="btn-check-15"
+                    name="semaine15"
+                    value="15"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-15"
