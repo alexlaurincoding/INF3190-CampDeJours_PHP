@@ -128,22 +128,19 @@ function toggleBoutonRetirerActiviteProgramme() {
 }
 
 function toggleBoutonAjoutActiviteProgramme() {
+  let bouton = document.getElementById("addActiviteProgramme");
   if (nbActivitesProgramme >= NB_MAXIMUM_ACTIVITE_PROGRAMME) {
-    document.getElementById("addActiviteProgramme").disabled = true;
+    bouton.disabled = true;
   } else {
-    document.getElementById("addActiviteProgramme").disabled = false;
+    bouton.disabled = false;
   }
 }
 
 function creerSelectActiviteProgramme(noActivite) {
   let selectActivite =
-    `<div id="activite` +
-    noActivite +
-    `" class="row mt-2">
+    `<div id="activite` + noActivite + `" class="row mt-2">
     <div class="form-group col-md-10">
-      <select class="form-control" name="activite` +
-    noActivite +
-    `">
+      <select class="form-control" name="activite` + noActivite + `">
         <option disabled selected>Activités</option>`;
   window.viewmodel.activites.forEach((activite) => {
     selectActivite +=
@@ -160,15 +157,11 @@ function creerSelectActiviteProgramme(noActivite) {
     </div> 
     <div class="form-group col-md-2">
       <input
-        id="heuresActivite` +
-    noActivite +
-    `"
+        id="heuresActivite` + noActivite + `"
         type="text"
         class="form-control"
         placeholder="0h"
-        name="heuresActivite` +
-    noActivite +
-    `"
+        name="heuresActivite` + noActivite +`"
       />
     </div>
   </div>`;
