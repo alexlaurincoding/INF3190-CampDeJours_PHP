@@ -18,6 +18,7 @@ window.onload = function () {
     modal.show();
   }
   ajouterSelectActiviteProgramme();
+  ajouterSelectActiviteBloc();
 };
 
 /**
@@ -37,33 +38,31 @@ function voirplus(btn) {
  */
 var ajouterBlocActiviteform = $("#ajouterBlocActiviteForm");
 let nbActivitesInputHidden = document.getElementById("nbActivites");
-var nbActivitesBloc = nbActivitesInputHidden.value;
+var nbActivitesBloc = 0;
 const NB_MAXIMUM_ACTIVITE_BLOC = 6;
 
 $("#addActiviteBloc").click((e) => {
   e.preventDefault();
-  nbActivitesBloc++;
-  ajouterBlocActiviteform.append(creerSelectActiviteBloc(nbActivitesBloc));
-  toggleBouttonRetirerActiviteBloc();
+  ajouterSelectActiviteBloc();
 });
 
-function creerSelectActiviteBloc(nbActivitesBloc) {
-  let nouvelleActivite = '<div class="form-group mt-2">';
-  nouvelleActivite +=
-    '<select class="form-control" id="activite' +
-    nbActivitesBloc +
-    '" name="activite' +
-    nbActivitesBloc +
-    '">';
-  window.viewmodel.activites.forEach((activite) => {
-    nouvelleActivite +=
-      "<option value='" + activite.id + "'>" + activite.nom + "</option>";
-  });
-  nouvelleActivite += "</select>";
-  nouvelleActivite += "</div>";
+function ajouterSelectActiviteBloc() {
+  nbActivitesBloc++;
+  document.getElementById("nbActivitesBloc").value = nbActivitesBloc;
+  ajouterBlocActiviteform.append(creerSelectActiviteBloc(nbActivitesBloc));
+  toggleBoutonRetirerActiviteBloc();
   toggleBoutonAjoutActiviteBloc();
-  return nouvelleActivite;
 }
+
+$("#rmActiviteBloc").click((e) => {
+  e.preventDefault();
+  var elem = document.getElementById("activite" + nbActivitesBloc);
+  elem.parentNode.removeChild(elem);
+  nbActivitesBloc--;
+  document.getElementById("nbActivitesBloc").value = nbActivitesBloc;
+  toggleBoutonRetirerActiviteBloc();
+  toggleBoutonAjoutActiviteBloc();
+});
 
 function toggleBoutonAjoutActiviteBloc() {
   let button = document.getElementById("addActiviteBloc");
@@ -74,7 +73,7 @@ function toggleBoutonAjoutActiviteBloc() {
   }
 }
 
-function toggleBouttonRetirerActiviteBloc() {
+function toggleBoutonRetirerActiviteBloc() {
   if (nbActivitesBloc > 1) {
     $("#rmActiviteBloc").attr("hidden", false);
   } else {
@@ -82,16 +81,23 @@ function toggleBouttonRetirerActiviteBloc() {
   }
 }
 
-$("#rmActiviteBloc").click((e) => {
-  e.preventDefault();
-  var elem = document.getElementById("activite" + nbActivitesBloc);
-  elem.parentNode.removeChild(elem);
-  nbActivitesBloc--;
-  toggleBouttonRetirerActiviteBloc();
-  toggleBoutonAjoutActiviteBloc();
-});
+function creerSelectActiviteBloc(nbActivitesBloc) {
+  let nouvelleActivite = '<div class="form-group mt-2" id="activite' + nbActivitesBloc +'">';
+  nouvelleActivite +=
+    '<select class="form-control" name="activite' + nbActivitesBloc + '">';
+  window.viewmodel.activites.forEach((activite) => {
+    nouvelleActivite +=
+      "<option value='" + activite.id + "'>" + activite.nom + "</option>";
+  });
+  nouvelleActivite += "</select>";
+  nouvelleActivite += "</div>";
+  return nouvelleActivite;
+}
 
 
+/**
+ * ajouter des activites de programme
+ */
 
 var selectsActiviteProgramme = $("#select-activite-programme");
 var nbActivitesProgramme = 0;
@@ -104,8 +110,8 @@ $("#addActiviteProgramme").click((e) => {
 
 function ajouterSelectActiviteProgramme() {
   nbActivitesProgramme++;
-  selectsActiviteProgramme.append(creerSelectActiviteProgramme(nbActivitesProgramme));
   document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
+  selectsActiviteProgramme.append(creerSelectActiviteProgramme(nbActivitesProgramme));
   toggleBoutonAjoutActiviteProgramme();
   toggleBoutonRetirerActiviteProgramme();
 }
@@ -115,6 +121,7 @@ $("#rmActiviteProg").click((e) => {
   var activite = document.getElementById("activite" + nbActivitesProgramme);
   activite.parentNode.removeChild(activite);
   nbActivitesProgramme--;
+  document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
   toggleBoutonRetirerActiviteProgramme();
   toggleBoutonAjoutActiviteProgramme();
 });
