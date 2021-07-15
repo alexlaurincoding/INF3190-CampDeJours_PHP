@@ -160,11 +160,13 @@ foreach($sessions as $session){
             $numero = 1;
             $heure = 8;
             foreach($programme->getHorraireProgramme() as $horraireProgramme){
+              (GestionProgrammeDAO::isActivite($horraireProgramme->getActiviteProg()->getId())) ? 
+                $type = "Activité" : $type = "Bloc";
           ?>
 
             <tr>
               <th scope="row"><?=$numero?></th>
-              <td>Bloc... - Matin actif leger</td>
+              <td><?=$type?> - <?=$horraireProgramme->getActiviteProg()->getNom()?></td>
               <td><?=$horraireProgramme->getDuree()?>h</td>
               <td><?=$heure?>h à <?=$heure += $horraireProgramme->getDuree()?>h</td>
             </tr>
