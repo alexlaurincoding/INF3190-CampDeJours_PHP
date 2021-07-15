@@ -111,7 +111,7 @@ class GestionProgrammeDAO {
         BaseDonnee::close();
     }*/
 
-    #endregion Programme
+    
 
     public static function creeProgramme($idProgramme, $idGabaritProgramme, $idSession, $animateurs, $prix){
         $bdd = BaseDonnee::getConnexion();
@@ -171,6 +171,124 @@ class GestionProgrammeDAO {
          BaseDonnee::close();
         return $idSemaine;
     }
+
+    public static function getProgrammes(){
+        $bdd = BaseDonnee::getConnexion();
+
+        $programmes = array();
+        $res = $bdd->query('SELECT * FROM programme');
+        while($donnee = $res->fetch()){
+           $gabarit = self::getGabarit($donnee['id_gabarit_programme']);
+           $session = self::getSession($donnee['id_session']);
+           $semaines = self::getSemainesProgramme($donnee['id']);
+           $activites = self::getActivitesProgramme($donnee['id']);
+
+           $programme = new ProgrammeModel($donnee['id'], $gabarit, $session, $donnee['animateur'], $semaines, $activites, $donnee['prix']);
+           array_push($programmes, $programme);
+        }
+
+        BaseDonnee::close();       
+
+        return $programmes;
+        
+    }
+
+    public static function getGabarit($idGabarit){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('SELECT * FROM gabarit_programme WHERE id = :idGabarit');
+        $req->execute(array('idGabarit'=>$idGabarit));
+        $res = $req->fetch();
+        $gabarit = new GabaritProgrammeModel($idGabarit, $res['titre'], $res['description']);
+        BaseDonnee::close();
+        return $gabarit;
+    }
+
+    public static function getSession($idSession){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('SELECT * FROM session WHERE id = :idSession');
+        $req->execute(array('idSession'=>$idSession));
+        $res = $req->fetch();
+        $session = new SessionModel($idSession, $res['nom'], $res['description'], $res['date_debut'], $res['date_fin']);
+        BaseDonnee::close();
+        return $session;
+    }
+
+    public static function getSemainesProgramme($idProgramme){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('SELECT * FROM semaine 
+                            INNER JOIN programme_semaine 
+                            ON programme_semaine.id_semaine = semaine.id
+                            WHERE programme_semaine.id_programme = :idProgramme');
+        $req->execute(array('idProgramme'=>$idProgramme));
+        $semaines = array();
+        while($res = $req->fetch()){
+            $semaine = new SemaineModel($res['id'], $res['id_session'], $res['no_semaine']);
+            array_push($semaines, $semaine);
+        }
+
+        BaseDonnee::close();
+        return $semaines;       
+    }
+
+    public static function getActivitesProgramme($idProgramme){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('SELECT * FROM horaire_programme 
+                            WHERE id_programme = :idProgramme');
+        $req->execute(array('idProgramme'=>$idProgramme));
+        $activites = array();
+        while($res = $req->fetch()){
+            $activite = self::getActiviteProgramme($res['id_activite_programme']);
+            array_push($activites, $activite);
+        }
+
+        BaseDonnee::close();
+        return $activites;  
+        
+    }
+
+    public static function getActiviteProgramme($idActiviteProgramme){
+        $activite = null;
+        if(self::isActivite($idActiviteProgramme)){
+            $activite = self::getActivite($idActiviteProgramme);
+        }else{
+            $activite = self::getBlocActivite($idActiviteProgramme);
+        }
+        
+        return $activite;
+    }
+
+    public static function getBlocActivite($idActiviteProgramme){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('SELECT * FROM bloc 
+                            WHERE id_bloc = :idActiviteProgramme');
+        $req->execute(array('idActiviteProgramme'=>$idActiviteProgramme));
+        $res = $req->fetch();
+        $blocActivite = new BlocModel($res['id_bloc'], $res['nom'], null);
+
+        return $blocActivite;
+    }
+
+    public static function isActivite($idActiviteProgramme){
+        $bdd = BaseDonnee::getConnexion();
+        
+        $req = $bdd->prepare('SELECT * FROM activite 
+                            WHERE id_activite = :idActiviteProgramme');
+        $req->execute(array('idActiviteProgramme'=>$idActiviteProgramme));
+        $res = $req->fetch();
+        if($res){
+            return true;
+        }
+        return false;
+    }
+    
+
+
+    #endregion Programme
     #region Activite
 
     public static function creerActivite(ActiviteModel $activite) {

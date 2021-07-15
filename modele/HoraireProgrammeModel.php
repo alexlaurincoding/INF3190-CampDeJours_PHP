@@ -1,13 +1,11 @@
 <?php
 class HoraireProgrammeModel implements JsonSerializable {
-   private $idProgramme;
-   private $idActiviteProg;
+   private $activiteProg;
    private $plageHoraire;
    private $duree;
 
-   function __construct($idProgramme, $idActiviteProg, $plageHoraire, $duree) {
-      $this->idProgramme = $idProgramme;
-      $this->idActiviteProg = $idActiviteProg;
+   function __construct($activiteProg, $plageHoraire, $duree) {
+      $this->activiteProg = $activiteProg;
       $this->plageHoraire = $plageHoraire;
       $this->duree = $duree;
    }
@@ -17,21 +15,12 @@ class HoraireProgrammeModel implements JsonSerializable {
       return $vars;
    }
 
-   public function getIdProgramme() {
-      return $this->idProgramme;
+   public function getActiviteProg() {
+      return $this->activiteProg;
    }
 
-   public function setIdProgramme($idProgramme) {
-      $this->idProgramme = $idProgramme;
-      return $this;
-   }
-
-   public function getIdActiviteProg() {
-      return $this->idActiviteProg;
-   }
-
-   public function setIdActiviteProg($idActiviteProg) {
-      $this->idActiviteProg = $idActiviteProg;
+   public function setActiviteProg($activiteProg) {
+      $this->idActiviteProg = $activiteProg;
       return $this;
    }
 

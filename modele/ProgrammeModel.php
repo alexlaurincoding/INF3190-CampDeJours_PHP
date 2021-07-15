@@ -1,19 +1,19 @@
 <?php
 class ProgrammeModel implements JsonSerializable {
    private $id;
-   private $idGabaritProgramme;
-   private $idSession;
+   private $gabaritProgramme;
+   private $session;
    private $animateurs;
    private $prix;
-   private $numeroSemaines = array();
+   private $semaines = array();
    private $horraireProgramme = array();
 
-   function __construct($id, $idGabaritProgramme, $idSession, $animateur, $numeroSemaines, $horraireProgramme, $prix) {
+   function __construct($id, $gabaritProgramme, $session, $animateur, $semaines, $horraireProgramme, $prix) {
       $this->id = $id;
-      $this->idGabaritProgramme = $idGabaritProgramme;
-      $this->idSession = $idSession;
+      $this->gabaritProgramme = $gabaritProgramme;
+      $this->session = $session;
       $this->animateur = $animateur;
-      $this->numeroSemaine = $numeroSemaines;
+      $this->numeroSemaine = $semaines;
       $this->horraireProgramme = $horraireProgramme;
       $this->prix = $prix;
    }
@@ -36,21 +36,21 @@ class ProgrammeModel implements JsonSerializable {
       return $this;
    }
 
-   public function getIdGabaritProgramme() {
-      return $this->idGabaritProgramme;
+   public function getGabaritProgramme() {
+      return $this->gabaritProgramme;
    }
 
-   public function setIdGabaritProgramme($idGabaritProgramme) {
-      $this->idGabaritProgramme = $idGabaritProgramme;
+   public function setGabaritProgramme($gabaritProgramme) {
+      $this->gabaritProgramme = $gabaritProgramme;
       return $this;
    }
 
-   public function getIdSession() {
-      return $this->idSession;
+   public function getSession() {
+      return $this->session;
    }
 
-   public function setIdSession($idSession) {
-      $this->idSession = $idSession;
+   public function setSession($session) {
+      $this->session = $session;
       return $this;
    }
 
@@ -74,16 +74,16 @@ class ProgrammeModel implements JsonSerializable {
 
    // SEMAINE
 
-   public function addSemaine($numeroSemaine) {
-      array_push($this->numeroSemaines, $numeroSemaine);
+   public function addSemaine($semaine) {
+      array_push($this->semaines, $semaine);
    }
 
-   public function getNumeroSemaines() {
-      return $this->numeroSemaines;
+   public function getSemaines() {
+      return $this->semaines;
    }
 
-   public function setNumeroSemaines($numeroSemaines) {
-      $this->numeroSemaines = $numeroSemaines;
+   public function setSemaines($semaines) {
+      $this->semaines = $semaines;
       return $this;
    }
 
