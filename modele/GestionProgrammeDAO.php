@@ -439,10 +439,12 @@ class GestionProgrammeDAO {
     public static function getActivitesDuBloc($idBlocActivite){
         $bdd = BaseDonnee::getConnexion();
         $activites = array();
-        $req = $bdd->prepare('SELECT * FROM activite 
-                            INNER JOIN activite_du_bloc
-                            ON activite.id_activite = activite_du_bloc.id_activite
-                            WHERE activite_du_bloc.id_bloc = :idBlocActivite');
+        $req = $bdd->prepare('SELECT * 
+                                FROM activite 
+                          INNER JOIN activite_du_bloc
+                                  ON activite.id_activite = activite_du_bloc.id_activite
+                               WHERE activite_du_bloc.id_bloc = :idBlocActivite
+                            ORDER BY activite_du_bloc.ordre');
         $req->execute(Array('idBlocActivite' => $idBlocActivite));
         while($donnee = $req->fetch()){
             $activite = new ActiviteModel($donnee['id_activite'], $donnee['nom'], $donnee['type_activite']);
