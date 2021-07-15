@@ -9,7 +9,7 @@
             $motDePasse = Util::param('password');
 
             if (UtilisateurDAO::isBonMotDePasse($nomUtilisateur, $motDePasse)) {
-                $isAdmin = Session::isAdmin($nomUtilisateur);
+                $isAdmin = UtilisateurDAO::isAdmin($nomUtilisateur);
                 Session::connexion($nomUtilisateur, $isAdmin);
             } else {
                 throw new Exception ("Mauvais nom d'utilisateur ou mot de passe.");

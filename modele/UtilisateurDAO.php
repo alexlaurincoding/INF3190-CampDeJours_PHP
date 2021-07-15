@@ -13,7 +13,7 @@ class UtilisateurDAO {
         return false;
     }
 
-        public static function isIdUtilisateurExistant($idUtilisateur) {
+    public static function isIdUtilisateurExistant($idUtilisateur) {
         $bdd = BaseDonnee::getConnexion();
         $req = $bdd->prepare('SELECT nom_utilisateur FROM utilisateur WHERE id = :id');
         $req->execute(array('id'=> $idUtilisateur));
@@ -23,6 +23,16 @@ class UtilisateurDAO {
             return true;
         }
         return false;
+    }
+
+    public static function isAdmin($nomUtilisateur){
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('SELECT est_admin FROM utilisateur WHERE nom_utilisateur = :nomUtilisateur');
+        $req->execute(array('nomUtilisateur'=> $nomUtilisateur));
+        $donnee = $req->fetch();
+        BaseDonnee::close();   
+
+        return $donnee['est_admin'] == 1;     
     }
 
     public static function isBonMotDePasse($nomUtilisateur, $motDePasse) {
