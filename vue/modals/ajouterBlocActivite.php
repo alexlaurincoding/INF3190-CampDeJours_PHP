@@ -72,7 +72,6 @@
             >
               Fermer
             </button>
-            <input type="hidden" id="nbActivites" name="nbActivites" value="1">
             <button type="submit" class="btn btn-secondary">Créer</button>
           </form>
           </div>

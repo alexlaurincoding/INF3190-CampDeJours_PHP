@@ -38,7 +38,7 @@ function voirplus(btn) {
  * Créer un bloc d'activité
  */
 var ajouterBlocActiviteform = $("#ajouterBlocActiviteForm");
-let nbActivitesInputHidden = document.getElementById("nbActivites");
+let nbActivitesBlocHidden = document.getElementById("nbActivitesBloc");
 var nbActivitesBloc = 0;
 const NB_MAXIMUM_ACTIVITE_BLOC = 6;
 
@@ -49,7 +49,7 @@ $("#addActiviteBloc").click((e) => {
 
 function ajouterSelectActiviteBloc() {
   nbActivitesBloc++;
-  document.getElementById("nbActivitesBloc").value = nbActivitesBloc;
+  nbActivitesBlocHidden.value = nbActivitesBloc;
   ajouterBlocActiviteform.append(creerSelectActiviteBloc(nbActivitesBloc));
   toggleBoutonRetirerActiviteBloc();
   toggleBoutonAjoutActiviteBloc();
@@ -87,8 +87,8 @@ function toggleBoutonRetirerActiviteBloc() {
 }
 
 function remplacerActivitesBloc() {
-  let nbActivites = nbActivitesBloc;
-  for (i=0; i< nbActivites; i++) {
+  let nb = nbActivitesBloc;
+  for (i=0; i< nb; i++) {
     retirerActiviteBloc();
   }
   for (i=0; i< 1; i++) {
