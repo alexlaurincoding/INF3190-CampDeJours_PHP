@@ -248,7 +248,7 @@ foreach($sessions as $session){
               <div id="select-activite-programme">
                 <input type="hidden" name="nbActivitesProgramme" id="nbActivitesProgramme">
               </div>
-              <span class="erreur"><?= Util::message("activite"); ?></span>
+              <span class="erreur"><?= Util::message("activites")?></span>
               <div id="ajouterProgrammeForm"></div>
             
             <div class="col-md-12 text-center margin-auto mt-3">

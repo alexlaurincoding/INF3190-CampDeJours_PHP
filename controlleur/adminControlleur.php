@@ -199,12 +199,12 @@ function creerBlocActivite($param){
             $activite = Util::param("activite" . $i);
             $nbHeures = Util::param("heuresActivite" . $i);
             if(empty($activite)){
-                Util::setMessage("activite", "Veuillez selectionner une activite.");
+                Util::setMessage("activites", "Veuillez selectionner une activite.");
                 $valide = false;
                 break;
             }
             if(empty($nbHeures) || !is_numeric($nbHeures) || $nbHeures < 0){
-                Util::setMessage("activite", "Veuillez selectionner une duree valide.");
+                Util::setMessage("activites", "Veuillez selectionner une duree valide.");
                 $valide = false;
                 break;
             }
