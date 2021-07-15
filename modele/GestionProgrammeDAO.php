@@ -176,7 +176,7 @@ class GestionProgrammeDAO {
         $bdd = BaseDonnee::getConnexion();
 
         $programmes = array();
-        $res = $bdd->query('SELECT * FROM programmes');
+        $res = $bdd->query('SELECT * FROM programme');
         while($donnee = $res->fetch()){
            $gabarit = self::getGabarit($donnee['id_gabarit_programme']);
            $session = self::getSession($donnee['id_session']);
@@ -196,8 +196,8 @@ class GestionProgrammeDAO {
     public static function getGabarit($idGabarit){
         $bdd = BaseDonnee::getConnexion();
 
-        $req = $bdd->prepare('SELECT * FROM gabarit WHERE id = :idGabarit');
-        $req->execute(array('id'=>$idGabarit));
+        $req = $bdd->prepare('SELECT * FROM gabarit_programme WHERE id = :idGabarit');
+        $req->execute(array('idGabarit'=>$idGabarit));
         $res = $req->fetch();
         $gabarit = new GabaritProgrammeModel($idGabarit, $res['titre'], $res['description']);
         BaseDonnee::close();
@@ -208,7 +208,7 @@ class GestionProgrammeDAO {
         $bdd = BaseDonnee::getConnexion();
 
         $req = $bdd->prepare('SELECT * FROM session WHERE id = :idSession');
-        $req->execute(array('id'=>$idSession));
+        $req->execute(array('idSession'=>$idSession));
         $res = $req->fetch();
         $session = new SessionModel($idSession, $res['nom'], $res['description'], $res['date_debut'], $res['date_fin']);
         BaseDonnee::close();
@@ -236,22 +236,55 @@ class GestionProgrammeDAO {
     public static function getActivitesProgramme($idProgramme){
         $bdd = BaseDonnee::getConnexion();
 
-        $req = $bdd->prepare('SELECT * FROM activite 
-                            INNER JOIN programme_semaine 
-                            ON programme_semaine.id_semaine = semaine.id
-                            WHERE programme_semaine.id_programme = :idProgramme');
+        $req = $bdd->prepare('SELECT * FROM horaire_programme 
+                            WHERE id_programme = :idProgramme');
         $req->execute(array('idProgramme'=>$idProgramme));
-        $semaines = array();
+        $activites = array();
         while($res = $req->fetch()){
-            $semaine = new SemaineModel($res['id'], $res['id_session'], $res['no_semaine']);
-            array_push($semaines, $semaine);
+            $activite = self::getActiviteProgramme($res['id_activite_programme']);
+            array_push($activites, $activite);
         }
 
         BaseDonnee::close();
-        return $semaines;  
+        return $activites;  
         
     }
 
+    public static function getActiviteProgramme($idActiviteProgramme){
+        $activite = null;
+        if(self::isActivite($idActiviteProgramme)){
+            $activite = self::getActivite($idActiviteProgramme);
+        }else{
+            $activite = self::getBlocActivite($idActiviteProgramme);
+        }
+        
+        return $activite;
+    }
+
+    public static function getBlocActivite($idActiviteProgramme){
+        $bdd = BaseDonnee::getConnexion();
+
+        $req = $bdd->prepare('SELECT * FROM bloc 
+                            WHERE id_bloc = :idActiviteProgramme');
+        $req->execute(array('idActiviteProgramme'=>$idActiviteProgramme));
+        $res = $req->fetch();
+        $blocActivite = new BlocModel($res['id_bloc'], $res['nom'], null);
+
+        return $blocActivite;
+    }
+
+    public static function isActivite($idActiviteProgramme){
+        $bdd = BaseDonnee::getConnexion();
+        
+        $req = $bdd->prepare('SELECT * FROM activite 
+                            WHERE id_activite = :idActiviteProgramme');
+        $req->execute(array('idActiviteProgramme'=>$idActiviteProgramme));
+        $res = $req->fetch();
+        if($res){
+            return true;
+        }
+        return false;
+    }
     
 
 
