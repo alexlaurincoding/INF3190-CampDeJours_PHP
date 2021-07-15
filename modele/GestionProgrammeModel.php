@@ -13,6 +13,7 @@ class GestionProgrammeModel implements JsonSerializable{
         $this->activites = GestionProgrammeDAO::getActivites();
         $this->gabaritsProgramme = GestionProgrammeDAO::getGabaritsProgramme();
         $this->blocsActivite = GestionProgrammeDAO::getBlocsActivite();
+        $this->programmes = GestionProgrammeDAO::getProgrammes();
     }
 
     public function jsonSerialize()
@@ -52,6 +53,14 @@ class GestionProgrammeModel implements JsonSerializable{
     public function getBlocsActivite()
     {
         return $this->blocsActivite;
+    }
+
+    /**
+     * Get the value of sessions 
+     */ 
+    public function getProgrammes()
+    {
+        return $this->programmes;
     }
 
 }
