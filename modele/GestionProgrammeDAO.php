@@ -157,6 +157,18 @@ class GestionProgrammeDAO {
         BaseDonnee::close();
     }
 
+    public static function getHoraireProgramme($idProgramme){
+        $bdd = BaseDonnee::getConnexion();
+        $horaires = array();
+        $req = $bdd->prepare('SELECT * FROM horaire_programme WHERE id_programme = :idProgramme ORDER BY plage_horaire');
+        $req->execute(array('idProgramme'=>$idProgramme));
+        while($res = $req->fetch()){
+            $horaireProgramme = new HoraireProgrammeModel($res['id_activite_programme'], $res['plage_horaire'], $res['duree']);
+            array_push($horaires, $horaireProgramme);
+        }
+        return $horaires;
+    }
+
     public static function getIdSemaine($idSession, $noSemaine) {
          $bdd = BaseDonnee::getConnexion();
 
@@ -452,6 +464,8 @@ class GestionProgrammeDAO {
 
         return $activites;         
     }
+
+
 
     #endregion Bloc
 

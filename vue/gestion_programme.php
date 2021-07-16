@@ -103,92 +103,89 @@ foreach($sessions as $session){
             </div>
           </div>
         </div>
+        
         <div class="card-body">
+        <div class="collapse" id="collapseProgramme">
 
-          <div class="collapse" id="collapseSession">
-<?php
-  $programmes = $viewmodel->getProgrammes();
-  foreach($programmes as $programme){
-    foreach($programme->getNumeroSemaines as $numeroSemaine){
-?>
+          <div class="card my-2">
+            <div class="card-body">
+            <?php
+              $programmes = $viewmodel->getProgrammes();
+              foreach($programmes as $programme){
+                $semaines = $programme->getSemaines();
+                foreach($semaines as $semaine){
+                ?>
+              <div class="row">
+                <div class="flex-column col-4">
+                  <h3 class="programme-titre mb-0"><?=$programme->getGabaritProgramme()->getTitre()?></h3>
+                </div>
+                <div
+                  class="d-flex col-4 align-items-center justify-content-center"
+                >
+                  ( <?=$programme->getSession()->getNom() . ' |  Semaine ' . $semaine->getNoSemaine()?>)
+                </div>
+              </div>
 
-<div class="card my-2">
-  <div class="card-body">
-    <div class="row">
-      <div class="flex-column col-4">
-        <h3 class="programme-titre mb-0"><?=$programme->getTitre()?></h3>
-      </div>
+              <div>
+                <hr class="mt-3" />
+              </div>
 
-      <div class="d-flex col-4 align-items-center justify-content-center" >
-        ( <?=$programme->getGabaritProgramme()->getTitre()?> | Semaine <?=$numeroSemaine?> )
-      </div>
-    </div>
-    <div>
-      <hr class="mt-3" />
-    </div>
+              <div class="programme-description col-12 mb-3">
+              <?=$programme->getGabaritProgramme()->getDescription()?>
+              </div>
 
-    <div class="programme-description col-12 mb-3">
-      <?=$programme->getGabaritProgramme()->getDescription()?>
-    </div>
+              <div class="programme-description col-12 mb-3">
+                <h4 class="mb-0">Animateurs :</h4>
+                <?=$programme->getAnimateurs()?>
+              </div>
 
-    <div class="programme-description col-12 mb-3">
-      <h4 class="mb-0">Animateurs :</h4>
-      <?=$programme->getAnimateurs()?>
-    </div>
+              <div class="mb-4">
+                <h4 class="col-3 d-flex mb-0">Horraire :</h4>
 
-    <!-- <div class="programme-description col-12 mb-3">
-      <h4 class="mb-0">Enfants inscrits :</h4>
-      Liam, Noah, Oliver, William, Elijah, James, Benjamin, Lucas.
-    </div> -->
-
-    <div class="mb-4">
-      <h4 class="col-3 d-flex mb-0">Horraire :</h4>
-
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Activité</th>
-              <th scope="col">Durée</th>
-              <th scope="col">Heure</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          <?php
-            $numero = 1;
+                <div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Activité</th>
+                        <th scope="col">Durée</th>
+                        <th scope="col">Heure</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
             $heure = 8;
-            foreach($programme->getHorraireProgramme() as $horraireProgramme){
-              (GestionProgrammeDAO::isActivite($horraireProgramme->getActiviteProg()->getId())) ? 
-                $type = "Activité" : $type = "Bloc";
+            $horaireProgramme = GestionProgrammeDAO::getHoraireProgramme($programme->getId());
+            foreach($horaireProgramme as $horaireProgramme){
+              $activiteProgramme = GestionProgrammeDAO::getActiviteProgramme($horaireProgramme->getActiviteProg());
+              if(GestionProgrammeDAO::isActivite($horaireProgramme->getActiviteProg())){
+                $type = "Activité";
+
+              }else{
+                $type = "Bloc";
+              }
           ?>
-
-            <tr>
-              <th scope="row"><?=$numero?></th>
-              <td><?=$type?> - <?=$horraireProgramme->getActiviteProg()->getNom()?></td>
-              <td><?=$horraireProgramme->getDuree()?>h</td>
-              <td><?=$heure?>h à <?=$heure += $horraireProgramme->getDuree()?>h</td>
-            </tr>
-
-          <?php
-              $numero++;
+                      <tr>
+                        <th scope="row"><?=$horaireProgramme->getPlageHoraire()?></th>
+                        <td><?=$type?> - <?=$activiteProgramme->getNom()?></td>
+                        <td><?=$horaireProgramme->getDuree()?></td>
+                        <td><?=$heure?>h à <?=$heure += $horaireProgramme->getDuree()?></td>
+                      </tr>
+                               <?php
             }
           ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <?php
+                }
+              }
+              ?>
+            </div>
+          </div>
 
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<?php
-  }
-}
-?>
-
+         
           </div>
           <p class="text-center">
             <button

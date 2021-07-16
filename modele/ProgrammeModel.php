@@ -6,15 +6,15 @@ class ProgrammeModel implements JsonSerializable {
    private $animateurs;
    private $prix;
    private $semaines = array();
-   private $horraireProgramme = array();
+   private $horaireProgramme = array();
 
-   function __construct($id, $gabaritProgramme, $session, $animateur, $semaines, $horraireProgramme, $prix) {
+   function __construct($id, $gabaritProgramme, $session, $animateurs, $semaines, $horaireProgramme, $prix) {
       $this->id = $id;
       $this->gabaritProgramme = $gabaritProgramme;
       $this->session = $session;
-      $this->animateur = $animateur;
-      $this->numeroSemaine = $semaines;
-      $this->horraireProgramme = $horraireProgramme;
+      $this->animateurs = $animateurs;
+      $this->semaines = $semaines;
+      $this->horaireProgramme = $horaireProgramme;
       $this->prix = $prix;
    }
 
@@ -89,16 +89,16 @@ class ProgrammeModel implements JsonSerializable {
 
    // HORAIRE
 
-   public function addActivite(HoraireProgrammeModel $horraireProg) {
-      array_push($this->horraireProgramme, $horraireProg);
+   public function addActivite(HoraireProgrammeModel $horaireProg) {
+      array_push($this->horaireProgramme, $horaireProg);
    }
 
-   public function getHorraireProgramme() {
-      return $this->horraireProgramme;
+   public function getHoraireProgramme() {
+      return $this->horaireProgramme;
    }
 
-   public function setHorraireProgramme($horraireProgramme) {
-      $this->horraireProgramme = $horraireProgramme;
+   public function setHoraireProgramme($horaireProgramme) {
+      $this->horaireProgramme = $horaireProgramme;
       return $this;
    }
 }
