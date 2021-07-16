@@ -68,7 +68,6 @@ require('modals/ajouterEnfant.php');
         </div>
       </div>
 
-
       <div id="children" class="card mb-4">
         <div class="card-header">
           <div class="row mb-2 mt-2">
@@ -145,5 +144,375 @@ require('modals/ajouterEnfant.php');
 
           <?php } ?>
 
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="row mb-2 mt-2">
+            <div class="col-9">
+              <h2 class="mb-0">
+                <i class="far fa-calendar-alt"></i> Horaire des enfants à charge
+              </h2>
+            </div>
+            <div class="col-3 d-flex align-items-end justify-content-end">
+               <select name="numSession" class="form-control">
+                 <?php 
+                  foreach(Util::message('sessions') as $session){
+                    echo '<option value="' . $session->getId() . '">' . $session->getNom() . '</option>';
+                  }
+                 ?>
+               </select>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="table table-hover table-sm" id="table_enfants_a_charge">
+            <thead class="thead-dark">
+              <tr>
+                <th>Semaine</th>
+                <th>Enfant</th>
+                <th>Programme</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <div class="week-passed">
+                <tr class="week-passed">
+                  <td rowspan="2">Semaine 1</td>
+                  <td>Simpson, Bart</td>
+                  <td>L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="week-passed">
+                  <td>Simpson, Lisa</td>
+                  <td>N/A</td>
+                  <td>
+                    <button class="btn btn-secondary btn-sm disabled">
+                      Échue
+                      <i class="fas fa-clock"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr class="week-passed">
+                  <td rowspan="2">Semaine 2</td>
+                  <td>Simpson, Lisa</td>
+                  <td>Les arts et la science</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="week-passed">
+                  <td>Simpson, Bart</td>
+                  <td>Le classique</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr class="week-passed">
+                  <td rowspan="2">Semaine 3</td>
+                  <td>Simpson, Bart</td>
+                  <td>L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="week-passed">
+                  <td>Simpson, Lisa</td>
+                  <td>L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr class="week-passed">
+                  <td rowspan="2">Semaine 4</td>
+                  <td>Simpson, Lisa</td>
+                  <td>Les arts et la science</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="week-passed">
+                  <td>Simpson, Bart</td>
+                  <td>Le classique</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+              </div>
+
+              <div class="week-ongoing">
+                <tr>
+                  <td rowspan="2">Semaine 5</td>
+                  <td>Simpson, Bart</td>
+                  <td>L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Lisa</td>
+                  <td>L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 6</td>
+                  <td>Simpson, Lisa</td>
+                  <td>Les arts et la science</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Bart</td>
+                  <td>Le classique</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 7</td>
+                  <td>Simpson, Lisa</td>
+                  <td>
+                    <div class="col-6">
+                      <select class="form-control">
+                        <option>Le classique</option>
+                        <option>Les arts et les sciences</option>
+                        <option>L'enfant actif</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary btn-sm">
+                      150.00 $
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Bart</td>
+                  <td>
+                    <div class="col-6">
+                      <select class="form-control">
+                        <option>Le classique</option>
+                        <option>Les arts et les sciences</option>
+                        <option>L'enfant actif</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary btn-sm">
+                      150.00 $
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 8</td>
+                  <td>Simpson, Bart</td>
+                  <td class="cart-in">L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-danger btn-sm">
+                      Retirer
+                      <i class="fas fa-minus-circle"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Lisa</td>
+                  <td class="cart-in">L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-danger btn-sm">
+                      Retirer
+                      <i class="fas fa-minus-circle"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 9</td>
+                  <td>Simpson, Lisa</td>
+                  <td>Les arts et la science</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Bart</td>
+                  <td>Le classique</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 10</td>
+                  <td>Simpson, Bart</td>
+                  <td>
+                    <div class="col-6">
+                      <select class="form-control">
+                        <option>Le classique</option>
+                        <option>Les arts et les sciences</option>
+                        <option>L'enfant actif</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary btn-sm">
+                      150.00 $
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="cart-in">
+                  <td>Simpson, Lisa</td>
+                  <td class="cart-in">Les arts et la science</td>
+                  <td>
+                    <button class="btn btn-danger btn-sm">
+                      Retirer
+                      <i class="fas fa-minus-circle"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 11</td>
+                  <td>Simpson, Lisa</td>
+                  <td>Les arts et la science</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Bart</td>
+                  <td>Le classique</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 12</td>
+                  <td>Simpson, Bart</td>
+                  <td>L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Lisa</td>
+                  <td>L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 13</td>
+                  <td>Simpson, Lisa</td>
+                  <td>Les arts et la science</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Bart</td>
+                  <td>Le classique</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 14</td>
+                  <td>Simpson, Bart</td>
+                  <td>L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Lisa</td>
+                  <td>L'enfant actif</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">Semaine 15</td>
+                  <td>Simpson, Lisa</td>
+                  <td>Les arts et la science</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Simpson, Bart</td>
+                  <td>Le classique</td>
+                  <td>
+                    <button class="btn btn-success btn-sm disabled">
+                      Payé <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+              </div>
+            </tbody>
+          </table>
         </div>
       </div>
