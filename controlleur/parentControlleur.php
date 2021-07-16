@@ -8,6 +8,7 @@ function index($param){
         throw new Exception("Accès interdit");
     }
     Util::setMessage('viewmodel', Session::getParentUser());
+    Util::setMessage('sessions', GestionProgrammeDAO::getSessions());
     Vue::render('tableau_bord_parent');
 }
 
