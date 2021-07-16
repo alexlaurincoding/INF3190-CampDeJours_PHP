@@ -466,11 +466,6 @@ class GestionProgrammeDAO {
 
         return $activites;         
     }
-
-
-
     #endregion Bloc
-
-
 
 }
