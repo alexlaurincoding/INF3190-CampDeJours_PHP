@@ -106,15 +106,20 @@ foreach($sessions as $session){
         
         <div class="card-body">
         <div class="collapse" id="collapseProgramme">
-
-          <div class="card my-2">
-            <div class="card-body">
-            <?php
+        <?php
               $programmes = $viewmodel->getProgrammes();
               foreach($programmes as $programme){
                 $semaines = $programme->getSemaines();
+                $affichageSemaines = "Semaines ";
                 foreach($semaines as $semaine){
+                  $affichageSemaines = $affichageSemaines  . $semaine->getNoSemaine() . ", ";
+                }
+                $affichageSemaines = rtrim($affichageSemaines, ", ");
+                $affichageSemaines = $affichageSemaines  . "."
                 ?>
+          <div class="card my-2">
+            <div class="card-body">
+            
               <div class="row">
                 <div class="flex-column col-4">
                   <h3 class="programme-titre mb-0"><?=$programme->getGabaritProgramme()->getTitre()?></h3>
@@ -122,7 +127,12 @@ foreach($sessions as $session){
                 <div
                   class="d-flex col-4 align-items-center justify-content-center"
                 >
-                  ( <?=$programme->getSession()->getNom() . ' |  Semaine ' . $semaine->getNoSemaine()?>)
+                   <h4><?=$programme->getSession()->getNom() ?></h4>
+                </div>
+                <div
+                  class="d-flex col-4 align-items-center justify-content-center"
+                >
+                   <?= $affichageSemaines?>
                 </div>
               </div>
 
@@ -140,7 +150,7 @@ foreach($sessions as $session){
               </div>
 
               <div class="mb-4">
-                <h4 class="col-3 d-flex mb-0">Horraire :</h4>
+                <h4 class="col-3 d-flex mb-0">Horaire :</h4>
 
                 <div>
                   <table class="table">
@@ -168,7 +178,7 @@ foreach($sessions as $session){
                       <tr>
                         <th scope="row"><?=$horaireProgramme->getPlageHoraire()?></th>
                         <td><?=$type?> - <?=$activiteProgramme->getNom()?></td>
-                        <td><?=$horaireProgramme->getDuree()?></td>
+                        <td><?=$horaireProgramme->getDuree()?> heures</td>
                         <td><?=$heure?>h à <?=$heure += $horaireProgramme->getDuree()?></td>
                       </tr>
                                <?php
@@ -178,13 +188,12 @@ foreach($sessions as $session){
                   </table>
                 </div>
               </div>
-              <?php
-                }
-              }
-              ?>
             </div>
           </div>
-
+          <?php
+                }
+              
+              ?>
          
           </div>
           <p class="text-center">

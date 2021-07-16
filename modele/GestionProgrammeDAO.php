@@ -233,7 +233,8 @@ class GestionProgrammeDAO {
         $req = $bdd->prepare('SELECT * FROM semaine 
                             INNER JOIN programme_semaine 
                             ON programme_semaine.id_semaine = semaine.id
-                            WHERE programme_semaine.id_programme = :idProgramme');
+                            WHERE programme_semaine.id_programme = :idProgramme
+                            ORDER BY no_semaine');
         $req->execute(array('idProgramme'=>$idProgramme));
         $semaines = array();
         while($res = $req->fetch()){
