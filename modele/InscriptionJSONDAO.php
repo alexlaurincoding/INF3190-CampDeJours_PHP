@@ -1,16 +1,21 @@
 <?php 
 class inscriptionJSONDAO{
 
-    public function genererJSONInscription(){
+    public function getIDSemaine($idSession, $noSemaine){
         $bdd = BaseDonnee::getConnexion();
-        $reponse = $bdd->query('SELECT e.prenom, e.nom, par.prenom, par.nom, ses.nom, prog.titre, sem.no_semaine, insc.paye 
-                                from inscription insc, enfant e, parent par, sesssion ses, programme prog, semaine sem
-                                WHERE e.id = insc.id_enfant
-                                AND par.id = e.id_parent
-                                AND 
 
-                                ORDER BY ');
+        $req = $bdd->prepare('SELECT id FROM semaine 
+                            WHERE id_session = :idSession
+                            AND :no_semaine = :noSemaine
+                            ');
+        $req->execute(array('idSession'=>$idSession,
+                            'noSemaine'=>$noSemaine));
+
+        $idSemaine = $req->fetch();
+
+        BaseDonnee::close();
+        return $idSemaine;       
     }
-
-
 }
+
+
