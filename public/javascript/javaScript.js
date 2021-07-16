@@ -61,7 +61,7 @@ $("#rmActiviteBloc").click((e) => {
 });
 
 function retirerActiviteBloc() {
-  var elem = document.getElementById("activite" + nbActivitesBloc);
+  var elem = document.getElementById("activiteBloc" + nbActivitesBloc);
   elem.parentNode.removeChild(elem);
   nbActivitesBloc--;
   document.getElementById("nbActivitesBloc").value = nbActivitesBloc;
@@ -103,23 +103,21 @@ function ajouterListenersSurTypesCheckbox() {
     });
 }
 
-// checkbox.listen(click, callback)
-
-// remplacerTousLesSelectParNouveauSelectRecompile()
-
 function creerSelectActiviteBloc(nbActivitesBloc) {
   let nouvelleActivite =
-    '<div class="form-group mt-2" id="activite' + nbActivitesBloc + '">';
+    '<div class="form-group mt-2" id="activiteBloc' + nbActivitesBloc + '">';
   nouvelleActivite +=
     '<select class="form-control" name="activite' + nbActivitesBloc + '">';
   if (getIdTypesChoisis().length == 0) {
     nouvelleActivite += "<option disabled selected> Veuillez choisir un type d'activité </option>";
+  } else if (filtrerActivitesSelonTypesChoisis().length == 0) {
+    nouvelleActivite += "<option disabled selected> Aucune activité disponible pour les types d'activité sélectionnés  </option>";
   } else {
     filtrerActivitesSelonTypesChoisis().forEach((activite) => {
       nouvelleActivite += "<option value='" + activite.id + "'>" + activite.nom + "</option>";
     });
   }
- nouvelleActivite += "</select>";
+  nouvelleActivite += "</select>";
   nouvelleActivite += "</div>";
   return nouvelleActivite;
 }
@@ -136,6 +134,30 @@ function filtrerActivitesSelonTypesChoisis() {
   let idTypesChoisis = getIdTypesChoisis();
   return viewmodel.activites
     .filter(activite => idTypesChoisis.includes(activite.idTypeActivite));
+}
+
+function validerFormAjoutBloc() {
+  let estValide = true;
+  let selects = document.getElementById("ajouterBlocActiviteForm").getElementsByTagName("select")
+  let valeurs = Array.from(selects)
+    .map(s => s.value);
+  if (hasDuplicates(valeurs)) {
+    estValide = false;
+    document.getElementById("erreurActiviteBloc").innerText = "Les activités ne peuvent pas être répétées";
+  }
+  return estValide;
+}
+
+function hasDuplicates(array) {
+  valeurs = [];
+  contientDoublon = false;
+  array.forEach( (val) => {
+    if (valeurs.indexOf(val) !== -1) {
+      contientDoublon = true;
+    }
+    valeurs.push(val);
+  });
+  return contientDoublon;
 }
 
 /**
@@ -163,7 +185,7 @@ function ajouterSelectActiviteProgramme() {
 
 $("#rmActiviteProg").click((e) => {
   e.preventDefault();
-  var activite = document.getElementById("activite" + nbActivitesProgramme);
+  var activite = document.getElementById("activiteProgramme" + nbActivitesProgramme);
   activite.parentNode.removeChild(activite);
   nbActivitesProgramme--;
   document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
@@ -190,7 +212,7 @@ function toggleBoutonAjoutActiviteProgramme() {
 
 function creerSelectActiviteProgramme(noActivite) {
   let selectActivite =
-    `<div id="activite` +
+    `<div id="activiteProgramme` +
     noActivite +
     `" class="row mt-2">
     <div class="form-group col-md-10">

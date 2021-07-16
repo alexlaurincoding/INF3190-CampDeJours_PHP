@@ -87,4 +87,38 @@ class ParentDAO {
         BaseDonnee::close();
     }
 
+    public static function getProgrammesParSemaine($idSemaine){
+        $bdd = BaseDonnee::getConnexion();
+        $programmes = array();
+        $req = $bdd->prepare('SELECT g.titre, p.id
+                              FROM gabarit_programme AS g, programme AS p  
+                              INNER JOIN programme 
+                              ON gabarit_programme.id = programme.id_gabarit_programme
+                              INNER JOIN programme_semaine
+                              ON programme_semaine.id_programme = programme.id
+                              INNER JOIN semmaine
+                              ON semaine.id = programme_semaine.id_semaine
+                              WHERE semaine.id = :idSemaine');
+        $req->execute(Array('idSemaine' => $idSemaine));
+        while($donnee = $req->fetch()){
+            $programme = new programmeInscriptionModel($donnee['titre'], $donnee['id']);
+            array_push($programmes, $programme);
+        }
+        BaseDonnee::close();
+
+        return $programmes; 
+    }
+
+    public static function getSemaines($idSession){
+
+    }
+
+    public static function getHoraire($idSession){
+
+    }
+
+    public static function getStatutInscription($idEnfant, $idSemaine){
+        
+    }
+
 }
