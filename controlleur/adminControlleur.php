@@ -145,7 +145,7 @@ function validFormCreerBlocActivite(){
 
 function creerBlocActivite($param){
     $nomBlocActivite = Util::param("nomBlocActivite");
-    $nbActivites = Util::param("nbActivites");
+    $nbActivites = Util::param("nbActivitesBloc");
     $activitesChoisi = array();
     if (!validFormCreerBlocActivite()) {
         Util::redirectControlleur('admin', 'gestionProgramme', 'creerBlocActiviteModal');

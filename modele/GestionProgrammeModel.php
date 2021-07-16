@@ -55,24 +55,12 @@ class GestionProgrammeModel implements JsonSerializable{
         return $this->blocsActivite;
     }
 
-
     /**
-     * Get the value of programmes
+     * Get the value of sessions 
      */ 
     public function getProgrammes()
     {
         return $this->programmes;
     }
 
-    /**
-     * Set the value of programmes
-     *
-     * @return  self
-     */ 
-    public function setProgrammes($programmes)
-    {
-        $this->programmes = $programmes;
-
-        return $this;
-    }
 }

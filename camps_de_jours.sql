@@ -276,8 +276,8 @@ CREATE TABLE `utilisateur` (
 
 INSERT INTO `utilisateur` (`id`, `nom_utilisateur`, `mot_de_passe`, `est_admin`) VALUES
 ('1be9edcd-aaae-4494-aa68-90406d7461b5', 'homer', '$2y$10$dU8tO7hCXsY7gwvZp6Zn1e89Os67i79XzngLxdblmkFKcR7RinUlS', 0),
-('cb2a28ae-98a8-4638-95f3-0a989eb2a864', 'Tegridy', '$2y$10$n3oq9nbXJ6rLad.9nTHylu8QGNWQHw9Kbhut.r7x2qWesEaXHi1/a', 0);
-
+('cb2a28ae-98a8-4638-95f3-0a989eb2a864', 'Tegridy', '$2y$10$n3oq9nbXJ6rLad.9nTHylu8QGNWQHw9Kbhut.r7x2qWesEaXHi1/a', 0),
+('fe031680-545e-4bb6-b3e2-8c7356de6e68', 'admin', '$2y$10$aPuC0HyptQ751xsX2NbBROwoHUVD4n3O/8O6mUXJxlAESGN5Qb.7i', '1');
 --
 -- Indexes for dumped tables
 --
