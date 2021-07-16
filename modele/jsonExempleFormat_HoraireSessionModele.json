@@ -1,0 +1,54 @@
+
+{
+  "infosSession": [ 
+    {
+      "idSemaine": "abcdefg-123456",
+      "noSemaine": 1,
+      "programmesDisponibles": [
+        {
+          "idProgramme": "213ab-234azasd-1324",
+          "titreGabaritProgramme": "Les arts et la science",
+          "prix": 379.89,
+          "inscriptions": [ 
+            // cet array contiendra toujours tous les enfants du parent
+            // si un enfant n'est pas inscrit, ses champs inscrits/payes seront null
+            // si un enfant est inscrit, le champ "inscrit" sera == id_programme, paye sera 0 ou 1
+
+            // SQL : left join, enfants & programme where prog.id = 213ab-234azasd-1324
+            {
+              "idEnfant" : "1234-1234-2134",
+              "nomEnfant" : "Simpson",
+              "prenomEnfant" : "Bart",
+              "inscrit":null,
+              "paye": null
+            },{
+              "idEnfant" : "4321-7642-9876",
+              "nomEnfant" : "Simpson",
+              "prenomEnfant" : "Lisa",
+              "inscrit":"213ab-234azasd-1324",
+              "paye": 0 
+            },{
+              "idEnfant" : "abc-234-sadf",
+              "nomEnfant" : "Simpson",
+              "prenomEnfant" : "Maggie",
+              "inscrit":"213ab-234azasd-1324",
+              "paye": 1 
+            }
+          ]
+        },{
+          "idProgramme": "9!@e-23a2'k;-1324",
+          "titreGabaritProgramme": "L'enfant actif"
+        },{
+          "idProgramme": "abcde-2341-1324",
+          "titreGabaritProgramme": "Le Classique"
+        }
+      ]
+    },{
+      // ... semaines 2 a 15
+    }
+  ]
+}
+
+            // ici, il y aurait un if dans l'affichage.
+            // pour chaque enfant du parent, il y a 3 cas possibles: 
+            //    1- cet array inscriptions

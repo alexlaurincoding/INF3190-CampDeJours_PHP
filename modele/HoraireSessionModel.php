@@ -1,21 +1,39 @@
 <?php
-class HoraireSessionModel{
+class HoraireSessionModel
+{
+
     private $idSession;
-    private SemaineProgrammesModel $semaines;
+    private $idUtilisateur;
+    private $semaines = array();
 
     //getIdSemaines 
 
-    function __construct(){
-        $idSessions = DAO::getIdSessions();
-        foreach ($idSessions as $idSess) {
-            $idSemaines = DAO:getIdSemaines($idSess);
-            foreach ($idSemaines as $idSem) {
-                $this->semaines.push(new SemaineProgrammesModel($idSem));
-            }
+    function __construct($idSession, $idUtilisateur)
+    {
+        $this->idSession = $idSession;
+        $this->idUtilisateur = $idUtilisateur;
+        // DAO:getSemainesBySessionId($idSess);
+        $semainesInfo = 'SELECT semaine.id, 
+                                semaine.no_semaine
+                           FROM semaine
+                     INNER JOIN session 
+                             ON session.id = semaine.id_session
+                          WHERE session.id = "'.$idSession.'";';
+        $semainesInfo = array();
+
+        foreach ($semainesInfo as $semaine) {
+            array_push($this->semaines, 
+              new SemaineProgrammesModel($semaine['id'], $semaine['no_semaine'], $this->idUtilisateur));
         }
     }
 
-    public function getSemaines(){
+    public function getIdSession()
+    {
+        return $this->idSession;
+    }
+
+    public function getSemaines()
+    {
         return $this->semaines;
     }
 }
