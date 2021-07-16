@@ -408,3 +408,5 @@ foreach ($typesActivite as $type) {
         </div>
       </div>
       <!--Fin Activité-->
+
+<script src="<?=Util::getChemin()?>/public/javascript/gestion_programme.js" defer></script>
