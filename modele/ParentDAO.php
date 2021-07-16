@@ -110,7 +110,20 @@ class ParentDAO {
     }
 
     public static function getSemaines($idSession){
+        $bdd = BaseDonnee::getConnexion();
+        $semaines = array();
+        $req = $bdd->prepare('SELECT * FROM semaine 
+                            WHERE id_session = :idSession
+                            ORDER BY no_semaine;
+                            ');
+        $req->execute(array('idSession'=>$idSession));
 
+        while($donnee = $req->fetch()){
+            $semaine = new SemaineModel($donnee['id'], $donnee['id_session'], $donnee['no_semaine']);
+            array_push($semaines, $semaine);
+        }
+        BaseDonnee::close();
+        return $semaines;      
     }
 
     public static function getHoraire($idSession){
