@@ -12,7 +12,7 @@ class HoraireSessionModel
     {
         $this->idSession = $idSession;
         $this->idUtilisateur = $idUtilisateur;
-        // DAO:getSemainesBySessionId($idSess);
+
         $semainesInfo = 'SELECT semaine.id, 
                                 semaine.no_semaine
                            FROM semaine
