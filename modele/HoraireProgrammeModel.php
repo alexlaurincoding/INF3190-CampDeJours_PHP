@@ -20,7 +20,7 @@ class HoraireProgrammeModel implements JsonSerializable {
    }
 
    public function setActiviteProg($activiteProg) {
-      $this->idActiviteProg = $activiteProg;
+      $this->activiteProg = $activiteProg;
       return $this;
    }
 
