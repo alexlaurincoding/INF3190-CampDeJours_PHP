@@ -18,7 +18,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form method="post" action="<?=Util::getChemin()?>/admin/creerBlocActivite">
+            <form method="post" action="<?=Util::getChemin()?>/admin/creerBlocActivite" onsubmit="return validerFormAjoutBloc()">
               <div class="form-group">
                 <label for="nomBlocActivite" class="col-form-label"
                   >Nom du bloc d'activité:</label
@@ -53,7 +53,7 @@
                 <input type="hidden" id="nbActivitesBloc" name="nbActivitesBloc">
                 
               </div>
-              <span class="erreur"><?= Util::message("activite"); ?></span>
+              <span class="erreur" id="erreurActiviteBloc"><?= Util::message("activite"); ?></span>
 
             <div id="btnAjouterRetirerAct" class="col-md-12 text-center margin-auto mt-3">
             <button class="btn btn-secondary" id="rmActiviteBloc" hidden="true">
