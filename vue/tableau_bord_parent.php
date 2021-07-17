@@ -11,7 +11,7 @@ $semainesProgramme = Util::message('semainesProgramme');
 $dateCourrante = DateTime::createFromFormat("Y-m-d", date("Y-m-d"));
 $dateDebutSession = DateTime::createFromFormat("Y-m-d", 
   GestionProgrammeDAO::getSession($semainesProgramme[0]->getSemaine()->getIdSession())->getDateDebut()); 
-// $dateDebutSession = DateTime::createFromFormat("Y-m-d", date("2021-05-12")); // tests (override)
+ $dateDebutSession = DateTime::createFromFormat("Y-m-d", date("2021-05-12")); // tests (override)
 
 $differenceSemaines = $dateCourrante->diff($dateDebutSession)->days / 7;
 if ($dateCourrante < $dateDebutSession) $differenceSemaines = 0;
@@ -196,7 +196,6 @@ require('modals/ajouterEnfant.php');
                 <tr class="week-passed">
                 <?php } ?>
 
-                  <td>Semaine <?= $noSemaine ?></td>
                 <?php if ($enfant == $enfants[0]) { ?> 
                   <td rowspan="<?=$nombreEnfants?>">Semaine <?=$noSemaine?></td>
                 <?php } ?>
