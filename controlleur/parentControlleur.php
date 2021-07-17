@@ -132,6 +132,16 @@ function index($param){
         }
     }
 
+    function inscrireEnfant($param){
+        $idEnfant = Util::param("idEnfant");
+        $idProgramme = Util::param("idProgramme");
+        $idSemaine = Util::param("idSemaine");
+
+        EnfantDAO::inscrireEnfant($idEnfant, $idProgramme, $idSemaine);
+
+        Util::setMessage("global", "Votre enfant maintenant est inscrit!");
+        Util::redirectControlleur("parent","index");
+    }
 
     function numSession() {
         if (!empty($_POST) && isset($_POST["numSession"])) 
