@@ -1,18 +1,18 @@
 <?php
 class SemaineProgrammesModel{
-    private $idSemaine;
-    private programmeInscriptionModel $programmes;
+    private SemaineModel $semaine;
+    private EnfantInscriptionModel $enfantsInscriptions; //array
 
-    function __construct($idSemaine, $programmes){
-        $this->idSemaine = $idSemaine;
-        $this->programmes = $programmes;
+    function __construct($semaine, $enfantsInscriptions){
+        $this->semaine = $semaine;
+        $this->enfantsInscriptions = $enfantsInscriptions;
     }
 
-    public function getIdSemaine(){
-        return $this->idSemaine;
+    public function getSemaine(){
+        return $this->semaine;
     }
 
-    public function getProgrammes(){
-        return $this->programmes;
+    public function getEnfantsInscriptions(){
+        return $this->enfantsInscriptions;
     }
 }

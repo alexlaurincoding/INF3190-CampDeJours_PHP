@@ -118,5 +118,17 @@ class EnfantDAO {
         BaseDonnee::close();
     }
 
+    public static function getEstInscrit($idEnfant, $idSemaine){
+
+    }
+
+    public static function getEstPaye($idEnfant, $idSemaine){
+
+    }
+
+    public static function getNomProgramme($idEnfant, $idSemaine){
+
+    }
+
     
 }

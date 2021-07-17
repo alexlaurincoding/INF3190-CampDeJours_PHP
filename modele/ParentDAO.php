@@ -110,15 +110,59 @@ class ParentDAO {
     }
 
     public static function getSemaines($idSession){
+        $bdd = BaseDonnee::getConnexion();
+        $semaines = array();
+        $req = $bdd->prepare('SELECT * FROM semaine 
+                            WHERE id_session = :idSession
+                            ORDER BY no_semaine;
+                            ');
+        $req->execute(array('idSession'=>$idSession));
 
+        while($donnee = $req->fetch()){
+            $semaine = new SemaineModel($donnee['id'], $donnee['id_session'], $donnee['no_semaine']);
+            array_push($semaines, $semaine);
+        }
+        BaseDonnee::close();
+        return $semaines;      
     }
 
-    public static function getHoraire($idSession){
+    public static function getEnfantsInscriptions($idSemaine, $parent){
+        $enfants = EnfantDAO::getEnfants($parent);
+        $programmes = self::getProgrammesParSemaine($idSemaine);
+        $enfantsInscriptions = array();
+        foreach($enfants as $enfant){
+            $estInscrit = EnfantDAO::getEstInscrit($enfant->getId(), $idSemaine);
+            $estPaye = EnfantDAO::getEstPaye($enfant->getId(), $idSemaine);
+            $enfantInscription = new EnfantInscriptionModel($enfant->getId(), 
+                                                            $enfant->getNom(), 
+                                                            $enfant->getPrenom(), 
+                                                            $estInscrit, 
+                                                            $estPaye,
+                                                            $programmes);
 
+            if($estInscrit){
+                $nomProgramme = EnfantDAO::getNomProgramme($enfant->getId(), $idSemaine);
+                $enfantInscription->setNomProgramme($nomProgramme);
+            }
+
+            array_push($enfantsInscriptions, $enfantInscription);
+        }
+
+        return $enfantsInscriptions;
     }
 
-    public static function getStatutInscription($idEnfant, $idSemaine){
-        
+    public static function getSemainesProgramme($idSession, $parent){
+        $semainesProgramme = array();
+        $semaines = self::getSemaines($idSession);
+
+        foreach($semaines as $semaine){
+            $enfantsInscriptions = self::getEnfantsInscriptions($semaine->getId(), $parent);
+            $semaineProgramme = new SemaineProgrammesModel($semaine, $enfantsInscriptions);
+
+            array_push($semainesProgramme, $semaineProgramme);
+        }
+
+        return $semainesProgramme;
     }
 
 }
