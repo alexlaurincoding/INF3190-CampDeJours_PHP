@@ -1,5 +1,18 @@
 <?php 
 $parent = Util::message('viewmodel');
+$sessions = Util::message('sessions');
+$enfants = $parent->getEnfants();
+$nombreEnfants = count($enfants);
+$estPaye = false; //temporaire
+$estDansPanier = false; //temporaire
+$dateCourrante = DateTime::createFromFormat("Y-m-d", date("Y-m-d"));
+$dateDebutSession = DateTime::createFromFormat("Y-m-d", "2021-06-01");
+
+$differenceSemaines = $dateCourrante->diff($dateDebutSession)->days / 7;
+if ($differenceSemaines < 0) $differenceSemaines = 0;
+else if ($differenceSemaines > 15) $differenceSemaines = 15;
+
+
 //Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
 require('modals/ajouterEnfant.php');
@@ -156,13 +169,13 @@ require('modals/ajouterEnfant.php');
               </h2>
             </div>
             <div class="col-3 d-flex align-items-end justify-content-end">
-               <select name="numSession" class="form-control">
-                 <?php 
-                  foreach(Util::message('sessions') as $session){
+              <select name="numSession" class="form-control">
+                <?php 
+                  foreach($sessions as $session){
                     echo '<option value="' . $session->getId() . '">' . $session->getNom() . '</option>';
                   }
-                 ?>
-               </select>
+                ?>
+              </select>
             </div>
           </div>
         </div>
@@ -178,341 +191,71 @@ require('modals/ajouterEnfant.php');
             </thead>
 
             <tbody>
-              <div class="week-passed">
-                <tr class="week-passed">
-                  <td rowspan="2">Semaine 1</td>
-                  <td>Simpson, Bart</td>
-                  <td>L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="week-passed">
-                  <td>Simpson, Lisa</td>
-                  <td>N/A</td>
-                  <td>
-                    <button class="btn btn-secondary btn-sm disabled">
-                      Échue
-                      <i class="fas fa-clock"></i>
-                    </button>
-                  </td>
-                </tr>
 
-                <tr class="week-passed">
-                  <td rowspan="2">Semaine 2</td>
-                  <td>Simpson, Lisa</td>
-                  <td>Les arts et la science</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="week-passed">
-                  <td>Simpson, Bart</td>
-                  <td>Le classique</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
+              <?php for ($i = 1; $i <= 15; $i++) { 
+                $estEnCours = ($i > $differenceSemaines);
+                foreach ($enfants as $enfant) { ?>
+                
+                <?php if ($estEnCours) { ?> <tr class="week-ongoing">
+                <?php } else { ?> <tr class="week-passed">
+                <?php } ?>
 
-                <tr class="week-passed">
-                  <td rowspan="2">Semaine 3</td>
-                  <td>Simpson, Bart</td>
-                  <td>L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="week-passed">
-                  <td>Simpson, Lisa</td>
-                  <td>L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
+                  <?php if ($enfant == $parent->getEnfants()[0]) { ?> 
+                    <td rowspan="<?=$nombreEnfants?>">Semaine <?=$i?></td>
+                  <?php } ?>
 
-                <tr class="week-passed">
-                  <td rowspan="2">Semaine 4</td>
-                  <td>Simpson, Lisa</td>
-                  <td>Les arts et la science</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="week-passed">
-                  <td>Simpson, Bart</td>
-                  <td>Le classique</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-              </div>
+                  <td><?=$enfant->getNom()?>, <?=$enfant->getPrenom()?></td>
+                  
+                  <!-- bouton paye -->
+                  <?php if($estPaye) { ?>
+                    <td>Les arts et la science</td>
+                    <td>
+                        <button class="btn btn-success btn-sm disabled">
+                          Payé <i class="fas fa-check"></i>
+                        </button>
+                    </td>
+                  
+                  <!-- bouton dans panier -->
+                  <?php } else if($estDansPanier) { ?>
+                    <td class="cart-in">Les arts et la science</td>
+                    <td>
+                      <button class="btn btn-danger btn-sm">
+                        Retirer
+                        <i class="fas fa-minus-circle"></i>
+                      </button>
+                    </td>
 
-              <div class="week-ongoing">
-                <tr>
-                  <td rowspan="2">Semaine 5</td>
-                  <td>Simpson, Bart</td>
-                  <td>L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Lisa</td>
-                  <td>L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td rowspan="2">Semaine 6</td>
-                  <td>Simpson, Lisa</td>
-                  <td>Les arts et la science</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Bart</td>
-                  <td>Le classique</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td rowspan="2">Semaine 7</td>
-                  <td>Simpson, Lisa</td>
-                  <td>
+                  <!-- bouton ajouter au panier -->
+                  <?php } else { ?>
+                    <td>
                     <div class="col-6">
                       <select class="form-control">
+                        <?php //foreach($programmes->getParSemaine($i) as $programme) { ?>
+                          <!-- <option>1</option> -->
+                        <?php //} ?>
                         <option>Le classique</option>
                         <option>Les arts et les sciences</option>
                         <option>L'enfant actif</option>
                       </select>
                     </div>
-                  </td>
-                  <td>
-                    <button class="btn btn-secondary btn-sm">
-                      150.00 $
-                      <i class="fas fa-cart-plus"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Bart</td>
-                  <td>
-                    <div class="col-6">
-                      <select class="form-control">
-                        <option>Le classique</option>
-                        <option>Les arts et les sciences</option>
-                        <option>L'enfant actif</option>
-                      </select>
-                    </div>
-                  </td>
-                  <td>
-                    <button class="btn btn-secondary btn-sm">
-                      150.00 $
-                      <i class="fas fa-cart-plus"></i>
-                    </button>
-                  </td>
+                    </td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">
+                        150.00 $
+                        <i class="fas fa-cart-plus"></i>
+                      </button>
+                    </td>
+
                 </tr>
 
-                <tr>
-                  <td rowspan="2">Semaine 8</td>
-                  <td>Simpson, Bart</td>
-                  <td class="cart-in">L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-danger btn-sm">
-                      Retirer
-                      <i class="fas fa-minus-circle"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Lisa</td>
-                  <td class="cart-in">L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-danger btn-sm">
-                      Retirer
-                      <i class="fas fa-minus-circle"></i>
-                    </button>
-                  </td>
-                </tr>
+                  <?php } ?>
+                <?php } ?>
+              <?php } ?>
 
-                <tr>
-                  <td rowspan="2">Semaine 9</td>
-                  <td>Simpson, Lisa</td>
-                  <td>Les arts et la science</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Bart</td>
-                  <td>Le classique</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td rowspan="2">Semaine 10</td>
-                  <td>Simpson, Bart</td>
-                  <td>
-                    <div class="col-6">
-                      <select class="form-control">
-                        <option>Le classique</option>
-                        <option>Les arts et les sciences</option>
-                        <option>L'enfant actif</option>
-                      </select>
-                    </div>
-                  </td>
-                  <td>
-                    <button class="btn btn-secondary btn-sm">
-                      150.00 $
-                      <i class="fas fa-cart-plus"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="cart-in">
-                  <td>Simpson, Lisa</td>
-                  <td class="cart-in">Les arts et la science</td>
-                  <td>
-                    <button class="btn btn-danger btn-sm">
-                      Retirer
-                      <i class="fas fa-minus-circle"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td rowspan="2">Semaine 11</td>
-                  <td>Simpson, Lisa</td>
-                  <td>Les arts et la science</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Bart</td>
-                  <td>Le classique</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td rowspan="2">Semaine 12</td>
-                  <td>Simpson, Bart</td>
-                  <td>L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Lisa</td>
-                  <td>L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td rowspan="2">Semaine 13</td>
-                  <td>Simpson, Lisa</td>
-                  <td>Les arts et la science</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Bart</td>
-                  <td>Le classique</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td rowspan="2">Semaine 14</td>
-                  <td>Simpson, Bart</td>
-                  <td>L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Lisa</td>
-                  <td>L'enfant actif</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td rowspan="2">Semaine 15</td>
-                  <td>Simpson, Lisa</td>
-                  <td>Les arts et la science</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Simpson, Bart</td>
-                  <td>Le classique</td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-              </div>
             </tbody>
           </table>
         </div>
       </div>
+
+
+
