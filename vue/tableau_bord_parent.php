@@ -3,6 +3,7 @@ $parent = Util::message('viewmodel');
 $sessions = Util::message('sessions');
 $enfants = $parent->getEnfants();
 $nombreEnfants = count($enfants);
+$idSessionSelect = $_SESSION["numSession"];
 
 $semainesProgramme = Util::message('semainesProgramme');
 
@@ -161,7 +162,6 @@ require('modals/ajouterEnfant.php');
             <select name="numSession" class="form-control" onchange="this.form.submit()">
               <?php
               
-              $idSessionSelect = $_SESSION["numSession"];
               foreach ($sessions as $session) {
                 if ($session->getId() == $idSessionSelect) 
                 echo '<option value="' . $session->getId() . '">' . $session->getNom() . '</option>';
@@ -250,12 +250,47 @@ require('modals/ajouterEnfant.php');
           <thead class="thead-dark">
             <tr>
               <th>Programme</th>
-              <th>Nombre</th>
+              <th>Semaine</th>
               <th>Prix</th>
               <th>Sous-Total</th>
             </tr>
           </thead>
+
+
           <tbody>
+
+            <?php $prixTotal = 0;
+            foreach ($semainesProgramme as $semaineProgramme) {
+              if ($semaineProgramme->getSemaine()->getIdSession() == $idSessionSelect) {
+                foreach ($semaineProgramme->getEnfantsInscriptions() as $enfantsInscription) {
+                  if (NULL != $enfantsInscription->getProgrammeInscrit() && !$enfantsInscription->getEstPaye()) {
+                    $prixTotal += $enfantsInscription->getProgrammeInscrit()->getPrix();
+                    ?>
+
+                    <tr>
+                      <td><?=$enfantsInscription->getProgrammeInscrit()->getGabaritProgramme()->getTitre()?></td>
+                      <td><?=$semaineProgramme->getSemaine()->getNoSemaine()?></td>
+                      <td><?=$enfantsInscription->getProgrammeInscrit()->getPrix()?></td>
+                      <td><?=$enfantsInscription->getProgrammeInscrit()->getPrix()?></td>
+                    </tr>
+
+            <?php }
+                }
+              }
+            }
+            ?>
+            <tr>
+              <td></td>
+              <td></td>
+              <td class="fw-bold">Total :</td>
+              <td class="fw-bold grey"><?=$prixTotal?>.00 $</td>
+            </tr>
+          </tbody>
+
+
+
+
+          <!-- <tbody>
             <tr>
               <td>L'enfant actif</td>
               <td>2</td>
@@ -276,7 +311,9 @@ require('modals/ajouterEnfant.php');
               <td class="fw-bold">Total :</td>
               <td class="fw-bold grey">450.00$</td>
             </tr>
-          </tbody>
+          </tbody> -->
+
+
         </table>
         <div class="row">
           <div class="col-9"></div>
