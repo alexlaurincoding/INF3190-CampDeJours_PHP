@@ -12,7 +12,6 @@ function index($param){
 
     $idSessionDefaut = GestionProgrammeDAO::getSessions()[0]->getId();
     Util::setMessage('semainesProgramme', ParentDAO::getSemainesProgramme($idSessionDefaut, Session::getParentUser()));
-    // var_dump(Util::message('semainesProgramme'));
 
     Vue::render('tableau_bord_parent');
 }

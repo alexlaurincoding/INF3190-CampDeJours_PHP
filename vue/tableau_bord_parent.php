@@ -199,9 +199,7 @@ require('modals/ajouterEnfant.php');
                 <tr class="week-passed">
                 <?php } ?>
 
-                <?php if (true) { ?>
                   <td>Semaine <?= $noSemaine ?></td>
-                <?php } ?>
 
                 <td><?= $enfant->getNomEnfant() ?>, <?= $enfant->getPrenomEnfant() ?></td>
 
@@ -366,7 +364,7 @@ function afficherColonneProgramme($enfant, $noSemaine, $estDateDansLePasse = fal
     afficherNomProgramme($titreProgramme);
   } else if ($estDateDansLePasse) {
     afficherTropTard();
-  } else {
+  } else{
     afficherDropDown($enfant, $noSemaine);
   }
 }
@@ -380,7 +378,7 @@ function afficherTropTard()
 {
   echo ('<td >
           <div class="col-6">
-            trop tard!
+            AUCUNE INSCRITPION
           </div>
         </td>');
 }
@@ -388,12 +386,16 @@ function afficherTropTard()
 function afficherDropDown($enfant, $noSemaine)
 {
   $programmesDisponibles = $enfant->getProgrammes();
-  $dropdown =  '<td>
-          <div class="col-6">
-            <select onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+  $dropdown =  '';
 
-  foreach ($programmesDisponibles as $programme) {
-    $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' "data-id="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';
+  if(sizeof($programmesDisponibles) > 0){
+      $dropdown =  '<td><div class="col-6"><select onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+    foreach ($programmesDisponibles as $programme) {
+      $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' "data-id="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';
+    }
+  }else{
+      $dropdown =  '<td><div class="col-6"><select disabled onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+    $dropdown = $dropdown . '<option default>Aucun programme disponible</option>';
   }
 
   $dropdown = $dropdown . '
