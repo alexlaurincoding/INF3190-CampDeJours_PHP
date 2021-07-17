@@ -119,11 +119,37 @@ class EnfantDAO {
     }
 
     public static function getEstInscrit($idEnfant, $idSemaine){
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('SELECT paye FROM `inscription` 
+                            INNER JOIN programme_semaine ON inscription.id_programme_semaine = programme_semaine.id
+                            INNER JOIN semaine ON semaine.id = programme_semaine.id_semaine
+                            INNER JOIN enfant ON enfant.id = inscription.id_enfant
+                            WHERE semaine.id = :idSemaine AND enfant.id = :idEnfant');
 
+        $req->execute(array('idSemaine' => $idSemaine,
+                            'idEnfant' => $idEnfant));
+        $donnee = $req->fetch();
+        BaseDonnee::close();
+        if($donnee){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public static function getEstPaye($idEnfant, $idSemaine){
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('SELECT paye FROM `inscription` 
+                            INNER JOIN programme_semaine ON inscription.id_programme_semaine = programme_semaine.id
+                            INNER JOIN semaine ON semaine.id = programme_semaine.id_semaine
+                            INNER JOIN enfant ON enfant.id = inscription.id_enfant
+                            WHERE semaine.id = :idSemaine AND enfant.id = :idEnfant');
 
+        $req->execute(array('idSemaine' => $idSemaine,
+                            'idEnfant' => $idEnfant));
+        $donnee = $req->fetch();
+        BaseDonnee::close();
+        return $donnee['paye'];
     }
 
     public static function getNomProgramme($idEnfant, $idSemaine){
