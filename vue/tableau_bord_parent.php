@@ -260,24 +260,6 @@ require('modals/ajouterEnfant.php');
           <tbody>
 
             <?php $prixTotal = 0;
-            foreach ($semainesProgramme as $semaineProgramme) {
-              if ($semaineProgramme->getSemaine()->getIdSession() == $idSessionSelect) {
-                foreach ($semaineProgramme->getEnfantsInscriptions() as $enfantsInscription) {
-                  if (NULL != $enfantsInscription->getProgrammeInscrit() && !$enfantsInscription->getEstPaye()) {
-                    $prixTotal += $enfantsInscription->getProgrammeInscrit()->getPrix();
-                    ?>
-
-                    <tr>
-                      <td><?=$enfantsInscription->getProgrammeInscrit()->getGabaritProgramme()->getTitre()?></td>
-                      <td><?=$semaineProgramme->getSemaine()->getNoSemaine()?></td>
-                      <td><?=$enfantsInscription->getProgrammeInscrit()->getPrix()?></td>
-                      <td><?=$enfantsInscription->getProgrammeInscrit()->getPrix()?></td>
-                    </tr>
-
-            <?php }
-                }
-              }
-            }
             ?>
             <tr>
               <td></td>
@@ -415,7 +397,7 @@ function afficherBoutonRetirer()
 function afficherPanierPrix($enfant, $noSemaine)
 {
   $idPanier = $enfant->getIdEnfant() . "-panier" . $noSemaine;
-  echo ('<button disabled onclick="inscrire(idEnfant, idProgramme, idSemaine)" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
+  echo ('<button disabled  data-toggle="tooltip" data-placement="top" title="Ajouter au panier" onclick="inscrire(idEnfant, idProgramme, idSemaine)" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
           $ <i class="fas fa-cart-plus"></i>
         </button>');
 }
