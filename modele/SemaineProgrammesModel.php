@@ -1,7 +1,7 @@
 <?php
 class SemaineProgrammesModel{
     private SemaineModel $semaine;
-    private EnfantInscriptionModel $enfantsInscriptions; //array
+    private  $enfantsInscriptions; //array
 
     function __construct($semaine, $enfantsInscriptions){
         $this->semaine = $semaine;

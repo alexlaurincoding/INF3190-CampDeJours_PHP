@@ -91,14 +91,14 @@ class ParentDAO {
         $bdd = BaseDonnee::getConnexion();
         $programmes = array();
         $req = $bdd->prepare('SELECT g.titre, p.id
-                              FROM gabarit_programme AS g, programme AS p  
-                              INNER JOIN programme 
-                              ON gabarit_programme.id = programme.id_gabarit_programme
-                              INNER JOIN programme_semaine
-                              ON programme_semaine.id_programme = programme.id
-                              INNER JOIN semaine
-                              ON semaine.id = programme_semaine.id_semaine
-                              WHERE semaine.id = :idSemaine');
+                                FROM gabarit_programme AS g
+                          INNER JOIN programme AS p  
+                                  ON g.id = p.id_gabarit_programme
+                          INNER JOIN programme_semaine
+                                  ON programme_semaine.id_programme = p.id
+                          INNER JOIN semaine
+                                  ON semaine.id = programme_semaine.id_semaine
+                               WHERE semaine.id = :idSemaine');
         $req->execute(Array('idSemaine' => $idSemaine));
         while($donnee = $req->fetch()){
             $programme = new programmeInscriptionModel($donnee['titre'], $donnee['id']);

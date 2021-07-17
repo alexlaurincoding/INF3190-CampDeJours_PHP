@@ -147,9 +147,11 @@ class EnfantDAO {
 
         $req->execute(array('idSemaine' => $idSemaine,
                             'idEnfant' => $idEnfant));
-        $donnee = $req->fetch();
+        // $req->debugDumpParams();
         BaseDonnee::close();
-        return $donnee['paye'];
+       
+        return $donnee['paye'] ?? 'falsseee';
+        // $Row['Data'] ?? 'default value';
     }
 
     public static function getNomProgramme($idEnfant, $idSemaine){
