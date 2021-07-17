@@ -340,6 +340,7 @@ function inscrire(idEnfant, idProgramme, idSemaine){
   };
   
   post(url, params);
+  //commit
 }
 
 function post(path, params, method='post') {
