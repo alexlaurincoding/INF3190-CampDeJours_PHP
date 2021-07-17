@@ -90,7 +90,7 @@ class ParentDAO {
     public static function getProgrammesParSemaine($idSemaine){
         $bdd = BaseDonnee::getConnexion();
         $programmes = array();
-        $req = $bdd->prepare('SELECT g.titre, p.id
+        $req = $bdd->prepare('SELECT g.titre, p.id, p.prix
                                 FROM gabarit_programme AS g
                           INNER JOIN programme AS p  
                                   ON g.id = p.id_gabarit_programme
@@ -101,7 +101,7 @@ class ParentDAO {
                                WHERE semaine.id = :idSemaine');
         $req->execute(Array('idSemaine' => $idSemaine));
         while($donnee = $req->fetch()){
-            $programme = new programmeInscriptionModel($donnee['titre'], $donnee['id']);
+            $programme = new programmeInscriptionModel($donnee['titre'], $donnee['id'], $donnee['prix']);
             array_push($programmes, $programme);
         }
         BaseDonnee::close();
@@ -131,16 +131,16 @@ class ParentDAO {
         $programmes = self::getProgrammesParSemaine($idSemaine);
         $enfantsInscriptions = array();
         foreach($enfants as $enfant){
-            $estInscrit = EnfantDAO::getEstInscrit($enfant->getId(), $idSemaine);
+            $programmeInscrit = EnfantDAO::getProgrammeInscrit($enfant->getId(), $idSemaine);
             $estPaye = EnfantDAO::getEstPaye($enfant->getId(), $idSemaine);
             $enfantInscription = new EnfantInscriptionModel($enfant->getId(), 
                                                             $enfant->getNom(), 
                                                             $enfant->getPrenom(), 
-                                                            $estInscrit, 
+                                                            $programmeInscrit, 
                                                             $estPaye,
                                                             $programmes);
 
-            if($estInscrit){
+            if($programmeInscrit){
                 $nomProgramme = EnfantDAO::getNomProgramme($enfant->getId(), $idSemaine);
                 $enfantInscription->setNomProgramme($nomProgramme);
             }

@@ -4,16 +4,16 @@ class EnfantInscriptionModel{
     private $idEnfant;
     private $nomEnfant;
     private $prenomEnfant;
-    private $estInscrit;
+    private $programmeInscrit;
     private $estPaye;
     private $programmes;
     private $nomProgramme;
 
-    public function __construct($idEnfant, $nomEnfant, $prenomEnfant, $estInscrit, $estPaye, $programmes){
+    public function __construct($idEnfant, $nomEnfant, $prenomEnfant, $programmeInscrit, $estPaye, $programmes){
         $this->idEnfant = $idEnfant;
         $this->nomEnfant = $nomEnfant;
         $this->prenomEnfant = $prenomEnfant;
-        $this->estInscrit = $estInscrit;
+        $this->programmeInscrit = $programmeInscrit;
         $this->estPaye = $estPaye;
         $this->programmes = $programmes;
     }
@@ -29,8 +29,8 @@ class EnfantInscriptionModel{
         return $this->prenomEnfant;
     }
 
-    public function getEstInscrit(){
-        return $this->estInscrit;
+    public function getProgrammeInscrit(){
+        return $this->programmeInscrit;
     }
 
     public function getEstPaye(){
