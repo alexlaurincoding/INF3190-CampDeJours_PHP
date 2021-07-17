@@ -153,7 +153,20 @@ class EnfantDAO {
     }
 
     public static function getNomProgramme($idEnfant, $idSemaine){
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('SELECT titre FROM gabarit_programme
+                            INNER JOIN programme ON programme.id_gabarit_programme = gabarit_programme.id
+                            INNER JOIN programme_semaine ON programme_semaine.id_programme = programme.id
+                            INNER JOIN semaine ON semaine.id = programme_semaine.id_semaine
+                            INNER JOIN inscription ON inscription.id_programme_semaine = programme_semaine.id
+                            INNER JOIN enfant ON enfant.id = inscription.id_enfant
+                            WHERE enfant.id = :idEnfant AND semaine.id = :idSemaine');
 
+        $req->execute(array('idSemaine' => $idSemaine,
+                            'idEnfant' => $idEnfant));
+        $donnee = $req->fetch();
+        BaseDonnee::close();
+        return $donnee['titre'];
     }
 
     
