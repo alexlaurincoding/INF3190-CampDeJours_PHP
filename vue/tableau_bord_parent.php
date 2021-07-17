@@ -11,9 +11,9 @@ $semainesProgramme = Util::message('semainesProgramme');
 $dateCourrante = DateTime::createFromFormat("Y-m-d", date("Y-m-d"));
 $dateDebutSession = DateTime::createFromFormat("Y-m-d", 
   GestionProgrammeDAO::getSession($semainesProgramme[0]->getSemaine()->getIdSession())->getDateDebut()); 
-// $dateDebutSession = DateTime::createFromFormat("Y-m-d", date("2021-05-12")); // tests (override)
+// $dateDebutSession = DateTime::createFromFormat("Y-m-d", date("2021-06-06")); // tests (override)
 
-$differenceSemaines = $dateCourrante->diff($dateDebutSession)->days / 7;
+$differenceSemaines = ceil($dateCourrante->diff($dateDebutSession)->days / 7);
 if ($dateCourrante < $dateDebutSession) $differenceSemaines = 0;
 else if ($differenceSemaines > 15) $differenceSemaines = 15;
 
