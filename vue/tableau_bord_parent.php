@@ -237,7 +237,9 @@ require('modals/ajouterEnfant.php');
       <div class="card-header">
         <div class="row mb-2 mt-2">
           <div class="col-6">
-            <h2 class="mb-0"><i class="fas fa-shopping-cart"></i> Panier</h2>
+            <h2 class="mb-0"><i class="fas fa-shopping-cart">
+              </i> Panier - <?=GestionProgrammeDAO::getSession($idSessionSelect)->getNom()?> 
+            </h2>
           </div>
           <div class="col-6 d-flex align-items-end justify-content-end">
             <p> <span id="dateFacture"><?= date("Y-m-d") ?></span> </p>
