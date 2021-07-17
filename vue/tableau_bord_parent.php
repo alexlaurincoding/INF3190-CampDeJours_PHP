@@ -3,6 +3,7 @@ $parent = Util::message('viewmodel');
 $sessions = Util::message('sessions');
 $enfants = $parent->getEnfants();
 $nombreEnfants = count($enfants);
+$idSessionSelect = $_SESSION["numSession"];
 
 $semainesProgramme = Util::message('semainesProgramme');
 
@@ -149,19 +150,30 @@ require('modals/ajouterEnfant.php');
   <div class="card mb-4">
     <div class="card-header">
       <div class="row mb-2 mt-2">
-        <div class="col-9">
+        <div class="col-8">
           <h2 class="mb-0">
             <i class="far fa-calendar-alt"></i> Horaire des enfants à charge
           </h2>
         </div>
-        <div class="col-3 d-flex align-items-end justify-content-end">
-          <select name="numSession" class="form-control">
-            <?php
-            foreach ($sessions as $session) {
-              echo '<option value="' . $session->getId() . '">' . $session->getNom() . '</option>';
-            }
-            ?>
-          </select>
+        <div class="col-2 d-flex align-items-center justify-content-end">Sélection : </div>
+        <div class="col-2 d-flex align-items-end justify-content-end">
+          <form method="POST" onchange="this.form.submit()">
+
+            <select name="numSession" class="form-control" onchange="this.form.submit()">
+              <?php
+              
+              foreach ($sessions as $session) {
+                if ($session->getId() == $idSessionSelect) 
+                echo '<option value="' . $session->getId() . '">' . $session->getNom() . '</option>';
+              }
+              foreach ($sessions as $session) {
+                if ($session->getId() != $idSessionSelect) 
+                echo '<option value="' . $session->getId() . '">' . $session->getNom() . '</option>';
+              }
+              ?>
+            </select>
+            
+          </form>
         </div>
       </div>
     </div>
@@ -238,12 +250,47 @@ require('modals/ajouterEnfant.php');
           <thead class="thead-dark">
             <tr>
               <th>Programme</th>
-              <th>Nombre</th>
+              <th>Semaine</th>
               <th>Prix</th>
               <th>Sous-Total</th>
             </tr>
           </thead>
+
+
           <tbody>
+
+            <?php $prixTotal = 0;
+            foreach ($semainesProgramme as $semaineProgramme) {
+              if ($semaineProgramme->getSemaine()->getIdSession() == $idSessionSelect) {
+                foreach ($semaineProgramme->getEnfantsInscriptions() as $enfantsInscription) {
+                  if (NULL != $enfantsInscription->getProgrammeInscrit() && !$enfantsInscription->getEstPaye()) {
+                    $prixTotal += $enfantsInscription->getProgrammeInscrit()->getPrix();
+                    ?>
+
+                    <tr>
+                      <td><?=$enfantsInscription->getProgrammeInscrit()->getGabaritProgramme()->getTitre()?></td>
+                      <td><?=$semaineProgramme->getSemaine()->getNoSemaine()?></td>
+                      <td><?=$enfantsInscription->getProgrammeInscrit()->getPrix()?></td>
+                      <td><?=$enfantsInscription->getProgrammeInscrit()->getPrix()?></td>
+                    </tr>
+
+            <?php }
+                }
+              }
+            }
+            ?>
+            <tr>
+              <td></td>
+              <td></td>
+              <td class="fw-bold">Total :</td>
+              <td class="fw-bold grey"><?=$prixTotal?>.00 $</td>
+            </tr>
+          </tbody>
+
+
+
+
+          <!-- <tbody>
             <tr>
               <td>L'enfant actif</td>
               <td>2</td>
@@ -264,7 +311,9 @@ require('modals/ajouterEnfant.php');
               <td class="fw-bold">Total :</td>
               <td class="fw-bold grey">450.00$</td>
             </tr>
-          </tbody>
+          </tbody> -->
+
+
         </table>
         <div class="row">
           <div class="col-9"></div>
@@ -297,10 +346,39 @@ function updatePanier(e) {
     boutonPanier.prop("disabled", false);
 }
 
-function inscrire(e){
-
-  console.log( e );
+function inscrire(idEnfant, idProgramme, idSemaine){
+  var getUrl = window.location;
+  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+  let url = baseUrl + "/parent/inscrireEnfant";
+  let params = {
+    "idEnfant": idEnfant,
+    "idProgramme": idProgramme,
+    "idSemaine": idSemaine
+  };
+  
+  post(url, params);
 }
+
+function post(path, params, method='post') {
+  const form = document.createElement('form');
+  form.method = method;
+  form.action = path;
+
+  for (const key in params) {
+    if (params.hasOwnProperty(key)) {
+      const hiddenField = document.createElement('input');
+      hiddenField.type = 'hidden';
+      hiddenField.name = key;
+      hiddenField.value = params[key];
+
+      form.appendChild(hiddenField);
+    }
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
 </script>
 
 
@@ -358,11 +436,6 @@ function afficherboutonEchu()
         </button>');
 }
 
-
-// function filtrerProgrammesParProgrammeInscrit($programmeInscrit){
-
-// }
-
 function afficherColonneProgramme($enfant, $semaine, $estDateDansLePasse = false)
 {
   $noSemaine = $semaine->getNoSemaine();
@@ -386,8 +459,8 @@ function afficherNomProgramme($programmesDisponibles)
 function afficherTropTard()
 {
   echo ('<td >
-          <div class="col-6">
-            AUCUNE INSCRITPION
+          <div class="col-6 d-flex align-items-end justify-content-center">
+            -- N/A --
           </div>
         </td>');
 }

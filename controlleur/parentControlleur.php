@@ -10,7 +10,8 @@ function index($param){
     Util::setMessage('viewmodel', Session::getParentUser());
     Util::setMessage('sessions', GestionProgrammeDAO::getSessions());
 
-    $idSessionDefaut = GestionProgrammeDAO::getSessions()[0]->getId();
+    $idSessionDefaut = numSession();
+
     Util::setMessage('semainesProgramme', ParentDAO::getSemainesProgramme($idSessionDefaut, Session::getParentUser()));
 
     Vue::render('tableau_bord_parent');
@@ -129,4 +130,24 @@ function index($param){
             Util::setMessage("global", "Vos modification ont été sauvegardées.");
             Util::redirectControlleur("parent","index");
         }
+    }
+
+    function inscrireEnfant($param){
+        $idEnfant = Util::param("idEnfant");
+        $idProgramme = Util::param("idProgramme");
+        $idSemaine = Util::param("idSemaine");
+
+        EnfantDAO::inscrireEnfant($idEnfant, $idProgramme, $idSemaine);
+
+        Util::setMessage("global", "Votre enfant maintenant est inscrit!");
+        Util::redirectControlleur("parent","index");
+    }
+
+    function numSession() {
+        if (!empty($_POST) && isset($_POST["numSession"])) 
+            $_SESSION["numSession"] = $_POST["numSession"];
+        else if (!isset($_SESSION["numSession"])) 
+            $_SESSION["numSession"] = GestionProgrammeDAO::getSessions()[0]->getId();
+
+        return $_SESSION["numSession"];
     }
