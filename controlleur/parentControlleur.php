@@ -4,15 +4,15 @@
  */
 
 function index($param){
-    throw new Exception(EnfantDAO::getEstPaye("36fefd76-e012-4045-8f5c-5992baf1da93", "aad4ef04-ae4e-401b-bb07-a912c400c6c2"));
     if(!Session::isConnecte() || Session::isAdmin()){
         throw new Exception("Accès interdit");
     }
     Util::setMessage('viewmodel', Session::getParentUser());
     Util::setMessage('sessions', GestionProgrammeDAO::getSessions());
 
-    $idSessionDefaut = GestionProgrammeDAO::getSessions()[0];
+    $idSessionDefaut = GestionProgrammeDAO::getSessions()[0]->getId();
     Util::setMessage('semainesProgramme', ParentDAO::getSemainesProgramme($idSessionDefaut, Session::getParentUser()));
+    var_dump(Util::message('semainesProgramme'));
 
     Vue::render('tableau_bord_parent');
 }

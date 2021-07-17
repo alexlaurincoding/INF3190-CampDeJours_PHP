@@ -154,7 +154,6 @@ class ParentDAO {
     public static function getSemainesProgramme($idSession, $parent){
         $semainesProgramme = array();
         $semaines = self::getSemaines($idSession);
-
         foreach($semaines as $semaine){
             $enfantsInscriptions = self::getEnfantsInscriptions($semaine->getId(), $parent);
             $semaineProgramme = new SemaineProgrammesModel($semaine, $enfantsInscriptions);
