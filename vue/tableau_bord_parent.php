@@ -149,12 +149,13 @@ require('modals/ajouterEnfant.php');
   <div class="card mb-4">
     <div class="card-header">
       <div class="row mb-2 mt-2">
-        <div class="col-9">
+        <div class="col-8">
           <h2 class="mb-0">
             <i class="far fa-calendar-alt"></i> Horaire des enfants à charge
           </h2>
         </div>
-        <div class="col-3 d-flex align-items-end justify-content-end">
+        <div class="col-2 d-flex align-items-center justify-content-end">Sélection : </div>
+        <div class="col-2 d-flex align-items-end justify-content-end">
           <form method="POST" onchange="this.form.submit()">
 
             <select name="numSession" class="form-control" onchange="this.form.submit()">
@@ -412,8 +413,8 @@ function afficherNomProgramme($programmesDisponibles)
 function afficherTropTard()
 {
   echo ('<td >
-          <div class="col-6">
-            AUCUNE INSCRITPION
+          <div class="col-6 d-flex align-items-end justify-content-center">
+            -- N/A --
           </div>
         </td>');
 }
