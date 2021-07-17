@@ -178,11 +178,11 @@ require('modals/ajouterEnfant.php');
 
         <tbody>
           <?php
-          foreach ($semainesProgramme as $semaine) {
-            $noSemaine = $semaine->getSemaine()->getNoSemaine();
-            $estDateDansLePasse = ($noSemaine <= $differenceSemaines);
+          foreach ($semainesProgramme as $semaineProgramme) {
+            $semaine = $semaineProgramme->getSemaine();
+            $estDateDansLePasse = ($semaine->getNoSemaine() <= $differenceSemaines);
 
-            $enfants = $semaine->getEnfantsInscriptions();
+            $enfants = $semaineProgramme->getEnfantsInscriptions();
             foreach ($enfants as $enfant) {
 
               if (!$estDateDansLePasse) { ?>
@@ -192,7 +192,7 @@ require('modals/ajouterEnfant.php');
                 <?php } ?>
 
                 <?php if ($enfant == $enfants[0]) { ?> 
-                  <td rowspan="<?=$nombreEnfants?>">Semaine <?=$noSemaine?></td>
+                  <td rowspan="<?=$nombreEnfants?>">Semaine <?=$semaine->getNoSemaine()?></td>
                 <?php } ?>
 
                 <td><?= $enfant->getNomEnfant() ?>, <?= $enfant->getPrenomEnfant() ?></td>
@@ -200,13 +200,13 @@ require('modals/ajouterEnfant.php');
                 <!-- DEBUT COLONNE PROGRAMME -->
                 <?php
                 // $programmesDisponibles = $enfant->getProgrammes();
-                afficherColonneProgramme($enfant, $noSemaine, $estDateDansLePasse);
+                afficherColonneProgramme($enfant, $semaine, $estDateDansLePasse);
                 ?>
 
                 <!-- DEBUT COLONNE STATUS -->
                 <td class="colonne-status">
                   <?php
-                  afficherBoutonStatus($enfant, $noSemaine, $estDateDansLePasse);
+                  afficherBoutonStatus($enfant, $semaine, $estDateDansLePasse);
                   ?>
                 </td>
 
@@ -288,28 +288,38 @@ require('modals/ajouterEnfant.php');
 <script>
 function updatePanier(e) {
     let id = e.options[e.selectedIndex].getAttribute("data-id");
+    let idProgramme = e.options[e.selectedIndex].getAttribute("data-idprogramme");
     let prix = e.options[e.selectedIndex].getAttribute("data-prix");
     let boutonPanier = $("#" + e.id.replace("semaine", "panier"));
+    console.log(idProgramme);
+    boutonPanier.attr("data-idprogramme", idProgramme);
     boutonPanier.html(prix + " $ <i class=\"fas fa-cart-plus\"></i>");
     boutonPanier.prop("disabled", false);
 }
+
+function inscrire(e){
+
+  console.log( e );
+}
 </script>
+
+
 
 <?php }
 
-function afficherBoutonStatus($enfant, $noSemaine, $estDateDansLePasse)
+function afficherBoutonStatus($enfant, $semaine, $estDateDansLePasse)
 {
   $estPaye = $enfant->getEstPaye();
   $programmeInscrit = $enfant->getProgrammeInscrit();
   if ($estPaye) {
-    afficherBoutonPaye($enfant, $noSemaine);
+    afficherBoutonPaye($enfant, $semaine);
   } else if ($estDateDansLePasse) {
     afficherBoutonEchu();
   } else {
     if ($programmeInscrit) {
       afficherBoutonRetirer();
     } else {
-      afficherPanierPrix($enfant, $noSemaine);
+      afficherPanierPrix($enfant, $semaine);
     }
   }
 }
@@ -329,10 +339,13 @@ function afficherBoutonRetirer()
         </button>');
 }
 
-function afficherPanierPrix($enfant, $noSemaine)
+function afficherPanierPrix($enfant, $semaine)
 {
+  $idSemaine = $semaine->getId();
+  $noSemaine = $semaine->getNoSemaine();
+  $idEnfant = $enfant->getIdEnfant();
   $idPanier = $enfant->getIdEnfant() . "-panier" . $noSemaine;
-  echo ('<button disabled onclick="inscrire(idEnfant, idProgramme, idSemaine)" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
+  echo ('<button disabled onclick="inscrire(this, '. $idEnfant .')" data-idsemaine = "'.$idSemaine.'" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
           $ <i class="fas fa-cart-plus"></i>
         </button>');
 }
@@ -350,8 +363,9 @@ function afficherboutonEchu()
 
 // }
 
-function afficherColonneProgramme($enfant, $noSemaine, $estDateDansLePasse = false)
+function afficherColonneProgramme($enfant, $semaine, $estDateDansLePasse = false)
 {
+  $noSemaine = $semaine->getNoSemaine();
   $titreProgramme = $enfant->getNomProgramme();
   $programmeInscrit = $enfant->getProgrammeInscrit();
 
@@ -386,10 +400,10 @@ function afficherDropDown($enfant, $noSemaine)
   if(sizeof($programmesDisponibles) > 0){
     $dropdown =  '<td>
     <div class="col-6">
-      <select onchange="updatePanier(this)" onload="updatePanier(this);" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">
+      <select onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">
       <option disabled selected data-prix="0">Selectionnez un programme </option>';
     foreach ($programmesDisponibles as $programme) {
-      $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' "data-id="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';
+      $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' "data-idprogramme="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';
     }
   }else{
       $dropdown =  '<td><div class="col-6"><select disabled class="form-control">';
