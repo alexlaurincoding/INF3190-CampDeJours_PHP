@@ -181,7 +181,6 @@ require('modals/ajouterEnfant.php');
 
         <tbody>
 
-          <!-- for ($i = 1; $i <= 15; $i++) {  -->
           <?php
           foreach ($semainesProgramme as $semaine) {
             $noSemaine = $semaine->getSemaine()->getNoSemaine();
@@ -293,8 +292,10 @@ require('modals/ajouterEnfant.php');
     </div>
   </div>
 
+
 <script>
 function updatePanier(e) {
+  console.log("kuygksuadygfvkuyavbskdfasd");
     let id = e.options[e.selectedIndex].getAttribute("data-id");
     let prix = e.options[e.selectedIndex].getAttribute("data-prix");
     let iconePanier = $("#" + e.id.replace("semaine", "panier"));
@@ -390,7 +391,7 @@ function afficherDropDown($enfant, $noSemaine)
   $programmesDisponibles = $enfant->getProgrammes();
   $dropdown =  '<td>
           <div class="col-6">
-            <select onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+            <select onchange="updatePanier(this)" window.onload="updatePanier(this);" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
 
   foreach ($programmesDisponibles as $programme) {
     $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' "data-id="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';

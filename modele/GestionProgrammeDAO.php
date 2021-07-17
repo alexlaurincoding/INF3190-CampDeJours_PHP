@@ -205,6 +205,25 @@ class GestionProgrammeDAO {
         
     }
 
+    public static function getProgramme($id){
+        $bdd = BaseDonnee::getConnexion();
+
+        $res = $bdd->prepare('SELECT * FROM programme WHERE id = :id');
+        $res->execute(array('id'=>$id));
+        $donnee = $res->fetch();
+           $gabarit = self::getGabarit($donnee['id_gabarit_programme']);
+           $session = self::getSession($donnee['id_session']);
+           $semaines = self::getSemainesProgramme($donnee['id']);
+           $activites = self::getActivitesProgramme($donnee['id']);
+
+           $programme = new ProgrammeModel($donnee['id'], $gabarit, $session, $donnee['animateur'], $semaines, $activites, $donnee['prix']);
+              
+        BaseDonnee::close();
+
+        return $programme;
+        
+    }
+
     public static function getGabarit($idGabarit){
         $bdd = BaseDonnee::getConnexion();
 
