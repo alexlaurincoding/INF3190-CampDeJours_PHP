@@ -6,8 +6,6 @@ $nombreEnfants = count($enfants);
 
 $semainesProgramme = Util::message('semainesProgramme');
 
-// echo '<pre>' . var_export($semainesProgramme, true) . '</pre>';
-
 $dateCourrante = DateTime::createFromFormat("Y-m-d", date("Y-m-d"));
 $dateDebutSession = DateTime::createFromFormat("Y-m-d", 
   GestionProgrammeDAO::getSession($semainesProgramme[0]->getSemaine()->getIdSession())->getDateDebut()); 
@@ -16,9 +14,6 @@ $dateDebutSession = DateTime::createFromFormat("Y-m-d",
 $differenceSemaines = ceil($dateCourrante->diff($dateDebutSession)->days / 7);
 if ($dateCourrante < $dateDebutSession) $differenceSemaines = 0;
 else if ($differenceSemaines > 15) $differenceSemaines = 15;
-
-// echo '<pre>' . var_export($differenceSemaines, true) . '</pre>';
-// echo '<pre>' . var_export($dateDebutSession, true) . '</pre>';
 
 //Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
