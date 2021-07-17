@@ -292,6 +292,7 @@ function updatePanier(e) {
     let iconePanier = $("#" + e.id.replace("semaine", "panier"));
     iconePanier.html(prix + " $ <i class=\"fas fa-cart-plus\"></i>");
     iconePanier.prop("disabled", false);
+    //un commit
 }
 </script>
 
