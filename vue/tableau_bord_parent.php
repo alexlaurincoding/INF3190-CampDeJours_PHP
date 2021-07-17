@@ -182,8 +182,6 @@ require('modals/ajouterEnfant.php');
         </thead>
 
         <tbody>
-
-          <!-- for ($i = 1; $i <= 15; $i++) {  -->
           <?php
           foreach ($semainesProgramme as $semaine) {
             $noSemaine = $semaine->getSemaine()->getNoSemaine();
@@ -192,21 +190,17 @@ require('modals/ajouterEnfant.php');
             $enfants = $semaine->getEnfantsInscriptions();
             foreach ($enfants as $enfant) {
 
-              $estPaye = $enfant->getEstPaye();
-              $programmeInscrit = $enfant->getProgrammeInscrit();
-
               if (!$estDateDansLePasse) { ?>
                 <tr class="week-ongoing">
                 <?php } else { ?>
                 <tr class="week-passed">
                 <?php } ?>
 
-                <?php if (true) { ?>
-                  <td>Semaine <?= $noSemaine ?></td>
+                <?php if ($enfant == $enfants[0]) { ?> 
+                  <td rowspan="<?=$nombreEnfants?>">Semaine <?=$noSemaine?></td>
                 <?php } ?>
 
                 <td><?= $enfant->getNomEnfant() ?>, <?= $enfant->getPrenomEnfant() ?></td>
-
 
                 <!-- DEBUT COLONNE PROGRAMME -->
                 <?php
