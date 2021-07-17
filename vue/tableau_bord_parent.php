@@ -160,13 +160,24 @@ require('modals/ajouterEnfant.php');
           </h2>
         </div>
         <div class="col-3 d-flex align-items-end justify-content-end">
-          <select name="numSession" class="form-control">
-            <?php
-            foreach ($sessions as $session) {
-              echo '<option value="' . $session->getId() . '">' . $session->getNom() . '</option>';
-            }
-            ?>
-          </select>
+          <form method="POST" onchange="this.form.submit()">
+
+            <select name="numSession" class="form-control" onchange="this.form.submit()">
+              <?php
+              
+              $idSessionSelect = $_SESSION["numSession"];
+              foreach ($sessions as $session) {
+                if ($session->getId() == $idSessionSelect) 
+                echo '<option value="' . $session->getId() . '">' . $session->getNom() . '</option>';
+              }
+              foreach ($sessions as $session) {
+                if ($session->getId() != $idSessionSelect) 
+                echo '<option value="' . $session->getId() . '">' . $session->getNom() . '</option>';
+              }
+              ?>
+            </select>
+            
+          </form>
         </div>
       </div>
     </div>
