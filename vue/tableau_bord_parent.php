@@ -384,7 +384,10 @@ function afficherDropDown($enfant, $noSemaine)
   $dropdown =  '';
 
   if(sizeof($programmesDisponibles) > 0){
-      $dropdown =  '<td><div class="col-6"><select onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+    $dropdown =  '<td>
+    <div class="col-6">
+      <select onchange="updatePanier(this)" onload="updatePanier(this);" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">
+      <option data-prix="0">Selectionnez un programme </option>';
     foreach ($programmesDisponibles as $programme) {
       $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' "data-id="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';
     }
