@@ -211,17 +211,13 @@ require('modals/ajouterEnfant.php');
                   $prog = $enfant->getProgrammes()[0]->getTitreGabaritProgramme();
                 ?>
                   <td><?php echo $prog ?></td>
-                  <td>
-                    <button class="btn btn-success btn-sm disabled">
-                      Payé <i class="fas fa-check"></i>
-                    </button>
-                  </td>
+
                 <?php
-                 } else if ($estDateDansLePasse) {
+                } else if ($estDateDansLePasse) {
                 ?>
                   <td>
                     <div class="col-6">
-                        trop tard! 
+                      trop tard!
                     </div>
                   </td>
                 <?php
@@ -241,16 +237,23 @@ require('modals/ajouterEnfant.php');
                       </select>
                     </div>
                   </td>
-                  <td>
-                    <button class="btn btn-secondary btn-sm">
-                      150.00 $ <i class="fas fa-cart-plus"></i>
-                    </button>
-                  </td>
+                <?php
 
-                <?php } ?>
+
+                }
+                ?>
+
+                <!-- DEBUT COLONNE STATUS -->
+                <td>
+                  <?php
+                  afficherBoutonStatus($estPaye, $estInscrit);
+                  ?>
+                </td>
+
+
                 </tr>
-              <?php } ?>
-            <?php } ?>
+            <?php }
+          } ?>
 
         </tbody>
       </table>
@@ -323,22 +326,36 @@ require('modals/ajouterEnfant.php');
 
 <?php }
 
-function afficherPanier()
+function afficherBoutonStatus($estPaye = true, $estInscrit = true)
 {
+  if ($estPaye) {
+    afficherBoutonPaye();
+  } else if ($estInscrit && !$estPaye) {
+    afficherBoutonRetirer();
+  } else {
+    afficherPanierPrix();
+  }
+}
 
-  // echo '<pre>' . var_export(Util::message('semainesProgramme'), true) . '</pre>';
-  // var_dump(Util::message('semainesProgramme'));
-  echo (' 
-                    <td class="cart-in">Les arts et la science</td>
-                    <td>
-                      <button class="btn btn-danger btn-sm">
-                        Retirer
-                        <i class="fas fa-minus-circle"></i>
-                      </button>
-                    </td>
+function afficherBoutonPaye()
+{
+  echo ('<button class="btn btn-success btn-sm disabled">
+           Payé <i class="fas fa-check"></i>
+         </button>');
+}
 
-                  <!-- bouton ajouter au panier -->
-                   ');
+function afficherBoutonRetirer() {
+  echo('<button class="btn btn-danger btn-sm">
+          Retirer
+          <i class="fas fa-minus-circle"></i>
+        </button>');
+}
+
+function afficherPanierPrix()
+{
+  echo ('<button class="btn btn-secondary btn-sm">
+          150.00 $ <i class="fas fa-cart-plus"></i>
+        </button>');
 }
 
 ?>

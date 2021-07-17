@@ -29,6 +29,5 @@ function login() {
 
 function loadModal() {
   var modalModifParent = document.getElementById("modifierProfil");
-  console.log("yoooooooooooooooooooo");
   modalModifParent.show();
 }
