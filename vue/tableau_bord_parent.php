@@ -306,12 +306,14 @@ function updatePanier(e) {
 }
 
 function inscrire(idEnfant, idProgramme, idSemaine){
-  let url = "/parent/inscrireEnfant";
-  let params = [
-    {"idEnfant": idEnfant},
-    {"idProgramme": idProgramme},
-    {"idSemaine": idSemaine}
-  ];
+  var getUrl = window.location;
+  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+  let url = baseUrl + "/parent/inscrireEnfant";
+  let params = {
+    "idEnfant": idEnfant,
+    "idProgramme": idProgramme,
+    "idSemaine": idSemaine
+  };
   
   post(url, params);
 }
@@ -375,7 +377,7 @@ function afficherBoutonRetirer()
 function afficherPanierPrix($enfant, $noSemaine)
 {
   $idPanier = $enfant->getIdEnfant() . "-panier" . $noSemaine;
-  echo ('<button disabled onclick="inscrire(\'idEnfant\', \'idProgramme\', \'idSemaine\')" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
+  echo ('<button disabled onclick="inscrire(idEnfant, idProgramme, idSemaine)" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
           $ <i class="fas fa-cart-plus"></i>
         </button>');
 }
@@ -387,11 +389,6 @@ function afficherboutonEchu()
           <i class="fas fa-clock"></i>
         </button>');
 }
-
-
-// function filtrerProgrammesParProgrammeInscrit($programmeInscrit){
-
-// }
 
 function afficherColonneProgramme($enfant, $noSemaine, $estDateDansLePasse = false)
 {

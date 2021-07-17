@@ -194,4 +194,27 @@ class EnfantDAO
     BaseDonnee::close();
     return $donnee['titre'];
   }
+
+  public static function inscrireEnfant($idEnfant, $idProgramme, $idSemaine){
+    $idProgrammeSemaine = self::getIdProgrammeSemaine($idProgramme, $idSemaine);
+    $bdd = BaseDonnee::getConnexion();
+          
+    $req = $bdd->prepare('INSERT INTO inscription(id_programme_semaine, id_enfant, paye) VALUES (:idProgrammeSemaine, :idEnfant, 0)');
+    $req->execute(array(
+      'idProgrammeSemaine' => $idProgrammeSemaine,
+      'idEnfant' => $idEnfant,
+    ));
+    BaseDonnee::close();   
+  }
+
+  public static function getIdProgrammeSemaine($idProgramme, $idSemaine){
+    $bdd = BaseDonnee::getConnexion();
+    $req = $bdd->prepare('SELECT id FROM programme_semaine WHERE id_programme = :idProgramme AND id_semaine = :idSemaine');
+    $req->execute(array('idProgramme' => $idProgramme,
+                        'idSemaine' => $idSemaine));
+    $donnee = $req->fetch();
+    BaseDonnee::close();
+    return $donnee['id'];
+  }
+
 }
