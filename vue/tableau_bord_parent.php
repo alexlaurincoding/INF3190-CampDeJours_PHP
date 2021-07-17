@@ -6,15 +6,17 @@ $nombreEnfants = count($enfants);
 
 $semainesProgramme = Util::message('semainesProgramme');
 
-echo '<pre>' . var_export($semainesProgramme,true) . '</pre>';
+echo '<pre>' . var_export($semainesProgramme, true) . '</pre>';
 
 $dateCourrante = DateTime::createFromFormat("Y-m-d", date("Y-m-d"));
 $dateDebutSession = DateTime::createFromFormat("Y-m-d", "2021-06-01");
 
 $differenceSemaines = $dateCourrante->diff($dateDebutSession)->days / 7;
-if ($differenceSemaines < 0) $differenceSemaines = 0;
-else if ($differenceSemaines > 15) $differenceSemaines = 15;
-
+if ($differenceSemaines < 0) {
+  $differenceSemaines = 0;
+} else if ($differenceSemaines > 15) {
+  $differenceSemaines = 15;
+}
 
 //Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
@@ -183,15 +185,15 @@ require('modals/ajouterEnfant.php');
           <?php
           foreach ($semainesProgramme as $semaine) {
             $noSemaine = $semaine->getSemaine()->getNoSemaine();
-            $estEnCours = ($noSemaine > $differenceSemaines);
+            $estDateDansLePasse = ($noSemaine < $differenceSemaines);
 
             $enfants = $semaine->getEnfantsInscriptions();
             foreach ($enfants as $enfant) {
 
               $estPaye = $enfant->getEstPaye();
-              $estDansPanier = $enfant->getEstInscrit();
+              $estInscrit = $enfant->getEstInscrit();
 
-              if ($estEnCours) { ?>
+              if (!$estDateDansLePasse) { ?>
                 <tr class="week-ongoing">
                 <?php } else { ?>
                 <tr class="week-passed">
@@ -203,32 +205,28 @@ require('modals/ajouterEnfant.php');
 
                 <td><?= $enfant->getNomEnfant() ?>, <?= $enfant->getPrenomEnfant() ?></td>
 
+
                 <!-- bouton paye -->
-                <?php if (true) { 
+                <?php if ($estInscrit) {
                   $prog = $enfant->getProgrammes()[0]->getTitreGabaritProgramme();
-                //  $prog = EnfantDAO::getNomProgramme($enfant->getIdEnfant(), $semaine->getId());
-                  ?>
+                ?>
                   <td><?php echo $prog ?></td>
                   <td>
                     <button class="btn btn-success btn-sm disabled">
                       Payé <i class="fas fa-check"></i>
                     </button>
                   </td>
-
-                  <!-- pas paye et echu -->
-                <?php } else if (!$estEnCours) { ?>
-                  <td>-</td>
+                <?php
+                 } else if ($estDateDansLePasse) {
+                ?>
                   <td>
-                    <button class="btn btn-secondary btn-sm disabled">
-                      Échue <i class="fas fa-clock"></i>
-                    </button>
+                    <div class="col-6">
+                        trop tard! 
+                    </div>
                   </td>
-
-                  <!-- bouton dans panier -->
-                <?php }
-                if ($estDansPanier) {
-                  afficherPanier();
-                } else { ?>
+                <?php
+                } else {
+                ?>
                   <td>
                     <div class="col-6">
                       <select class="form-control">
