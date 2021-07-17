@@ -6,19 +6,14 @@ $nombreEnfants = count($enfants);
 
 $semainesProgramme = Util::message('semainesProgramme');
 
-// echo '<pre>' . var_export($semainesProgramme, true) . '</pre>';
-
 $dateCourrante = DateTime::createFromFormat("Y-m-d", date("Y-m-d"));
 $dateDebutSession = DateTime::createFromFormat("Y-m-d", 
   GestionProgrammeDAO::getSession($semainesProgramme[0]->getSemaine()->getIdSession())->getDateDebut()); 
-// $dateDebutSession = DateTime::createFromFormat("Y-m-d", date("2021-05-12")); // tests (override)
+// $dateDebutSession = DateTime::createFromFormat("Y-m-d", date("2021-06-06")); // tests (override)
 
-$differenceSemaines = $dateCourrante->diff($dateDebutSession)->days / 7;
+$differenceSemaines = ceil($dateCourrante->diff($dateDebutSession)->days / 7);
 if ($dateCourrante < $dateDebutSession) $differenceSemaines = 0;
 else if ($differenceSemaines > 15) $differenceSemaines = 15;
-
-// echo '<pre>' . var_export($differenceSemaines, true) . '</pre>';
-// echo '<pre>' . var_export($dateDebutSession, true) . '</pre>';
 
 //Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
@@ -364,7 +359,7 @@ function afficherColonneProgramme($enfant, $noSemaine, $estDateDansLePasse = fal
     afficherNomProgramme($titreProgramme);
   } else if ($estDateDansLePasse) {
     afficherTropTard();
-  } else {
+  } else{
     afficherDropDown($enfant, $noSemaine);
   }
 }
@@ -378,7 +373,7 @@ function afficherTropTard()
 {
   echo ('<td >
           <div class="col-6">
-            trop tard!
+            AUCUNE INSCRITPION
           </div>
         </td>');
 }
@@ -386,12 +381,16 @@ function afficherTropTard()
 function afficherDropDown($enfant, $noSemaine)
 {
   $programmesDisponibles = $enfant->getProgrammes();
-  $dropdown =  '<td>
-          <div class="col-6">
-            <select onchange="updatePanier(this)" onload="updatePanier(this);" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">
-            <option data-prix="0">Selectionnez un programme </option>';
-  foreach ($programmesDisponibles as $programme) {
-    $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' " data-id="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';
+  $dropdown =  '';
+
+  if(sizeof($programmesDisponibles) > 0){
+      $dropdown =  '<td><div class="col-6"><select onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+    foreach ($programmesDisponibles as $programme) {
+      $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' "data-id="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';
+    }
+  }else{
+      $dropdown =  '<td><div class="col-6"><select disabled onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+    $dropdown = $dropdown . '<option default>Aucun programme disponible</option>';
   }
 
   $dropdown = $dropdown . '
