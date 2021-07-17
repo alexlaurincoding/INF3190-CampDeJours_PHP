@@ -56,7 +56,7 @@ class EnfantDAO {
                                       $donnee['prenom'], 
                                       $donnee['date_naissance'], 
                                       $donnee['url_photo'], 
-                                      $donnee['notes'], 
+                                      $donnee['note'], 
                                       $parent);
             array_push($enfants, $enfant);
         }

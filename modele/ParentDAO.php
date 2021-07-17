@@ -96,7 +96,7 @@ class ParentDAO {
                               ON gabarit_programme.id = programme.id_gabarit_programme
                               INNER JOIN programme_semaine
                               ON programme_semaine.id_programme = programme.id
-                              INNER JOIN semmaine
+                              INNER JOIN semaine
                               ON semaine.id = programme_semaine.id_semaine
                               WHERE semaine.id = :idSemaine');
         $req->execute(Array('idSemaine' => $idSemaine));

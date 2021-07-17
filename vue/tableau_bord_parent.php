@@ -230,17 +230,9 @@ require('modals/ajouterEnfant.php');
                     </td>
                   
                   <!-- bouton dans panier -->
-                  <?php } else if($estDansPanier) { ?>
-                    <td class="cart-in">Les arts et la science</td>
-                    <td>
-                      <button class="btn btn-danger btn-sm">
-                        Retirer
-                        <i class="fas fa-minus-circle"></i>
-                      </button>
-                    </td>
-
-                  <!-- bouton ajouter au panier -->
-                  <?php } else { ?>
+                  <?php } else if($estDansPanier) {
+                    afficherPanier();
+                  } else { ?>
                     <td>
                     <div class="col-6">
                       <select class="form-control">
@@ -333,5 +325,23 @@ require('modals/ajouterEnfant.php');
         </div>
       </div>
 
-    <?php } ?>
+    <?php } 
+    
+    function afficherPanier() {
+
+    var_dump(Util::message('semainesProgramme'));
+      echo(' ?>
+                    <td class="cart-in">Les arts et la science</td>
+                    <td>
+                      <button class="btn btn-danger btn-sm">
+                        Retirer
+                        <i class="fas fa-minus-circle"></i>
+                      </button>
+                    </td>
+
+                  <!-- bouton ajouter au panier -->
+                  <?php ');
+    }
+    
+    ?>
 
