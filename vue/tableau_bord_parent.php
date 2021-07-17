@@ -289,10 +289,9 @@ require('modals/ajouterEnfant.php');
 function updatePanier(e) {
     let id = e.options[e.selectedIndex].getAttribute("data-id");
     let prix = e.options[e.selectedIndex].getAttribute("data-prix");
-    let iconePanier = $("#" + e.id.replace("semaine", "panier"));
-    iconePanier.html(prix + " $ <i class=\"fas fa-cart-plus\"></i>");
-    iconePanier.prop("disabled", false);
-    //un commit
+    let boutonPanier = $("#" + e.id.replace("semaine", "panier"));
+    boutonPanier.html(prix + " $ <i class=\"fas fa-cart-plus\"></i>");
+    boutonPanier.prop("disabled", false);
 }
 </script>
 
@@ -333,7 +332,7 @@ function afficherBoutonRetirer()
 function afficherPanierPrix($enfant, $noSemaine)
 {
   $idPanier = $enfant->getIdEnfant() . "-panier" . $noSemaine;
-  echo ('<button disabled id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
+  echo ('<button disabled onclick="inscrire(idEnfant, idProgramme, idSemaine)" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
           $ <i class="fas fa-cart-plus"></i>
         </button>');
 }
