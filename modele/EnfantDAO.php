@@ -56,7 +56,7 @@ class EnfantDAO {
                                       $donnee['prenom'], 
                                       $donnee['date_naissance'], 
                                       $donnee['url_photo'], 
-                                      $donnee['note'], 
+                                      $donnee['notes'], 
                                       $parent);
             array_push($enfants, $enfant);
         }
@@ -150,7 +150,7 @@ class EnfantDAO {
         // $req->debugDumpParams();
         BaseDonnee::close();
        
-        return $donnee['paye'] ?? 'falsseee';
+        return $donnee['paye'] ?? false;
         // $Row['Data'] ?? 'default value';
     }
 

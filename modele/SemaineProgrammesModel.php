@@ -9,6 +9,7 @@ class SemaineProgrammesModel{
     }
 
     public function getSemaine(){
+      // return false;
         return $this->semaine;
     }
 

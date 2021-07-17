@@ -15,8 +15,12 @@ class EnfantInscriptionModel{
         $this->prenomEnfant = $prenomEnfant;
         $this->estInscrit = $estInscrit;
         $this->estPaye = $estPaye;
+        $this->programmes = $programmes;
     }
 
+    public function getIdEnfant(){
+        return $this->idEnfant;
+    }
     public function getNomEnfant(){
         return $this->nomEnfant;
     }
@@ -37,9 +41,6 @@ class EnfantInscriptionModel{
         return $this->nomProgramme;
     }
 
-    public function getIdEnfant(){
-        return $this->idEnfant;
-    }
 
     public function getProgrammes(){
         return $this->programmes;
