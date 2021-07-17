@@ -305,6 +305,38 @@ function updatePanier(e) {
     boutonPanier.html(prix + " $ <i class=\"fas fa-cart-plus\"></i>");
     boutonPanier.prop("disabled", false);
 }
+
+function inscrire(idEnfant, idProgramme, idSemaine){
+  let url = "/parent/inscrireEnfant";
+  let params = [
+    {"idEnfant": idEnfant},
+    {"idProgramme": idProgramme},
+    {"idSemaine": idSemaine}
+  ];
+  
+  post(url, params);
+}
+
+function post(path, params, method='post') {
+  const form = document.createElement('form');
+  form.method = method;
+  form.action = path;
+
+  for (const key in params) {
+    if (params.hasOwnProperty(key)) {
+      const hiddenField = document.createElement('input');
+      hiddenField.type = 'hidden';
+      hiddenField.name = key;
+      hiddenField.value = params[key];
+
+      form.appendChild(hiddenField);
+    }
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
 </script>
 
 <?php }
@@ -344,7 +376,7 @@ function afficherBoutonRetirer()
 function afficherPanierPrix($enfant, $noSemaine)
 {
   $idPanier = $enfant->getIdEnfant() . "-panier" . $noSemaine;
-  echo ('<button disabled onclick="inscrire(idEnfant, idProgramme, idSemaine)" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
+  echo ('<button disabled onclick="inscrire(\'idEnfant\', \'idProgramme\', \'idSemaine\')" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
           $ <i class="fas fa-cart-plus"></i>
         </button>');
 }
