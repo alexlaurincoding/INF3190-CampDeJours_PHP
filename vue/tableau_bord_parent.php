@@ -6,17 +6,19 @@ $nombreEnfants = count($enfants);
 
 $semainesProgramme = Util::message('semainesProgramme');
 
-echo '<pre>' . var_export($semainesProgramme, true) . '</pre>';
+// echo '<pre>' . var_export($semainesProgramme, true) . '</pre>';
 
 $dateCourrante = DateTime::createFromFormat("Y-m-d", date("Y-m-d"));
-$dateDebutSession = DateTime::createFromFormat("Y-m-d", "2021-08-01");
+$dateDebutSession = DateTime::createFromFormat("Y-m-d", 
+  GestionProgrammeDAO::getSession($semainesProgramme[0]->getSemaine()->getIdSession())->getDateDebut()); 
+// $dateDebutSession = DateTime::createFromFormat("Y-m-d", date("2021-05-12")); // tests (override)
 
 $differenceSemaines = $dateCourrante->diff($dateDebutSession)->days / 7;
-if ($differenceSemaines < 0) {
-  $differenceSemaines = 0;
-} else if ($differenceSemaines > 15) {
-  $differenceSemaines = 15;
-}
+if ($dateCourrante < $dateDebutSession) $differenceSemaines = 0;
+else if ($differenceSemaines > 15) $differenceSemaines = 15;
+
+// echo '<pre>' . var_export($differenceSemaines, true) . '</pre>';
+// echo '<pre>' . var_export($dateDebutSession, true) . '</pre>';
 
 //Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
@@ -180,18 +182,13 @@ require('modals/ajouterEnfant.php');
         </thead>
 
         <tbody>
-
-          <!-- for ($i = 1; $i <= 15; $i++) {  -->
           <?php
           foreach ($semainesProgramme as $semaine) {
             $noSemaine = $semaine->getSemaine()->getNoSemaine();
-            $estDateDansLePasse = ($noSemaine < $differenceSemaines);
+            $estDateDansLePasse = ($noSemaine <= $differenceSemaines);
 
             $enfants = $semaine->getEnfantsInscriptions();
             foreach ($enfants as $enfant) {
-
-              $estPaye = $enfant->getEstPaye();
-              $programmeInscrit = $enfant->getProgrammeInscrit();
 
               if (!$estDateDansLePasse) { ?>
                 <tr class="week-ongoing">
@@ -200,9 +197,11 @@ require('modals/ajouterEnfant.php');
                 <?php } ?>
 
                   <td>Semaine <?= $noSemaine ?></td>
+                <?php if ($enfant == $enfants[0]) { ?> 
+                  <td rowspan="<?=$nombreEnfants?>">Semaine <?=$noSemaine?></td>
+                <?php } ?>
 
                 <td><?= $enfant->getNomEnfant() ?>, <?= $enfant->getPrenomEnfant() ?></td>
-
 
                 <!-- DEBUT COLONNE PROGRAMME -->
                 <?php
