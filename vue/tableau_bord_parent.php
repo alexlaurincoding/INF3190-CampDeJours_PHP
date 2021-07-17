@@ -287,11 +287,11 @@ require('modals/ajouterEnfant.php');
 
 <script>
 function updatePanier(e) {
-  console.log("kuygksuadygfvkuyavbskdfasd");
     let id = e.options[e.selectedIndex].getAttribute("data-id");
     let prix = e.options[e.selectedIndex].getAttribute("data-prix");
     let iconePanier = $("#" + e.id.replace("semaine", "panier"));
-    iconePanier.text(prix + " $");
+    iconePanier.html(prix + " $ <i class=\"fas fa-cart-plus\"></i>");
+    iconePanier.prop("disabled", false);
 }
 </script>
 
@@ -332,7 +332,7 @@ function afficherBoutonRetirer()
 function afficherPanierPrix($enfant, $noSemaine)
 {
   $idPanier = $enfant->getIdEnfant() . "-panier" . $noSemaine;
-  echo ('<button id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
+  echo ('<button disabled id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
           $ <i class="fas fa-cart-plus"></i>
         </button>');
 }
@@ -387,12 +387,12 @@ function afficherDropDown($enfant, $noSemaine)
     $dropdown =  '<td>
     <div class="col-6">
       <select onchange="updatePanier(this)" onload="updatePanier(this);" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">
-      <option data-prix="0">Selectionnez un programme </option>';
+      <option disabled selected data-prix="0">Selectionnez un programme </option>';
     foreach ($programmesDisponibles as $programme) {
       $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' "data-id="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';
     }
   }else{
-      $dropdown =  '<td><div class="col-6"><select disabled onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+      $dropdown =  '<td><div class="col-6"><select disabled class="form-control">';
     $dropdown = $dropdown . '<option default>Aucun programme disponible</option>';
   }
 
