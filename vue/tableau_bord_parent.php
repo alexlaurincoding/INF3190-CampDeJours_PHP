@@ -6,8 +6,6 @@ $nombreEnfants = count($enfants);
 
 $semainesProgramme = Util::message('semainesProgramme');
 
-// echo '<pre>' . var_export($semainesProgramme, true) . '</pre>';
-
 $dateCourrante = DateTime::createFromFormat("Y-m-d", date("Y-m-d"));
 $dateDebutSession = DateTime::createFromFormat("Y-m-d", 
   GestionProgrammeDAO::getSession($semainesProgramme[0]->getSemaine()->getIdSession())->getDateDebut()); 
@@ -16,9 +14,6 @@ $dateDebutSession = DateTime::createFromFormat("Y-m-d",
 $differenceSemaines = ceil($dateCourrante->diff($dateDebutSession)->days / 7);
 if ($dateCourrante < $dateDebutSession) $differenceSemaines = 0;
 else if ($differenceSemaines > 15) $differenceSemaines = 15;
-
-// echo '<pre>' . var_export($differenceSemaines, true) . '</pre>';
-// echo '<pre>' . var_export($dateDebutSession, true) . '</pre>';
 
 //Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
@@ -300,12 +295,14 @@ require('modals/ajouterEnfant.php');
     </div>
   </div>
 
+
 <script>
 function updatePanier(e) {
     let id = e.options[e.selectedIndex].getAttribute("data-id");
     let prix = e.options[e.selectedIndex].getAttribute("data-prix");
-    let iconePanier = $("#" + e.id.replace("semaine", "panier"));
-    iconePanier.text(prix + " $");
+    let boutonPanier = $("#" + e.id.replace("semaine", "panier"));
+    boutonPanier.html(prix + " $ <i class=\"fas fa-cart-plus\"></i>");
+    boutonPanier.prop("disabled", false);
 }
 </script>
 
@@ -346,7 +343,7 @@ function afficherBoutonRetirer()
 function afficherPanierPrix($enfant, $noSemaine)
 {
   $idPanier = $enfant->getIdEnfant() . "-panier" . $noSemaine;
-  echo ('<button id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
+  echo ('<button disabled onclick="inscrire(idEnfant, idProgramme, idSemaine)" id="' . $idPanier . '" class="panier-prix btn btn-secondary btn-sm">
           $ <i class="fas fa-cart-plus"></i>
         </button>');
 }
@@ -398,12 +395,15 @@ function afficherDropDown($enfant, $noSemaine)
   $dropdown =  '';
 
   if(sizeof($programmesDisponibles) > 0){
-      $dropdown =  '<td><div class="col-6"><select onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+    $dropdown =  '<td>
+    <div class="col-6">
+      <select onchange="updatePanier(this)" onload="updatePanier(this);" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">
+      <option disabled selected data-prix="0">Selectionnez un programme </option>';
     foreach ($programmesDisponibles as $programme) {
       $dropdown = $dropdown . '<option data-prix="' . $programme->getPrix() . ' "data-id="' . $programme->getIdProgramme() . '"> ' . $programme->getTitreGabaritProgramme() . ' </option>';
     }
   }else{
-      $dropdown =  '<td><div class="col-6"><select disabled onchange="updatePanier(this)" id=' . $enfant->getIdEnfant() . "-semaine" . $noSemaine . ' class="form-control">';
+      $dropdown =  '<td><div class="col-6"><select disabled class="form-control">';
     $dropdown = $dropdown . '<option default>Aucun programme disponible</option>';
   }
 
