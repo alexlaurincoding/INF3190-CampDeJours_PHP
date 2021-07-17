@@ -3,6 +3,7 @@ $parent = Util::message('viewmodel');
 $sessions = Util::message('sessions');
 $enfants = $parent->getEnfants();
 $nombreEnfants = count($enfants);
+// $nombreEnfants = 0;
 $estPaye = false; //temporaire
 $estDansPanier = false; //temporaire
 $dateCourrante = DateTime::createFromFormat("Y-m-d", date("Y-m-d"));
@@ -160,6 +161,8 @@ require('modals/ajouterEnfant.php');
         </div>
       </div>
 
+    <?php if($nombreEnfants > 0) { ?>
+
       <div class="card mb-4">
         <div class="card-header">
           <div class="row mb-2 mt-2">
@@ -196,8 +199,10 @@ require('modals/ajouterEnfant.php');
                 $estEnCours = ($i > $differenceSemaines);
                 foreach ($enfants as $enfant) { ?>
                 
-                <?php if ($estEnCours) { ?> <tr class="week-ongoing">
-                <?php } else { ?> <tr class="week-passed">
+                <?php if ($estEnCours) { ?> 
+                  <tr class="week-ongoing">
+                <?php } else { ?> 
+                  <tr class="week-passed">
                 <?php } ?>
 
                   <?php if ($enfant == $parent->getEnfants()[0]) { ?> 
@@ -208,11 +213,20 @@ require('modals/ajouterEnfant.php');
                   
                   <!-- bouton paye -->
                   <?php if($estPaye) { ?>
-                    <td>Les arts et la science</td>
+                    <td>Nom session payé</td>
                     <td>
                         <button class="btn btn-success btn-sm disabled">
                           Payé <i class="fas fa-check"></i>
                         </button>
+                    </td>
+
+                  <!-- pas paye et echu -->
+                  <?php } else if(!$estEnCours) { ?>
+                    <td>-</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm disabled">
+                        Échue <i class="fas fa-clock"></i>
+                      </button>
                     </td>
                   
                   <!-- bouton dans panier -->
@@ -241,14 +255,12 @@ require('modals/ajouterEnfant.php');
                     </td>
                     <td>
                       <button class="btn btn-secondary btn-sm">
-                        150.00 $
-                        <i class="fas fa-cart-plus"></i>
+                        150.00 $ <i class="fas fa-cart-plus"></i>
                       </button>
                     </td>
 
+                    <?php } ?>
                 </tr>
-
-                  <?php } ?>
                 <?php } ?>
               <?php } ?>
 
@@ -257,5 +269,69 @@ require('modals/ajouterEnfant.php');
         </div>
       </div>
 
+      <div>
+        <div id="cartboi" class="mt-3 mb-4 card">
+          <div class="card-header">
+            <div class="row mb-2 mt-2">
+              <div class="col-6">
+                <h2 class="mb-0"><i class="fas fa-shopping-cart"></i> Panier</h2>
+              </div>
+              <div class="col-6 d-flex align-items-end justify-content-end">
+                  <p> <span id="dateFacture"><?= date("Y-m-d") ?></span> </p>
+              </div>
+            </div>
+          </div>
 
+          <div class="card-body">
+            <table class="table table-hover table-sm" id="table_enfants_a_charge">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Programme</th>
+                  <th>Nombre</th>
+                  <th>Prix</th>
+                  <th>Sous-Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>L'enfant actif</td>
+                  <td>2</td>
+                  <td>150.00$</td>
+                  <td>300.00$</td>
+                </tr>
+
+                <tr>
+                  <td>Les arts et la science</td>
+                  <td>1</td>
+                  <td>150.00$</td>
+                  <td>150.00$</td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td class="fw-bold">Total :</td>
+                  <td class="fw-bold grey">450.00$</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row">
+              <div class="col-9"></div>
+            <div class="col-3">
+              <!--boutton paypal
+              pour tester, Email: sb-ybcnk6512123@personal.example.com, Mot de passe: lesnerds-->
+              <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="RY3NXXM4RCP4E">
+                <input type="image" src="https://www.sandbox.paypal.com/fr_CA/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                <img alt="" border="0" src="https://www.sandbox.paypal.com/fr_CA/i/scr/pixel.gif" width="1" height="1">
+                </form>
+
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    <?php } ?>
 
