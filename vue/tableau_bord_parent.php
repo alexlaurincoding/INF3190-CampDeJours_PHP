@@ -251,18 +251,36 @@ require('modals/ajouterEnfant.php');
         <table class="table table-hover table-sm" id="table_enfants_a_charge">
           <thead class="thead-dark">
             <tr>
-              <th>Programme</th>
               <th>Semaine</th>
+              <th>Programme</th>
+              <th>Enfant</th>
               <th>Prix</th>
-              <th>Sous-Total</th>
             </tr>
           </thead>
 
+          <?php $prixTotal = 0;
+            foreach ($semainesProgramme as $semaineProgramme) {
+              if ($semaineProgramme->getSemaine()->getIdSession() == $idSessionSelect) {
+                foreach ($semaineProgramme->getEnfantsInscriptions() as $enfantsInscription) {
+                  if (NULL != $enfantsInscription->getProgrammeInscrit() && !$enfantsInscription->getEstPaye()) {
+                    $programmeInscrit = GestionProgrammeDAO::getProgramme($enfantsInscription->getProgrammeInscrit());
+                    $prixTotal += $programmeInscrit->getPrix();
+                    ?>
+
+                    <tr>
+                      <td><?=$semaineProgramme->getSemaine()->getNoSemaine()?></td>
+                      <td><?=$programmeInscrit->getGabaritProgramme()->getTitre()?></td>
+                      <td><?=$enfantsInscription->getNomEnfant()?>, <?=$enfantsInscription->getPrenomEnfant()?></td>
+                      <td><?=$programmeInscrit->getPrix()?>.00 $</td>
+                    </tr>
+
+            <?php }
+                }
+              }
+            }?>
+
 
           <tbody>
-
-            <?php $prixTotal = 0;
-            ?>
             <tr>
               <td></td>
               <td></td>
@@ -445,7 +463,7 @@ function afficherTropTard()
 {
   echo ('<td >
           <div class="col-6 d-flex align-items-end justify-content-center">
-            -- N/A --
+            -
           </div>
         </td>');
 }
