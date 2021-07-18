@@ -57,12 +57,12 @@ class inscriptionJSONDAO{
         foreach($inscriptions as $inscription){
             $req = $bdd->prepare('UPDATE inscription
                                 SET paye = 1
-                                WHERE id_programme = :idProgramme
+                                WHERE id_programme_semaine = :idProgramme
                                 AND id_enfant = :idEnfant');
             $req->execute(array('idProgramme' => $inscription->getIdProgrammeSemaine(),
                                 'idEnfant' => $inscription->getIdEnfant()));
         }
-        Util::setMessage("global", "Payment effectuer avec succès!");
-        Util::redirectControlleur("parent","index"); 
+        Util::setMessage("global", "Payment effectué avec succès!");
+        // Util::redirectControlleur("parent","index"); 
     }
 }
