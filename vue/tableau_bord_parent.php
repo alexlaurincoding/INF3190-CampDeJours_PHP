@@ -271,7 +271,7 @@ require('modals/ajouterEnfant.php');
                     array_push($inscriptions, new InscriptionModel(
                       $semaineProgramme->getSemaine()->getId(),
                       $enfantsInscription->getIdEnfant(),
-                      true));
+                      0));
                     ?>
 
                     <tr>
@@ -300,7 +300,8 @@ require('modals/ajouterEnfant.php');
         <div class="row">
           <div class="col-9"></div>
           <div class="col-3 d-flex align-items-end justify-content-end">
-            <form method="post" onclick="">
+            <!-- <form onclick="<?php //inscriptionJSONDAO::payerInscriptions($inscriptions) ?>"> -->
+            <form onclick="">
               <button class="btn btn-sm btn-success" type="input">Payer <?=$prixTotal?>.00 $</button>
             </form>
           </div>
