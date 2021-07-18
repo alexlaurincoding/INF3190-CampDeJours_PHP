@@ -300,8 +300,7 @@ require('modals/ajouterEnfant.php');
         <div class="row">
           <div class="col-9"></div>
           <div class="col-3 d-flex align-items-end justify-content-end">
-            <!-- <form onclick="<?php //inscriptionJSONDAO::payerInscriptions($inscriptions) ?>"> -->
-            <form onclick="">
+            <form onclick="<?php inscriptionJSONDAO::payerInscriptions($inscriptions) ?>">
               <button class="btn btn-sm btn-success" type="input">Payer <?=$prixTotal?>.00 $</button>
             </form>
           </div>
