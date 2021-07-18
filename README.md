@@ -76,3 +76,8 @@ Voici le schema relationel de la base de donnée :
 
 ![db](./camps_de_jours.png)  
 
+
+### CAS DE TEST
+
+Les case de tests sont situés à `./CasDeTests` avec `./PlanDeTests.md`.  
+
