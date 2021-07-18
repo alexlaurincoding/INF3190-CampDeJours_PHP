@@ -1,4 +1,137 @@
-<h1>Voir inscriptions</h1>
-<?php 
-    var_dump(Util::message("inscriptions"));
+<?php
+   
+   $inscriptions =  Util::message("inscriptions");
+   $enfants = Util::message("enfants");
+   $parents = Util::message("parents");
+   echo "<script>let inscriptionJSON = ". $inscriptions . "</script>";
+   echo "<script>let enfants = ". $enfants . "</script>";
+   echo "<script>let parents = ". $parents . "</script>";
+
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../public/javascript/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="../public/style/bootstrap.min.css" />
+    <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css"
+/>
+    <link rel="stylesheet" href="../public/style/main.css"/>
+    <title>Inscription(Admin)</title>
+  </head>
+
+  <body>
+    <div id="nav-placeholder"></div>
+    <div class="container">
+          <h1>Voir les inscriptions</h1>
+                <nav
+        style="
+          --bs-breadcrumb-divider: url(
+            &#34;data:image/svg + xml,
+            %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+          );
+        "
+        aria-label="breadcrumb"
+      >
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Admin
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Voir les inscriptions
+          </li>
+        </ol>
+      </nav>
+      <p id="showTableauAdmin"></p>
+      <div id="detail_inscription_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal_tableau_admin" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-content">            
+            <div class="card">
+              <div class="card-header">
+                <div class="row mb-2 mt-2">
+                  <div class="col-6">
+                    <h2 class="mb-0">Fiche Parent/Enfant</h2>
+                  </div>
+                  <div class="col-6 d-flex align-items-end justify-content-end">
+                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <p id="modal_inscription_info_enfant">
+                  <p id="modal_inscription_info_enfant">
+                    <div class="row">
+                      <div class="col-sm">
+                        <img id="modal_inscription_image_enfant" />
+                      </div>
+                      <div class="col-sm">
+                        <h6 class="fw-bold mb-0 card-title">Nom</h6>
+                        <p id="modal_nom_enfant" class="card-text"></p>
+                        <h6 class="fw-bold mb-0 card-title">Prenom</h6>
+                        <p id="modal_prenom_enfant" class="card-text"></p>
+                        <h6 class="fw-bold mb-0 card-title"></h6>
+                        <p class="card-text"></p>
+                      </div>
+                      <div class="col-sm">
+                        <h6 class="fw-bold mb-0 card-title">Date De Naissance</h6>
+                        <p id="modal_date_naiss_enfant" class="card-text"></p>
+                        <h6 class="fw-bold mb-0 card-title">Programme</h6>
+                        <p id="modal_programme_enfant" class="card-text"></p>
+                      </div>
+                    </div>
+                </p>
+              </p>
+              <hr class="dashed">
+              <p id="modal_inscription_info_parent">
+                  <div class="row">
+                    <div class="col-sm">
+                      <img id="modal_inscription_image_parent" />
+                    </div>
+                    <div class="col-sm">
+                      <h6 class="fw-bold mb-0 card-title">Nom</h6>
+                      <p id="modal_nom_parent" class="card-text"></p>
+                      <h6 class="fw-bold mb-0 card-title">Prenom</h6>
+                      <p id="modal_prenom_parent" class="card-text"></p>
+                      <h6 class="fw-bold mb-0 card-title"></h6>
+                      <p class="card-text"></p>
+                    </div>
+                    <div class="col-sm">
+                      <h6 class="fw-bold mb-0 card-title">Courriel</h6>
+                      <p id="modal_courriel_parent" class="card-text"></p>
+                      <h6 class="fw-bold mb-0 card-title">Adresse</h6>
+                      <p id="modal_adresse_parent" class="card-text"></p>
+                      <h6 class="fw-bold mb-0 card-title">Date De Naissance</h6>
+                      <p id="modal_date_naiss_parent" class="card-text"></p>
+                      
+                    </div>
+                  </div>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+<script src="../public/javascript/bootstrap.bundle.min.js"></script>
+<script
+  type="text/javascript"
+  charset="utf8"
+  src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"
+></script>
+    <script src="../public/javascript/javaScript.js"></script>
+    <script src="../public/javascript/inscription_admin.js"></script>
+  </body>
+</html>

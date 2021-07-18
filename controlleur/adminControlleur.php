@@ -7,12 +7,13 @@ function index($params) {
     if(!Session::isConnecte() || !Session::isAdmin()){
         throw new Exception("Accès interdit");
     }
-<<<<<<< HEAD
-=======
 
-    $inscriptions = json_encode(inscriptionJSONDAO::getInscriptions());
+    $inscriptions = json_encode(InscriptionJSONDAO::getInscriptions());
+    $enfants = json_encode(InscriptionJSONDAO::getEnfants());
+    $parents = json_encode(InscriptionJSONDAO::getParents());
     Util::setMessage("inscriptions", $inscriptions);
->>>>>>> 47e5d144fc4215fd93ddf7c81b3b1a850b48f855
+    Util::setMessage("enfants", $enfants);
+    Util::setMessage("parents", $parents);
     Vue::render('inscription_admin');
 }
 

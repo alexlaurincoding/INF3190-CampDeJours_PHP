@@ -1,82 +1,35 @@
-window.onload = function () {
-  var tableauCree = createTableFromJSON();
+var tableauCree = createTableFromJSON();
 
-  if (tableauCree) {
-    var tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-
-    $("#table_admin").DataTable({
-      order: [
-        [2, "des"],
-        [4, "asc"],
-      ],
-      rowGroup: {
-        dataSrc: 2,
-      },
-      pageLength: 15,
-      language: {
-        lengthMenu: "Montrer _MENU_ Resultats",
-        info: "Page _PAGE_ de _PAGES_",
-        search: "Rechercher ",
-        oPaginate: { sNext: "Suivant", sPrevious: "Précédant" },
-      },
-
-      lengthMenu: [
-        [15, 50, -1],
-        [15, 50, "Tous"],
-      ],
-    });
-  }
-};
-
-//extraction du fichier JSON inscription
-var inscriptionJSON = (function () {
-  var json = null;
-  $.ajax({
-    async: false,
-    global: false,
-    url: "../data/inscriptions.json",
-    dataType: "json",
-    success: function (data) {
-      json = data;
-    },
+if (tableauCree) {
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
   });
-  return json;
-})();
 
-//extraction du fichier JSON parents
-var parents = (function () {
-  var json = null;
-  $.ajax({
-    async: false,
-    global: false,
-    url: "../data/dossier_parent.json",
-    dataType: "json",
-    success: function (data) {
-      json = data;
+  $("#table_admin").DataTable({
+    order: [
+      [2, "des"],
+      [4, "asc"],
+    ],
+    rowGroup: {
+      dataSrc: 2,
     },
-  });
-  return json;
-})();
+    pageLength: 15,
+    language: {
+      lengthMenu: "Montrer _MENU_ Resultats",
+      info: "Page _PAGE_ de _PAGES_",
+      search: "Rechercher ",
+      oPaginate: { sNext: "Suivant", sPrevious: "Précédant" },
+    },
 
-//extraction du fichier JSON enfants
-var enfants = (function () {
-  var json = null;
-  $.ajax({
-    async: false,
-    global: false,
-    url: "../data/dossier_enfant.json",
-    dataType: "json",
-    success: function (data) {
-      json = data;
-    },
+    lengthMenu: [
+      [15, 50, -1],
+      [15, 50, "Tous"],
+    ],
   });
-  return json;
-})();
+}
 
 function createTableFromJSON() {
   //Extraction des valeur pour les entetes
@@ -120,7 +73,7 @@ function createTableFromJSON() {
       var tabCell = tr.insertCell(-1);
       if (j < colonnes.length - 1) {
         tabCell.innerHTML = inscriptionJSON[i][colonnes[j]];
-      } else if (inscriptionJSON[i][colonnes[j]]) {
+      } else if (inscriptionJSON[i][colonnes[j]] == 1) {
         tabCell.innerHTML =
           '<i id="icone_paye" class="fas fa-check-circle" style="text-color:white"> </i>';
       } else {
@@ -149,6 +102,7 @@ function onClickTableauAdmin(index) {
     }
   })();
   var enfant = (function () {
+    console.log(enfants);
     for (var i = 0; i < enfants.length; i++) {
       if (enfants[i].id === inscriptionJSON[index].Enfant) {
         return enfants[i];
@@ -156,10 +110,10 @@ function onClickTableauAdmin(index) {
     }
   })();
   var photoEnfant = document.getElementById("modal_inscription_image_enfant");
-  photoEnfant.setAttribute("src", enfant.photo);
+  photoEnfant.setAttribute("src", "../" + enfant.photo);
   document
     .getElementById("modal_inscription_image_parent")
-    .setAttribute("src", parent.photo);
+    .setAttribute("src", "../" + parent.photo);
   document.getElementById("modal_nom_parent").innerHTML = parent.nom;
   document.getElementById("modal_prenom_parent").innerHTML = parent.prenom;
   document.getElementById("modal_courriel_parent").innerHTML = parent.courriel;

@@ -17,9 +17,6 @@ class inscriptionJSONDAO{
         return $idSemaine;       
     }
 
-<<<<<<< HEAD
-    public static function payerInscriptions($inscriptions){
-=======
     public static function getInscriptions(){
         $bdd = BaseDonnee::getConnexion();
         $inscriptions = array();
@@ -54,19 +51,44 @@ class inscriptionJSONDAO{
         return $inscriptions;     
     }
 
-    public function payerInscriptions($inscriptions){
->>>>>>> 47e5d144fc4215fd93ddf7c81b3b1a850b48f855
+    public static function getEnfants(){
         $bdd = BaseDonnee::getConnexion();
+        $enfants = array();
+        $reponse = $bdd->query('SELECT enfant.id, enfant.nom, enfant.prenom, enfant.date_naissance, enfant.url_photo, parent.nom nomParent, parent.prenom prenomParent
+                                FROM enfant INNER JOIN parent ON parent.id = enfant.id_parent');
+         while($donnee = $reponse->fetch()){
+            $idEnfant = $donnee['id'];
+            $nomEnfant = $donnee['nom'];
+            $prenomEnfant = $donnee['prenom'];
+            $dateEnfant = $donnee['date_naissance'];
+            $photoEnfant = $donnee['url_photo'];
+            $nomParent = $donnee['nomParent'] . ", " . $donnee['prenomParent'];
 
-        foreach($inscriptions as $inscription){
-            $req = $bdd->prepare('UPDATE inscription
-                                SET paye = 1
-                                WHERE id_programme = :idProgramme
-                                AND id_enfant = :idEnfant');
-            $req->execute(array('idProgramme' => $inscription->getIdProgrammeSemaine(),
-                                'idEnfant' => $inscription->getIdEnfant()));
-        }
-        Util::setMessage("global", "Payment effectuer avec succès!");
-        Util::redirectControlleur("parent","index"); 
+
+
+            $enfant = new EnfantJSONModel($idEnfant, $nomEnfant, $prenomEnfant, $dateEnfant, $photoEnfant, $nomParent);
+            array_push($enfants, $enfant);
+         }
+         return $enfants;
     }
+
+    public static function getParents(){
+        $bdd = BaseDonnee::getConnexion();
+        $parents = array();
+        $reponse = $bdd->query('SELECT * FROM parent');
+         while($donnee = $reponse->fetch()){
+            $idParent = $donnee['id'];
+            $nomParent = $donnee['nom'];
+            $prenomParent = $donnee['prenom'];
+            $courriel = $donnee['courriel'];
+            $adresse = $donnee['adresse'];
+            $dateNaissance = $donnee['date_de_naissance'];
+            $photo = $donnee['url_photo'];
+            
+            $parent = new ParentJSONModel($idParent, $nomParent, $prenomParent, $courriel, $adresse, $dateNaissance, $photo);
+            array_push($parents, $parent);
+         }
+         return $parents;
+    }
+    
 }
