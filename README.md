@@ -21,45 +21,6 @@ Le `OneNote` suivant sera utilisé comme planche à dessin commune et afin de pa
 - Le travail se fera en sous équipes ou individuellement afin d'accélérer le travail.
 - Les tâches atomiques seront attribués afin d'être réalisé avant la prochaine rencontre de coordination.
 
-### Arborescence
-
-```bash
-├── README.md
-├── data  # fichiers de donnée
-│   ├── dossier_enfant.json
-│   ├── dossier_parent.json
-│   └── inscriptions.json
-├── img  # images utilisé par le site
-│   ├── bart_mini.jpg
-│   ├── cartman_mini.jpg
-│   ├── homer-excited.png
-│   ├── homer_mini.jpg
-│   ├── liane_cartman_mini.jpg
-│   ├── lisa_mini.jpg
-│   ├── profil.png
-│   ├── randy_mini.jpg
-│   └── stan_mini.jpg
-├── javascript  # scripts du site + librairies
-│   ├── bootstrap.bundle.min.js
-│   ├── inscription_admin.js
-│   ├── javaScript.js
-│   └── jquery-3.6.0.min.js
-├── style  # fichier de style pour le html
-│   ├── bootstrap.min.css
-│   └── main.css
-└── vues  # pages du site
-    ├── contact.html
-    ├── footer.html
-    ├── gestion_programme.html
-    ├── index.html  # page racine
-    ├── inscription_admin.html
-    ├── inscription_parent.html
-    ├── navbar.html
-    ├── paiement_effectue.html
-    ├── programmes.html
-    └── tableau_bord_parent.html
-```
-
 ## STRATÉGIE
 
 ### TECHNOLOGIES
@@ -90,7 +51,7 @@ Les formulaires sont accessibles par l'entremise de boutons qui ouvrent des `mod
 
 ##### Parents
 
-_N.B. Pour simuler une connection en tant que parent, authentifiez-vous à l'aide d'un nom d'utilisateur différent de:_ `admin`
+_N.B. Pour simuler une connection en tant que parent, authentifiez-vous à l'aide d'un nom d'utilisateur différent de:_ `homer` et du mot de passe `beignes`  
 
 Toute la gestion de compte des parents se fait à partir de leur tableau de bord, qui permet de :
 
@@ -101,8 +62,12 @@ Toute la gestion de compte des parents se fait à partir de leur tableau de bord
 
 ##### Administrateur
 
-_N.B. Pour simuler une connection en tant qu'administrateur, authentifiez-vous à l'aide du nom d'utilisateur :_ `admin`
+_N.B. Pour simuler une connection en tant qu'administrateur, authentifiez-vous à l'aide du nom d'utilisateur :_ `admin` et du mot de passe `admin`  
 La gestion se divise en 2 sections.
 
 - L'une permet la gestion des sessions, programmes, activités et types et blocs d'activité.
 - L'autre section donne accès à toutes les inscriptions et les comptes d'utilisateurs.
+
+### BASE DE DONNÉE
+
+Une base de donnée pré-préparé se trouve dans `./camps_de_jours (avec donnees).sql`.  
