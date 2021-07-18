@@ -207,6 +207,22 @@ class EnfantDAO
     BaseDonnee::close();   
   }
 
+  public static function retirerEnfant($idEnfant, $idSemaine){
+    $bdd = BaseDonnee::getConnexion();
+          
+    $req = $bdd->prepare('DELETE FROM inscription WHERE inscription.id_programme_semaine = (
+                        SELECT id_programme_semaine FROM inscription
+                        INNER JOIN enfant ON enfant.id = inscription.id_enfant
+                        INNER JOIN programme_semaine ON programme_semaine.id = inscription.id_programme_semaine
+                        INNER JOIN semaine ON semaine.id = programme_semaine.id_semaine
+                        WHERE semaine.id = :idSemaine AND inscription.id_enfant = :idEnfant)');
+    $req->execute(array(
+      'idSemaine' => $idSemaine,
+      'idEnfant' => $idEnfant,
+    ));
+    BaseDonnee::close();   
+  }
+
   public static function getIdProgrammeSemaine($idProgramme, $idSemaine){
     $bdd = BaseDonnee::getConnexion();
     $req = $bdd->prepare('SELECT id FROM programme_semaine WHERE id_programme = :idProgramme AND id_semaine = :idSemaine');

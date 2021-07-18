@@ -342,6 +342,18 @@ function inscrire(idEnfant, idProgramme, idSemaine){
   post(url, params);
 }
 
+function retirer(idEnfant, idSemaine){
+  var getUrl = window.location;
+  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+  let url = baseUrl + "/parent/retirerEnfant";
+  let params = {
+    "idEnfant": idEnfant,
+    "idSemaine": idSemaine
+  };
+  
+  post(url, params);
+}
+
 function post(path, params, method='post') {
   const form = document.createElement('form');
   form.method = method;
@@ -378,7 +390,7 @@ function afficherBoutonStatus($enfant, $semaine, $estDateDansLePasse)
     afficherBoutonEchu();
   } else {
     if ($programmeInscrit) {
-      afficherBoutonRetirer();
+      afficherBoutonRetirer($enfant, $semaine);
     } else {
       afficherPanierPrix($enfant, $semaine);
     }
@@ -392,9 +404,13 @@ function afficherBoutonPaye()
          </button>');
 }
 
-function afficherBoutonRetirer()
+function afficherBoutonRetirer($enfant, $semaine)
 {
-  echo ('<button class="btn btn-danger btn-sm">
+  $idSemaine = $semaine->getId();
+  $noSemaine = $semaine->getNoSemaine();
+  $idEnfant = $enfant->getIdEnfant();
+  $idPanier = $enfant->getIdEnfant() . "-panier" . $noSemaine;
+  echo ('<button class="btn btn-danger btn-sm" onclick="retirer(\'' . $idEnfant . '\', \'' . $idSemaine . '\')" id="' . $idPanier . '">
           Retirer
           <i class="fas fa-minus-circle"></i>
         </button>');
