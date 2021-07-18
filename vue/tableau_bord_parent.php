@@ -16,6 +16,8 @@ $differenceSemaines = ceil($dateCourrante->diff($dateDebutSession)->days / 7);
 if ($dateCourrante < $dateDebutSession) $differenceSemaines = 0;
 else if ($differenceSemaines > 15) $differenceSemaines = 15;
 
+// $differenceSemaines = 0;
+
 //Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
 require('modals/ajouterEnfant.php');

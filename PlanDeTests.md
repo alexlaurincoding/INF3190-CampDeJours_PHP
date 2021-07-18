@@ -117,7 +117,7 @@ Ajout d'un enfant
 | CT.038              | Champs partiellement vides               | Aucune               | Reafichage des valeurs valides + Avertissement                                 | Moyenne  |
 | CT.039              | Insertion balise html                    | Aucune               | Sauvegarde dans la base de donnée non interpretation de l'entrée à l'affichage | Haute    |
 | CT.040              | Date de naissance invalides              | Aucune               | Avertisement que la date est impossible                                        | Faible   |
-| CT.041              | Même nom et prénom qu'un enfant existant | Création d'un enfant | Avertissement que cet enfant existe déjà                                       | Faible   |
+| CT.041              | Même nom et prénom qu'un enfant existant | Création d'un enfant | Enfant enregistré comme enfant différent            | Faible   |
 
 
 ### ST.008  
