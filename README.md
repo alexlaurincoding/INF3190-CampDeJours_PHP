@@ -71,3 +71,8 @@ La gestion se divise en 2 sections.
 ### BASE DE DONNÉE
 
 Une base de donnée pré-préparé se trouve dans `./camps_de_jours (avec donnees).sql`.  
+
+Voici le schema relationel de la base de donnée :  
+
+![db](./camps_de_jours.png)  
+
