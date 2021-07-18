@@ -73,19 +73,19 @@ function toggleBoutonRetirerActiviteBloc() {
 
 function remplacerActivitesBloc() {
   let nb = nbActivitesBloc;
-  for (i=0; i< nb; i++) {
+  for (i = 0; i < nb; i++) {
     retirerActiviteBloc();
   }
-  for (i=0; i< 1; i++) {
+  for (i = 0; i < 1; i++) {
     ajouterSelectActiviteBloc();
   }
 }
 
 function ajouterListenersSurTypesCheckbox() {
   let checkboxTypes = document.getElementsByClassName("type-activite");
-  Array.from(checkboxTypes).forEach(function(element) {
-      element.addEventListener('click', remplacerActivitesBloc);
-    });
+  Array.from(checkboxTypes).forEach(function (element) {
+    element.addEventListener("click", remplacerActivitesBloc);
+  });
 }
 
 function creerSelectActiviteBloc(nbActivitesBloc) {
@@ -94,12 +94,15 @@ function creerSelectActiviteBloc(nbActivitesBloc) {
   nouvelleActivite +=
     '<select class="form-control" name="activite' + nbActivitesBloc + '">';
   if (getIdTypesChoisis().length == 0) {
-    nouvelleActivite += "<option disabled selected> Veuillez choisir un type d'activité </option>";
+    nouvelleActivite +=
+      "<option disabled selected> Veuillez choisir un type d'activité </option>";
   } else if (filtrerActivitesSelonTypesChoisis().length == 0) {
-    nouvelleActivite += "<option disabled selected> Aucune activité disponible pour les types d'activité sélectionnés  </option>";
+    nouvelleActivite +=
+      "<option disabled selected> Aucune activité disponible pour les types d'activité sélectionnés  </option>";
   } else {
     filtrerActivitesSelonTypesChoisis().forEach((activite) => {
-      nouvelleActivite += "<option value='" + activite.id + "'>" + activite.nom + "</option>";
+      nouvelleActivite +=
+        "<option value='" + activite.id + "'>" + activite.nom + "</option>";
     });
   }
   nouvelleActivite += "</select>";
@@ -110,25 +113,28 @@ function creerSelectActiviteBloc(nbActivitesBloc) {
 function getIdTypesChoisis() {
   let types = document.getElementsByClassName("type-activite");
   let typesChoisis = Array.from(types)
-    .filter( type => type.checked)
-    .map(typeChoisi => typeChoisi.value);
+    .filter((type) => type.checked)
+    .map((typeChoisi) => typeChoisi.value);
   return typesChoisis;
 }
 
 function filtrerActivitesSelonTypesChoisis() {
   let idTypesChoisis = getIdTypesChoisis();
-  return viewmodel.activites
-    .filter(activite => idTypesChoisis.includes(activite.idTypeActivite));
+  return viewmodel.activites.filter((activite) =>
+    idTypesChoisis.includes(activite.idTypeActivite)
+  );
 }
 
 function validerFormAjoutBloc() {
   let estValide = true;
-  let selects = document.getElementById("ajouterBlocActiviteForm").getElementsByTagName("select")
-  let valeurs = Array.from(selects)
-    .map(s => s.value);
+  let selects = document
+    .getElementById("ajouterBlocActiviteForm")
+    .getElementsByTagName("select");
+  let valeurs = Array.from(selects).map((s) => s.value);
   if (hasDuplicates(valeurs)) {
     estValide = false;
-    document.getElementById("erreurActiviteBloc").innerText = "Les activités ne peuvent pas être répétées";
+    document.getElementById("erreurActiviteBloc").innerText =
+      "Les activités ne peuvent pas être répétées";
   }
   return estValide;
 }
@@ -136,7 +142,7 @@ function validerFormAjoutBloc() {
 function hasDuplicates(array) {
   valeurs = [];
   contientDoublon = false;
-  array.forEach( (val) => {
+  array.forEach((val) => {
     if (valeurs.indexOf(val) !== -1) {
       contientDoublon = true;
     }
@@ -170,7 +176,9 @@ function ajouterSelectActiviteProgramme() {
 
 $("#rmActiviteProg").click((e) => {
   e.preventDefault();
-  var activite = document.getElementById("activiteProgramme" + nbActivitesProgramme);
+  var activite = document.getElementById(
+    "activiteProgramme" + nbActivitesProgramme
+  );
   activite.parentNode.removeChild(activite);
   nbActivitesProgramme--;
   document.getElementById("nbActivitesProgramme").value = nbActivitesProgramme;
