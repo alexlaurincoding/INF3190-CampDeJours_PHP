@@ -16,6 +16,10 @@ class inscriptionJSONDAO{
         BaseDonnee::close();
         return $idSemaine;       
     }
+
+    public static function getInscriptions(){
+
+    }
 }
 
 

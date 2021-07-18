@@ -210,7 +210,7 @@ class EnfantDAO
   public static function retirerEnfant($idEnfant, $idSemaine){
     $bdd = BaseDonnee::getConnexion();
           
-    $req = $bdd->prepare('DELETE FROM inscription WHERE inscription.id_programme_semaine = (
+    $req = $bdd->prepare('DELETE FROM inscription WHERE id_enfant = :idEnfant AND inscription.id_programme_semaine = (
                         SELECT id_programme_semaine FROM inscription
                         INNER JOIN enfant ON enfant.id = inscription.id_enfant
                         INNER JOIN programme_semaine ON programme_semaine.id = inscription.id_programme_semaine

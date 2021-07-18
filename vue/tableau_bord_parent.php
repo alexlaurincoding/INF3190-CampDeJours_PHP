@@ -368,7 +368,7 @@ function inscrire(idEnfant, idProgramme, idSemaine){
 function retirer(idEnfant, idSemaine){
   var getUrl = window.location;
   var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-  let url = baseUrl + "/parent/retirerEnfant";
+  let url = "../../parent/retirerEnfant";
   let params = {
     "idEnfant": idEnfant,
     "idSemaine": idSemaine
