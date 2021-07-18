@@ -5,16 +5,16 @@ class InscriptionsJSONModel{
     public $Session;
     public $Programme;
     public $Semaine;
-    public $Payé;
+    public $Paye;
 
-    public function __construct($Enfant, $Parent, $Session, $Programme, $Semaine, $Payé)
+    public function __construct($Enfant, $Parent, $Session, $Programme, $Semaine, $Paye)
     {
         $this->Enfant = $Enfant;
         $this->Parent = $Parent;
         $this->Session = $Session;
         $this->Programme = $Programme;
         $this->Semaine = $Semaine;
-        $this->Payé = $Payé;
+        $this->Paye = $Paye;
     }
    
     public function jsonSerialize()
@@ -87,14 +87,14 @@ class InscriptionsJSONModel{
         return $this;
     }
 
-    public function getPayé()
+    public function getPaye()
     {
-        return $this->Payé;
+        return $this->Paye;
     }
 
-    public function setPayé($Payé)
+    public function setPaye($Paye)
     {
-        $this->Payé = $Payé;
+        $this->Paye = $Paye;
 
         return $this;
     }

@@ -8,9 +8,8 @@ function index($params) {
         throw new Exception("Accès interdit");
     }
 
-    $inscriptions = inscriptionJSONDAO::getInscriptions();
+    $inscriptions = json_encode(inscriptionJSONDAO::getInscriptions());
     Util::setMessage("inscriptions", $inscriptions);
-
     Vue::render('inscription_admin');
 }
 
