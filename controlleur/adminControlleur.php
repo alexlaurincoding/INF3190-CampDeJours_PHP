@@ -7,10 +7,6 @@ function index($params) {
     if(!Session::isConnecte() || !Session::isAdmin()){
         throw new Exception("Accès interdit");
     }
-
-    $inscriptions = inscriptionJSONDAO::getInscriptions();
-    Util::setMessage("inscriptions", $inscriptions);
-
     Vue::render('inscription_admin');
 }
 

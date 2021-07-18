@@ -17,7 +17,7 @@ class inscriptionJSONDAO{
         return $idSemaine;       
     }
 
-    public function payerInscriptions($inscriptions){
+    public static function payerInscriptions($inscriptions){
         $bdd = BaseDonnee::getConnexion();
 
         foreach($inscriptions as $inscription){
