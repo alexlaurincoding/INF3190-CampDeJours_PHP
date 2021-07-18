@@ -237,7 +237,9 @@ require('modals/ajouterEnfant.php');
       <div class="card-header">
         <div class="row mb-2 mt-2">
           <div class="col-6">
-            <h2 class="mb-0"><i class="fas fa-shopping-cart"></i> Panier</h2>
+            <h2 class="mb-0"><i class="fas fa-shopping-cart">
+              </i> Panier - <?=GestionProgrammeDAO::getSession($idSessionSelect)->getNom()?> 
+            </h2>
           </div>
           <div class="col-6 d-flex align-items-end justify-content-end">
             <p> <span id="dateFacture"><?= date("Y-m-d") ?></span> </p>
@@ -249,18 +251,36 @@ require('modals/ajouterEnfant.php');
         <table class="table table-hover table-sm" id="table_enfants_a_charge">
           <thead class="thead-dark">
             <tr>
-              <th>Programme</th>
               <th>Semaine</th>
+              <th>Programme</th>
+              <th>Enfant</th>
               <th>Prix</th>
-              <th>Sous-Total</th>
             </tr>
           </thead>
 
+          <?php $prixTotal = 0;
+            foreach ($semainesProgramme as $semaineProgramme) {
+              if ($semaineProgramme->getSemaine()->getIdSession() == $idSessionSelect) {
+                foreach ($semaineProgramme->getEnfantsInscriptions() as $enfantsInscription) {
+                  if (NULL != $enfantsInscription->getProgrammeInscrit() && !$enfantsInscription->getEstPaye()) {
+                    $programmeInscrit = GestionProgrammeDAO::getProgramme($enfantsInscription->getProgrammeInscrit());
+                    $prixTotal += $programmeInscrit->getPrix();
+                    ?>
+
+                    <tr>
+                      <td><?=$semaineProgramme->getSemaine()->getNoSemaine()?></td>
+                      <td><?=$programmeInscrit->getGabaritProgramme()->getTitre()?></td>
+                      <td><?=$enfantsInscription->getNomEnfant()?>, <?=$enfantsInscription->getPrenomEnfant()?></td>
+                      <td><?=$programmeInscrit->getPrix()?>.00 $</td>
+                    </tr>
+
+            <?php }
+                }
+              }
+            }?>
+
 
           <tbody>
-
-            <?php $prixTotal = 0;
-            ?>
             <tr>
               <td></td>
               <td></td>
@@ -300,14 +320,17 @@ require('modals/ajouterEnfant.php');
         <div class="row">
           <div class="col-9"></div>
           <div class="col-3">
+            <form>
+              <button type="input">payer</button>
+            </form>
             <!--boutton paypal
               pour tester, Email: sb-ybcnk6512123@personal.example.com, Mot de passe: lesnerds-->
-            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+           <!--  <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
               <input type="hidden" name="cmd" value="_s-xclick">
               <input type="hidden" name="hosted_button_id" value="RY3NXXM4RCP4E">
               <input type="image" src="https://www.sandbox.paypal.com/fr_CA/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
               <img alt="" border="0" src="https://www.sandbox.paypal.com/fr_CA/i/scr/pixel.gif" width="1" height="1">
-            </form>
+            </form> -->
 
           </div>
         </div>
@@ -331,8 +354,8 @@ function updatePanier(e) {
 function inscrire(idEnfant, idProgramme, idSemaine){
   let vraiIDProgramme = idProgramme.dataset.idprogramme;
   var getUrl = window.location;
-  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-  let url = baseUrl + "/parent/inscrireEnfant";
+  //var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+  let url = "../../parent/inscrireEnfant";
   let params = {
     "idEnfant": idEnfant,
     "idProgramme": vraiIDProgramme,
@@ -459,7 +482,7 @@ function afficherTropTard()
 {
   echo ('<td >
           <div class="col-6 d-flex align-items-end justify-content-center">
-            -- N/A --
+            -
           </div>
         </td>');
 }
