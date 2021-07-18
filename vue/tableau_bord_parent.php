@@ -16,6 +16,8 @@ $differenceSemaines = ceil($dateCourrante->diff($dateDebutSession)->days / 7);
 if ($dateCourrante < $dateDebutSession) $differenceSemaines = 0;
 else if ($differenceSemaines > 15) $differenceSemaines = 15;
 
+// $differenceSemaines = 0;
+
 //Vue::loadModals('modifierParent', 'ajouterEnfant', 'modifierEnfant');
 require('modals/modifierParent.php');
 require('modals/ajouterEnfant.php');
@@ -300,9 +302,8 @@ require('modals/ajouterEnfant.php');
         <div class="row">
           <div class="col-9"></div>
           <div class="col-3 d-flex align-items-end justify-content-end">
-            <!-- <form onclick="<?php //inscriptionJSONDAO::payerInscriptions($inscriptions) ?>"> -->
-            <form onclick="">
-              <button class="btn btn-sm btn-success" type="input">Payer <?=$prixTotal?>.00 $</button>
+            <form method="POST" action="<?=Util::getChemin()?>/parent/payer">
+              <button class="btn btn-sm btn-success" type="submit">Payer <?=$prixTotal?>.00 $</button>
             </form>
           </div>
         </div>

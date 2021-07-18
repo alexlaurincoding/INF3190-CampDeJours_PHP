@@ -13,8 +13,6 @@ window.onload = function () {
   var url = window.location.href;
   var urlPath = url.split("/");
   var modalName = urlPath[urlPath.length - 1];
-  if (modalName.toLowerCase().includes("modal")) {
-    var modal = new bootstrap.Modal(document.getElementById(modalName));
-    modal.show();
-  }
+  var modal = new bootstrap.Modal(document.getElementById(modalName));
+  modal.show();
 };

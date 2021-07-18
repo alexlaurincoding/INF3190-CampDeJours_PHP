@@ -64,6 +64,7 @@ class inscriptionJSONDAO{
             $photoEnfant = $donnee['url_photo'];
             $nomParent = $donnee['nomParent'] . ", " . $donnee['prenomParent'];
 
+<<<<<<< HEAD
 
 
             $enfant = new EnfantJSONModel($idEnfant, $nomEnfant, $prenomEnfant, $dateEnfant, $photoEnfant, $nomParent);
@@ -89,6 +90,18 @@ class inscriptionJSONDAO{
             array_push($parents, $parent);
          }
          return $parents;
+=======
+        foreach($inscriptions as $inscription){
+            $req = $bdd->prepare('UPDATE inscription
+                                SET paye = 1
+                                WHERE id_programme_semaine = :idProgramme
+                                AND id_enfant = :idEnfant');
+            $req->execute(array('idProgramme' => $inscription->getIdProgrammeSemaine(),
+                                'idEnfant' => $inscription->getIdEnfant()));
+        }
+        Util::setMessage("global", "Payment effectué avec succès!");
+        // Util::redirectControlleur("parent","index"); 
+>>>>>>> c9342c33c6293295a6e6d21b104a0487260b92a9
     }
     
 }
