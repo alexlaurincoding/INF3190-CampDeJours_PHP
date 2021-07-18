@@ -53,18 +53,22 @@
                     <input
                       type="text"
                       id="prenom"
+                      name="prenom"
                       class="form-control"
                       value="<?=$parent->getPrenom()?>"
                     />
+                    <span class="erreur"><?= Util::message("prenom"); ?></span>
                   </div>
                   <div class="col">
                     <label for="nom" class="form-label">Nom</label>
                     <input
                       type="text"
                       id="nom"
+                      name="nom"
                       class="form-control"
                       value="<?=$parent->getNom()?>"
                     />
+                    <span class="erreur"><?= Util::message("nom"); ?></span>
                   </div>
                 </div>
                 <div class="row p-2">
@@ -74,8 +78,10 @@
                       type="email"
                       class="form-control"
                       id="inputEmail3"
+                      name="email"
                       value="<?=$parent->getCourriel()?>"
                     />
+                    <span class="erreur"><?= Util::message("email"); ?></span>
                   </div>
                   <div class="col">
                     <label for="ddn" class="form-label"
@@ -84,14 +90,17 @@
                     <input
                       type="date"
                       id="ddn"
+                      name="dateNaissance"
                       class="form-control"
                       value="<?=$parent->getDateDeNaissance()?>"
                     />
+                    <span class="erreur"><?= Util::message("dateNaissance"); ?></span>
                   </div>
                 </div>
                 <div class="form-group p-2">
                   <label for="adresse" class="form-label">Adresse complète</label>
-                  <textarea class="form-control" id="adresse"><?=$parent->getAdresse()?></textarea>
+                  <textarea name="adresse" class="form-control" id="adresse"><?=$parent->getAdresse()?></textarea>
+                  <span class="erreur"><?= Util::message("adresse"); ?></span>
                 </div>
                 <hr />
                 <h5 class="card-title">Informations du compte</h5>
@@ -113,9 +122,11 @@
                     <input
                       type="password"
                       id="password"
+                      name="password"
                       class="form-control"
                       placeholder=""
                     />
+                    <span class="erreur"><?= Util::message("password"); ?></span>
                   </div>
                 </div>
               
