@@ -161,3 +161,12 @@ function index($param){
 
         return $_SESSION["numSession"];
     }
+
+    function payer(){
+        $idParent = Session::getParentUser()->getId();
+        $numSession = $_SESSION["numSession"];
+        ParentDAO::payer($idParent, $numSession);
+
+        Util::setMessage("global", "Facture payée!");
+        Util::redirectControlleur("parent","index");      
+    }

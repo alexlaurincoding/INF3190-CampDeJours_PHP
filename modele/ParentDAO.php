@@ -164,4 +164,20 @@ class ParentDAO {
         return $semainesProgramme;
     }
 
+    public static function payer($idParent, $numSession){
+        $bdd = BaseDonnee::getConnexion();
+        $req = $bdd->prepare('UPDATE `inscription` SET `paye`= 1 WHERE id_enfant IN (SELECT id_enfant 
+                                                                                    FROM enfant 
+                                                                                    JOIN parent 
+                                                                                    WHERE parent.id = :idParent)
+        AND id_programme_semaine IN (SELECT programme_semaine.id id FROM programme_semaine 
+                                    JOIN programme ON programme.id = programme_semaine.id_programme
+                                    JOIN session ON session.id = programme.id_session
+                                    WHERE session.id = :numSession)');
+        $req->execute(array(
+            'idParent' => $idParent,
+            'numSession' => $numSession
+        ));
+        BaseDonnee::close();
+    }
 }
