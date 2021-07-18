@@ -258,13 +258,20 @@ require('modals/ajouterEnfant.php');
             </tr>
           </thead>
 
-          <?php $prixTotal = 0;
+          <?php 
+          $prixTotal = 0;
+          $inscriptions = array();
             foreach ($semainesProgramme as $semaineProgramme) {
               if ($semaineProgramme->getSemaine()->getIdSession() == $idSessionSelect) {
                 foreach ($semaineProgramme->getEnfantsInscriptions() as $enfantsInscription) {
                   if (NULL != $enfantsInscription->getProgrammeInscrit() && !$enfantsInscription->getEstPaye()) {
                     $programmeInscrit = GestionProgrammeDAO::getProgramme($enfantsInscription->getProgrammeInscrit());
                     $prixTotal += $programmeInscrit->getPrix();
+
+                    array_push($inscriptions, new InscriptionModel(
+                      $semaineProgramme->getSemaine()->getId(),
+                      $enfantsInscription->getIdEnfant(),
+                      0));
                     ?>
 
                     <tr>
@@ -279,7 +286,6 @@ require('modals/ajouterEnfant.php');
               }
             }?>
 
-
           <tbody>
             <tr>
               <td></td>
@@ -289,51 +295,18 @@ require('modals/ajouterEnfant.php');
             </tr>
           </tbody>
 
-
-
-
-          <!-- <tbody>
-            <tr>
-              <td>L'enfant actif</td>
-              <td>2</td>
-              <td>150.00$</td>
-              <td>300.00$</td>
-            </tr>
-
-            <tr>
-              <td>Les arts et la science</td>
-              <td>1</td>
-              <td>150.00$</td>
-              <td>150.00$</td>
-            </tr>
-
-            <tr>
-              <td></td>
-              <td></td>
-              <td class="fw-bold">Total :</td>
-              <td class="fw-bold grey">450.00$</td>
-            </tr>
-          </tbody> -->
-
-
         </table>
+
         <div class="row">
           <div class="col-9"></div>
-          <div class="col-3">
-            <form>
-              <button type="input">payer</button>
+          <div class="col-3 d-flex align-items-end justify-content-end">
+            <!-- <form onclick="<?php //inscriptionJSONDAO::payerInscriptions($inscriptions) ?>"> -->
+            <form onclick="">
+              <button class="btn btn-sm btn-success" type="input">Payer <?=$prixTotal?>.00 $</button>
             </form>
-            <!--boutton paypal
-              pour tester, Email: sb-ybcnk6512123@personal.example.com, Mot de passe: lesnerds-->
-           <!--  <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-              <input type="hidden" name="cmd" value="_s-xclick">
-              <input type="hidden" name="hosted_button_id" value="RY3NXXM4RCP4E">
-              <input type="image" src="https://www.sandbox.paypal.com/fr_CA/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-              <img alt="" border="0" src="https://www.sandbox.paypal.com/fr_CA/i/scr/pixel.gif" width="1" height="1">
-            </form> -->
-
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -359,6 +332,18 @@ function inscrire(idEnfant, idProgramme, idSemaine){
   let params = {
     "idEnfant": idEnfant,
     "idProgramme": vraiIDProgramme,
+    "idSemaine": idSemaine
+  };
+  
+  post(url, params);
+}
+
+function retirer(idEnfant, idSemaine){
+  var getUrl = window.location;
+  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+  let url = "../../parent/retirerEnfant";
+  let params = {
+    "idEnfant": idEnfant,
     "idSemaine": idSemaine
   };
   
@@ -401,7 +386,7 @@ function afficherBoutonStatus($enfant, $semaine, $estDateDansLePasse)
     afficherBoutonEchu();
   } else {
     if ($programmeInscrit) {
-      afficherBoutonRetirer();
+      afficherBoutonRetirer($enfant, $semaine);
     } else {
       afficherPanierPrix($enfant, $semaine);
     }
@@ -415,9 +400,13 @@ function afficherBoutonPaye()
          </button>');
 }
 
-function afficherBoutonRetirer()
+function afficherBoutonRetirer($enfant, $semaine)
 {
-  echo ('<button class="btn btn-danger btn-sm">
+  $idSemaine = $semaine->getId();
+  $noSemaine = $semaine->getNoSemaine();
+  $idEnfant = $enfant->getIdEnfant();
+  $idPanier = $enfant->getIdEnfant() . "-panier" . $noSemaine;
+  echo ('<button class="btn btn-danger btn-sm" onclick="retirer(\'' . $idEnfant . '\', \'' . $idSemaine . '\')" id="' . $idPanier . '">
           Retirer
           <i class="fas fa-minus-circle"></i>
         </button>');

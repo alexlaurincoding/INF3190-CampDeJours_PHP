@@ -143,6 +143,16 @@ function index($param){
         Util::redirectControlleur("parent","index");
     }
 
+    function retirerEnfant($param){
+        $idEnfant = Util::param("idEnfant");
+        $idSemaine = Util::param("idSemaine");
+
+        EnfantDAO::retirerEnfant($idEnfant, $idSemaine);
+
+        Util::setMessage("global", "Votre enfant maintenant est retiré du programme!");
+        Util::redirectControlleur("parent","index");
+    }
+
     function numSession() {
         if (!empty($_POST) && isset($_POST["numSession"])) 
             $_SESSION["numSession"] = $_POST["numSession"];
