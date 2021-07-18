@@ -167,6 +167,7 @@ function index($param){
         $numSession = $_SESSION["numSession"];
         ParentDAO::payer($idParent, $numSession);
 
-        Util::setMessage("global", "Facture payée!");
+        Util::setMessage("global", "Payment effectué avec succès!");
         Util::redirectControlleur("parent","index");      
     }
+    
