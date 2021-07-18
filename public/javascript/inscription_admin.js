@@ -102,7 +102,6 @@ function onClickTableauAdmin(index) {
     }
   })();
   var enfant = (function () {
-    console.log(enfants);
     for (var i = 0; i < enfants.length; i++) {
       if (enfants[i].id === inscriptionJSON[index].Enfant) {
         return enfants[i];
